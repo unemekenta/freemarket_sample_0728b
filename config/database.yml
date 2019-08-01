@@ -54,4 +54,4 @@ production:
   password: <%= ENV['FREEMARKET_SAMPLE_0728B_DATABASE_PASSWORD'] %>
   username: root
   password: <%= ENV['DATABASE_PASSWORD'] %>
-  socket: /var/lib/mysql/mysqßl.sock
+  socket: /var/lib/mysql/mysql.sock
