@@ -52,7 +52,7 @@ Hiroki_Katsuyama, Masatomo_Sugai, Yuichi_Motmomura, Kenta_Uneme
 |name|string|null: false|
 |nickname|string|null: false|
 |photo|string|null: false|
-|email|string|null: false|
+|email|string|null: false, unique: true|
 |password|string|null: false|
 |address|string|null: false|
 |delivery_address|string|null: false|
@@ -70,7 +70,7 @@ Hiroki_Katsuyama, Masatomo_Sugai, Yuichi_Motmomura, Kenta_Uneme
 |------|----|-------|
 |seller|string|null: false|
 |buyer|string|null: false|
-|product_id|integer|null: false, foreign_key: true|
+|product|integer|null: false, foreign_key: true|
 |status|string|null: false|
 
 ### Association
@@ -80,8 +80,8 @@ Hiroki_Katsuyama, Masatomo_Sugai, Yuichi_Motmomura, Kenta_Uneme
 ## likesテーブル
 |Column|Type|Options|
 |------|----|-------|
-|user_id|integer|null: false, foreign_key: true|
-|product_id|integer|null: false, foreign_key: true|
+|user|integer|null: false, foreign_key: true|
+|product|integer|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :user
@@ -91,8 +91,8 @@ Hiroki_Katsuyama, Masatomo_Sugai, Yuichi_Motmomura, Kenta_Uneme
 |Column|Type|Options|
 |------|----|-------|
 |comment|string|null: false|
-|user_id|integer|null: false, foreign_key: true|
-|product_id|integer|null: false, foreign_key: true|
+|user|integer|null: false, foreign_key: true|
+|product|integer|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :user
@@ -115,10 +115,10 @@ Hiroki_Katsuyama, Masatomo_Sugai, Yuichi_Motmomura, Kenta_Uneme
 |price|string|null: false|
 |detail|string|null: false|
 |photo|string|null: false|
-|category_id|integer|null: false, foreign_key: true|
-|brand_id|integer|null: false, foreign_key: true|
-|message_id|integer|null: false, foreign_key: true|
-|status_id|integer|null: false, foreign_key: true|
+|category|integer|null: false, foreign_key: true|
+|brand|integer|null: false, foreign_key: true|
+|message|integer|null: false, foreign_key: true|
+|status|integer|null: false, foreign_key: true|
 
 ### Association
 - has_many :users, through: :likes
@@ -131,10 +131,10 @@ Hiroki_Katsuyama, Masatomo_Sugai, Yuichi_Motmomura, Kenta_Uneme
 ## deliveriesテーブル
 |Column|Type|Options|
 |------|----|-------|
-|product_id|integer|null: false, foreign_key: true|
-|deliver-method_id|integer|null: false, foreign_key: true|
-|deliver-region_id|integer|null: false, foreign_key: true|
-|estimated-date_id|integer|null: false, foreign_key: true|
+|product|integer|null: false, foreign_key: true|
+|deliver-method|integer|null: false, foreign_key: true|
+|deliver-region|integer|null: false, foreign_key: true|
+|estimated-date|integer|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :product
@@ -154,7 +154,7 @@ Hiroki_Katsuyama, Masatomo_Sugai, Yuichi_Motmomura, Kenta_Uneme
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false|
-|parent_id|integer|null: false, foreign_key: true|
+|parent|integer|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :category
@@ -163,7 +163,7 @@ Hiroki_Katsuyama, Masatomo_Sugai, Yuichi_Motmomura, Kenta_Uneme
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false|
-|parent_id|integer|null: false, foreign_key: true|
+|parent|integer|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :category
@@ -172,7 +172,7 @@ Hiroki_Katsuyama, Masatomo_Sugai, Yuichi_Motmomura, Kenta_Uneme
 |Column|Type|Options|
 |------|----|-------|
 |image|string|null: false|
-|product_id|integer|null: false, foreign_key: true|
+|product|integer|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :product
