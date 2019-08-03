@@ -13,3 +13,10 @@
  *= require_tree .
  *= require_self
  */
+
+@import "./reset";
+@import "./header";
+@import "./main";
+@import "./aside";
+@import "./footer";
+@import "./button";
