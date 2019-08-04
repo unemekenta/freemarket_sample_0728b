@@ -1,0 +1,14 @@
+@mixin clearfix {
+  &:after {
+  content: '';
+  clear: both;
+  display: block;
+  }
+}
+
+.aside {
+  width: 100vw;
+  height: 260px;
+  
+
+}
