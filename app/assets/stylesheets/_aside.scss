@@ -6,9 +6,75 @@
   }
 }
 
+* {
+  box-sizing: border-box;
+}
+
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+h1,h2,h3,h4,h5,h6,body {
+  line-height: 1.57;
+  letter-spacing: 0.15em;
+  font-size: 16px;
+  font-family: "Source Sans Pro", Helvetica, Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
+  margin: 0;
+}
+h1 {
+  font-size: 2em;
+}
+
+h2 {
+  font-size: 1.5em;
+}
+
+h3 {
+  font-size: 1.125em;
+}
+
+h4 {
+  font-size: 1em;
+}
+
+h5 {
+  font-size: 0.75em;
+}
+
+h6 {
+  font-size: 0.625em;
+}
+
+p {
+  font-size: 35px;
+  margin: 0;
+}
+  
 .aside {
   width: 100vw;
+  margin: 0 auto;
+  padding: 0;
   height: 260px;
-  
-
+  background-image: url(aside_back.jpg);
+  background-size: 100% 100%;
+  color: $main_white;
+  &__content {
+    width: 750px;
+    height: 260px;
+    margin: 0 auto;
+    &__left {
+      width: 450px;
+      padding-top: 50px;
+      height: 260px;
+      float: left;
+    }
+    &__right {
+      width: 300px;
+      height: 260px;
+      float: left;
+    }
+  }
 }
