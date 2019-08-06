@@ -1,11 +1,19 @@
-!!!
 
 #aside.aside
   .aside__content
     .aside__content__left
-      .aside__content__left--text
+      .aside__content__left__text
         %h2 スマホでかんたんフリマアプリ
-        %p 今すぐ無料ダウンロード!
-      .aside__content__left--images
+        %p 今すぐ無料ダウンロード！
+      .aside__content__left__images
+        %ul
+          %li
+            = image_tag 'mercari_icon.png', alt: 'ner cari_logo', width: '75px', height: '75px', border: '0', class: 'aside__content__left__images--mercari'
+          %li
+            = link_to 'https://itunes.apple.com/jp/app/id667861049?l=ja&mt=8', target: :_blank do
+              = image_tag '//www-mercari-jp.akamaized.net/assets/img/common/common/app-store.svg?3791839826', alt: '', height: '', width: '150px', class: 'aside__content__left__images--app'
+          %li
+            = link_to 'https://play.google.com/store/apps/details?id=com.kouzoh.mercari&hl=ja', target: :_blank do
+              = image_tag '//www-mercari-jp.akamaized.net/assets/img/common/common/google-play.svg?3791839826', alt: '', height: '', width: '150px', class: 'aside__content__left__images--app'
     .aside__content__right
-      = image_tag 'aside_phone.png', alt: '', width: '295px', height: '255px', border: '0'
+      = image_tag 'aside_phone.png', alt: 'image', width: '330px', height: '295px', border: '0'

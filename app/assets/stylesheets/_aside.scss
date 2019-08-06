@@ -1,4 +1,6 @@
-@mixin clearfix {
+@import "./variables";
+
+@mixin clearfix() {
   &:after {
   content: '';
   clear: both;
@@ -30,6 +32,7 @@ h1 {
 
 h2 {
   font-size: 1.5em;
+  font-weight: bold;
 }
 
 h3 {
@@ -49,7 +52,7 @@ h6 {
 }
 
 p {
-  font-size: 35px;
+  font-size: 37px;
   margin: 0;
 }
   
@@ -57,22 +60,45 @@ p {
   width: 100vw;
   margin: 0 auto;
   padding: 0;
-  height: 260px;
+  height: 295px;
   background-image: url(aside_back.jpg);
   background-size: 100% 100%;
   color: $main_white;
   &__content {
-    width: 750px;
-    height: 260px;
+    width: 840px;
+    height: 295px;
     margin: 0 auto;
     &__left {
-      width: 450px;
-      padding-top: 50px;
+      width: calc(100% * 3 / 5);
+      padding-top: 55px;
       height: 260px;
       float: left;
+      &__text {
+        margin-bottom: 10px;
+      }
+      &__images {
+        & li {
+          list-style: none;
+          float: left;
+        }
+        &--mercari {
+          background-color: $main_white;
+          border-radius: 15px;
+          margin-right: 30px;
+        }
+
+        &--app {
+          margin-right: 15px;
+          line-height: 68px;
+          margin-top: 20px;
+          &:hover {
+            opacity: 0.6;
+          }
+        }
+      }
     }
     &__right {
-      width: 300px;
+      width: calc(100% * 2 / 5);
       height: 260px;
       float: left;
     }
