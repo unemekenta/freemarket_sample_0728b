@@ -72,3 +72,4 @@ end
 
 # production, development and test
 gem 'haml-rails'
+gem 'font-awesome-rails'
