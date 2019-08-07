@@ -1,6 +1,8 @@
+@import "variables";
+
 .footer{
   font-weight: 100;
-  color: #ccc;
+  color: $main_gray;
   background-color: rgb(33, 33, 33);
   padding: 0px 80px;
   &__container{
@@ -11,7 +13,7 @@
       &__head{
         font-size: 15px;
         line-height: 1.4;
-        color: #ffffff;
+        color: $main_white;
         margin-bottom: 10px;
       }
       ul{
@@ -21,13 +23,13 @@
           font-size: 35px;
           a{
             padding-right: 10px;
-            color: #ffffff;
+            color: $main_white;
           }
         }
         li{
           a{
             text-decoration: none;
-            color: #ccc;
+            color: $main_gray;
           }
           a:hover{
             text-decoration: underline;
@@ -38,7 +40,7 @@
         &__head{
           font-size: 15px;
           line-height: 1.4;
-          color: #ffffff;
+          color: $main_white;
           margin-bottom: 10px;
         }
         &__inner{
@@ -57,7 +59,7 @@
     &__copyright{
       margin: 0px 350px;
       font-size: 11px;
-      color: #ffffff;
+      color: $main_white;
     }
   }
 }

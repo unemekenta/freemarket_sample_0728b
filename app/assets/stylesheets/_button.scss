@@ -1,5 +1,7 @@
+@import "variables";
+
 .sell-btn{
-    color: #ffffff;
+    color: $main_white;
     background-color: #ea352d;
     border-radius: 50%;
     font-size: 21px;
@@ -15,7 +17,7 @@
         margin-top: 23px;
       a {
           text-decoration: none;
-          color: #ffffff;
+          color: $main_white;
       }
     }
     &__icon-camera{
