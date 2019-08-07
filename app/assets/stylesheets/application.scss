@@ -21,3 +21,13 @@
 @import "./aside";
 @import "./footer";
 @import "./button";
+
+body {
+  height: 100%;
+  width: 100%;
+
+  .default-container {
+    height: 100%;
+    width: 100%;
+  }
+}
