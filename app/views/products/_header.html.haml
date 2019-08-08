@@ -3,7 +3,7 @@
     .header__top
       %h1
         = link_to root_path do
-          = image_tag "mercari_logo_horizontal.png", width: "170", height: "54"
+          = image_tag "mercari_logo_horizontal.png", class: 'header__top__logo'
       
       %form.header__top__form(action="#")
         %input.form-default(type="serch" placeholder="何かお探しですか？")
@@ -12,17 +12,15 @@
       .header__menu-box--left
         %ul
           %li
-            %h2
+            %h2.header__menu-box--left__text
               = link_to root_path do
                 = fa_icon "list-ul", class: 'header__menu-box--left__icon'
-                %span<>
                 カテゴリーから探す
             
           %li
-            %h2
+            %h2.header__menu-box--left__text
               = link_to root_path do
                 = fa_icon "tag", class: 'header__menu-box--left__icon'
-                %span<>
                 ブランドから探す
 
                   
@@ -31,24 +29,20 @@
           %li.header__menu-box--right__list
             = link_to root_path do
               = fa_icon "heart-o", class: 'header__menu-box--right__list__icon'
-              %span<>
               いいね！一覧
           
           %li.header__menu-box--right__list
             = link_to root_path do
               = fa_icon "bell-o", class: 'header__menu-box--right__list__icon'
-              %span<>
               お知らせ
             
               .header__menu-box__counter
           %li.header__menu-box--right__list
             = link_to root_path do
               = fa_icon "check", class: 'header__menu-box--right__list__icon'
-              %span<>
               やることリスト
           
           %li.header__menu-box--right__list
             = link_to root_path do
-              = image_tag "",width: "32", height: "32", class: 'header__menu-box--right__list__photo'
-              %span<>
+              = image_tag "https://cdn.pixabay.com/photo/2016/05/17/22/16/baby-1399332_1280.jpg", class: 'header__menu-box--right__list__photo'
               マイページ
