@@ -1,3 +1,5 @@
+@import "variables";
+
 * {
 box-sizing: border-box;
 }
@@ -33,7 +35,7 @@ a {
 }
 .header {
   width: 100%;
-  background-color: #fff;
+  background-color: $main_white;
 
   .header-wrapper {
     width: 1020px;
@@ -45,7 +47,7 @@ a {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      color: #333;
+      color: $main_black;
 
       &__form {
         width: 100%;
@@ -57,7 +59,7 @@ a {
           width: 100%;
           height: 40px;
           background-color: #f3f3f3;
-          border:solid 1px #ccc;
+          border:solid 1px $main_gray;
           border-radius: 4px;
           padding: 0 42px 0 10px;
           font-size:16px;
@@ -90,14 +92,12 @@ a {
       display: inline-block;
       span {
         // padding: 0 11px;
-        font-weight: bold;
-        font-size: 14px;
+        // font-weight: bold;
+        // font-size: 14px;
 
       }
-    
-
       &__icon {
-        color: #ea352a;
+        color: $main_red;
         font-size: 12px;
         margin-right: 4px;
 
@@ -116,7 +116,7 @@ a {
         padding: 0 14px;
 
         &__icon {
-          color: #cccccc;
+          color: $main_gray;
           font-weight: bold;
           margin-right: 10px;
           font-size: 20px;
