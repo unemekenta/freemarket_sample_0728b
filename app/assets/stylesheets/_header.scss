@@ -56,7 +56,6 @@ li {
         display: block;
         width: 134px;
         height: 36px;
-       
       }
 
       &__form {
@@ -98,6 +97,7 @@ li {
       &__text {
         font-weight: bold;
         font-size:14px;
+        }
       }
       &__icon {
         color: $main_red;
@@ -116,6 +116,7 @@ li {
         display: inline-block;
         padding: 0 14px;
         line-height: 42px;
+        }
         &__icon {
           color: $main_gray;
           font-weight: bold;
@@ -124,8 +125,8 @@ li {
         }
         &__photo {
           border-radius: 50%;
-          line-height: 42px;
-
+          width: 32px;
+          height: 32px;
         }
       }
     }
