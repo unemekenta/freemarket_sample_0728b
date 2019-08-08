@@ -11,41 +11,36 @@
   
 .aside {
   h1,h2,h3,h4,h5,h6,body {
-  line-height: 1.57;
-  letter-spacing: 0.15em;
-  font-size: 16px;
-  font-family: "Source Sans Pro", Helvetica, Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
-  margin: 0;
-}
-h1 {
-  font-size: 2em;
-}
-
-h2 {
-  font-size: 1.5em;
-  font-weight: bold;
-}
-
-h3 {
-  font-size: 1.125em;
-}
-
-h4 {
-  font-size: 1em;
-}
-
-h5 {
-  font-size: 0.75em;
-}
-
-h6 {
-  font-size: 0.625em;
-}
-
-p {
-  font-size: 37px;
-  margin: 0;
-}
+    line-height: 1.57;
+    letter-spacing: 0.15em;
+    font-size: 16px;
+    font-family: "Source Sans Pro", Helvetica, Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
+    margin: 0;
+  }
+  h1 {
+    font-size: 2em;
+  }
+  h2 {
+    font-size: 1.5em;
+    font-weight: bold;
+  }
+  h3 {
+    font-size: 1.125em;
+  }
+  h4 {
+    font-size: 1em;
+  }
+  h5 {
+    font-size: 0.75em;
+  }
+  h6 {
+    font-size: 0.625em;
+  }
+  p {
+    font-size: 37px;
+    margin: 0;
+  }
+  
   width: 100vw;
   margin: 0 auto;
   padding: 0;
