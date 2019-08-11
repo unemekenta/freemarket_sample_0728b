@@ -32,21 +32,14 @@ ActiveRecord::Schema.define(version: 2019_08_11_101909) do
     t.string "detail", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "category_id", null: false
     t.bigint "status_id", null: false
     t.bigint "condition_id", null: false
-    t.index ["category_id"], name: "index_products_on_category_id"
     t.index ["condition_id"], name: "index_products_on_condition_id"
     t.index ["status_id"], name: "index_products_on_status_id"
   end
 
   create_table "statuses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "status", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "tmps", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
