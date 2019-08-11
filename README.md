@@ -270,7 +270,7 @@ Hiroki_Katsuyama, Masatomo_Sugai, Yuichi_Motmomura, Kenta_Uneme
 |deliver-method|references|null: false, foreign_key: true|
 |deliver-region|references|null: false, foreign_key: true|
 |estimated-date|references|null: false, foreign_key: true|
-|shipping_fee|references|null: false, foreign_key: true|
+|shipping_fee|integer|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :product
@@ -286,11 +286,6 @@ Hiroki_Katsuyama, Masatomo_Sugai, Yuichi_Motmomura, Kenta_Uneme
 ### Association
 - belongs_to :delivery
 
-## deliver-regionsテーブル
-|Column|Type|Options|
-|------|----|-------|
-|region|string|null: false|
-
 ### Association
 - belongs_to :delivery
 
@@ -298,14 +293,6 @@ Hiroki_Katsuyama, Masatomo_Sugai, Yuichi_Motmomura, Kenta_Uneme
 |Column|Type|Options|
 |------|----|-------|
 |date|integer|null: false|
-
-### Association
-- belongs_to :delivery
-
-## shipping_feesテーブル
-|Column|Type|Options|
-|------|----|-------|
-|which|string|null: false|
 
 ### Association
 - belongs_to :delivery
