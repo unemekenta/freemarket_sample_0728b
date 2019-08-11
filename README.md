@@ -60,7 +60,6 @@ Hiroki_Katsuyama, Masatomo_Sugai, Yuichi_Motmomura, Kenta_Uneme
 |city|string||
 |street|string||
 |building|string||
-|phone_number|integer|null: false|
 |user|references|null: false, foreign_key: true|
 
 ### Association
@@ -119,6 +118,7 @@ Hiroki_Katsuyama, Masatomo_Sugai, Yuichi_Motmomura, Kenta_Uneme
 |photo|string|null: false|
 |email|string|null: false, unique: true|
 |password|string|null: false|
+|phone_number|integer|null: false|
 |address|references|null: false, foreign_key: true|
 |delivery_address|references|null: false, foreign_key: true|
 |credit-card|references|null: false, foreign_key: true|
