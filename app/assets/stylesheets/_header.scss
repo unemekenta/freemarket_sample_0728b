@@ -33,8 +33,19 @@ a {
   color: inherit;
 }
 
-li {
-  display: inline-block;
+
+
+@mixin dropMenu_aTag() {
+  background-color: white;
+  border-right: 1px solid $main_gray;
+  color: black;
+  display: block;
+  height: 44px;
+  line-height: 44px;
+  text-align: left;
+  text-decoration: none;
+  width: 100%;
+  padding-left: 10px;
 }
 
 .header {
@@ -85,7 +96,7 @@ li {
       }
     }
   .header__menu-box {
-    height: 44px;
+    height: 46px;
     margin: 8px 0 0;
     display: flex;
     align-items: center;
@@ -94,16 +105,139 @@ li {
     &--left {
       float: left;
       display: inline-block;
-      &__text {
+      li {
+        display: inline-block;
+
+      }
+      &__category {
         font-weight: bold;
         font-size:14px;
+        margin-right: 10px;
+        height: 55px;
+        line-height: 46px;
+        &:hover {
+          color: $main_blue;
         }
+        &:hover ~ .header__menu-box--left__parent__wrapper{
+          display: block;
+        
+        }
+      }
       
       &__icon {
         color: $main_red;
         font-size: 12px;
         margin-right: 4px;
       }
+      &__parent__wrapper {
+        display: none;
+        // display: block;
+        position: absolute;
+        top: 100px;
+        width: 220px;
+        height: 400px;
+        background-color: white;
+        box-shadow: 0 1px 1px 0 rgba(0,0,0,0.24);
+        z-index: 1000;
+        & > li {
+          width: 220px;
+        }
+        li {
+          position: relative;
+          a {
+            @include dropMenu_aTag();
+          
+            &:hover {
+              background-color: $main_red;
+              color: white;
+            
+            }
+          }
+        
+        }
+      }
+      &__child__wrapper {
+        display: block;
+        position: absolute;
+        top: 0px;
+        left: 220px;
+        width: 220px;
+        height: 400px;
+        background-color: white;
+        box-shadow: 0 1px 1px 0 rgba(0,0,0,0.24);
+        z-index: 1000;
+        li {
+          width: 220px;
+          a {
+            @include dropMenu_aTag;
+            font-size: 14px;
+          }
+        }
+
+      }
+      &__grand-child__wrapper {
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 220px;
+        width: 220px;
+        height: 400px;
+        background-color: $main_white;
+        z-index: 1000;
+        li {
+          width: 220px;
+            a {
+              @include dropMenu_aTag();
+              font-size:12px;
+            }
+        }
+      }
+
+      &__brand {
+        font-weight: bold;
+        font-size:14px;
+        height: 44px;
+        position: relative;
+        &:hover {
+          color: $main_blue;
+        }
+        &:hover ~ .header__menu-box--left__brand__list {
+          display: block;
+        }
+        &__list {
+          display: none;
+          position: absolute;
+          top: 100px;
+          width: 100px;
+          height: 200px;
+          background-color: white;
+          z-index: 1000;
+          li {
+            width: 220px;
+            a {
+            background-color: white;
+            border-right: 1px solid $main_gray;
+            color: black;
+            display: block;
+            height: 44px;
+            line-height: 44px;
+            text-align: left;
+            text-decoration: none;
+            width: 100%;
+            padding-left: 10px;
+            &:hover {
+              background-color: $main_red;
+              color: white;
+            }
+            }
+          }
+          
+        }
+      }
+  
+
+
+
 
     }
     &--right {
