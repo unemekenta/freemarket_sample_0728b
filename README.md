@@ -268,14 +268,13 @@ Hiroki_Katsuyama, Masatomo_Sugai, Yuichi_Motmomura, Kenta_Uneme
 |------|----|-------|
 |product|integer|null: false, foreign_key: true|
 |deliver-method|references|null: false, foreign_key: true|
-|deliver-region|references|null: false, foreign_key: true|
 |estimated-date|references|null: false, foreign_key: true|
 |shipping_fee|references|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :product
 - has_one :deliver-method
-- has_one :deliver-region
+- belongs_to_active_hash :deliver-region
 - has_one :estimated-date
 
 ## deliver-methodsテーブル
@@ -292,7 +291,6 @@ Hiroki_Katsuyama, Masatomo_Sugai, Yuichi_Motmomura, Kenta_Uneme
 |region|string|null: false|
 
 ### Association
-- belongs_to :delivery
 
 ## estimated-datesテーブル
 |Column|Type|Options|
