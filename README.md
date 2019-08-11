@@ -38,15 +38,15 @@ Hiroki_Katsuyama, Masatomo_Sugai, Yuichi_Motmomura, Kenta_Uneme
 ## deliver-addressesテーブル
 |Column|Type|Options|
 |------|----|-------|
-|delivery_family_name|string|null: false|
-|delivery_first_name|string|null: false|
-|delivery_pseudonym|string|null: false|
-|delivery_post_number|integer|null: false|
-|delivery_prefecture|string|null: false|
-|delivery_city|string|null: false|
-|delivery_street|string|null: false|
-|delivery_building|string||
-|delivery_phone_number|integer|null: false|
+|family_name|string|null: false|
+|first_name|string|null: false|
+|pseudonym|string|null: false|
+|post_number|integer|null: false|
+|prefecture|string|null: false|
+|city|string|null: false|
+|street|string|null: false|
+|building|string||
+|phone_number|integer|null: false|
 |user|references|null: false, foreign_key: true|
 
 ### Association
@@ -268,14 +268,13 @@ Hiroki_Katsuyama, Masatomo_Sugai, Yuichi_Motmomura, Kenta_Uneme
 |------|----|-------|
 |product|integer|null: false, foreign_key: true|
 |deliver-method|references|null: false, foreign_key: true|
-|deliver-region|references|null: false, foreign_key: true|
 |estimated-date|references|null: false, foreign_key: true|
 |shipping_fee|references|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :product
 - has_one :deliver-method
-- has_one :deliver-region
+- belongs_to_active_hash :deliver-region
 - has_one :estimated-date
 
 ## deliver-methodsテーブル
@@ -292,20 +291,11 @@ Hiroki_Katsuyama, Masatomo_Sugai, Yuichi_Motmomura, Kenta_Uneme
 |region|string|null: false|
 
 ### Association
-- belongs_to :delivery
 
 ## estimated-datesテーブル
 |Column|Type|Options|
 |------|----|-------|
 |date|integer|null: false|
-
-### Association
-- belongs_to :delivery
-
-## shipping_feesテーブル
-|Column|Type|Options|
-|------|----|-------|
-|which|string|null: false|
 
 ### Association
 - belongs_to :delivery
