@@ -35,7 +35,7 @@ Hiroki_Katsuyama, Masatomo_Sugai, Yuichi_Motmomura, Kenta_Uneme
 
 * ...
 
-## deliver-addressesテーブル
+## deliver_addressesテーブル
 |Column|Type|Options|
 |------|----|-------|
 |family_name|string|null: false|
