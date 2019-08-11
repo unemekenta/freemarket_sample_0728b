@@ -12,16 +12,113 @@
       .header__menu-box--left
         %ul
           %li
-            %h2.header__menu-box--left__text
+            %h2.header__menu-box--left__category
               = link_to root_path do
                 = fa_icon "list-ul", class: 'header__menu-box--left__icon'
                 カテゴリーから探す
+            %ul.header__menu-box--left__parent__wrapper
+              %li.header__menu-box--left__parent
+                %h3
+                  %a{href: ""} レディース
+                %ul.header__menu-box--left__child__wrapper
+                  %li.header__menu-box--left__child
+                    %a{href:""} トップス
+                    %ul.header__menu-box--left__grand-child__wrapper
+                      %li.header__menu-box--left__grand-child
+                        %a{href: ""} Tシャツ/カットソー（半袖/袖なし)
+                      %li.header__menu-box--left__grand-child
+                        %a{href: ""} Tシャツ/カットソー（七分/長袖)
+                  %li.header__menu-box--left__child
+                    %a{href:""} ジャケット/アウター
+                    %ul.header__menu-box--left__grand-child__wrapper
+                      %li.header__menu-box--left__grand-child
+                        %a{href: ""} テーラードジャケット
+                      %li.header__menu-box--left__grand-child
+                        %a{href: ""} ノーカラージャケット
+              %li.header__menu-box--left__parent
+                %h3
+                  %a{href: ""} メンズ
+                %ul.header__menu-box--left__child__wrapper
+                  %li.header__menu-box--left__child
+                    %a{href:""} トップス
+                    %ul.header__menu-box--left__grand-child__wrapper
+                      %li.header__menu-box--left__grand-child
+                        %a{href: ""} Tシャツ/カットソー（半袖/袖なし)
+                      %li.header__menu-box--left__grand-child
+                        %a{href: ""} Tシャツ/カットソー（七分/長袖)
+                  %li.header__menu-box--left__child
+                    %a{href:""} ジャケット/アウター
+                    %ul.header__menu-box--left__grand-child__wrapper
+                      %li.header__menu-box--left__grand-child
+                        %a{href: ""} テーラードジャケット
+                      %li.header__menu-box--left__grand-child
+                        %a{href: ""} ノーカラージャケット
+              %li.header__menu-box--left__parent
+                %h3
+                  %a{href: ""} ベビー・キッズ
+              %li.header__menu-box--left__parent
+                %h3
+                  %a{href: ""} インテリア・住まい・小物
+              %li.header__menu-box--left__parent
+                %h3
+                  %a{href: ""} 本・音楽・ゲーム
+              %li.header__menu-box--left__parent
+                %h3
+                  %a{href: ""} おもちゃ・ホビー・グッズ
+              %li.header__menu-box--left__parent
+                %h3
+                  %a{href: ""} コスメ・香水・美容
+              %li.header__menu-box--left__parent
+                %h3
+                  %a{href: ""} 家電・スマホ・カメラ
+              %li.header__menu-box--left__parent
+                %h3
+                  %a{href: ""} スポーツ・レジャー
+              %li.header__menu-box--left__parent
+                %h3
+                  %a{href: ""} ハンドメイド
+              %li.header__menu-box--left__parent
+                %h3
+                  %a{href: ""} チケット
+              %li.header__menu-box--left__parent
+                %h3
+                  %a{href: ""} 自転車・オートバイ
+              %li.header__menu-box--left__parent
+                %h3
+                  %a{href: ""} その他
+              %li.header__menu-box--left__parent
+                %h3
+                  %a{href: ""} カテゴリ一覧
+                
+
+
             
           %li
-            %h2.header__menu-box--left__text
+            %h2.header__menu-box--left__brand
               = link_to root_path do
                 = fa_icon "tag", class: 'header__menu-box--left__icon'
                 ブランドから探す
+            %ul.header__menu-box--left__brand__list
+              %li
+                %h3
+                  %a{href: ""} シャネル
+              %li
+                %h3
+                  %a{href: ""} ナイキ
+              %li
+                %h3
+                  %a{href: ""} ルイ ヴィトン
+              %li
+                %h3
+                  %a{href: ""} シュプリーム
+              %li
+                %h3
+                  %a{href: ""} アディダス
+              %li
+                %h3
+                  %a{href: ""} ブランド一覧
+
+
 
                   
       .header__menu-box--right
