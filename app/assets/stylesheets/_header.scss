@@ -65,8 +65,8 @@ a {
       color: $main_black;
       &__logo {
         display: block;
-        width: 134px;
-        height: 36px;
+        width: 155px;
+        height: 45px;
       }
 
       &__form {
@@ -259,6 +259,8 @@ a {
         }
         &__photo {
           border-radius: 50%;
+          float: left;
+          margin-right: 10px;
           width: 32px;
           height: 32px;
         }
