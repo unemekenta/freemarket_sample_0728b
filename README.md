@@ -301,11 +301,3 @@ Hiroki_Katsuyama, Masatomo_Sugai, Yuichi_Motmomura, Kenta_Uneme
 
 ### Association
 - belongs_to :delivery
-
-## shipping_feesテーブル
-|Column|Type|Options|
-|------|----|-------|
-|which|string|null: false|
-
-### Association
-- belongs_to :delivery
