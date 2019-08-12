@@ -1,0 +1,14 @@
+%li.item-box
+  %a{href: "https://item.mercari.com/jp/m68109283584/?_s=U2FsdGVkX18tyNJAON_tHJfBDaybQLz4ItvopucXSY_p8XAyqLrwtsy7WGBclh8gFtxEqCQng_pMZiD8Ni9Ib0s-H3pdAVakaBU3tqaWK5LrLYqaPgC2OhczWmtKJc_H"}
+    %figure.item-box__photo
+      %img{src: "#{product.product_images[0].image}"}/
+    .item-box__content
+      %h3.item-box__content__name
+        = product.name
+      .item-box__content__num
+        .item-box__content__num__price
+          = product.price
+        - if true
+          .item-box__content__num__likes
+            = fa_icon "heart-o"
+            %span 1

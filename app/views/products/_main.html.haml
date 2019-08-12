@@ -22,59 +22,10 @@
     %section.pickup-container
       %h3.pickup-container__headline
         %a{:href => "https://www.mercari.com/jp/category/1/"} レディース 新着アイテム
-      %ul.item-box-container
-        %li.item-box
-          %a{:href => "https://item.mercari.com/jp/m95112938635/"}
-            %figure.item-box__photo
-              %img{:src => "https://static.mercdn.net/thumb/photos/m95112938635_1.jpg?1564892794"}/
-            .item-box__content
-              %h3.item-box__content__name
-                KUMIKYOKU ワンピース
-              .item-box__content__num
-                .item-box__content__num__price ¥ 2,000
-                - if true
-                  .item-box__content__num__likes
-                    = fa_icon "heart-o"
-                    %span 1
-        %li.item-box
-          %a{:href => "https://item.mercari.com/jp/m74682669656/"}
-            %figure.item-box__photo
-              %img{:src => "https://static.mercdn.net/thumb/photos/m74682669656_1.jpg?1554366646"}/
-            .item-box__content
-              %h3.item-box__content__name
-                GUCCI グッチ、 シマファスナー長財布
-              .item-box__content__num
-                .item-box__content__num__price ¥ 38,800
-                - if true
-                  .item-box__content__num__likes
-                    = fa_icon "heart-o"
-                    %span 1
-        %li.item-box
-          %a{:href => "https://item.mercari.com/jp/m39424187987/"}
-            %figure.item-box__photo
-              %img{:src => "https://static.mercdn.net/thumb/photos/m39424187987_1.jpg?1564892794"}/
-            .item-box__content
-              %h3.item-box__content__name
-                結婚式 お呼ばれ ワンピース(ドレス)
-              .item-box__content__num
-                .item-box__content__num__price ¥ 2,500
-                - if true
-                  .item-box__content__num__likes
-                    = fa_icon "heart-o"
-                    %span 1
-        %li.item-box
-          %a{:href => "https://item.mercari.com/jp/m19150720885/"}
-            %figure.item-box__photo
-              %img{:src => "https://static.mercdn.net/thumb/photos/m19150720885_1.jpg?1560086744"}/
-            .item-box__content
-              %h3.item-box__content__name
-                ジミーチュウ JIMMY CHOO サイズ37 ヒール6cm 未使用
-              .item-box__content__num
-                .item-box__content__num__price ¥ 38,100
-                - if true
-                  .item-box__content__num__likes
-                    = fa_icon "heart-o"
-                    %span 1
+      %ul.item-box-container      
+        = render partial: "product", collection: @products_ladies
+
+
       .view-all
         %a{:href => "https://mercari.com/jp/category/2/"} すべての商品を見る
     %section.pickup-container

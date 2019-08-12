@@ -6,6 +6,6 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-50.times {|n|
-  Product.create(name: "アンパンマン スニーカー" , price: 1100 , detail: 'キッズ用のアンパンマンスニーカーです。\n1年前、大阪梅田の阪神百貨店で購入しました。', status_id: 1, condition_id: 5)
-}
+50.times do |i|
+  ProductImage.create(image: "https://static.mercdn.net/item/detail/orig/photos/m68109283584_1.jpg?1564813817", product_id: i , created_at: "2019-08-12", updated_at: "2019-08-12")
+end
