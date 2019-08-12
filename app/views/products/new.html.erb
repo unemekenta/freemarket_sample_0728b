@@ -1,1 +1,44 @@
-test
+<%= form_with(model: @product, local: true) do |product| %>
+<div class="form-group">
+  <div class="input-field">
+
+    <div class="field">
+      <%= product.label :name %>
+      <%= product.text_field :name %>
+    </div>
+
+    <div class="field">
+      <%= product.label :price %>
+      <%= product.text_field :price %>
+    </div>
+
+    <div class="field">
+      <%= product.label :detail %>
+      <%= product.text_area :detail %>
+    </div>
+    <%= product.fields_for :product_images do |image| %>
+    <div class="form-group">
+      <div class="input-field">
+        <div class="field">
+          <%= image.label :image %>
+          <%= image.text_field :image %>
+        </div>
+      </div>
+    </div>
+    <% end %>
+
+    <div class="field">
+      <%= product.label :status %>
+      <%= product.collection_select(:status_id, Status.all, :id, :status) %>
+    </div>
+    <div class="field">
+      <%= product.label :condition %>
+      <%= product.collection_select(:condition_id, Condition.all, :id, :condition) %>
+    </div>
+
+    <div class="actions">
+      <%= product.submit %>
+    </div>
+  </div>
+</div>
+<% end %>
