@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_13_130555) do
+ActiveRecord::Schema.define(version: 2019_08_13_132602) do
 
   create_table "conditions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "condition", null: false
@@ -56,7 +56,9 @@ ActiveRecord::Schema.define(version: 2019_08_13_130555) do
     t.datetime "updated_at", null: false
     t.bigint "status_id", default: 1, null: false
     t.bigint "condition_id", null: false
+    t.bigint "delivery_id", null: false
     t.index ["condition_id"], name: "index_products_on_condition_id"
+    t.index ["delivery_id"], name: "index_products_on_delivery_id"
     t.index ["status_id"], name: "index_products_on_status_id"
   end
 
@@ -70,5 +72,6 @@ ActiveRecord::Schema.define(version: 2019_08_13_130555) do
   add_foreign_key "deliveries", "estimated_dates"
   add_foreign_key "product_images", "products"
   add_foreign_key "products", "conditions"
+  add_foreign_key "products", "deliveries"
   add_foreign_key "products", "statuses"
 end
