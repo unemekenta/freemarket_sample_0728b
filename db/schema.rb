@@ -10,10 +10,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_13_074042) do
+ActiveRecord::Schema.define(version: 2019_08_13_130555) do
 
   create_table "conditions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "condition", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "deliver_methods", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "method", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "deliveries", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "shipping_fee", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "deliver_method_id", null: false
+    t.bigint "estimated_date_id", null: false
+    t.index ["deliver_method_id"], name: "index_deliveries_on_deliver_method_id"
+    t.index ["estimated_date_id"], name: "index_deliveries_on_estimated_date_id"
+  end
+
+  create_table "estimated_dates", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "date", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -44,6 +66,8 @@ ActiveRecord::Schema.define(version: 2019_08_13_074042) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "deliveries", "deliver_methods"
+  add_foreign_key "deliveries", "estimated_dates"
   add_foreign_key "product_images", "products"
   add_foreign_key "products", "conditions"
   add_foreign_key "products", "statuses"
