@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_11_101909) do
+ActiveRecord::Schema.define(version: 2019_08_13_074042) do
 
   create_table "conditions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "condition", null: false
@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 2019_08_11_101909) do
     t.string "detail", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "status_id", null: false
+    t.bigint "status_id", default: 1, null: false
     t.bigint "condition_id", null: false
     t.index ["condition_id"], name: "index_products_on_condition_id"
     t.index ["status_id"], name: "index_products_on_status_id"
