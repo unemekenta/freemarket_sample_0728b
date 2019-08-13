@@ -8,7 +8,7 @@ class ProductsController < ApplicationController
     @products_chanel = Product.where(id: 17..20)
     @products_vuitton = Product.where(id: 21..24)
     @products_supreme = Product.where(id: 25..28)
-    @products_nike = Product.where(id: 29.32)
+    @products_nike = Product.where(id: 29..32)
     # binding.pry
   end
 end
