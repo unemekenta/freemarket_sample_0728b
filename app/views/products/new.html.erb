@@ -3,24 +3,24 @@
   <div class="input-field">
 
     <div class="field">
-      <%= product.label :name %>
+      <%= product.label :"商品名" %>
       <%= product.text_field :name %>
     </div>
 
     <div class="field">
-      <%= product.label :price %>
+      <%= product.label :"価格" %>
       <%= product.text_field :price %>
     </div>
 
     <div class="field">
-      <%= product.label :detail %>
+      <%= product.label :"商品の説明" %>
       <%= product.text_area :detail %>
     </div>
     <%= product.fields_for :product_images do |image| %>
     <div class="form-group">
       <div class="input-field">
         <div class="field">
-          <%= image.label :image %>
+          <%= image.label :"出品画像" %>
           <%= image.text_field :image %>
         </div>
       </div>
@@ -28,11 +28,7 @@
     <% end %>
 
     <div class="field">
-      <%= product.label :status %>
-      <%= product.collection_select(:status_id, Status.all, :id, :status) %>
-    </div>
-    <div class="field">
-      <%= product.label :condition %>
+      <%= product.label :"商品の状態" %>
       <%= product.collection_select(:condition_id, Condition.all, :id, :condition) %>
     </div>
 
