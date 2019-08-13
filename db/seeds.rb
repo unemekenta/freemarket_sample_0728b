@@ -7,5 +7,6 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 50.times do |i|
-  ProductImage.create(image: "https://static.mercdn.net/item/detail/orig/photos/m68109283584_1.jpg?1564813817", product_id: i , created_at: "2019-08-12", updated_at: "2019-08-12")
+  Product.create(name: "【新品未使用】PATRICK COX (パトリックコックス) シューズ 黒", price: 808976, detail: "【新品未使用】PATRICK COX (パトリックコックス) シューズ 黒", status_id: 2, condition_id: 4, created_at: "2019-08-12", updated_at: "2019-08-12")
+  ProductImage.create(image: "https://static.mercdn.net/thumb/photos/m80932943959_1.jpg?1565686566", product_id: i , created_at: "2019-08-12", updated_at: "2019-08-12")
 end
