@@ -1,0 +1,30 @@
+%main.single
+  .single__single-top
+    %a{:href => "https://www.mercari.com/jp/"}
+      %img{:alt => "mercari", :src => "//www-mercari-jp.akamaized.net/assets/img/common/common/logo.svg?3348495940"}
+
+  .single__single-main
+    %section.single__single-main__l-single-container
+      = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+        = render "devise/shared/error_messages", resource: resource
+        %h2.single__single-main__l-single-container__l-single-head 会員情報入力
+
+        .single__single-main__l-single-container__l-single-content__form-group
+          = f.label "メールアドレス"
+          %br/
+          = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "PC・携帯どちらでも可", class: "input-default"
+        
+        .single__single-main__l-single-container__l-single-content__form-group
+          = f.label "パスワード"
+          - if @minimum_password_length
+            %em
+              (#{@minimum_password_length} characters minimum)
+          %br/
+          = f.password_field :password, autocomplete: "new-password", placeholder: "7文字以上", class: "input-default"
+        - if devise_mapping.rememberable?
+          .field
+            = f.check_box :remember_me
+            = f.label :remember_me
+        .actions
+          = f.submit "Log in"
+= render "devise/shared/links"
