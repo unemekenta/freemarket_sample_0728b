@@ -1,0 +1,2 @@
+class DeliverRegion < ApplicationRecord
+end
