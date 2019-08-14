@@ -11,11 +11,9 @@
           %br/
           購入時も安心な独自システムのアプリです
         .top-main-visual-store
-          %a{href: "https://itunes.apple.com/jp/app/id667861049?l=ja&mt=8"}
-            %img{src: "//www-mercari-jp.akamaized.net/assets/img/common/common/app-store.svg?3791839826"}/
-          %a.pull-left{href: "https://play.google.com/store/apps/details?id=com.kouzoh.mercari&hl=ja"}
-            %img{src: "https://www-mercari-jp.akamaized.net/assets/img/common/common/google-play.svg?3791839826"}/
-      %img.background-image{src: "https://www-mercari-jp.akamaized.net/assets/img/common/jp/top/main_content_pc.png?3791839826"}/
+          = link_to (image_tag "//www-mercari-jp.akamaized.net/assets/img/common/common/app-store.svg?3791839826"), "https://itunes.apple.com/jp/app/id667861049?l=ja&mt=8"
+          = link_to (image_tag "https://www-mercari-jp.akamaized.net/assets/img/common/common/google-play.svg?3791839826"), "https://play.google.com/store/apps/details?id=com.kouzoh.mercari&hl=ja", class: "pull-left"
+      =image_tag "https://www-mercari-jp.akamaized.net/assets/img/common/jp/top/main_content_pc.png?3791839826", class: "background-image"
   %section.carousel
   
   %section.pickup-containers
@@ -23,67 +21,67 @@
 
     %section.pickup-container
       %h3.pickup-container__headline
-        %a{href: "https://www.mercari.com/jp/category/1/"} レディース 新着アイテム
+        = link_to "レディース 新着アイテム", "https://www.mercari.com/jp/category/1/"
       %ul.item-box-container      
         = render partial: "product", collection: @products_ladies
       .view-all
-        %a{href: "https://mercari.com/jp/category/2/"} すべての商品を見る
+        = link_to "すべての商品を見る", "https://mercari.com/jp/category/1/"
 
     %section.pickup-container
       %h3.pickup-container__headline
-        %a{href: "https://www.mercari.com/jp/category/1/"} メンズ 新着アイテム
+        = link_to "メンズ 新着アイテム", "https://www.mercari.com/jp/category/2/"
       %ul.item-box-container
         = render partial: "product", collection: @products_mens
       .view-all
-        %a{href: "https://mercari.com/jp/category/2/"} すべての商品を見る
+        = link_to "すべての商品を見る", "https://mercari.com/jp/category/2/"
 
     %section.pickup-container
       %h3.pickup-container__headline
-        %a{href: "https://www.mercari.com/jp/category/3/"} ベビー・キッズ 新着アイテム
+        = link_to "ベビー・キッズ 新着アイテム", "https://mercari.com/jp/category/3/"
       %ul.item-box-container
         = render partial: "product", collection: @products_kids
       .view-all
-        %a{href: "https://mercari.com/jp/category/2/"} すべての商品を見る
+        = link_to "すべての商品を見る", "https://mercari.com/jp/category/3/"
 
     %section.pickup-container
       %h3.pickup-container__headline
-        %a{href: "https://www.mercari.com/jp/category/6/"} コスメ・香水・美容 新着アイテム
+        = link_to "コスメ・香水・美容 新着アイテム", "https://mercari.com/jp/category/6/"
       %ul.item-box-container
-        = render partial: "product", collection: @products_cosme        
+        = render partial: "product", collection: @products_cosme
       .view-all
-        %a{href: "https://mercari.com/jp/category/2/"} すべての商品を見る
+        = link_to "すべての商品を見る", "https://mercari.com/jp/category/6/"
 
   %section.pickup-containers
     %h2.pickup-containers__headline ピックアップブランド
 
     %section.pickup-container
       %h3.pickup-container__headline
-        %a{href: "https://www.mercari.com/jp/brand/658/"} シャネル 新着アイテム
+        = link_to "シャネル 新着アイテム", "https://mercari.com/jp/brand/658/"
       %ul.item-box-container
         = render partial: "product", collection: @products_chanel
       .view-all
-        %a{href: "https://mercari.com/jp/category/2/"} すべての商品を見る
+        = link_to "すべての商品を見る", "https://mercari.com/jp/brand/658/"
 
     %section.pickup-container
       %h3.pickup-container__headline
-        %a{href: "https://www.mercari.com/jp/brand/1326/"} ルイ ヴィトン 新着アイテム
+        = link_to "ルイ ヴィトン 新着アイテム", "https://mercari.com/jp/brand/1326/"
       %ul.item-box-container
         = render partial: "product", collection: @products_vuitton
       .view-all
-        %a{href: "https://mercari.com/jp/category/2/"} すべての商品を見る
+        = link_to "すべての商品を見る", "https://mercari.com/jp/brand/1326/"
     
     %section.pickup-container
       %h3.pickup-container__headline
-        %a{href: "https://www.mercari.com/jp/brand/1620/"} シュプリーム 新着アイテム
+        = link_to "シュプリーム 新着アイテム", "https://mercari.com/jp/brand/1620/"
       %ul.item-box-container
         = render partial: "product", collection: @products_supreme        
       .view-all
-        %a{href: "https://mercari.com/jp/category/2/"} すべての商品を見る
+        = link_to "すべての商品を見る", "https://mercari.com/jp/brand/1620/"
 
     %section.pickup-container
       %h3.pickup-container__headline
-        %a{href: "https://www.mercari.com/jp/brand/857/"} ナイキ 新着アイテム
+        = link_to "ナイキ 新着アイテム", "https://mercari.com/jp/brand/857/"
       %ul.item-box-container        
         = render partial: "product", collection: @products_nike
       .view-all
-        %a{href: "https://mercari.com/jp/category/2/"} すべての商品を見る
+        = link_to "すべての商品を見る", "https://mercari.com/jp/brand/857/"

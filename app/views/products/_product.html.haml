@@ -1,8 +1,8 @@
 %li.item-box
   -# 商品詳細ページのリンクは未記入
-  %a{href: ""}
+  = link_to "#" do
     %figure.item-box__photo
-      %img{src: "#{product.product_images[0].image}"}/
+      =image_tag "#{product.product_images[0].image}"
     .item-box__content
       %h3.item-box__content__name
         = product.name
