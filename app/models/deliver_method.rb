@@ -1,3 +1,3 @@
 class DeliverMethod < ApplicationRecord
-  belongs_to :delivery
+  has_one :delivery
 end

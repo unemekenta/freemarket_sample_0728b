@@ -6,8 +6,8 @@ has_many :users, through: :transactions
 has_many :users, through: :purchases
 has_many :product_images
 has_one :category
-has_one :status
-has_one :condition
+belongs_to :status
+belongs_to :condition
 has_one :delivery
 accepts_nested_attributes_for :product_images, :delivery
 end
