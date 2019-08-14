@@ -8,6 +8,6 @@ has_many :product_images
 has_one :category
 has_one :status
 has_one :condition
-accepts_nested_attributes_for :product_images
 has_one :delivery
+accepts_nested_attributes_for :product_images, :delivery
 end
