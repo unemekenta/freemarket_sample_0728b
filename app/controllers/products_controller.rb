@@ -10,4 +10,12 @@ class ProductsController < ApplicationController
     @products_supreme = Product.where(id: 25..28)
     @products_nike = Product.where(id: 29..32)
   end
+
+
+
+
+  def show
+    @product = Product.find(params[:id])
+  end
+
 end
