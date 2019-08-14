@@ -45,6 +45,10 @@
         <%= delivery.label :"発送までの日数" %>
         <%= delivery.collection_select(:estimated_date_id, EstimatedDate.all, :id, :date) %>
       </div>
+      <div class="field">
+        <%= delivery.label :"発送元の地域" %>
+        <%= delivery.collection_select(:deliver_region_id, DeliverRegion.all, :id, :region) %>
+      </div>
     </div>
     <% end %>
 
