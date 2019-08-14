@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class TmpTest < ActiveSupport::TestCase
+class StatusTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

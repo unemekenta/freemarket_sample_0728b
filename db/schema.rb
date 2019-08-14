@@ -12,7 +12,8 @@
 
 ActiveRecord::Schema.define(version: 2019_08_14_102326) do
 
-  create_table "tmps", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "conditions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "condition", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -42,5 +43,35 @@ ActiveRecord::Schema.define(version: 2019_08_14_102326) do
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
+
+  create_table "product_images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "image", null: false
+    t.bigint "product_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_product_images_on_product_id"
+  end
+
+  create_table "products", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name", null: false
+    t.integer "price", null: false
+    t.string "detail", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "status_id", null: false
+    t.bigint "condition_id", null: false
+    t.index ["condition_id"], name: "index_products_on_condition_id"
+    t.index ["status_id"], name: "index_products_on_status_id"
+  end
+
+  create_table "statuses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "status", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_foreign_key "product_images", "products"
+  add_foreign_key "products", "conditions"
+  add_foreign_key "products", "statuses"
 
 end
