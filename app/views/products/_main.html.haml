@@ -11,478 +11,77 @@
           %br/
           購入時も安心な独自システムのアプリです
         .top-main-visual-store
-          %a{:href => "https://itunes.apple.com/jp/app/id667861049?l=ja&mt=8"}
-            %img{:src => "//www-mercari-jp.akamaized.net/assets/img/common/common/app-store.svg?3791839826"}/
-          %a.pull-left{:href => "https://play.google.com/store/apps/details?id=com.kouzoh.mercari&hl=ja"}
-            %img{:src => "https://www-mercari-jp.akamaized.net/assets/img/common/common/google-play.svg?3791839826"}/
-      %img.background-image{:src => "https://www-mercari-jp.akamaized.net/assets/img/common/jp/top/main_content_pc.png?3791839826"}/
+          = link_to (image_tag "//www-mercari-jp.akamaized.net/assets/img/common/common/app-store.svg?3791839826"), "https://itunes.apple.com/jp/app/id667861049?l=ja&mt=8"
+          = link_to (image_tag "https://www-mercari-jp.akamaized.net/assets/img/common/common/google-play.svg?3791839826"), "https://play.google.com/store/apps/details?id=com.kouzoh.mercari&hl=ja", class: "pull-left"
+      =image_tag "https://www-mercari-jp.akamaized.net/assets/img/common/jp/top/main_content_pc.png?3791839826", class: "background-image"
   %section.carousel
+  
   %section.pickup-containers
     %h2.pickup-containers__headline ピックアップカテゴリー
+
     %section.pickup-container
       %h3.pickup-container__headline
-        %a{:href => "https://www.mercari.com/jp/category/1/"} レディース 新着アイテム
-      %ul.item-box-container
-        %li.item-box
-          %a{:href => "https://item.mercari.com/jp/m95112938635/"}
-            %figure.item-box__photo
-              %img{:src => "https://static.mercdn.net/thumb/photos/m95112938635_1.jpg?1564892794"}/
-            .item-box__content
-              %h3.item-box__content__name
-                KUMIKYOKU ワンピース
-              .item-box__content__num
-                .item-box__content__num__price ¥ 2,000
-                - if true
-                  .item-box__content__num__likes
-                    = fa_icon "heart-o"
-                    %span 1
-        %li.item-box
-          %a{:href => "https://item.mercari.com/jp/m74682669656/"}
-            %figure.item-box__photo
-              %img{:src => "https://static.mercdn.net/thumb/photos/m74682669656_1.jpg?1554366646"}/
-            .item-box__content
-              %h3.item-box__content__name
-                GUCCI グッチ、 シマファスナー長財布
-              .item-box__content__num
-                .item-box__content__num__price ¥ 38,800
-                - if true
-                  .item-box__content__num__likes
-                    = fa_icon "heart-o"
-                    %span 1
-        %li.item-box
-          %a{:href => "https://item.mercari.com/jp/m39424187987/"}
-            %figure.item-box__photo
-              %img{:src => "https://static.mercdn.net/thumb/photos/m39424187987_1.jpg?1564892794"}/
-            .item-box__content
-              %h3.item-box__content__name
-                結婚式 お呼ばれ ワンピース(ドレス)
-              .item-box__content__num
-                .item-box__content__num__price ¥ 2,500
-                - if true
-                  .item-box__content__num__likes
-                    = fa_icon "heart-o"
-                    %span 1
-        %li.item-box
-          %a{:href => "https://item.mercari.com/jp/m19150720885/"}
-            %figure.item-box__photo
-              %img{:src => "https://static.mercdn.net/thumb/photos/m19150720885_1.jpg?1560086744"}/
-            .item-box__content
-              %h3.item-box__content__name
-                ジミーチュウ JIMMY CHOO サイズ37 ヒール6cm 未使用
-              .item-box__content__num
-                .item-box__content__num__price ¥ 38,100
-                - if true
-                  .item-box__content__num__likes
-                    = fa_icon "heart-o"
-                    %span 1
+        = link_to "レディース 新着アイテム", "https://www.mercari.com/jp/category/1/"
+      %ul.item-box-container      
+        = render partial: "product", collection: @products_ladies
       .view-all
-        %a{:href => "https://mercari.com/jp/category/2/"} すべての商品を見る
+        = link_to "すべての商品を見る", "https://mercari.com/jp/category/1/"
+
     %section.pickup-container
       %h3.pickup-container__headline
-        %a{:href => "https://www.mercari.com/jp/category/1/"} メンズ 新着アイテム
+        = link_to "メンズ 新着アイテム", "https://www.mercari.com/jp/category/2/"
       %ul.item-box-container
-        %li.item-box
-          %a{:href => "https://item.mercari.com/jp/m14657768851/"}
-            %figure.item-box__photo
-              %img{:src => "https://static.mercdn.net/thumb/photos/m14657768851_1.jpg?1563186348"}/
-            .item-box__content
-              %h3.item-box__content__name
-                M715 adidas パーカー
-              .item-box__content__num
-                .item-box__content__num__price ¥ 2,500
-                - if true
-                  .item-box__content__num__likes
-                    = fa_icon "heart-o"
-                    %span 1
-        %li.item-box
-          %a{:href => "https://item.mercari.com/jp/m81958640537/"}
-            %figure.item-box__photo
-              %img{:src => "https://static.mercdn.net/thumb/photos/m81958640537_1.jpg?1562325485"}/
-            .item-box__content
-              %h3.item-box__content__name
-                【人気ブランド】　ポロラルフローレン　半袖ポロシャツ　L　ボーダー　９０ｓ
-              .item-box__content__num
-                .item-box__content__num__price ¥ 3,980
-                - if true
-                  .item-box__content__num__likes
-                    = fa_icon "heart-o"
-                    %span 1
-        %li.item-box
-          %a{:href => "https://item.mercari.com/jp/m92734406078/"}
-            %figure.item-box__photo
-              %img{:src => "https://static.mercdn.net/thumb/photos/m92734406078_1.jpg?1564832676"}/
-            .item-box__content
-              %h3.item-box__content__name
-                【美品】KORN、ROB ZOMBIE 90s バンドTシャツ ヴィンテージ
-              .item-box__content__num
-                .item-box__content__num__price ¥ 16,450
-                - if true
-                  .item-box__content__num__likes
-                    = fa_icon "heart-o"
-                    %span 1
-        %li.item-box
-          %a{:href => "https://item.mercari.com/jp/m12176688984/"}
-            %figure.item-box__photo
-              %img{:src => "https://static.mercdn.net/thumb/photos/m12176688984_1.jpg?1562410949"}/
-            .item-box__content
-              %h3.item-box__content__name
-                ALPHA INDUSTRIES アルファ Tシャツ Sサイズ
-              .item-box__content__num
-                .item-box__content__num__price ¥ 1,500
-                - if true
-                  .item-box__content__num__likes
-                    = fa_icon "heart-o"
-                    %span 1
+        = render partial: "product", collection: @products_mens
       .view-all
-        %a{:href => "https://mercari.com/jp/category/2/"} すべての商品を見る
+        = link_to "すべての商品を見る", "https://mercari.com/jp/category/2/"
+
     %section.pickup-container
       %h3.pickup-container__headline
-        %a{:href => "https://www.mercari.com/jp/category/3/"} ベビー・キッズ 新着アイテム
+        = link_to "ベビー・キッズ 新着アイテム", "https://mercari.com/jp/category/3/"
       %ul.item-box-container
-        %li.item-box
-          %a{:href => "https://item.mercari.com/jp/m41904265289/"}
-            %figure.item-box__photo
-              %img{:src => "https://static.mercdn.net/thumb/photos/m41904265289_1.jpg?1559095200"}/
-            .item-box__content
-              %h3.item-box__content__name
-                シスタージェニーデニムハーフパンツ110
-              .item-box__content__num
-                .item-box__content__num__price ¥ 400
-                - if true
-                  .item-box__content__num__likes
-                    = fa_icon "heart-o"
-                    %span 1
-        %li.item-box
-          %a{:href => "https://item.mercari.com/jp/m13479538655/"}
-            %figure.item-box__photo
-              %img{:src => "https://static.mercdn.net/thumb/photos/m13479538655_1.jpg?1565005724"}/
-            .item-box__content
-              %h3.item-box__content__name
-                H &amp;M 帽子
-              .item-box__content__num
-                .item-box__content__num__price ¥ 366
-                - if true
-                  .item-box__content__num__likes
-                    = fa_icon "heart-o"
-                    %span 1
-        %li.item-box
-          %a{:href => "https://item.mercari.com/jp/m34654537430/"}
-            %figure.item-box__photo
-              %img{:src => "https://static.mercdn.net/thumb/photos/m34654537430_1.jpg?1513300924"}/
-            .item-box__content
-              %h3.item-box__content__name
-                最終値下げ サロペット RONIJENS
-              .item-box__content__num
-                .item-box__content__num__price ¥ 1,200
-                - if true
-                  .item-box__content__num__likes
-                    = fa_icon "heart-o"
-                    %span 1
-        %li.item-box
-          %a{:href => "https://item.mercari.com/jp/m48368597409/"}
-            %figure.item-box__photo
-              %img{:src => "https://static.mercdn.net/thumb/photos/m48368597409_1.jpg?1563635145"}/
-            .item-box__content
-              %h3.item-box__content__name
-                GAP オールインワン
-              .item-box__content__num
-                .item-box__content__num__price ¥ 1,300
-                - if true
-                  .item-box__content__num__likes
-                    = fa_icon "heart-o"
-                    %span 1
+        = render partial: "product", collection: @products_kids
       .view-all
-        %a{:href => "https://mercari.com/jp/category/2/"} すべての商品を見る
+        = link_to "すべての商品を見る", "https://mercari.com/jp/category/3/"
+
     %section.pickup-container
       %h3.pickup-container__headline
-        %a{:href => "https://www.mercari.com/jp/category/6/"} コスメ・香水・美容 新着アイテム
+        = link_to "コスメ・香水・美容 新着アイテム", "https://mercari.com/jp/category/6/"
       %ul.item-box-container
-        %li.item-box
-          %a{:href => "https://item.mercari.com/jp/m88966477544/"}
-            %figure.item-box__photo
-              %img{:src => "https://static.mercdn.net/thumb/photos/m88966477544_1.jpg?1565138083"}/
-            .item-box__content
-              %h3.item-box__content__name
-                ベルタトリートメント
-              .item-box__content__num
-                .item-box__content__num__price ¥ 1,400
-                - if true
-                  .item-box__content__num__likes
-                    = fa_icon "heart-o"
-                    %span 1
-        %li.item-box
-          %a{:href => "https://item.mercari.com/jp/m15030474244/"}
-            %figure.item-box__photo
-              %img{:src => "https://static.mercdn.net/thumb/photos/m15030474244_1.jpg?1564057211"}/
-            .item-box__content
-              %h3.item-box__content__name
-                未使用ジルスチュアート クリスタルブルーム スノー オードパルファン 10ml
-              .item-box__content__num
-                .item-box__content__num__price ¥ 2,500
-                - if true
-                  .item-box__content__num__likes
-                    = fa_icon "heart-o"
-                    %span 1
-        %li.item-box
-          %a{:href => "https://item.mercari.com/jp/m93621412035/"}
-            %figure.item-box__photo
-              %img{:src => "https://static.mercdn.net/thumb/photos/m93621412035_1.jpg?1565138121"}/
-            .item-box__content
-              %h3.item-box__content__name
-                DIOR ディオール アディクトウルトラグロス リフレクト ０６７
-              .item-box__content__num
-                .item-box__content__num__price ¥ 1,500
-                - if true
-                  .item-box__content__num__likes
-                    = fa_icon "heart-o"
-                    %span 1
-        %li.item-box
-          %a{:href => "https://item.mercari.com/jp/m22027905306/"}
-            %figure.item-box__photo
-              %img{:src => "https://static.mercdn.net/thumb/photos/m22027905306_1.jpg?1565138121"}/
-            .item-box__content
-              %h3.item-box__content__name
-                【⠀即発送 】クラランス フィックスメイクアップ
-              .item-box__content__num
-                .item-box__content__num__price ¥ 3,799
-                - if true
-                  .item-box__content__num__likes
-                    = fa_icon "heart-o"
-                    %span 1
+        = render partial: "product", collection: @products_cosme
       .view-all
-        %a{:href => "https://mercari.com/jp/category/2/"} すべての商品を見る
+        = link_to "すべての商品を見る", "https://mercari.com/jp/category/6/"
 
   %section.pickup-containers
     %h2.pickup-containers__headline ピックアップブランド
+
     %section.pickup-container
       %h3.pickup-container__headline
-        %a{:href => "https://www.mercari.com/jp/brand/658/"} シャネル 新着アイテム
+        = link_to "シャネル 新着アイテム", "https://mercari.com/jp/brand/658/"
       %ul.item-box-container
-        %li.item-box
-          %a{:href => "https://item.mercari.com/jp/m89079663666/"}
-            %figure.item-box__photo
-              %img{:src => "https://static.mercdn.net/thumb/photos/m89079663666_1.jpg?1565163514"}/
-            .item-box__content
-              %h3.item-box__content__name
-                シャネル ル・コットン 100枚  3個セット
-              .item-box__content__num
-                .item-box__content__num__price ¥ 2,600
-                - if true
-                  .item-box__content__num__likes
-                    = fa_icon "heart-o"
-                    %span 1
-        %li.item-box
-          %a{:href => "https://item.mercari.com/jp/m86373005509/"}
-            %figure.item-box__photo
-              %img{:src => "https://static.mercdn.net/thumb/photos/m86373005509_1.jpg?1561690573"}/
-            .item-box__content
-              %h3.item-box__content__name
-                【美品】シャネル デニム サンダル カメリア 36C
-              .item-box__content__num
-                .item-box__content__num__price ¥ 33,000
-                - if true
-                  .item-box__content__num__likes
-                    = fa_icon "heart-o"
-                    %span 1
-        %li.item-box
-          %a{:href => "https://item.mercari.com/jp/m70071341205/"}
-            %figure.item-box__photo
-              %img{:src => "https://static.mercdn.net/thumb/photos/m70071341205_1.jpg?1565163484"}/
-            .item-box__content
-              %h3.item-box__content__name
-                CHANEL 　香水
-              .item-box__content__num
-                .item-box__content__num__price ¥ 15,000
-                - if true
-                  .item-box__content__num__likes
-                    = fa_icon "heart-o"
-                    %span 1
-        %li.item-box
-          %a{:href => "https://item.mercari.com/jp/m75406084906/"}
-            %figure.item-box__photo
-              %img{:src => "https://static.mercdn.net/thumb/photos/m75406084906_1.jpg?1565163470"}/
-            .item-box__content
-              %h3.item-box__content__name
-                CHANEL ネイル ヴェルニ
-              .item-box__content__num
-                .item-box__content__num__price ¥ 3,999
-                - if true
-                  .item-box__content__num__likes
-                    = fa_icon "heart-o"
-                    %span 1
+        = render partial: "product", collection: @products_chanel
       .view-all
-        %a{:href => "https://mercari.com/jp/category/2/"} すべての商品を見る
+        = link_to "すべての商品を見る", "https://mercari.com/jp/brand/658/"
+
     %section.pickup-container
       %h3.pickup-container__headline
-        %a{:href => "https://www.mercari.com/jp/brand/1326/"} ルイ ヴィトン 新着アイテム
+        = link_to "ルイ ヴィトン 新着アイテム", "https://mercari.com/jp/brand/1326/"
       %ul.item-box-container
-        %li.item-box
-          %a{:href => "https://item.mercari.com/jp/m54145432466/"}
-            %figure.item-box__photo
-              %img{:src => "https://static.mercdn.net/thumb/photos/m54145432466_1.jpg?1563487717"}/
-            .item-box__content
-              %h3.item-box__content__name
-                ルイヴィトン エピ 長財布 三つ折り LOUIS VUITTON 正規品
-              .item-box__content__num
-                .item-box__content__num__price ¥ 5,500
-                - if true
-                  .item-box__content__num__likes
-                    = fa_icon "heart-o"
-                    %span 1
-        %li.item-box
-          %a{:href => "https://item.mercari.com/jp/m37580062047/"}
-            %figure.item-box__photo
-              %img{:src => "https://static.mercdn.net/thumb/photos/m37580062047_1.jpg?1564219698"}/
-            .item-box__content
-              %h3.item-box__content__name
-                【正規品】★２つ折り★１０枚カード★ダミエ★長財布★ヴィトン★２つ折り★大人気
-              .item-box__content__num
-                .item-box__content__num__price ¥ 18,700
-                - if true
-                  .item-box__content__num__likes
-                    = fa_icon "heart-o"
-                    %span 1
-        %li.item-box
-          %a{:href => "https://item.mercari.com/jp/m23199611463/"}
-            %figure.item-box__photo
-              %img{:src => "https://static.mercdn.net/thumb/photos/m23199611463_1.jpg?1565163495"}/
-            .item-box__content
-              %h3.item-box__content__name
-                ヴィトンコインケース
-              .item-box__content__num
-                .item-box__content__num__price ¥ 8,000
-                - if true
-                  .item-box__content__num__likes
-                    = fa_icon "heart-o"
-                    %span 1
-        %li.item-box
-          %a{:href => "https://item.mercari.com/jp/m90662868329/"}
-            %figure.item-box__photo
-              %img{:src => "https://static.mercdn.net/thumb/photos/m90662868329_1.jpg?1564921243"}/
-            .item-box__content
-              %h3.item-box__content__name
-                最終値引き！ルイヴィトンモノグラムコンゴショルダーバッグ モノグラム
-              .item-box__content__num
-                .item-box__content__num__price ¥ 29,980
-                - if true
-                  .item-box__content__num__likes
-                    = fa_icon "heart-o"
-                    %span 1
+        = render partial: "product", collection: @products_vuitton
       .view-all
-        %a{:href => "https://mercari.com/jp/category/2/"} すべての商品を見る
+        = link_to "すべての商品を見る", "https://mercari.com/jp/brand/1326/"
+    
     %section.pickup-container
       %h3.pickup-container__headline
-        %a{:href => "https://www.mercari.com/jp/brand/1620/"} シュプリーム 新着アイテム
+        = link_to "シュプリーム 新着アイテム", "https://mercari.com/jp/brand/1620/"
       %ul.item-box-container
-        %li.item-box
-          %a{:href => "https://item.mercari.com/jp/m22382779659/"}
-            %figure.item-box__photo
-              %img{:src => "https://static.mercdn.net/thumb/photos/m22382779659_1.jpg?1565163465"}/
-            .item-box__content
-              %h3.item-box__content__name
-                Supreme キャップ
-              .item-box__content__num
-                .item-box__content__num__price ¥ 10,000
-                - if true
-                  .item-box__content__num__likes
-                    = fa_icon "heart-o"
-                    %span 1
-        %li.item-box
-          %a{:href => "https://item.mercari.com/jp/m52579936800/"}
-            %figure.item-box__photo
-              %img{:src => "https://static.mercdn.net/thumb/photos/m52579936800_1.jpg?1565031356"}/
-            .item-box__content
-              %h3.item-box__content__name
-                本日限定 早い者勝ち yeezy boost 700 wave runner
-              .item-box__content__num
-                .item-box__content__num__price ¥ 43,999
-                - if true
-                  .item-box__content__num__likes
-                    = fa_icon "heart-o"
-                    %span 1
-        %li.item-box
-          %a{:href => "https://item.mercari.com/jp/m79624941794/"}
-            %figure.item-box__photo
-              %img{:src => "https://static.mercdn.net/thumb/photos/m79624941794_1.jpg?1565163456"}/
-            .item-box__content
-              %h3.item-box__content__name
-                シュプリーム  マイクヒル Tシャツ S
-              .item-box__content__num
-                .item-box__content__num__price ¥ 7,500
-                - if true
-                  .item-box__content__num__likes
-                    = fa_icon "heart-o"
-                    %span 1
-        %li.item-box
-          %a{:href => "https://item.mercari.com/jp/m94649124273/"}
-            %figure.item-box__photo
-              %img{:src => "https://static.mercdn.net/thumb/photos/m94649124273_1.jpg?1552999925"}/
-            .item-box__content
-              %h3.item-box__content__name
-                supreme レイクウォン エルモ フォト Tシャツ L
-              .item-box__content__num
-                .item-box__content__num__price ¥ 80,299
-                - if true
-                  .item-box__content__num__likes
-                    = fa_icon "heart-o"
-                    %span 1
+        = render partial: "product", collection: @products_supreme        
       .view-all
-        %a{:href => "https://mercari.com/jp/category/2/"} すべての商品を見る
+        = link_to "すべての商品を見る", "https://mercari.com/jp/brand/1620/"
+
     %section.pickup-container
       %h3.pickup-container__headline
-        %a{:href => "https://www.mercari.com/jp/brand/857/"} ナイキ 新着アイテム
-      %ul.item-box-container
-        %li.item-box
-          %a{:href => "https://item.mercari.com/jp/m38148227797/"}
-            %figure.item-box__photo
-              %img{:src => "https://static.mercdn.net/thumb/photos/m38148227797_1.jpg?1563522648"}/
-            .item-box__content
-              %h3.item-box__content__name
-                お値下げ‼NIKEスニーカー
-              .item-box__content__num
-                .item-box__content__num__price ¥ 4,100
-                - if true
-                  .item-box__content__num__likes
-                    = fa_icon "heart-o"
-                    %span 1
-        %li.item-box
-          %a{:href => "https://item.mercari.com/jp/m32936375902/"}
-            %figure.item-box__photo
-              %img{:src => "https://static.mercdn.net/thumb/photos/m32936375902_1.jpg?1565163544"}/
-            .item-box__content
-              %h3.item-box__content__name
-                Nike ジョーダン1 パテント エナメル シカゴ
-              .item-box__content__num
-                .item-box__content__num__price ¥ 24,500
-                - if true
-                  .item-box__content__num__likes
-                    = fa_icon "heart-o"
-                    %span 1
-        %li.item-box
-          %a{:href => "https://item.mercari.com/jp/m41810334549/"}
-            %figure.item-box__photo
-              %img{:src => "https://static.mercdn.net/thumb/photos/m41810334549_1.jpg?1565163542"}/
-            .item-box__content
-              %h3.item-box__content__name
-                値下げNIKEスニーカー リニュー25.5cm新品未使用 白スニーカー
-              .item-box__content__num
-                .item-box__content__num__price ¥ 4,999
-                - if true
-                  .item-box__content__num__likes
-                    = fa_icon "heart-o"
-                    %span 1
-        %li.item-box
-          %a{:href => "https://item.mercari.com/jp/m32657487396/"}
-            %figure.item-box__photo
-              %img{:src => "https://static.mercdn.net/thumb/photos/m32657487396_1.jpg?1562132989"}/
-            .item-box__content
-              %h3.item-box__content__name
-                ストレンジャーシングス スウェット Ｍサイズ
-              .item-box__content__num
-                .item-box__content__num__price ¥ 4,500
-                - if true
-                  .item-box__content__num__likes
-                    = fa_icon "heart-o"
-                    %span 1
+        = link_to "ナイキ 新着アイテム", "https://mercari.com/jp/brand/857/"
+      %ul.item-box-container        
+        = render partial: "product", collection: @products_nike
       .view-all
-        %a{:href => "https://mercari.com/jp/category/2/"} すべての商品を見る
+        = link_to "すべての商品を見る", "https://mercari.com/jp/brand/857/"

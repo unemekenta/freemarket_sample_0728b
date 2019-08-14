@@ -82,3 +82,4 @@ DeliverRegion.create!(region: "大分", created_at: "2019-08-14", updated_at: "2
 DeliverRegion.create!(region: "宮崎", created_at: "2019-08-14", updated_at: "2019-08-14")
 DeliverRegion.create!(region: "鹿児島", created_at: "2019-08-14", updated_at: "2019-08-14")
 DeliverRegion.create!(region: "沖縄", created_at: "2019-08-14", updated_at: "2019-08-14")
+

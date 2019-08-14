@@ -1,0 +1,147 @@
+
+.default-container
+  = render 'header'
+  .product
+    .product__container
+      %h1.product__name
+        = @product.name
+      .product__main-contents
+        .product__main-contents__photo
+          .product__main-contents__photo-main
+            = image_tag 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_-t6zzgr_FN4aAytpoYRUHe4pYoHIZ9ke_ZglKwCbJuKZCiyekg'
+            -# = @product.product_images.image イメージカラムがないのでエラー
+          .product__main-contents__photo-others 
+        %table.product__main-contents__details
+          %tbody
+            %tr
+              %th 出品者
+              %td
+                = link_to '', class: 'text-link' do
+                  サンプルユーザー
+                .product-user-ratings
+                  .product-user-ratings__face
+                    = fa_icon "smile-o", class: 'product-user-ratings__face__icon-smile'
+                    %span 0
+                  .product-user-ratings__face
+                    = fa_icon "meh-o", class: 'product-user-ratings__face__icon-meh'
+                    %span 0
+                  .product-user-ratings__face
+                    = fa_icon "frown-o", class: 'product-user-ratings__face__icon-frown'
+                    %span 0
+            %tr
+              %th カテゴリー
+              %td
+                = link_to '', class: 'text-link' do
+                  親huga
+                = link_to '', class: 'text-link' do 
+                  子huga
+                = link_to '', class: 'text-link' do 
+                  孫huga
+            %tr
+              %th ブランド
+              %td
+                =link_to '', class: 'text-link' do 
+                  hagebrand
+            %tr
+              %th 商品の状態
+              %td 
+                = @product.condition.condition
+            %tr
+              %th 配送料の負担
+              %td hogehoge負担
+            %tr
+              %th 配送の方法
+              %td hogehoge便
+            %tr
+              %th 配送元地域
+              %td 
+                = link_to '', class: 'text-link' do
+                  hugahuga県
+            %tr
+              %th 発送日の目安
+              %td hugaそのうち
+    .product__price
+      %span.product__price__bold
+        ¥
+        = @product.price
+      %span.product__price__tax (税込)
+      %span.product__price__shipping-fee 送料込み
+    .product__user-sales
+      .product__user-sales__balloon
+        売上金¥#{@product.price}をお持ちです
+    .product__buy-btn
+      %a.buy-btn 購入画面に進む
+      -# = link_to 'hogehoge_path', class: 'buy-btn'
+    .product__description
+      %p.product__description__text
+        = @product.detail
+    .product__btn-container
+      .product__btn-container--left
+        .like-btn
+          = fa_icon "heart-o", class:'icon_heart'
+          %span いいね！
+          %span 0
+        .report-btn
+          = fa_icon "flag-o", class:'icon_flag'
+          %span 不適切な商品の報告
+      .product__btn-container--right
+        = link_to '' do
+          = fa_icon "lock", class: 'icon_lock'
+          あんしん・あんぜんへの取り組み
+
+
+
+  .product__message
+    .product__message__countainer
+      %p.notes_text
+        相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
+      .product__message__form
+      .product__message__submit-btn
+        %p コメントする
+      
+      -# コメント機能未実装のため見た目だけ表示中
+      -# = form_with [@product] do |f|
+      -#   = f.text_field :content, class: 'product-detail__message__text'
+        -# = f.submit 'Send' class: 'comment-btn'
+
+  -# products_controllerからコメントを追加する機能を追加する
+
+
+  %ul.product__links
+    %li.product__links--prev
+      %a 前のサンプル
+    %li.product__links--next
+      %a 次のサンプル
+
+  .social-media-box
+    .social-media-box__container
+      %ul
+        %li.share-btn
+          = fa_icon "facebook", class: "icon_facebook"
+        %li.share-btn
+          = fa_icon "twitter", class: "icon_twitter"
+        %li.share-btn
+          = fa_icon "comment", class: "icon_line"
+        %li.share-btn
+          = fa_icon "pinterest", class: "icon_pinterest"
+
+  .other-products-container
+    .products-in-user
+      -# = render ''
+    .products-related
+      -# = render ''
+
+
+
+
+
+  .bread-crumbs__bottom
+    %ul
+      %li
+        メルカリ 
+        = fa_icon 'angle-right'
+      %li
+        サンプルパンくず
+
+  = render 'aside'
+  = render 'footer'
