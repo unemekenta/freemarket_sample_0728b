@@ -30,7 +30,6 @@ ActiveRecord::Schema.define(version: 2019_08_14_102326) do
     t.string "photo"
     t.integer "phone_number"
     t.bigint "address_id"
-    t.bigint "delivery_address_id"
     t.bigint "credit_card_id"
     t.string "family_name"
     t.string "first_name"
@@ -38,7 +37,6 @@ ActiveRecord::Schema.define(version: 2019_08_14_102326) do
     t.string "first_name_pseudonym"
     t.index ["address_id"], name: "index_users_on_address_id"
     t.index ["credit_card_id"], name: "index_users_on_credit_card_id"
-    t.index ["delivery_address_id"], name: "index_users_on_delivery_address_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
