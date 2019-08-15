@@ -10,13 +10,36 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_14_102229) do
+ActiveRecord::Schema.define(version: 2019_08_14_102326) do
 
   create_table "conditions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "condition", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "nickname"
+    t.date "birthday"
+    t.string "photo"
+    t.integer "phone_number"
+    t.bigint "address_id"
+    t.bigint "credit_card_id"
+    t.string "family_name"
+    t.string "first_name"
+    t.string "family_name_pseudonym"
+    t.string "first_name_pseudonym"
+    t.index ["address_id"], name: "index_users_on_address_id"
+    t.index ["credit_card_id"], name: "index_users_on_credit_card_id"
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
   create_table "deliver_methods", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "method", null: false
@@ -83,4 +106,5 @@ ActiveRecord::Schema.define(version: 2019_08_14_102229) do
   add_foreign_key "product_images", "products"
   add_foreign_key "products", "conditions"
   add_foreign_key "products", "statuses"
+
 end
