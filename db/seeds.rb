@@ -200,3 +200,9 @@ Size.create!(size: "XLサイズ", size_type_id: "11", created_at: "2019-08-14", 
 Size.create!(size: "XXLサイズ以上", size_type_id: "11", created_at: "2019-08-14", updated_at: "2019-08-14")
 Size.create!(size: "フリーサイズ", size_type_id: "11", created_at: "2019-08-14", updated_at: "2019-08-14")
 Size.create!(size: "子ども用", size_type_id: "11", created_at: "2019-08-14", updated_at: "2019-08-14")
+
+Brand.create!(brand: "シャネル", created_at: "2019-08-14", updated_at: "2019-08-14")
+Brand.create!(brand: "ナイキ", created_at: "2019-08-14", updated_at: "2019-08-14")
+Brand.create!(brand: "ルイ ヴィトン", created_at: "2019-08-14", updated_at: "2019-08-14")
+Brand.create!(brand: "シュプリーム", created_at: "2019-08-14", updated_at: "2019-08-14")
+Brand.create!(brand: "アディダス", created_at: "2019-08-14", updated_at: "2019-08-14")
