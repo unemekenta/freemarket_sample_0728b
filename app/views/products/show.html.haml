@@ -63,12 +63,12 @@
     .product__price
       %span.product__price__bold
         ¥
-        = @product.price
+        = number_with_delimiter @product.price
       %span.product__price__tax (税込)
       %span.product__price__shipping-fee 送料込み
     .product__user-sales
       .product__user-sales__balloon
-        売上金¥#{@product.price}をお持ちです
+        売上金¥#{number_with_delimiter @product.price}をお持ちです
     .product__buy-btn
       %a.buy-btn 購入画面に進む
       -# = link_to 'hogehoge_path', class: 'buy-btn'
