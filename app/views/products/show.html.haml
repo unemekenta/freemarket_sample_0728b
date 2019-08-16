@@ -56,7 +56,8 @@
               %th 配送元地域
               %td 
                 = link_to '', class: 'text-link' do
-                  hugahuga県
+                  = @product.delivery.deliver_region.region
+
             %tr
               %th 発送日の目安
               %td hugaそのうち
