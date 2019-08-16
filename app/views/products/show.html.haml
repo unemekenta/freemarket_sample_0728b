@@ -8,8 +8,7 @@
       .product__main-contents
         .product__main-contents__photo
           .product__main-contents__photo-main
-            = image_tag 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_-t6zzgr_FN4aAytpoYRUHe4pYoHIZ9ke_ZglKwCbJuKZCiyekg'
-            -# = @product.product_images.image イメージカラムがないのでエラー
+            = image_tag "#{@product.product_images[0].image}"
           .product__main-contents__photo-others 
         %table.product__main-contents__details
           %tbody
@@ -48,10 +47,12 @@
                 = @product.condition.condition
             %tr
               %th 配送料の負担
-              %td hogehoge負担
+              %td 
+                = @product.delivery.shipping_fee
             %tr
               %th 配送の方法
-              %td hogehoge便
+              %td 
+                = @product.delivery.deliver_method.method
             %tr
               %th 配送元地域
               %td 
@@ -60,7 +61,8 @@
 
             %tr
               %th 発送日の目安
-              %td hugaそのうち
+              %td 
+                = @product.delivery.estimated_date.date
     .product__price
       %span.product__price__bold
         ¥
