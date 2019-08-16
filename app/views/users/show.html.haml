@@ -1,0 +1,51 @@
+.default-container
+  = render './products/header'
+
+  .usersShow
+    .usersShow__breadCrumbs
+      %ul
+        %li
+          メルカリ
+        %li
+
+        %li.usersShow__breadCrumbs--mypage
+          マイページ
+    .usersShow__container
+      .usersShow__container__left
+        .usersShow__container__left__wrapper
+          %ul.usersShow__container__left__wrapper__list--myInfo
+            %li
+              = link_to "マイページ", "hoge"
+            %li
+              = link_to "お知らせ", "hoge"
+            %li
+              = link_to "やることリスト", "hoge"
+            %li
+              = link_to "いいね！一覧", "hoge"
+            %li
+              = link_to "出品する", "hoge"
+            %li
+            %li
+              = link_to "出品した商品・取引中", "hoge"
+            %li
+              = link_to "出品した商品・過去の取引", "hoge"
+            %li
+              = link_to "ニュース一覧", "hoge"
+            %li
+              = link_to "評価一覧", "hoge"
+            %li
+              = link_to "ガイド", "hoge"
+            %li
+              = link_to "お問い合わせ", "hoge"
+
+
+          %ul.usersShow__container__left__wrapper__list--merpay
+          %ul.usersShow__container__left__wrapper__list--setting
+
+
+      .usersShow__container__right
+
+
+  = render './products/aside'
+  = render './products/footer'  
+  
