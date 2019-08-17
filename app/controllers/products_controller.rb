@@ -19,6 +19,7 @@ class ProductsController < ApplicationController
     @product = Product.new
     @product.product_images.build
     @product.build_delivery
+    @largecategories = Category.where(parent_id: nil)
   end
 
   def create
@@ -31,6 +32,6 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(:name, :price, :detail, :status_id, :condition_id, delivery_attributes: [:id, :shipping_fee, :deliver_method_id, :estimated_date_id, :deliver_region_id], product_images_attributes: [:id, :image])
+    params.require(:product).permit(:name, :price, :detail, :status_id, :condition_id, :category_id, :brand_id, :size_id, delivery_attributes: [:id, :shipping_fee, :deliver_method_id, :estimated_date_id, :deliver_region_id], product_images_attributes: [:id, :image])
   end
 end

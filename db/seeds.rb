@@ -1,3 +1,4 @@
+require "csv"
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
 #
@@ -6,80 +7,40 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-Condition.create!(condition: "---", created_at: "2019-08-14", updated_at: "2019-08-14")
-Condition.create!(condition: "新品、未使用", created_at: "2019-08-14", updated_at: "2019-08-14")
-Condition.create!(condition: "未使用に近い", created_at: "2019-08-14", updated_at: "2019-08-14")
-Condition.create!(condition: "目立った傷や汚れなし", created_at: "2019-08-14", updated_at: "2019-08-14")
-Condition.create!(condition: "やや傷や汚れあり", created_at: "2019-08-14", updated_at: "2019-08-14")
-Condition.create!(condition: "傷や汚れあり", created_at: "2019-08-14", updated_at: "2019-08-14")
-Condition.create!(condition: "全体的に状態が悪い", created_at: "2019-08-14", updated_at: "2019-08-14")
+date = "2019-08-14"
 
-Status.create!(status: "出品中", created_at: "2019-08-14", updated_at: "2019-08-14")
-Status.create!(status: "出品停止中", created_at: "2019-08-14", updated_at: "2019-08-14")
-Status.create!(status: "取引中", created_at: "2019-08-14", updated_at: "2019-08-14")
-Status.create!(status: "取引完了", created_at: "2019-08-14", updated_at: "2019-08-14")
+CSV.foreach('db/condition.csv') do |info|
+  Condition.create!(condition: info[0], created_at: date, updated_at: date)
+end
 
-EstimatedDate.create!(date: "---", created_at: "2019-08-14", updated_at: "2019-08-14")
-EstimatedDate.create!(date: "1〜2日", created_at: "2019-08-14", updated_at: "2019-08-14")
-EstimatedDate.create!(date: "2〜3日", created_at: "2019-08-14", updated_at: "2019-08-14")
-EstimatedDate.create!(date: "4〜7日", created_at: "2019-08-14", updated_at: "2019-08-14")
+CSV.foreach('db/status.csv') do |info|
+  Status.create!(status: info[0], created_at: date, updated_at: date)
+end
 
-DeliverMethod.create!(method: "---", created_at: "2019-08-14", updated_at: "2019-08-14")
-DeliverMethod.create!(method: "未定", created_at: "2019-08-14", updated_at: "2019-08-14")
-DeliverMethod.create!(method: "らくらくメルカリ便", created_at: "2019-08-14", updated_at: "2019-08-14")
-DeliverMethod.create!(method: "ゆうメール", created_at: "2019-08-14", updated_at: "2019-08-14")
-DeliverMethod.create!(method: "レターパック", created_at: "2019-08-14", updated_at: "2019-08-14")
-DeliverMethod.create!(method: "普通郵便(定形、定形外)", created_at: "2019-08-14", updated_at: "2019-08-14")
-DeliverMethod.create!(method: "クロネコヤマト", created_at: "2019-08-14", updated_at: "2019-08-14")
-DeliverMethod.create!(method: "ゆうパック", created_at: "2019-08-14", updated_at: "2019-08-14")
-DeliverMethod.create!(method: "クリックポスト", created_at: "2019-08-14", updated_at: "2019-08-14")
-DeliverMethod.create!(method: "ゆうパケット", created_at: "2019-08-14", updated_at: "2019-08-14")
+CSV.foreach('db/estimated_date.csv') do |info|
+  EstimatedDate.create!(date: info[0], created_at: date, updated_at: date)
+end
 
-DeliverRegion.create!(region: "---", created_at: "2019-08-14", updated_at: "2019-08-14")
-DeliverRegion.create!(region: "北海道", created_at: "2019-08-14", updated_at: "2019-08-14")
-DeliverRegion.create!(region: "青森", created_at: "2019-08-14", updated_at: "2019-08-14")
-DeliverRegion.create!(region: "岩手", created_at: "2019-08-14", updated_at: "2019-08-14")
-DeliverRegion.create!(region: "宮城", created_at: "2019-08-14", updated_at: "2019-08-14")
-DeliverRegion.create!(region: "秋田", created_at: "2019-08-14", updated_at: "2019-08-14")
-DeliverRegion.create!(region: "山形", created_at: "2019-08-14", updated_at: "2019-08-14")
-DeliverRegion.create!(region: "福島", created_at: "2019-08-14", updated_at: "2019-08-14")
-DeliverRegion.create!(region: "茨城", created_at: "2019-08-14", updated_at: "2019-08-14")
-DeliverRegion.create!(region: "栃木", created_at: "2019-08-14", updated_at: "2019-08-14")
-DeliverRegion.create!(region: "群馬", created_at: "2019-08-14", updated_at: "2019-08-14")
-DeliverRegion.create!(region: "埼玉", created_at: "2019-08-14", updated_at: "2019-08-14")
-DeliverRegion.create!(region: "千葉", created_at: "2019-08-14", updated_at: "2019-08-14")
-DeliverRegion.create!(region: "東京", created_at: "2019-08-14", updated_at: "2019-08-14")
-DeliverRegion.create!(region: "神奈川", created_at: "2019-08-14", updated_at: "2019-08-14")
-DeliverRegion.create!(region: "新潟", created_at: "2019-08-14", updated_at: "2019-08-14")
-DeliverRegion.create!(region: "富山", created_at: "2019-08-14", updated_at: "2019-08-14")
-DeliverRegion.create!(region: "石川", created_at: "2019-08-14", updated_at: "2019-08-14")
-DeliverRegion.create!(region: "福井", created_at: "2019-08-14", updated_at: "2019-08-14")
-DeliverRegion.create!(region: "山梨", created_at: "2019-08-14", updated_at: "2019-08-14")
-DeliverRegion.create!(region: "長野", created_at: "2019-08-14", updated_at: "2019-08-14")
-DeliverRegion.create!(region: "岐阜", created_at: "2019-08-14", updated_at: "2019-08-14")
-DeliverRegion.create!(region: "静岡", created_at: "2019-08-14", updated_at: "2019-08-14")
-DeliverRegion.create!(region: "愛知", created_at: "2019-08-14", updated_at: "2019-08-14")
-DeliverRegion.create!(region: "三重", created_at: "2019-08-14", updated_at: "2019-08-14")
-DeliverRegion.create!(region: "滋賀", created_at: "2019-08-14", updated_at: "2019-08-14")
-DeliverRegion.create!(region: "京都", created_at: "2019-08-14", updated_at: "2019-08-14")
-DeliverRegion.create!(region: "大阪", created_at: "2019-08-14", updated_at: "2019-08-14")
-DeliverRegion.create!(region: "兵庫", created_at: "2019-08-14", updated_at: "2019-08-14")
-DeliverRegion.create!(region: "奈良", created_at: "2019-08-14", updated_at: "2019-08-14")
-DeliverRegion.create!(region: "鳥取", created_at: "2019-08-14", updated_at: "2019-08-14")
-DeliverRegion.create!(region: "島根", created_at: "2019-08-14", updated_at: "2019-08-14")
-DeliverRegion.create!(region: "岡山", created_at: "2019-08-14", updated_at: "2019-08-14")
-DeliverRegion.create!(region: "広島", created_at: "2019-08-14", updated_at: "2019-08-14")
-DeliverRegion.create!(region: "山口", created_at: "2019-08-14", updated_at: "2019-08-14")
-DeliverRegion.create!(region: "徳島", created_at: "2019-08-14", updated_at: "2019-08-14")
-DeliverRegion.create!(region: "香川", created_at: "2019-08-14", updated_at: "2019-08-14")
-DeliverRegion.create!(region: "愛媛", created_at: "2019-08-14", updated_at: "2019-08-14")
-DeliverRegion.create!(region: "高知", created_at: "2019-08-14", updated_at: "2019-08-14")
-DeliverRegion.create!(region: "福岡", created_at: "2019-08-14", updated_at: "2019-08-14")
-DeliverRegion.create!(region: "佐賀", created_at: "2019-08-14", updated_at: "2019-08-14")
-DeliverRegion.create!(region: "長崎", created_at: "2019-08-14", updated_at: "2019-08-14")
-DeliverRegion.create!(region: "熊本", created_at: "2019-08-14", updated_at: "2019-08-14")
-DeliverRegion.create!(region: "大分", created_at: "2019-08-14", updated_at: "2019-08-14")
-DeliverRegion.create!(region: "宮崎", created_at: "2019-08-14", updated_at: "2019-08-14")
-DeliverRegion.create!(region: "鹿児島", created_at: "2019-08-14", updated_at: "2019-08-14")
-DeliverRegion.create!(region: "沖縄", created_at: "2019-08-14", updated_at: "2019-08-14")
+CSV.foreach('db/deliver_method.csv') do |info|
+  DeliverMethod.create!(method: info[0], created_at: date, updated_at: date)
+end
 
+CSV.foreach('db/deliver_region.csv') do |info|
+  DeliverRegion.create!(region: info[0], created_at: date, updated_at: date)
+end
+
+CSV.foreach('db/size_type.csv') do |info|
+  SizeType.create!(size_type: info[0], created_at: date, updated_at: date)
+end
+
+CSV.foreach('db/size.csv') do |info|
+  Size.create!(size: info[0], size_type_id: info[1], created_at: date, updated_at: date)
+end
+
+CSV.foreach('db/brand.csv') do |info|
+  Brand.create!(brand: info[0], created_at: date, updated_at: date)
+end
+
+CSV.foreach('db/category.csv') do |info|
+  Category.create!(category: info[0], parent_id: info[1], size_type_id: info[2], created_at: date, updated_at: date)
+end
