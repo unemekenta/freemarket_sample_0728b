@@ -1,24 +1,28 @@
 = form_with(model: @product, local: true) do |product|
   .form-group
     .input-field
+      = product.fields_for :product_images do |image|
+        .field
+          = image.label :"出品画像"
+          = image.file_field :image
       .field
         = product.label :"商品名"
         = product.text_field :name
       .field
-        = product.label :"価格"
-        = product.text_field :price
-      .field
         = product.label :"商品の説明"
         = product.text_area :detail
-      = product.fields_for :product_images do |image|
-        .form-group
-          .input-field
-            .field
-              = image.label :"出品画像"
-              = image.file_field :image
+      .field
+        = product.label :"大カテゴリー"
+        = product.collection_select(:category_id, Category.where(parent_id: nil), :id, :category, prompt: "---")
+      .field
+        = product.label :"中カテゴリー"
+        = product.collection_select(:category_id, Category.where(parent_id: 1), :id, :category, prompt: "---")
+      .field
+        = product.label :"小カテゴリー"
+        = product.collection_select(:category_id, Category.where(parent_id: 14), :id, :category, prompt: "---")
       .field
         = product.label :"商品の状態"
-        = product.collection_select(:condition_id, Condition.all, :id, :condition)
+        = product.collection_select(:condition_id, Condition.all, :id, :condition, prompt:"---")
       = product.fields_for :delivery do |delivery|
         .form-group
           .field
@@ -26,12 +30,15 @@
             = delivery.select :shipping_fee, ["送料込み(出品者負担)", "着払い(購入者負担)"], prompt:"---"
           .field
             = delivery.label :"配送の方法"
-            = delivery.collection_select(:deliver_method_id, DeliverMethod.all, :id, :method)
-          .field
-            = delivery.label :"発送までの日数"
-            = delivery.collection_select(:estimated_date_id, EstimatedDate.all, :id, :date)
+            = delivery.collection_select(:deliver_method_id, DeliverMethod.all, :id, :method, prompt:"---")
           .field
             = delivery.label :"発送元の地域"
-            = delivery.collection_select(:deliver_region_id, DeliverRegion.all, :id, :region)
+            = delivery.collection_select(:deliver_region_id, DeliverRegion.all, :id, :region, prompt:"---")
+          .field
+            = delivery.label :"発送までの日数"
+            = delivery.collection_select(:estimated_date_id, EstimatedDate.all, :id, :date, prompt:"---")
+      .field
+        = product.label :"価格"
+        = product.text_field :price
       .actions
         = product.submit
