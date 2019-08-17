@@ -6,7 +6,8 @@ class Product < ApplicationRecord
   has_many :users, through: :purchases
   has_many :product_images
   belongs_to :category
-  belongs_to :brand
+  belongs_to :brand, optional: true
+  belongs_to :size, optional: true
   belongs_to :status
   belongs_to :condition
   has_one :delivery
