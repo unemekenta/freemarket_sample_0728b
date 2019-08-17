@@ -21,6 +21,12 @@
         = product.label :"小カテゴリー"
         = product.collection_select(:category_id, Category.where(parent_id: 14), :id, :category, prompt: "---")
       .field
+        = product.label :"サイズ"
+        = product.collection_select(:size_id, Size.where(size_type: 1), :id, :size, prompt: "---")
+      .field
+        = product.label :"ブランド"
+        = product.collection_select(:brand_id, Brand.all, :id, :brand, prompt: "---")
+      .field
         = product.label :"商品の状態"
         = product.collection_select(:condition_id, Condition.all, :id, :condition, prompt:"---")
       = product.fields_for :delivery do |delivery|
