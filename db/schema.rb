@@ -10,7 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_14_102326) do
+ActiveRecord::Schema.define(version: 2019_08_16_015657) do
+
+  create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "post_number"
+    t.string "prefecture"
+    t.string "city"
+    t.string "street"
+    t.string "building"
+    t.bigint "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["user_id"], name: "index_addresses_on_user_id"
+  end
 
   create_table "conditions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "condition", null: false
@@ -18,28 +30,22 @@ ActiveRecord::Schema.define(version: 2019_08_14_102326) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "nickname"
-    t.date "birthday"
-    t.string "photo"
-    t.integer "phone_number"
-    t.bigint "address_id"
-    t.bigint "credit_card_id"
+  create_table "deliver_addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "family_name"
     t.string "first_name"
     t.string "family_name_pseudonym"
     t.string "first_name_pseudonym"
-    t.index ["address_id"], name: "index_users_on_address_id"
-    t.index ["credit_card_id"], name: "index_users_on_credit_card_id"
-    t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.string "post_number"
+    t.string "prefecture"
+    t.string "city"
+    t.string "street"
+    t.string "building"
+    t.integer "phone_number"
+    t.bigint "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["user_id"], name: "index_deliver_addresses_on_user_id"
+  end
 
   create_table "deliver_methods", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "method", null: false
@@ -99,6 +105,26 @@ ActiveRecord::Schema.define(version: 2019_08_14_102326) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "nickname"
+    t.date "birthday"
+    t.string "photo"
+    t.integer "phone_number"
+    t.string "family_name"
+    t.string "first_name"
+    t.string "family_name_pseudonym"
+    t.string "first_name_pseudonym"
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
   add_foreign_key "deliveries", "deliver_methods"
   add_foreign_key "deliveries", "deliver_regions"
   add_foreign_key "deliveries", "estimated_dates"
@@ -106,5 +132,4 @@ ActiveRecord::Schema.define(version: 2019_08_14_102326) do
   add_foreign_key "product_images", "products"
   add_foreign_key "products", "conditions"
   add_foreign_key "products", "statuses"
-
 end
