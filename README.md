@@ -40,8 +40,9 @@ Hiroki_Katsuyama, Masatomo_Sugai, Yuichi_Motmomura, Kenta_Uneme
 |------|----|-------|
 |family_name|string|null: false|
 |first_name|string|null: false|
-|pseudonym|string|null: false|
-|post_number|integer|null: false|
+|family_name_pseudonym|string|null: false|
+|first_name_pseudonym|string|null: false|
+|post_number|string|null: false|
 |prefecture|string|null: false|
 |city|string|null: false|
 |street|string|null: false|
