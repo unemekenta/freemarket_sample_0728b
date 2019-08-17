@@ -6,7 +6,6 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-Condition.create!(condition: "---", created_at: "2019-08-14", updated_at: "2019-08-14")
 Condition.create!(condition: "新品、未使用", created_at: "2019-08-14", updated_at: "2019-08-14")
 Condition.create!(condition: "未使用に近い", created_at: "2019-08-14", updated_at: "2019-08-14")
 Condition.create!(condition: "目立った傷や汚れなし", created_at: "2019-08-14", updated_at: "2019-08-14")
@@ -19,12 +18,10 @@ Status.create!(status: "出品停止中", created_at: "2019-08-14", updated_at: 
 Status.create!(status: "取引中", created_at: "2019-08-14", updated_at: "2019-08-14")
 Status.create!(status: "取引完了", created_at: "2019-08-14", updated_at: "2019-08-14")
 
-EstimatedDate.create!(date: "---", created_at: "2019-08-14", updated_at: "2019-08-14")
 EstimatedDate.create!(date: "1〜2日", created_at: "2019-08-14", updated_at: "2019-08-14")
 EstimatedDate.create!(date: "2〜3日", created_at: "2019-08-14", updated_at: "2019-08-14")
 EstimatedDate.create!(date: "4〜7日", created_at: "2019-08-14", updated_at: "2019-08-14")
 
-DeliverMethod.create!(method: "---", created_at: "2019-08-14", updated_at: "2019-08-14")
 DeliverMethod.create!(method: "未定", created_at: "2019-08-14", updated_at: "2019-08-14")
 DeliverMethod.create!(method: "らくらくメルカリ便", created_at: "2019-08-14", updated_at: "2019-08-14")
 DeliverMethod.create!(method: "ゆうメール", created_at: "2019-08-14", updated_at: "2019-08-14")
@@ -35,7 +32,6 @@ DeliverMethod.create!(method: "ゆうパック", created_at: "2019-08-14", updat
 DeliverMethod.create!(method: "クリックポスト", created_at: "2019-08-14", updated_at: "2019-08-14")
 DeliverMethod.create!(method: "ゆうパケット", created_at: "2019-08-14", updated_at: "2019-08-14")
 
-DeliverRegion.create!(region: "---", created_at: "2019-08-14", updated_at: "2019-08-14")
 DeliverRegion.create!(region: "北海道", created_at: "2019-08-14", updated_at: "2019-08-14")
 DeliverRegion.create!(region: "青森", created_at: "2019-08-14", updated_at: "2019-08-14")
 DeliverRegion.create!(region: "岩手", created_at: "2019-08-14", updated_at: "2019-08-14")
