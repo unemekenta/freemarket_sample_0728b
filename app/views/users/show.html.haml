@@ -188,14 +188,27 @@
       .usersShow__container__right
         .usersShow__container__right__wrapper
           .usersShow__container__right__wrapper__profile
-            aaa
-
             .usersShow__container__right__wrapper__profile__btn
 
+          .usersShow__container__right__wrapper__tabs
+            %input{id: "user-notice", type: "radio", name: "tab_item", checked: "checked"}
+            %label{class: "usersShow__container__right__wrapper__tabs__tab-item", for: "user-notice"}
+              %p
+                お知らせ
+            %input{id: "user-todos", type: "radio", name: "tab_item"}
+            %label{class: "usersShow__container__right__wrapper__tabs__tab-item", for: "user-todos"}
+              %p
+                やることリスト
+
+            -# 以下が、タブに対応する内容部分
+            .usersShow__container__right__wrapper__tabs__tab-content#user-notice-content
+              事務局から個別メッセージ
+            .usersShow__container__right__wrapper__tabs__tab-content#user-todos-content
+              現在、やることリストはありません
 
 
           .usersShow__container__right__wrapper__purchesed-item
-            aa
+            
 
 
 
