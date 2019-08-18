@@ -10,6 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
+ActiveRecord::Schema.define(version: 2019_08_16_015657) do
+
+  create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "post_number"
+    t.string "prefecture"
+    t.string "city"
+    t.string "street"
+    t.string "building"
+    t.bigint "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["user_id"], name: "index_addresses_on_user_id"
+  end
+
 ActiveRecord::Schema.define(version: 2019_08_16_154047) do
 
   create_table "brands", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -18,6 +33,22 @@ ActiveRecord::Schema.define(version: 2019_08_16_154047) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "deliver_addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "family_name"
+    t.string "first_name"
+    t.string "family_name_pseudonym"
+    t.string "first_name_pseudonym"
+    t.string "post_number"
+    t.string "prefecture"
+    t.string "city"
+    t.string "street"
+    t.string "building"
+    t.integer "phone_number"
+    t.bigint "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["user_id"], name: "index_deliver_addresses_on_user_id"
+    
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "category", null: false
     t.integer "parent_id"

@@ -4,19 +4,35 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 
-  # GET /resource/sign_up
   def new
-  #   super
-  @user = User.new
+    @user = User.new
+    @user.build_deliver_address
+    @user.build_address
+  end
+  
+  def create
+    
+    @user = User.new(user_params)
+    if @user.save
+      redirect_to root_path
+    else
+      render :new
+    end
   end
 
-  # POST /resource
-  def create
-  #   super
-  @user = User.new(params[:user])
-  @user.save
-  redirect_to new_user_path
+  private
+  def user_params
+    params.require(:user).permit(:family_name, :first_name, :family_name_pseudonym, :first_name_pseudonym, :birthday, :nickname, :photo, :email, :password, :phone_number, deliver_address_attributes: [:id, :post_number, :prefecture, :city, :street, :building, :phone_number], address_attributes: [:id, :post_number, :prefecture, :city, :street, :building])
   end
+  # GET /resource/sign_up
+  # def new
+  #   super
+  # end
+
+  # # POST /resource
+  # def create
+  #   super
+  # end
 
   # GET /resource/edit
   # def edit
