@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema.define(version: 2019_08_16_015657) do
+ActiveRecord::Schema.define(version: 2019_08_16_154047) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "post_number"
@@ -25,10 +24,24 @@ ActiveRecord::Schema.define(version: 2019_08_16_015657) do
     t.index ["user_id"], name: "index_addresses_on_user_id"
   end
 
-ActiveRecord::Schema.define(version: 2019_08_16_154047) do
 
   create_table "brands", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "brand", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "category", null: false
+    t.integer "parent_id"
+    t.bigint "size_type_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["size_type_id"], name: "index_categories_on_size_type_id"
+  end
+
+  create_table "conditions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "condition", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -48,20 +61,6 @@ ActiveRecord::Schema.define(version: 2019_08_16_154047) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.index ["user_id"], name: "index_deliver_addresses_on_user_id"
-    
-  create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "category", null: false
-    t.integer "parent_id"
-    t.bigint "size_type_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["size_type_id"], name: "index_categories_on_size_type_id"
-  end
-
-  create_table "conditions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "condition", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "deliver_methods", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
