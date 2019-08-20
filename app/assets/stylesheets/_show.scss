@@ -69,14 +69,20 @@ a {
         display: flex;
         justify-content: space-between;
         &__photo {
-          min-width: 300px;
+          // min-width: 300px;
           max-width: 300px;
-          min-height: 375px;
+          max-height: 420px;
           background-color: #fafafa;
           
           &-main{
             width: 100%;
-            text-align: center;
+            margin: 0 0;
+            img {
+              max-height: 100%;
+              max-width: 100%;
+              object-fit: contain;
+
+            }
           }
           &-others {
 
