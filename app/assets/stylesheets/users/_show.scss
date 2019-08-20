@@ -24,7 +24,6 @@ html {
   body {
   margin: 0;
   padding: 0;
-  // line-height: 1.57;
   font-size: 16px;
   font-family: "Source Sans Pro", Helvetica, Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
   }
@@ -107,6 +106,9 @@ html {
             list-style: none;
             display: inline-block;
             padding: 0 10px;
+            & span {
+              margin-right: 4px;
+            }
           }
         }
         &__tabs {
@@ -136,11 +138,9 @@ html {
             & input[name="tab1_item"] {
               display: none;
             }
-            
             & input[name="tab2_item"] {
               display: none;
             }
-
             // 選択されているタブのスタイルを変える
             & input:checked + &__label {
               background-color: $main_white;
@@ -156,8 +156,6 @@ html {
           #past-deal:checked ~ #past-deal-content {
             display: block;
           }
-
-
           // タブの中身
           &__contents {
             // 非選択タブの内容は非表示にする
@@ -216,16 +214,13 @@ html {
               & img {
                 height: 90px;
                 width: 90px;
-            
               }
               & p {
                 color: $main_gray;
                 font-weight: bold;
               }
             }
-            
           }
-          
         }
         &__purchesed-items {
           width: 100%;
@@ -239,7 +234,6 @@ html {
             line-height: 90px;
           }
         }
-        
       }
     }
   }

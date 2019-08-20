@@ -22,12 +22,14 @@
             = image_tag "http://static.mercdn.net/thumb/members/717195406.jpg?1555687756"
           .usersShow__contents__wrapper__right__profile__name
             name
-          %ul.usersShow__contents__wrapper__right__profile__info
-            %li.usersShow__contents__wrapper__right__profile__info--evaluation
-              評価&nbsp;&nbsp;3
-            %li.usersShow__contents__wrapper__right__profile__info--exhibit
-              出品数&nbsp;&nbsp;0
-          
+          %ul
+            %li
+              %span 評価
+              3
+            %li
+              %span 出品数
+              0
+
 
         .usersShow__contents__wrapper__right__tabs
           .usersShow__contents__wrapper__right__tabs__tab
@@ -40,78 +42,19 @@
               %p
                 やることリスト
             
-            -# ここから表示内容
             #user-notice-content.usersShow__contents__wrapper__right__tabs__contents
               %ul
-                %li
-                  = link_to "hoge" do
-                    %ul
-                      %li.usersShow__contents__wrapper__right__tabs__contents--image
-                        = image_tag "http://static.mercdn.net/images/mercari_profile.png"
-                      %li.usersShow__contents__wrapper__right__tabs__contents--text
-                        事務局から個別メッセージ「ログイン機能」
-                        %br
-                          = fa_icon "clock-o"
-                          2時間前
-                      %li.usersShow__contents__wrapper__right__tabs__contents--awsome
-                        = fa_icon "chevron-right"
-                %li
-                  = link_to "hoge" do
-                    %ul
-                      %li.usersShow__contents__wrapper__right__tabs__contents--image
-                        = image_tag "http://static.mercdn.net/images/mercari_profile.png"
-                      %li.usersShow__contents__wrapper__right__tabs__contents--text
-                        事務局から個別メッセージ「ログイン機能」
-                        %br
-                          = fa_icon "clock-o"
-                          2時間前
-                      %li.usersShow__contents__wrapper__right__tabs__contents--awsome
-                        = fa_icon "chevron-right"
-                %li
-                  = link_to "hoge" do
-                    %ul
-                      %li.usersShow__contents__wrapper__right__tabs__contents--image
-                        = image_tag "http://static.mercdn.net/images/mercari_profile.png"
-                      %li.usersShow__contents__wrapper__right__tabs__contents--text
-                        事務局から個別メッセージ「ログイン機能」
-                        %br
-                          = fa_icon "clock-o"
-                          2時間前
-                      %li.usersShow__contents__wrapper__right__tabs__contents--awsome
-                        = fa_icon "chevron-right"
-                %li
-                  = link_to "hoge" do
-                    %ul
-                      %li.usersShow__contents__wrapper__right__tabs__contents--image
-                        = image_tag "http://static.mercdn.net/images/mercari_profile.png"
-                      %li.usersShow__contents__wrapper__right__tabs__contents--text
-                        事務局から個別メッセージ「ログイン機能」
-                        %br
-                          = fa_icon "clock-o"
-                          18時間前
-                      %li.usersShow__contents__wrapper__right__tabs__contents--awsome
-                        = fa_icon "chevron-right"
-                %li
-                  = link_to "hoge" do
-                    %ul
-                      %li.usersShow__contents__wrapper__right__tabs__contents--image
-                        = image_tag "http://static.mercdn.net/images/mercari_profile.png"
-                      %li.usersShow__contents__wrapper__right__tabs__contents--text
-                        事務局から個別メッセージ「ログイン機能」
-                        %br
-                          = fa_icon "clock-o"
-                          18時間前
-                      %li.usersShow__contents__wrapper__right__tabs__contents--awsome
-                        = fa_icon "chevron-right"
+                = render "info"
+                = render "info"
+                = render "info"
+                = render "info"
                 %li.usersShow__contents__wrapper__right__tabs__contents--last
                   = link_to "一覧を見る", "hoge"
-                    
 
             #user-todos-content.usersShow__contents__wrapper__right__tabs__contents
               %ul
-                .usersShow__contents__wrapper__right__tabs__contents--none
-                  =image_tag "https://www.mercari.com/jp/assets/img/common/common/logo-gray-icon.svg?66407541"
-                  %p 現在、やることリストはありません
+                = render "info-none"
+                
 
           .usersShow__contents__wrapper__right__purchesed-items
             %p
@@ -127,33 +70,23 @@
               %p
                 過去の取引
             
-            -# ここから表示内容
+            
             #under-deal-content.usersShow__contents__wrapper__right__tabs__contents
               %ul
-                .usersShow__contents__wrapper__right__tabs__contents--none
-                  =image_tag "https://www.mercari.com/jp/assets/img/common/common/logo-gray-icon.svg?66407541"
-                  %p 取引中の商品がありません
-                    
+                = render "info-none"
 
             #past-deal-content.usersShow__contents__wrapper__right__tabs__contents
               %ul
-                %li
-                  = link_to "hoge" do
-                    %ul
-                      %li.usersShow__contents__wrapper__right__tabs__contents--image
-                        = image_tag "http://static.mercdn.net/images/mercari_profile.png"
-                      %li.usersShow__contents__wrapper__right__tabs__contents--text
-                        事務局から個別メッセージ「ログイン機能」
-                        %br
-                          = fa_icon "clock-o"
-                          2時間前
-                      %li.usersShow__contents__wrapper__right__tabs__contents--awsome
-                        = fa_icon "chevron-right"
+                = render 'info'
+                = render 'info'
+                = render 'info'
+                = render 'info'
+                = render 'info'
+                = render 'info'
+                = render 'info'
+                = render 'info'
                 %li.usersShow__contents__wrapper__right__tabs__contents--last
                   = link_to "一覧を見る", "hoge"
-                
-                    
-
 
   = render './products/aside'
   = render './products/footer'
