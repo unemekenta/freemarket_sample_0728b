@@ -5,6 +5,4 @@ Rails.application.routes.draw do
   get 'telltest' => 'products#teltest' 
   resources :products
   resources :users, only: :show
-
-  
 end
