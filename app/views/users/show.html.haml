@@ -1,215 +1,317 @@
 .default-container
   = render './products/header'
 
-  .usersShow
-    .usersShow__breadCrumbs
-      %ul
-        %li
-          メルカリ
-        %li
-          = fa_icon "angle-right", class: "usersShow__breadCrumbs__awsome"
+  .usersShow__breadCrumbs
+    %ul
+      %li
+        = link_to "メルカリ", "hoge"
+      %li
+        = fa_icon "angle-right", class: "usersShow__breadCrumbs--awsome"
+      %li.usersShow__breadCrumbs--mypage
+        マイページ
 
-        %li.usersShow__breadCrumbs--mypage
-          マイページ
-    .usersShow__container.clearfix
-      .usersShow__container__left
-        .usersShow__container__left__wrapper
-          %table.usersShow__container__left__wrapper__list
-            %tr
-              %td
-                = link_to "hoge", class: "usersShow__container__left__wrapper__list__text" do
-                  マイページ
-              %td
-                = link_to "hoge", class: "usersShow__container__left__wrapper__list__awsome" do
-                  = fa_icon "chevron-right"
-            %tr
-              %td
-                = link_to "hoge", class: "usersShow__container__left__wrapper__list__text" do
-                  お知らせ
-              %td
-                = link_to "hoge", class: "usersShow__container__left__wrapper__list__awsome" do
-                  = fa_icon "chevron-right"
-            %tr
-              %td
-                = link_to "hoge", class: "usersShow__container__left__wrapper__list__text" do
-                  やることリスト
-              %td
-                = link_to "hoge", class: "usersShow__container__left__wrapper__list__awsome" do
-                  = fa_icon "chevron-right"
-            %tr
-              %td
-                = link_to "hoge", class: "usersShow__container__left__wrapper__list__text" do
-                  いいね！一覧
-              %td
-                = link_to "hoge", class: "usersShow__container__left__wrapper__list__awsome" do
-                  = fa_icon "chevron-right"
-            %tr
-              %td
-                = link_to "hoge", class: "usersShow__container__left__wrapper__list__text" do
-                  出品する
-              %td
-                = link_to "hoge", class: "usersShow__container__left__wrapper__list__awsome" do
-                  = fa_icon "chevron-right"
-            %tr
-              %td
-                = link_to "hoge", class: "usersShow__container__left__wrapper__list__text" do
-                  出品した商品・出品中
-              %td
-                = link_to "hoge", class: "usersShow__container__left__wrapper__list__awsome" do
-                  = fa_icon "chevron-right"
-            %tr
-              %td
-                = link_to "hoge", class: "usersShow__container__left__wrapper__list__text" do
-                  出品した商品・取引中
-              %td
-                = link_to "hoge", class: "usersShow__container__left__wrapper__list__awsome" do
-                  = fa_icon "chevron-right"
-            %tr
-              %td
-                = link_to "hoge", class: "usersShow__container__left__wrapper__list__text" do
-                  出品した商品・売却済み
-              %td
-                = link_to "hoge", class: "usersShow__container__left__wrapper__list__awsome" do
-                  = fa_icon "chevron-right"
-            %tr
-              %td
-                = link_to "hoge", class: "usersShow__container__left__wrapper__list__text" do
-                  購入した商品・取引中
-              %td
-                = link_to "hoge", class: "usersShow__container__left__wrapper__list__awsome" do
-                  = fa_icon "chevron-right"
-            %tr
-              %td
-                = link_to "hoge", class: "usersShow__container__left__wrapper__list__text" do
-                  購入した商品・過去の取引
-              %td
-                = link_to "hoge", class: "usersShow__container__left__wrapper__list__awsome" do
-                  = fa_icon "chevron-right"
-            %tr
-              %td
-                = link_to "hoge", class: "usersShow__container__left__wrapper__list__text" do
-                  ニュース一覧
-              %td
-                = link_to "hoge", class: "usersShow__container__left__wrapper__list__awsome" do
-                  = fa_icon "chevron-right"
-            %tr
-              %td
-                = link_to "hoge", class: "usersShow__container__left__wrapper__list__text" do
-                  評価一覧
-              %td
-                = link_to "hoge", class: "usersShow__container__left__wrapper__list__awsome" do
-                  = fa_icon "chevron-right"
-            %tr
-              %td
-                = link_to "hoge", class: "usersShow__container__left__wrapper__list__text" do
-                  ガイド
-              %td
-                = link_to "hoge", class: "usersShow__container__left__wrapper__list__awsome" do
-                  = fa_icon "chevron-right"
-            %tr
-              %td
-                = link_to "hoge", class: "usersShow__container__left__wrapper__list__text" do
-                  お問い合わせ
-              %td
-                = link_to "hoge", class: "usersShow__container__left__wrapper__list__awsome" do
-                  = fa_icon "chevron-right"
+  .usersShow__contents
+    .usersShow__contents__wrapper.clearfix
+      .usersShow__contents__wrapper__left
+        .usersShow__contents__wrapper__left__list
+          %ul
+            %li
+              = link_to "hoge" do
+                %ul
+                  %li.usersShow__contents__wrapper__left__list--text
+                    マイページ
+                  %li.usersShow__contents__wrapper__left__list--awsome
+                    = fa_icon "chevron-right"
+            %li
+              = link_to "hoge" do
+                %ul
+                  %li.usersShow__contents__wrapper__left__list--text
+                    お知らせ
+                  %li.usersShow__contents__wrapper__left__list--awsome
+                    %span.usersShow__contents__wrapper__left__list--number
+                      &nbsp;3
+                    = fa_icon "chevron-right"
+            %li
+              = link_to "hoge" do
+                %ul
+                  %li.usersShow__contents__wrapper__left__list--text
+                    やることリスト
+                  %li.usersShow__contents__wrapper__left__list--awsome
+                    = fa_icon "chevron-right"
+            %li
+              = link_to "hoge" do
+                %ul
+                  %li.usersShow__contents__wrapper__left__list--text
+                    いいね！一覧
+                  %li.usersShow__contents__wrapper__left__list--awsome
+                    = fa_icon "chevron-right"
+            %li
+              = link_to "hoge" do
+                %ul
+                  %li.usersShow__contents__wrapper__left__list--text
+                    出品する
+                  %li.usersShow__contents__wrapper__left__list--awsome
+                    = fa_icon "chevron-right"
+            %li
+              = link_to "hoge" do
+                %ul
+                  %li.usersShow__contents__wrapper__left__list--text
+                    出品した商品-出品中
+                  %li.usersShow__contents__wrapper__left__list--awsome
+                    = fa_icon "chevron-right"
+            %li
+              = link_to "hoge" do
+                %ul
+                  %li.usersShow__contents__wrapper__left__list--text
+                    出品した商品-取引中
+                  %li.usersShow__contents__wrapper__left__list--awsome
+                    = fa_icon "chevron-right"
+            %li
+              = link_to "hoge" do
+                %ul
+                  %li.usersShow__contents__wrapper__left__list--text
+                    出品した商品-過去の取引
+                  %li.usersShow__contents__wrapper__left__list--awsome
+                    = fa_icon "chevron-right"
+            %li
+              = link_to "hoge" do
+                %ul
+                  %li.usersShow__contents__wrapper__left__list--text
+                    ニュース一覧
+                  %li.usersShow__contents__wrapper__left__list--awsome
+                    = fa_icon "chevron-right"
+            %li
+              = link_to "hoge" do
+                %ul
+                  %li.usersShow__contents__wrapper__left__list--text
+                    評価一覧
+                  %li.usersShow__contents__wrapper__left__list--awsome
+                    = fa_icon "chevron-right"
+            %li
+              = link_to "hoge" do
+                %ul
+                  %li.usersShow__contents__wrapper__left__list--text
+                    ガイド
+                  %li.usersShow__contents__wrapper__left__list--awsome
+                    = fa_icon "chevron-right"
+            %li
+              = link_to "hoge" do
+                %ul
+                  %li.usersShow__contents__wrapper__left__list--text
+                    お問い合わせ
+                  %li.usersShow__contents__wrapper__left__list--awsome
+                    = fa_icon "chevron-right"
 
-          %p.usersShow__container__left__wrapper__title
-            メルペイ
-          %table.usersShow__container__left__wrapper__list
-            %tr
-              %td
-                = link_to "hoge", class: "usersShow__container__left__wrapper__list__text" do
-                  売上・振込申請
-              %td
-                = link_to "hoge", class: "usersShow__container__left__wrapper__list__awsome" do
-                  = fa_icon "chevron-right"
-            %tr
-              %td
-                = link_to "hoge", class: "usersShow__container__left__wrapper__list__text" do
-                  ポイント
-              %td
-                = link_to "hoge", class: "usersShow__container__left__wrapper__list__awsome" do
-                  = fa_icon "chevron-right"
+        
+        %p.usersShow__contents__wrapper__left__title メルペイ
+        .usersShow__contents__wrapper__left__list
+          %ul
+            %li
+              = link_to "hoge" do
+                %ul
+                  %li.usersShow__contents__wrapper__left__list--text
+                    売上・振込申請
+                  %li.usersShow__contents__wrapper__left__list--awsome
+                    = fa_icon "chevron-right"
+            %li
+              = link_to "hoge" do
+                %ul
+                  %li.usersShow__contents__wrapper__left__list--text
+                    ポイント
+                  %li.usersShow__contents__wrapper__left__list--awsome
+                    = fa_icon "chevron-right"
 
-          %p.usersShow__container__left__wrapper__title
-            設定
-          %table.usersShow__container__left__wrapper__list
-            %tr
-              %td
-                = link_to "hoge", class: "usersShow__container__left__wrapper__list__text" do
-                  プロフィール
-              %td
-                = link_to "hoge", class: "usersShow__container__left__wrapper__list__awsome" do
-                  = fa_icon "chevron-right"
-            %tr
-              %td
-                = link_to "hoge", class: "usersShow__container__left__wrapper__list__text" do
-                  発送元・お届け先住所変更
-              %td
-                = link_to "hoge", class: "usersShow__container__left__wrapper__list__awsome" do
-                  = fa_icon "chevron-right"
-            %tr
-              %td
-                = link_to "hoge", class: "usersShow__container__left__wrapper__list__text" do
-                  支払い方法
-              %td
-                = link_to "hoge", class: "usersShow__container__left__wrapper__list__awsome" do
-                  = fa_icon "chevron-right"
-            %tr
-              %td
-                = link_to "hoge", class: "usersShow__container__left__wrapper__list__text" do
-                  メール/パスワード
-              %td
-                = link_to "hoge", class: "usersShow__container__left__wrapper__list__awsome" do
-                  = fa_icon "chevron-right"
-            %tr
-              %td
-                = link_to "hoge", class: "usersShow__container__left__wrapper__list__text" do
-                  本人情報
-              %td
-                = link_to "hoge", class: "usersShow__container__left__wrapper__list__awsome" do
-                  = fa_icon "chevron-right"
-            %tr
-              %td
-                = link_to "hoge", class: "usersShow__container__left__wrapper__list__text" do
-                  電話番号の確認
-              %td
-                = link_to "hoge", class: "usersShow__container__left__wrapper__list__awsome" do
-                  = fa_icon "chevron-right"
-            %tr
-              %td
-                = link_to "hoge", class: "usersShow__container__left__wrapper__list__text" do
-                  ログアウト
-              %td
-                = link_to "hoge", class: "usersShow__container__left__wrapper__list__awsome" do
-                  = fa_icon "chevron-right"
-
-      .usersShow__container__right
-        .usersShow__container__right__wrapper
-          .usersShow__container__right__wrapper__profile
-            .usersShow__container__right__wrapper__profile__btn
-
-          .usersShow__container__right__wrapper__tabs
-            %input{id: "user-notice", type: "radio", name: "tab_item", checked: "checked"}
-            %label{class: "usersShow__container__right__wrapper__tabs__tab-item", for: "user-notice"}
-              %p
-                お知らせ
-            %input{id: "user-todos", type: "radio", name: "tab_item"}
-            %label{class: "usersShow__container__right__wrapper__tabs__tab-item", for: "user-todos"}
-              %p
-                やることリスト
-
-            -# 以下が、タブに対応する内容部分
-            .usersShow__container__right__wrapper__tabs__tab-content#user-notice-content
-              事務局から個別メッセージ
-            .usersShow__container__right__wrapper__tabs__tab-content#user-todos-content
-              現在、やることリストはありません
-
-
-          .usersShow__container__right__wrapper__purchesed-item
+        %p.usersShow__contents__wrapper__left__title 設定
+        .usersShow__contents__wrapper__left__list
+          %ul
+            %li
+              = link_to "hoge" do
+                %ul
+                  %li.usersShow__contents__wrapper__left__list--text
+                    プロフィール
+                  %li.usersShow__contents__wrapper__left__list--awsome
+                    = fa_icon "chevron-right"
+            %li
+              = link_to "hoge" do
+                %ul
+                  %li.usersShow__contents__wrapper__left__list--text
+                    発送元・お届け先住所変更
+                  %li.usersShow__contents__wrapper__left__list--awsome
+                    = fa_icon "chevron-right"
+            %li
+              = link_to "hoge" do
+                %ul
+                  %li.usersShow__contents__wrapper__left__list--text
+                    支払い方法
+                  %li.usersShow__contents__wrapper__left__list--awsome
+                    = fa_icon "chevron-right"
+            %li
+              = link_to "hoge" do
+                %ul
+                  %li.usersShow__contents__wrapper__left__list--text
+                    メール/パスワード
+                  %li.usersShow__contents__wrapper__left__list--awsome
+                    = fa_icon "chevron-right"
+            %li
+              = link_to "hoge" do
+                %ul
+                  %li.usersShow__contents__wrapper__left__list--text
+                    本人情報
+                  %li.usersShow__contents__wrapper__left__list--awsome
+                    = fa_icon "chevron-right"
+            %li
+              = link_to "hoge" do
+                %ul
+                  %li.usersShow__contents__wrapper__left__list--text
+                    電話番号の確認
+                  %li.usersShow__contents__wrapper__left__list--awsome
+                    = fa_icon "chevron-right"
+            %li
+              = link_to "hoge" do
+                %ul
+                  %li.usersShow__contents__wrapper__left__list--text
+                    ログアウト
+                  %li.usersShow__contents__wrapper__left__list--awsome
+                    = fa_icon "chevron-right"
             
 
+      .usersShow__contents__wrapper__right
+        .usersShow__contents__wrapper__right__profile
+          .usersShow__contents__wrapper__right__profile__image
+            = image_tag "http://static.mercdn.net/thumb/members/717195406.jpg?1555687756"
+          .usersShow__contents__wrapper__right__profile__name
+            name
+          %ul.usersShow__contents__wrapper__right__profile__info
+            %li.usersShow__contents__wrapper__right__profile__info--evaluation
+              評価&nbsp;&nbsp;3
+            %li.usersShow__contents__wrapper__right__profile__info--exhibit
+              出品数&nbsp;&nbsp;0
+          
+
+        .usersShow__contents__wrapper__right__tabs
+          .usersShow__contents__wrapper__right__tabs__tab
+            %input{id: "user-notice", type: "radio", name: "tab1_item", checked: "checked"}
+            %label{class: "usersShow__contents__wrapper__right__tabs__tab__label", for: "user-notice"}
+              %p
+                お知らせ
+            %input{id: "user-todos", type: "radio", name: "tab1_item"}
+            %label{class: "usersShow__contents__wrapper__right__tabs__tab__label", for: "user-todos"}
+              %p
+                やることリスト
+            
+            -# ここから表示内容
+            #user-notice-content.usersShow__contents__wrapper__right__tabs__contents
+              %ul
+                %li
+                  = link_to "hoge" do
+                    %ul
+                      %li.usersShow__contents__wrapper__right__tabs__contents--image
+                        = image_tag "http://static.mercdn.net/images/mercari_profile.png"
+                      %li.usersShow__contents__wrapper__right__tabs__contents--text
+                        事務局から個別メッセージ「ログイン機能」
+                        %br
+                          = fa_icon "clock-o"
+                          2時間前
+                      %li.usersShow__contents__wrapper__right__tabs__contents--awsome
+                        = fa_icon "chevron-right"
+                %li
+                  = link_to "hoge" do
+                    %ul
+                      %li.usersShow__contents__wrapper__right__tabs__contents--image
+                        = image_tag "http://static.mercdn.net/images/mercari_profile.png"
+                      %li.usersShow__contents__wrapper__right__tabs__contents--text
+                        事務局から個別メッセージ「ログイン機能」
+                        %br
+                          = fa_icon "clock-o"
+                          2時間前
+                      %li.usersShow__contents__wrapper__right__tabs__contents--awsome
+                        = fa_icon "chevron-right"
+                %li
+                  = link_to "hoge" do
+                    %ul
+                      %li.usersShow__contents__wrapper__right__tabs__contents--image
+                        = image_tag "http://static.mercdn.net/images/mercari_profile.png"
+                      %li.usersShow__contents__wrapper__right__tabs__contents--text
+                        事務局から個別メッセージ「ログイン機能」
+                        %br
+                          = fa_icon "clock-o"
+                          2時間前
+                      %li.usersShow__contents__wrapper__right__tabs__contents--awsome
+                        = fa_icon "chevron-right"
+                %li
+                  = link_to "hoge" do
+                    %ul
+                      %li.usersShow__contents__wrapper__right__tabs__contents--image
+                        = image_tag "http://static.mercdn.net/images/mercari_profile.png"
+                      %li.usersShow__contents__wrapper__right__tabs__contents--text
+                        事務局から個別メッセージ「ログイン機能」
+                        %br
+                          = fa_icon "clock-o"
+                          18時間前
+                      %li.usersShow__contents__wrapper__right__tabs__contents--awsome
+                        = fa_icon "chevron-right"
+                %li
+                  = link_to "hoge" do
+                    %ul
+                      %li.usersShow__contents__wrapper__right__tabs__contents--image
+                        = image_tag "http://static.mercdn.net/images/mercari_profile.png"
+                      %li.usersShow__contents__wrapper__right__tabs__contents--text
+                        事務局から個別メッセージ「ログイン機能」
+                        %br
+                          = fa_icon "clock-o"
+                          18時間前
+                      %li.usersShow__contents__wrapper__right__tabs__contents--awsome
+                        = fa_icon "chevron-right"
+                %li.usersShow__contents__wrapper__right__tabs__contents--last
+                  = link_to "一覧を見る", "hoge"
+                    
+
+            #user-todos-content.usersShow__contents__wrapper__right__tabs__contents
+              %ul
+                .usersShow__contents__wrapper__right__tabs__contents--none
+                  =image_tag "https://www.mercari.com/jp/assets/img/common/common/logo-gray-icon.svg?66407541"
+                  %p 現在、やることリストはありません
+
+          .usersShow__contents__wrapper__right__purchesed-items
+            %p
+              購入した商品
+
+          .usersShow__contents__wrapper__right__tabs__tab
+            %input{id: "under-deal", type: "radio", name: "tab2_item", checked: "checked"}
+            %label{class: "usersShow__contents__wrapper__right__tabs__tab__label", for: "under-deal"}
+              %p
+                取引中
+            %input{id: "past-deal", type: "radio", name: "tab2_item"}
+            %label{class: "usersShow__contents__wrapper__right__tabs__tab__label", for: "past-deal"}
+              %p
+                過去の取引
+            
+            -# ここから表示内容
+            #under-deal-content.usersShow__contents__wrapper__right__tabs__contents
+              %ul
+                .usersShow__contents__wrapper__right__tabs__contents--none
+                  =image_tag "https://www.mercari.com/jp/assets/img/common/common/logo-gray-icon.svg?66407541"
+                  %p 取引中の商品がありません
+                    
+
+            #past-deal-content.usersShow__contents__wrapper__right__tabs__contents
+              %ul
+                %li
+                  = link_to "hoge" do
+                    %ul
+                      %li.usersShow__contents__wrapper__right__tabs__contents--image
+                        = image_tag "http://static.mercdn.net/images/mercari_profile.png"
+                      %li.usersShow__contents__wrapper__right__tabs__contents--text
+                        事務局から個別メッセージ「ログイン機能」
+                        %br
+                          = fa_icon "clock-o"
+                          2時間前
+                      %li.usersShow__contents__wrapper__right__tabs__contents--awsome
+                        = fa_icon "chevron-right"
+                %li.usersShow__contents__wrapper__right__tabs__contents--last
+                  = link_to "一覧を見る", "hoge"
+                
+                    
 
 
   = render './products/aside'
