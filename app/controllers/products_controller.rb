@@ -28,6 +28,11 @@ class ProductsController < ApplicationController
     end
   end
 
+  # ビューを表示するためだけの仮のルーティング
+  def teltest
+  end
+  
+
   private
 
   def product_params
