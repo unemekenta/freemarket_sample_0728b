@@ -4,6 +4,5 @@ Rails.application.routes.draw do
   root 'products#index'
   get 'telltest' => 'products#teltest' 
   resources :products
-
-  
+  resources :users, only: :show
 end
