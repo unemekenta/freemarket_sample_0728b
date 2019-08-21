@@ -75,7 +75,6 @@ html {
         width: 30%;
         padding-right: 20px;
         float: left;
-        
         &__title {
           font-weight: bold;
           font-size: 110%;
@@ -134,20 +133,17 @@ html {
                 cursor: pointer;
               }
             }
-            // ラジオボタンを消す
             & input[name="tab1_item"] {
               display: none;
             }
             & input[name="tab2_item"] {
               display: none;
             }
-            // 選択されているタブのスタイルを変える
             & input:checked + &__label {
               background-color: $main_white;
               border-top: $main_red 2px solid;
             }
           }
-          // 選択タブの内容を表示する
           #user-notice:checked ~ #user-notice-content, 
           #user-todos:checked ~ #user-todos-content {
             display: block;
@@ -156,14 +152,11 @@ html {
           #past-deal:checked ~ #past-deal-content {
             display: block;
           }
-          // タブの中身
           &__contents {
-            // 非選択タブの内容は非表示にする
             width: 100%;
             margin-bottom: 50px;
             display: none;
             clear: both;
-            // overflow: hidden;
             & a {
               display: block;
               height: 90px;
