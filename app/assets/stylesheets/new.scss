@@ -256,6 +256,7 @@ sans-serif;
                 margin: 40px 0 0;
 
                 label {
+                  width: 100%;
                   display: inline-block;
                   font-weight: 600;
                   font-size: 14px;
@@ -286,6 +287,7 @@ sans-serif;
                   }
 
                   .select-default {
+                    display: block;
                     width: 100%;
                     position: relative;
                     z-index: 2;
@@ -373,6 +375,10 @@ sans-serif;
                   border-top: 1px solid #ccc;
                   display: flex;
                   justify-content: space-between;
+
+                  .l-right {
+                    font-size: 34px;
+                  }
                 }
               }
             }
