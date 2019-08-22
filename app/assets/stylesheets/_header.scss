@@ -48,6 +48,18 @@ a {
   padding-left: 10px;
 }
 
+@mixin headerUserBtn($font_color, $background_color, $border_color) {
+  display:inline-block;
+  background-color: $background_color;
+  color: $font_color;
+  height: 30px;
+  border: 1px solid $border_color;
+  border-radius: 4px;
+  line-height:30px;
+  text-align: center;
+  padding: 0 10px;
+  }
+
 .header {
   width: 100%;
   background-color: $main_white;
@@ -263,6 +275,15 @@ a {
           margin-right: 10px;
           width: 32px;
           height: 32px;
+        }
+      }
+      &__user-btn {
+        .sign-up-btn {
+          @include headerUserBtn(white, $main_red, $main_red);
+        }
+        .user-login-btn {
+          @include headerUserBtn($main_blue, $main_white, $main_blue);
+          margin-left: 10px;
         }
       }
     }

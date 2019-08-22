@@ -31,16 +31,16 @@
               %th カテゴリー
               %td
                 = link_to '', class: 'text-link' do
-                  親huga
+                  = @product.category.parent.parent.category
                 = link_to '', class: 'text-link' do 
-                  子huga
+                  = @product.category.parent.category
                 = link_to '', class: 'text-link' do 
-                  孫huga
+                  = @product.category.category
             %tr
               %th ブランド
               %td
                 =link_to '', class: 'text-link' do 
-                  hagebrand
+                  = @product.brand.brand
             %tr
               %th 商品の状態
               %td 
