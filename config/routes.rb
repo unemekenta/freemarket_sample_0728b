@@ -4,8 +4,9 @@ Rails.application.routes.draw do
   root 'products#index'
   get 'telltest' => 'products#teltest' 
   resources :products
-  resources :users do
+  resources :users, only: :show do
     member do
+      get 'index'
       get 'notification'
       get 'todo'
       get 'like'
