@@ -1,30 +1,46 @@
-%main.single
-  .single__single-top
-    =link_to "https://www.mercari.com/jp/" do
-      = image_tag "//www-mercari-jp.akamaized.net/assets/img/common/common/logo.svg?3348495940"
+.default-container
+  .single
+    .single__single-top
+      .single__single-top__container
+        .single__single-top__container__logo
+          =link_to root_path do
+            = image_tag "//www-mercari-jp.akamaized.net/assets/img/common/common/logo.svg?3348495940"
 
-  .single__single-main
-    %section.single__single-main__l-single-container
-      = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-        = render "devise/shared/error_messages", resource: resource
-        %h2.single__single-main__l-single-container__l-single-head 会員情報入力
+    .single__single-main
+      %section.login__container
+        = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+          = render "devise/shared/error_messages", resource: resource
+          .login__container__head 
+            アカウントをお持ちでない方はこちら
+            = link_to new_user_registration_path do
+              .login__container__head__signup-btn
+                新規会員登録
+          .login__container__content
+            .login__container__content__facebook-login
+              = link_to '' do
+                .login__container__content__facebook-login__icon
+                  = fa_icon 'facebook-square'
+                .login__container__content__facebook-login__text
+                  %p Facebookでログイン
+            .login__container__content__google-login
+              = link_to '' do
+                .login__container__content__google-login__icon
+                  = fa_icon 'google'
+                .login__container__content__google-login__text
+                  %p Googleでログイン
 
-        .single__single-main__l-single-container__l-single-content__form-group
-          = f.label "メールアドレス"
-          %br/
-          = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "PC・携帯どちらでも可", class: "input-default"
-        
-        .single__single-main__l-single-container__l-single-content__form-group
-          = f.label "パスワード"
-          - if @minimum_password_length
-            %em
-              (#{@minimum_password_length} characters minimum)
-          %br/
-          = f.password_field :password, autocomplete: "new-password", placeholder: "7文字以上", class: "input-default"
-        - if devise_mapping.rememberable?
-          .field
-            = f.check_box :remember_me
-            = f.label :remember_me
-        .actions
-          = f.submit "Log in"
-= render "devise/shared/links"
+
+
+
+          .single__single-main__l-single-container__l-single-content
+            .single__single-main__l-single-container__l-single-content__form-group
+              = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "メールアドレス", class: "input-default"
+            
+            .single__single-main__l-single-container__l-single-content__form-group
+              - if @minimum_password_length
+                %em
+                  (#{@minimum_password_length} characters minimum)
+              = f.password_field :password, autocomplete: "new-password", placeholder: "パスワード", class: "input-default"
+            = f.submit "ログインする", class: 'btn-red'
+
+  = render "devise/shared/single-footer"
