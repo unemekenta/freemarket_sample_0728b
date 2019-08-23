@@ -4,5 +4,10 @@ Rails.application.routes.draw do
   root 'products#index'
   get 'telltest' => 'products#teltest' 
   resources :products
-  resources :users, only: :show
+  resources :signup do
+    collection do
+      get 'step1'
+      get 'step2'
+    end
+  end
 end
