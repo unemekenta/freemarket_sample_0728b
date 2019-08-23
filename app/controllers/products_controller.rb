@@ -19,7 +19,6 @@ class ProductsController < ApplicationController
     @product = Product.new
     @product.product_images.build
     @product.build_delivery
-    @largecategories = Category.where(parent_id: nil)
   end
 
   def create
