@@ -115,8 +115,10 @@ a {
     justify-content: space-between;
 
     &--left {
-      float: left;
-      display: inline-block;
+      // float: left;
+      display: flex;
+      justify-content: space-between;
+
       li {
         display: inline-block;
 
@@ -130,7 +132,7 @@ a {
         &:hover {
           color: $main_blue;
         }
-        &:hover ~ .header__menu-box--left__parent__wrapper{
+        &:hover ~ .header__menu-box--left__parents{
           display: block;
         
         }
@@ -141,7 +143,7 @@ a {
         font-size: 12px;
         margin-right: 4px;
       }
-      &__parent__wrapper {
+      &__parents {
         display: none;
         // display: block;
         position: absolute;
@@ -168,7 +170,7 @@ a {
         
         }
       }
-      &__child__wrapper {
+      &__children {
         display: block;
         position: absolute;
         top: 0px;
@@ -187,7 +189,7 @@ a {
         }
 
       }
-      &__grand-child__wrapper {
+      &__grand-children {
         display: block;
         position: absolute;
         top: 0;
@@ -212,35 +214,38 @@ a {
         position: relative;
         &:hover {
           color: $main_blue;
+          ul {
+            li {
+              overflow: visible;
+              height: 44px;
+            }
+          }
         }
-        &:hover ~ .header__menu-box--left__brand__list {
-          display: block;
-        }
-        &__list {
-          display: none;
+
+        ul {
           position: absolute;
-          top: 100px;
-          width: 100px;
-          height: 200px;
-          background-color: white;
+          top: 30px;
           z-index: 1000;
           li {
             width: 220px;
-            a {
+            height: 0;
+            overflow: hidden;
             background-color: white;
-            border-right: 1px solid $main_gray;
-            color: black;
-            display: block;
-            height: 44px;
-            line-height: 44px;
-            text-align: left;
-            text-decoration: none;
-            width: 100%;
-            padding-left: 10px;
-            &:hover {
-              background-color: $main_red;
-              color: white;
-            }
+            a {
+              border-right: 1px solid $main_gray;
+              color: black;
+              display: block;
+              height: 44px;
+              line-height: 44px;
+              text-align: left;
+              text-decoration: none;
+              font-weight: normal;
+              width: 100%;
+              padding-left: 10px;
+              &:hover {
+                background-color: $main_red;
+                color: white;
+              }
             }
           }
           
