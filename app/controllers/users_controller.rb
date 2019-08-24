@@ -8,4 +8,16 @@ class UsersController < ApplicationController
 
   def todo
   end
+
+  def like
+  end
+
+  def forsell
+  end
+
+  def in_progress
+  end
+
+  def completed
+  end
 end
