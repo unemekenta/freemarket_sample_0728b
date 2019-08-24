@@ -124,18 +124,18 @@
         .header__menu-box--right
           %ul
             %li.header__menu-box--right__list
-              = link_to root_path do
+              = link_to like_user_path(current_user) do
                 = fa_icon "heart-o", class: 'header__menu-box--right__list__icon'
                 いいね！一覧
             
             %li.header__menu-box--right__list
-              = link_to root_path do
+              = link_to notification_user_path(current_user) do
                 = fa_icon "bell-o", class: 'header__menu-box--right__list__icon'
                 お知らせ
               
                 .header__menu-box__counter
             %li.header__menu-box--right__list
-              = link_to root_path do
+              = link_to todo_user_path(current_user) do
                 = fa_icon "check", class: 'header__menu-box--right__list__icon'
                 やることリスト
           
