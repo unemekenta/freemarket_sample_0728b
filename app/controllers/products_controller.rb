@@ -28,10 +28,21 @@ class ProductsController < ApplicationController
     end
   end
 
+
+  def destroy
+    @product = Product.find(params[:id])
+    if @product.destroy
+      redirect_to root_path, notice: "商品が削除されました"
+    else
+      redirect_to product_path(@product.id), notice: "削除に失敗しました"
+    end
+  end
+
   # ビューを表示するためだけの仮のルーティング
   def teltest
   end
   
+
 
   private
 
