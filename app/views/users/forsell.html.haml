@@ -1,0 +1,50 @@
+.default-container
+  = render './products/header'
+
+  .usersMypage__breadCrumbs
+    %ul
+      %li
+        = link_to "メルカリ", root_path
+      %li
+        = fa_icon "angle-right", class: "usersMypage__breadCrumbs--awsome"
+      %li
+        = link_to user_path(current_user.id) do
+          マイページ
+          = fa_icon "angle-right", class: "usersMypage__breadCrumbs--awsome"
+      %li.usersMypage__breadCrumbs--current
+        お知らせ
+
+  .usersMypage__contents
+    .usersMypage__contents__wrapper.clearfix
+      .usersMypage__contents__wrapper__left
+        = render "users/shared/sidebar"
+            
+
+      .usersMypage__contents__wrapper__right
+        .usersMypage__contents__wrapper__right__forsell
+          %h3 出品した商品
+          %ul.usersMypage__contents__wrapper__right__forsell__tabs
+            %li.usersMypage__contents__wrapper__right__forsell__tabs__tab
+              = link_to "出品中", forsell_user_path(current_user.id)
+            %li.usersMypage__contents__wrapper__right__forsell__tabs__tab.usersMypage__contents__wrapper__right__forsell__tabs__tab--dark
+              = link_to "取引中", in_progress_user_path(current_user.id)
+            %li.usersMypage__contents__wrapper__right__forsell__tabs__tab.usersMypage__contents__wrapper__right__forsell__tabs__tab--dark
+              = link_to "売却済み", completed_user_path(current_user.id)
+
+          .usersMypage__contents__wrapper__right__forsell__contents
+            %ul
+              - 30.times do
+                = render "info"
+
+          %ul.usersMypage__contents__wrapper__right__forsell__btns
+            %li.usersMypage__contents__wrapper__right__forsell__btns__btn
+              = link_to "#" do
+                = fa_icon "angle-left"
+            %li.usersMypage__contents__wrapper__right__forsell__btns__btn.usersMypage__contents__wrapper__right__forsell__btns__btn--right
+              = link_to "#" do
+                = fa_icon "angle-right"
+                
+
+
+  = render './products/aside'
+  = render './products/footer'
