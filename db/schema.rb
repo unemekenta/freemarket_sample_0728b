@@ -24,7 +24,6 @@ ActiveRecord::Schema.define(version: 2019_08_16_154047) do
     t.index ["user_id"], name: "index_addresses_on_user_id"
   end
 
-
   create_table "brands", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "brand", null: false
     t.datetime "created_at", null: false
