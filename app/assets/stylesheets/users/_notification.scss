@@ -1,49 +1,8 @@
 @import "./variables";
 
-* {
-  box-sizing: border-box;
-}
-
-html {
-  height: 100%;
-  width: 100%;
-  }
-  
-  body {
-  height: 100%;
-  width: 100%;
-  }
-  
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6,
-  p,
-  body {
-  margin: 0;
-  padding: 0;
-  font-size: 16px;
-  font-family: "Source Sans Pro", Helvetica, Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
-  }
-
-  @mixin clearfix() {
-    &:after {
-      content: "";
-      display: block;
-      clear: both;
-    }
-  }
-
-  .clearfix {
-    @include clearfix();
-  }
-
   .usersMypage__contents__wrapper__right__notification {
     &__tabs {
       margin: 0 auto;
-      background-color: $main_white;
       height: 90px;
       line-height: 90px;
       font-size: 18px;
@@ -53,8 +12,14 @@ html {
         text-align: center;
         color: $main_black;
         display: block;
+        background-color: $main_white;
         float: left;
         border-top: 2px $main_red solid;
+        & a {
+          display: block;
+          text-decoration: none;
+        }
+
         &:hover {
           opacity: 0.75;
           cursor: pointer;
@@ -70,6 +35,8 @@ html {
       margin-bottom: 50px;
       clear: both;
       display: block;
+      background-color: $main_white;
+      border: none;
     }
   }
 
