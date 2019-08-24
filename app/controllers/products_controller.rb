@@ -29,6 +29,12 @@ class ProductsController < ApplicationController
     end
   end
 
+  def destroy
+    @product = Product.find(params[:id])
+    @product.destroy
+    redirect_to root_path, notice: "商品が削除されました"
+  end
+
   private
 
   def product_params
