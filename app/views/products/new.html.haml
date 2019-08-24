@@ -47,15 +47,15 @@
                   .select-wrap.division1-container
                     %i.icon-arrow-bottom
                     = product.collection_select :category_id, Category.where(parent_id: nil), :id, :category, { prompt: "---" }, class: "select-default division1", value: "default"
-                  - (1...13).each do |i|
+                  - (1...14).each do |i|
                     .select-wrap.division2-container{style: 'display:none;'}
                       %i.icon-arrow-bottom
                       = product.collection_select :category_id, Category.where(parent_id: i), :id, :category, { prompt: "---" }, class: "select-default division2", value: "default"
-                  - (14...158).each do |j|
+                  - (14...159).each do |j|
                     .select-wrap.division3-container{style: 'display:none;'}
                       %i.icon-arrow-bottom
                       = product.collection_select :category_id, Category.where(parent_id: j), :id, :category, { prompt: "---" }, class: "select-default division3", value: "default"
-              - (1...11).each do |i|
+              - (1...13).each do |i|
                 .sell-content__form-box__form-group.size-container{style: 'display:none;'}
                   = product.label :size_id do
                     サイズ
