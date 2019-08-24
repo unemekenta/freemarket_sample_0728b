@@ -4,9 +4,9 @@ Rails.application.routes.draw do
   root 'products#index'
   get 'telltest' => 'products#teltest' 
   resources :products
-  resources :users, only: :show do
+  resources :users do
     member do
-      get 'index'
+      get 'mypage'
       get 'notification'
       get 'todo'
       get 'like'
@@ -23,4 +23,11 @@ Rails.application.routes.draw do
       get 'completed'
     end
   end
+  resources :signup do
+    collection do
+      get 'step1'
+      get 'step2'
+    end
+  end
 end
+
