@@ -76,9 +76,9 @@
       %a.buy-btn 購入画面に進む
       -# = link_to 'hogehoge_path', class: 'buy-btn'
 
-    .product_delete-btn
+    .product__delete-btn
       %a.delete-btn
-      = link_to '削除', product_path(@product.id), method: :delete, data: {confirm: "本当に削除しますか？"}
+        = link_to '削除', product_path(@product.id), method: :delete, data: {confirm: "本当に削除しますか？"}
 
     .product__description
       %p.product__description__text
