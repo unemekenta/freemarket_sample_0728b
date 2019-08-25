@@ -1,0 +1,25 @@
+@import "./variables";
+
+  .usersMypage__contents__wrapper__right__logout {
+    width: 100%;
+    height: 180px;
+    background-color: $main_white;
+    margin: 0 auto;
+    color: $main_white;
+    position: relative;
+
+    
+    &__btn {
+      display: block;
+      background-color: $main_red;
+      width: 320px;
+      height: 50px;
+      line-height: 50px;
+      margin: 0 auto;
+      text-align: center;
+      position: absolute;
+      top: 65px;
+      left: calc(50% - 160px);
+    }
+  }
+

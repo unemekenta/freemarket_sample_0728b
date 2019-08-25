@@ -1,0 +1,38 @@
+.default-container
+  = render './products/header'
+
+  .usersMypage__breadCrumbs
+    %ul
+      %li
+        = link_to "メルカリ", root_path
+      %li
+        = fa_icon "angle-right", class: "usersMypage__breadCrumbs--awsome"
+      %li
+        = link_to mypage_user_path(current_user.id) do
+          マイページ
+          = fa_icon "angle-right", class: "usersMypage__breadCrumbs--awsome"
+      %li.usersMypage__breadCrumbs--current
+        お知らせ
+
+  .usersMypage__contents
+    .usersMypage__contents__wrapper.clearfix
+      .usersMypage__contents__wrapper__left
+        = render "users/shared/sidebar"
+            
+
+      .usersMypage__contents__wrapper__right
+        .usersMypage__contents__wrapper__right__notification
+          %ul.usersMypage__contents__wrapper__right__notification__tabs
+            %li.usersMypage__contents__wrapper__right__notification__tabs__tab
+              = link_to "お知らせ", notification_user_path(current_user.id)
+            %li.usersMypage__contents__wrapper__right__notification__tabs__tab.usersMypage__contents__wrapper__right__notification__tabs__tab--dark
+              = link_to "やることリスト", todo_user_path(current_user.id)
+
+          .usersMypage__contents__wrapper__right__notification__contents
+            %ul
+              = render "info-none"
+                
+
+
+  = render './products/aside'
+  = render './products/footer'

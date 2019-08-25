@@ -1,0 +1,74 @@
+@import "./variables";
+
+  .usersMypage__contents__wrapper__right__forsell {
+    & h3 {
+      width: 100%;
+      padding: 22px;
+      font-weight: bold;
+      background-color: lighten($body_background-color, 1%);
+    }
+    &__tabs {
+      margin: 0 auto;
+      height: 75px;
+      line-height: 75px;
+      font-size: 16px;
+      font-weight: bold;
+      &__tab {
+        width: calc(100%/3);
+        text-align: center;
+        color: $main_black;
+        display: block;
+        background-color: $main_white;
+        float: left;
+        border-top: 2px $main_red solid;
+        & a {
+          display: block;
+          text-decoration: none;
+        }
+
+        &:hover {
+          opacity: 0.75;
+          cursor: pointer;
+        }
+        &--dark {
+          background-color: darken($body_background-color, 5%);
+          border: none;
+        }
+      }
+    }
+    &__contents {
+      width: 100%;
+      margin-bottom: 50px;
+      clear: both;
+      display: block;
+      background-color: $main_white;
+      border: none;
+    }
+    &__btns {
+      &__btn {
+        list-style: none;
+        float: left;
+        font-weight: bold;
+        font-size: 28px;
+        line-height: 42px;
+        text-align: center;
+        & a {
+          display: block;
+          width: 42px;
+          height: 42px;
+          background-color: $main_white;
+          border: $main_gray 1px solid;
+          border-radius: 4px;
+
+          &:hover {
+            background-color: darken($main_white, 5%);
+          }
+
+        }
+        &--right {
+          float: right;
+        }
+      }
+    }
+  }
+

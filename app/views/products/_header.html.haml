@@ -11,141 +11,147 @@
     .header__menu-box
       .header__menu-box--left
         %ul
-          %li
-            %h2.header__menu-box--left__category
-              = link_to root_path do
-                = fa_icon "list-ul", class: 'header__menu-box--left__icon'
-                カテゴリーから探す
-            %ul.header__menu-box--left__parent__wrapper
-              %li.header__menu-box--left__parent
-                %h3
-                  %a{href: ""} レディース
-                %ul.header__menu-box--left__child__wrapper
-                  %li.header__menu-box--left__child
-                    %a{href:""} トップス
-                    %ul.header__menu-box--left__grand-child__wrapper
-                      %li.header__menu-box--left__grand-child
-                        %a{href: ""} Tシャツ/カットソー（半袖/袖なし)
-                      %li.header__menu-box--left__grand-child
-                        %a{href: ""} Tシャツ/カットソー（七分/長袖)
-                  %li.header__menu-box--left__child
-                    %a{href:""} ジャケット/アウター
-                    %ul.header__menu-box--left__grand-child__wrapper
-                      %li.header__menu-box--left__grand-child
-                        %a{href: ""} テーラードジャケット
-                      %li.header__menu-box--left__grand-child
-                        %a{href: ""} ノーカラージャケット
-              %li.header__menu-box--left__parent
-                %h3
-                  %a{href: ""} メンズ
-                %ul.header__menu-box--left__child__wrapper
-                  %li.header__menu-box--left__child
-                    %a{href:""} トップス
-                    %ul.header__menu-box--left__grand-child__wrapper
-                      %li.header__menu-box--left__grand-child
-                        %a{href: ""} Tシャツ/カットソー（半袖/袖なし)
-                      %li.header__menu-box--left__grand-child
-                        %a{href: ""} Tシャツ/カットソー（七分/長袖)
-                  %li.header__menu-box--left__child
-                    %a{href:""} ジャケット/アウター
-                    %ul.header__menu-box--left__grand-child__wrapper
-                      %li.header__menu-box--left__grand-child
-                        %a{href: ""} テーラードジャケット
-                      %li.header__menu-box--left__grand-child
-                        %a{href: ""} ノーカラージャケット
-              %li.header__menu-box--left__parent
-                %h3
-                  %a{href: ""} ベビー・キッズ
-              %li.header__menu-box--left__parent
-                %h3
-                  %a{href: ""} インテリア・住まい・小物
-              %li.header__menu-box--left__parent
-                %h3
-                  %a{href: ""} 本・音楽・ゲーム
-              %li.header__menu-box--left__parent
-                %h3
-                  %a{href: ""} おもちゃ・ホビー・グッズ
-              %li.header__menu-box--left__parent
-                %h3
-                  %a{href: ""} コスメ・香水・美容
-              %li.header__menu-box--left__parent
-                %h3
-                  %a{href: ""} 家電・スマホ・カメラ
-              %li.header__menu-box--left__parent
-                %h3
-                  %a{href: ""} スポーツ・レジャー
-              %li.header__menu-box--left__parent
-                %h3
-                  %a{href: ""} ハンドメイド
-              %li.header__menu-box--left__parent
-                %h3
-                  %a{href: ""} チケット
-              %li.header__menu-box--left__parent
-                %h3
-                  %a{href: ""} 自転車・オートバイ
-              %li.header__menu-box--left__parent
-                %h3
-                  %a{href: ""} その他
-              %li.header__menu-box--left__parent
-                %h3
-                  %a{href: ""} カテゴリ一覧
+          %li.header__menu-box--left__category
+            = link_to root_path do
+              = fa_icon "list-ul", class: 'header__menu-box--left__icon'
+              カテゴリーから探す
+            %ul.header__menu-box--left__parents
+              %li.header__menu-box--left__parents__parent
+                = link_to "レディース", root_path 
+                %ul.header__menu-box--left__children
+                  %li.header__menu-box--left__children__child
+                    = link_to "トップス", root_path 
+                    %ul.header__menu-box--left__grand-children
+                      - @categories_grandchildren_ladies1.each do |grandchild|
+                        %li.header__menu-box--left__grand-children__grand-child
+                          = link_to "#{grandchild.category}", root_path
+                  %li.header__menu-box--left__children__child
+                    = link_to "ジャケット/アウター", root_path 
+                    %ul.header__menu-box--left__grand-children
+                      - @categories_grandchildren_ladies2.each do |grandchild|
+                        %li.header__menu-box--left__grand-children__grand-child
+                          = link_to "#{grandchild.category}", root_path
+                  %li.header__menu-box--left__children__child
+                    = link_to "パンツ", root_path 
+                    %ul.header__menu-box--left__grand-children
+                      - @categories_grandchildren_ladies3.each do |grandchild|
+                        %li.header__menu-box--left__grand-children__grand-child
+                          = link_to "#{grandchild.category}", root_path
+                  %li.header__menu-box--left__children__child
+                    = link_to "スカート", root_path 
+                  %li.header__menu-box--left__children__child
+                    = link_to "ワンピース", root_path 
+                  %li.header__menu-box--left__children__child
+                    = link_to "靴", root_path 
+                  %li.header__menu-box--left__children__child
+                    = link_to "ルームウェア/パジャマ", root_path 
+                  %li.header__menu-box--left__children__child
+                    = link_to "レッグウェア", root_path 
+                  %li.header__menu-box--left__children__child
+                    = link_to "帽子", root_path 
+                  %li.header__menu-box--left__children__child
+                    = link_to "バッグ", root_path 
+                  %li.header__menu-box--left__children__child
+                    = link_to "アクセサリー", root_path 
+                  %li.header__menu-box--left__children__child
+                    = link_to "ヘアアクセサリー", root_path 
+                  %li.header__menu-box--left__children__child
+                    = link_to "小物", root_path 
+                  %li.header__menu-box--left__children__child
+                    = link_to "時計", root_path 
+                  %li.header__menu-box--left__children__child
+                    = link_to "ウィッグ/エクステ", root_path 
+                  %li.header__menu-box--left__children__child
+                    = link_to "スーツ/フォーマル/ドレス", root_path 
+                  %li.header__menu-box--left__children__child
+                    = link_to "マタニティ", root_path 
+                  %li.header__menu-box--left__children__child
+                    = link_to "その他", root_path 
+              %li.header__menu-box--left__parents__parent
+                = link_to "メンズ", root_path 
+                %ul.header__menu-box--left__children
+                  %li.header__menu-box--left__children__child
+                    = link_to "トップス", root_path 
+                    %ul.header__menu-box--left__grand-children
+                      %li.header__menu-box--left__grand-children__grand-child
+                        = link_to "Tシャツ/カットソー（半袖/袖なし)", root_path 
+                      %li.header__menu-box--left__grand-children__grand-child
+                        = link_to "Tシャツ/カットソー（七分/長袖)", root_path 
+                  %li.header__menu-box--left__children__child
+                    = link_to "ジャケット/アウター", root_path 
+                    %ul.header__menu-box--left__grand-children
+                      %li.header__menu-box--left__grand-children__grand-child
+                        = link_to "テーラードジャケット", root_path 
+                      %li.header__menu-box--left__grand-children__grand-child
+                        = link_to "ノーカラージャケット", root_path 
+              %li.header__menu-box--left__parents__parent
+                = link_to "ベビー・キッズ", root_path 
+              %li.header__menu-box--left__parents__parent
+                = link_to "本・音楽・ゲーム", root_path 
+              %li.header__menu-box--left__parents__parent
+                = link_to "おもちゃ・ホビー・グッズ", root_path 
+              %li.header__menu-box--left__parents__parent
+                = link_to "コスメ・香水・美容", root_path 
+              %li.header__menu-box--left__parents__parent
+                = link_to "家電・スマホ・カメラ", root_path 
+              %li.header__menu-box--left__parents__parent
+                = link_to "スポーツ・レジャー", root_path 
+              %li.header__menu-box--left__parents__parent
+                = link_to "ハンドメイド", root_path 
+              %li.header__menu-box--left__parents__parent
+                = link_to "チケット", root_path 
+              %li.header__menu-box--left__parents__parent
+                = link_to "自転車・オートバイ", root_path 
+              %li.header__menu-box--left__parents__parent
+                = link_to "その他", root_path 
+              %li.header__menu-box--left__parents__parent
+                = link_to "カテゴリ一覧", root_path 
                 
 
 
             
-          %li
-            %h2.header__menu-box--left__brand
-              = link_to root_path do
-                = fa_icon "tag", class: 'header__menu-box--left__icon'
-                ブランドから探す
+          %li.header__menu-box--left__brand
+            = link_to root_path do
+              = fa_icon "tag", class: 'header__menu-box--left__icon'
+              ブランドから探す
             %ul.header__menu-box--left__brand__list
               %li
-                %h3
-                  %a{href: ""} シャネル
+                = link_to "シャネル", root_path
               %li
-                %h3
-                  %a{href: ""} ナイキ
+                = link_to "ナイキ", root_path
               %li
-                %h3
-                  %a{href: ""} ルイ ヴィトン
+                = link_to "ルイ ヴィトン", root_path 
               %li
-                %h3
-                  %a{href: ""} シュプリーム
+                = link_to "シュプリーム", root_path
               %li
-                %h3
-                  %a{href: ""} アディダス
+                = link_to "アディダス", root_path 
               %li
-                %h3
-                  %a{href: ""} ブランド一覧
-
+                = link_to "ブランド一覧", root_path 
 
 
       - if user_signed_in?            
         .header__menu-box--right
           %ul
             %li.header__menu-box--right__list
-              = link_to root_path do
+              = link_to like_user_path(current_user) do
                 = fa_icon "heart-o", class: 'header__menu-box--right__list__icon'
                 いいね！一覧
             
             %li.header__menu-box--right__list
-              = link_to root_path do
+              = link_to notification_user_path(current_user) do
                 = fa_icon "bell-o", class: 'header__menu-box--right__list__icon'
                 お知らせ
               
                 .header__menu-box__counter
             %li.header__menu-box--right__list
-              = link_to root_path do
+              = link_to todo_user_path(current_user) do
                 = fa_icon "check", class: 'header__menu-box--right__list__icon'
                 やることリスト
           
             %li.header__menu-box--right__list
-              = link_to root_path do
+              = link_to mypage_user_path(current_user.id) do
                 = image_tag "https://cdn.pixabay.com/photo/2016/05/17/22/16/baby-1399332_1280.jpg", class: 'header__menu-box--right__list__photo'
                 マイページ
-              
-            %li.header__menu-box--right__list
-              = link_to "ログアウト", destroy_user_session_path, method: :delete
 
       - else
         .header__menu-box--right
