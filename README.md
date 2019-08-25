@@ -56,10 +56,10 @@ Hiroki_Katsuyama, Masatomo_Sugai, Yuichi_Motmomura, Kenta_Uneme
 ## addressesテーブル
 |Column|Type|Options|
 |------|----|-------|
-|post_number|integer||
-|prefecture|string||
-|city|string||
-|street|string||
+|post_number|integer|null: false|
+|prefecture|string|null: false|
+|city|string|null: false|
+|street|string|null: false|
 |building|string||
 |user|references|null: false, foreign_key: true|
 

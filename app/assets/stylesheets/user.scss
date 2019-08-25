@@ -52,42 +52,42 @@
 
         }
         
-        // &__progress-bar{
-        //   padding: 40px 0 0 44px;
-        //   display: inline-block;
-        //   font-size: 12px;
-        //   &__list {
-        //     text-align: center;
-        //     &__progress-status {
-        //       display: inline-block;
-        //       color: #ccc;
-        //       margin: 0 40px 0 0;
-        //       min-width: 60px;
-        //       position: relative;
-        //       .progress-status__dot {
-        //         @include progressDot(#ccc);
-        //         &::before {
-        //           right: 50%;
-        //           @include progressBar(#ccc);
-        //         }
-        //         &::after {
-        //           @include progressBar(#ccc);
-        //         }
-        //       }
-        //       &__active{
-        //         display: inline-block;
-        //         font-weight: 600;
-        //         color: $main_red;
-        //         margin: 0 20px;
-        //         .progress-status__dot__active {
-        //           @include progressDot($main_red);
-        //         }
+        &__progress-bar{
+          padding: 40px 0 0 44px;
+          display: inline-block;
+          font-size: 12px;
+          &__list {
+            text-align: center;
+            &__progress-status {
+              display: inline-block;
+              color: #ccc;
+              margin: 0 40px 0 0;
+              min-width: 60px;
+              position: relative;
+              .progress-status__dot {
+                @include progressDot(#ccc);
+                &::before {
+                  right: 50%;
+                  @include progressBar(#ccc);
+                }
+                &::after {
+                  @include progressBar(#ccc);
+                }
+              }
+              &__active{
+                display: inline-block;
+                font-weight: 600;
+                color: $main_red;
+                margin: 0 20px;
+                .progress-status__dot__active {
+                  @include progressDot($main_red);
+                }
     
-        //       }
-        //     }
-        //   }
+              }
+            }
+          }
 
-        // }
+        }
       }
     }
     
