@@ -35,13 +35,12 @@ a {
 
 
 
-@mixin dropMenu_aTag() {
+@mixin dropMenu_aTag($cell-height) {
   background-color: white;
-  border-right: 1px solid $main_gray;
   color: black;
   display: block;
-  height: 44px;
-  line-height: 44px;
+  height: $cell-height;
+  line-height: $cell-height;
   text-align: left;
   text-decoration: none;
   width: 100%;
@@ -115,95 +114,119 @@ a {
     justify-content: space-between;
 
     &--left {
-      float: left;
-      display: inline-block;
-      li {
-        display: inline-block;
-
-      }
-      &__category {
-        font-weight: bold;
-        font-size:14px;
-        margin-right: 10px;
-        height: 55px;
-        line-height: 46px;
-        &:hover {
-          color: $main_blue;
-        }
-        &:hover ~ .header__menu-box--left__parent__wrapper{
-          display: block;
-        
-        }
-      }
-      
+      display: flex;
+      justify-content: space-between;
       &__icon {
         color: $main_red;
         font-size: 12px;
         margin-right: 4px;
       }
-      &__parent__wrapper {
-        display: none;
-        // display: block;
-        position: absolute;
-        top: 100px;
-        width: 220px;
-        height: 400px;
-        background-color: white;
-        box-shadow: 0 1px 1px 0 rgba(0,0,0,0.24);
-        z-index: 1000;
-        & > li {
-          width: 220px;
-        }
-        li {
+      ul {
+        li.header__menu-box--left__category {
+          font-weight: bold;
+          font-size:14px;
+          margin-right: 10px;
+          height: 55px;
+          line-height: 46px;
           position: relative;
-          a {
-            @include dropMenu_aTag();
-          
-            &:hover {
-              background-color: $main_red;
-              color: white;
-            
+          &:hover {
+            color: $main_blue;
+            ul {
+              li {
+                display: block;
+                height: 44px;
+              }
             }
           }
-        
-        }
-      }
-      &__child__wrapper {
-        display: block;
-        position: absolute;
-        top: 0px;
-        left: 220px;
-        width: 220px;
-        height: 400px;
-        background-color: white;
-        box-shadow: 0 1px 1px 0 rgba(0,0,0,0.24);
-        z-index: 1000;
-        li {
-          width: 220px;
-          a {
-            @include dropMenu_aTag;
-            font-size: 14px;
+          ul {
+            position: absolute;
+            top: 40px;
+            z-index: 1000;
+            font-weight: normal;
+            li {
+              width: 220px;
+              height: 0;
+              display: none;
+              background-color: white;
+              &:hover {
+                color: $main_blue;
+                .header__menu-box--left__children {
+                  &__child {
+                    display: block;
+                    height: 30px;
+                  }
+                }
+              }
+              a {
+                @include dropMenu_aTag(44px);
+                &:hover {
+                  background-color: $main_red;
+                  color: white;
+                }
+              }
+              .header__menu-box--left__children {
+                position: absolute;
+                top: 0;
+                left: 220px;
+                z-index: 1000;
+                height: 616px;
+                background-color: white;
+                border-right: 1px solid $main_gray;
+                &__child {
+                  width: 220px;
+                  height: 0;
+                  display: none;
+                  background-color: white;
+                  &:hover {
+                    color: $main_blue;
+                    .header__menu-box--left__grand-children {
+                      &__grand-child {
+                        display: block;
+                        height: 20px;
+                      }
+                    }
+                  }
+                  a {
+                    @include dropMenu_aTag(30px);
+                    font-size: 14px;
+                    &:hover {
+                      background-color: #f3f3f3;
+                    }
+                  }
+                  .header__menu-box--left__grand-children {
+                    position: absolute;
+                    top: 0;
+                    left: 220px;
+                    z-index: 1000;
+                    height: 616px;
+                    background-color: white;
+                    border-right: 1px solid $main_gray;
+    
+                    &__grand-child {
+                      width: 300px;
+                      height: 0;
+                      display: none;
+                      background-color: white;
+                      a {
+                        @include dropMenu_aTag(30px);
+                        font-size: 13px;
+                        &:hover {
+                          background-color: #f3f3f3;
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
           }
         }
+      }
 
+      li {
+        display: inline-block;
       }
-      &__grand-child__wrapper {
-        display: block;
-        position: absolute;
-        top: 0;
-        left: 220px;
-        width: 220px;
-        height: 400px;
-        background-color: $main_white;
-        z-index: 1000;
-        li {
-          width: 220px;
-            a {
-              @include dropMenu_aTag();
-              font-size:12px;
-            }
-        }
-      }
+
 
       &__brand {
         font-weight: bold;
@@ -212,38 +235,40 @@ a {
         position: relative;
         &:hover {
           color: $main_blue;
+          ul.header__menu-box--left__brand__list {
+            li {
+              display: block;
+              height: 44px;
+            }
+          }
         }
-        &:hover ~ .header__menu-box--left__brand__list {
-          display: block;
-        }
-        &__list {
-          display: none;
+
+        ul.header__menu-box--left__brand__list {
           position: absolute;
-          top: 100px;
-          width: 100px;
-          height: 200px;
-          background-color: white;
+          top: 40px;
           z-index: 1000;
           li {
             width: 220px;
-            a {
+            height: 0;
+            display: none;
             background-color: white;
-            border-right: 1px solid $main_gray;
-            color: black;
-            display: block;
-            height: 44px;
-            line-height: 44px;
-            text-align: left;
-            text-decoration: none;
-            width: 100%;
-            padding-left: 10px;
-            &:hover {
-              background-color: $main_red;
-              color: white;
-            }
+            a {
+              border-right: 1px solid $main_gray;
+              color: black;
+              display: block;
+              height: 44px;
+              line-height: 44px;
+              text-align: left;
+              text-decoration: none;
+              font-weight: normal;
+              width: 100%;
+              padding-left: 10px;
+              &:hover {
+                background-color: $main_red;
+                color: white;
+              }
             }
           }
-          
         }
       }
   
