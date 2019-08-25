@@ -41,6 +41,15 @@ class ProductsController < ApplicationController
   # ビューを表示するためだけの仮のルーティング
   def teltest
   end
+
+  def pay
+    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
+    Payjp::Charge.create(
+      :amount => params[:amount],
+      :card => params['payjp-token'],
+      :currency => 'jpy'
+    )
+  end
   
 
 
