@@ -21,6 +21,8 @@ Rails.application.routes.draw do
       get 'forsell'
       get 'in_progress'
       get 'completed'
+      get 'logout'
+
     end
   end
   resources :signup do

@@ -140,12 +140,9 @@
                 やることリスト
           
             %li.header__menu-box--right__list
-              = link_to user_path(current_user.id) do
+              = link_to mypage_user_path(current_user.id) do
                 = image_tag "https://cdn.pixabay.com/photo/2016/05/17/22/16/baby-1399332_1280.jpg", class: 'header__menu-box--right__list__photo'
                 マイページ
-              
-            %li.header__menu-box--right__list
-              = link_to "ログアウト", destroy_user_session_path, method: :delete
 
       - else
         .header__menu-box--right

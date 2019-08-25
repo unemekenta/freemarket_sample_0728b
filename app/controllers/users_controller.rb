@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
 
-  def index
+  before_action :move_to_root
+
+  def mypage
   end
 
   def notification
@@ -19,5 +21,14 @@ class UsersController < ApplicationController
   end
 
   def completed
+  end
+
+  def logout
+  end
+
+  private
+  def move_to_root
+    redirect_to :root unless user_signed_in?
+      
   end
 end
