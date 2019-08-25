@@ -30,6 +30,7 @@
           -# = render "devise/shared/error_messages", resource: resource
           %h2.single__single-main__l-single-container__l-single-head 会員情報入力
    
+          %h2.single__single-main__l-single-container__l-single-content
             = f.fields_for :address do |address|
               .single__single-main__l-single-container__l-single-content__form-group
                 = address.label "郵便番号"
@@ -57,5 +58,5 @@
                 = address.text_field :building, autofocus: true, placeholder: "例) 柳ビル103", class: "input-default"
       
             = f.submit "次へ進む", class: "btn-red"
-      
+    
    
