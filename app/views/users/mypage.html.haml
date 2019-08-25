@@ -44,10 +44,8 @@
             
             #user-notice-content.usersMypage__contents__wrapper__right__tabs__contents
               %ul
-                = render "info"
-                = render "info"
-                = render "info"
-                = render "info"
+                - 5.times do
+                  = render "info"
                 %li.usersMypage__contents__wrapper__right__tabs__contents--last
                   = link_to "一覧を見る", notification_user_path(current_user.id)
 
@@ -77,14 +75,9 @@
 
             #past-deal-content.usersMypage__contents__wrapper__right__tabs__contents
               %ul
-                = render 'info'
-                = render 'info'
-                = render 'info'
-                = render 'info'
-                = render 'info'
-                = render 'info'
-                = render 'info'
-                = render 'info'
+                - 5.times do
+                  = render 'info'
+              
                 %li.usersMypage__contents__wrapper__right__tabs__contents--last
                   = link_to "一覧を見る", purchased_user_path(current_user.id)
 
