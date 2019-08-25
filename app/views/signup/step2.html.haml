@@ -26,10 +26,10 @@
   
     .single__single-main
       %section.single__single-main__l-single-container
+        %h2.single__single-main__l-single-container__l-single-head 会員情報入力
         = form_with model: @user, url: signup_index_path, method: :post, html: {class: 'forth-main-wrapper__box'} do |f|
-          -# = render "devise/shared/error_messages", resource: resource
-          %h2.single__single-main__l-single-container__l-single-head 会員情報入力
-   
+
+          .single__single-main__l-single-container__l-single-content
             = f.fields_for :address do |address|
               .single__single-main__l-single-container__l-single-content__form-group
                 = address.label "郵便番号"
@@ -58,4 +58,4 @@
       
             = f.submit "次へ進む", class: "btn-red"
       
-   
+    
