@@ -8,11 +8,11 @@
       %li
         = fa_icon "angle-right", class: "usersMypage__breadCrumbs--awsome"
       %li
-        = link_to user_path(current_user.id) do
+        = link_to mypage_user_path(current_user.id) do
           マイページ
           = fa_icon "angle-right", class: "usersMypage__breadCrumbs--awsome"
       %li.usersMypage__breadCrumbs--current
-        お知らせ
+        出品した商品・売却済み
 
   .usersMypage__contents
     .usersMypage__contents__wrapper.clearfix

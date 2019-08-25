@@ -1,7 +1,7 @@
 .shared-sidebar
   %ul
     %li
-      = link_to user_path(current_user) do
+      = link_to mypage_user_path(current_user) do
         %ul
           %li.shared-sidebar--text
             マイページ
@@ -153,7 +153,7 @@
           %li.shared-sidebar--awsome
             = fa_icon "chevron-right"
     %li
-      = link_to destroy_user_session_path, method: "delete" do
+      = link_to logout_user_path do
         %ul
           %li.shared-sidebar--text
             ログアウト

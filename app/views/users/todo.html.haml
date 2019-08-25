@@ -8,7 +8,7 @@
       %li
         = fa_icon "angle-right", class: "usersMypage__breadCrumbs--awsome"
       %li
-        = link_to user_path(current_user.id) do
+        = link_to mypage_user_path(current_user) do
           マイページ
           = fa_icon "angle-right", class: "usersMypage__breadCrumbs--awsome"
       %li.usersMypage__breadCrumbs--current
