@@ -1,14 +1,14 @@
 .shared-sidebar
   %ul
     %li
-      = link_to "hoge" do
+      = link_to mypage_user_path(current_user) do
         %ul
           %li.shared-sidebar--text
             マイページ
-          %li.shared-sidebar--awsome
+          %li.shared-sidebar--awsome#hover_awsome
             = fa_icon "chevron-right"
     %li
-      = link_to "hoge" do
+      = link_to notification_user_path() do
         %ul
           %li.shared-sidebar--text
             お知らせ
@@ -17,45 +17,59 @@
               &nbsp;3
             = fa_icon "chevron-right"
     %li
-      = link_to "hoge" do
+      = link_to todo_user_path(current_user) do
         %ul
           %li.shared-sidebar--text
             やることリスト
           %li.shared-sidebar--awsome
             = fa_icon "chevron-right"
     %li
-      = link_to "hoge" do
+      = link_to like_user_path(current_user) do
         %ul
           %li.shared-sidebar--text
             いいね！一覧
           %li.shared-sidebar--awsome
             = fa_icon "chevron-right"
     %li
-      = link_to "hoge" do
+      = link_to new_product_path do
         %ul
           %li.shared-sidebar--text
             出品する
           %li.shared-sidebar--awsome
             = fa_icon "chevron-right"
     %li
-      = link_to "hoge" do
+      = link_to forsell_user_path(current_user) do
         %ul
           %li.shared-sidebar--text
             出品した商品-出品中
           %li.shared-sidebar--awsome
             = fa_icon "chevron-right"
     %li
-      = link_to "hoge" do
+      = link_to in_progress_user_path(current_user) do
         %ul
           %li.shared-sidebar--text
             出品した商品-取引中
           %li.shared-sidebar--awsome
             = fa_icon "chevron-right"
     %li
-      = link_to "hoge" do
+      = link_to completed_user_path(current_user) do
         %ul
           %li.shared-sidebar--text
             出品した商品-過去の取引
+          %li.shared-sidebar--awsome
+            = fa_icon "chevron-right"
+    %li
+      = link_to purchase_user_path(current_user) do
+        %ul
+          %li.shared-sidebar--text
+            購入した商品-取引中
+          %li.shared-sidebar--awsome
+            = fa_icon "chevron-right"
+    %li
+      = link_to purchased_user_path(current_user) do
+        %ul
+          %li.shared-sidebar--text
+            購入した商品-過去の取引
           %li.shared-sidebar--awsome
             = fa_icon "chevron-right"
     %li
@@ -93,14 +107,14 @@
   %p メルペイ
   %ul
     %li
-      = link_to "hoge" do
+      = link_to sales_user_path(current_user) do
         %ul
           %li.shared-sidebar--text
             売上・振込申請
           %li.shared-sidebar--awsome
             = fa_icon "chevron-right"
     %li
-      = link_to "hoge" do
+      = link_to point_user_path(current_user) do
         %ul
           %li.shared-sidebar--text
             ポイント
@@ -111,28 +125,28 @@
   %p 設定
   %ul
     %li
-      = link_to "hoge" do
+      = link_to profile_user_path(current_user) do
         %ul
           %li.shared-sidebar--text
             プロフィール
           %li.shared-sidebar--awsome
             = fa_icon "chevron-right"
     %li
-      = link_to "hoge" do
+      = link_to deliver_address_user_path(current_user) do
         %ul
           %li.shared-sidebar--text
             発送元・お届け先住所変更
           %li.shared-sidebar--awsome
             = fa_icon "chevron-right"
     %li
-      = link_to "hoge" do
+      = link_to card_user_path(current_user) do
         %ul
           %li.shared-sidebar--text
             支払い方法
           %li.shared-sidebar--awsome
             = fa_icon "chevron-right"
     %li
-      = link_to "hoge" do
+      = link_to email_password_user_path(current_user) do
         %ul
           %li.shared-sidebar--text
             メール/パスワード
@@ -153,7 +167,7 @@
           %li.shared-sidebar--awsome
             = fa_icon "chevron-right"
     %li
-      = link_to "hoge" do
+      = link_to logout_user_path do
         %ul
           %li.shared-sidebar--text
             ログアウト
