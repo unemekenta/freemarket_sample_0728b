@@ -36,36 +36,50 @@ $(document).on('turbolinks:load', function () {
   insertIds(adultWearSize, 338, 381);
   insertIds(adultWearSize, 402, 405);
   insertIds(adultWearSize, 457, 458);
+  insertIds(adultWearSize, 1085, 1086);
+  insertIds(adultWearSize, 1096, 1097);
 
   var childWearSize = new Array();
   insertIds(childWearSize, 495, 534);
+  insertIds(childWearSize, 495, 534);
+  insertIds(childWearSize, 1087, 1087);
+  insertIds(childWearSize, 1098, 1098);
 
   var babyWearSize = new Array();
   insertIds(babyWearSize, 468, 494);
 
   var ladiesShoesSize = new Array();
   insertIds(ladiesShoesSize, 219, 228);
+  insertIds(ladiesShoesSize, 1083, 1083);
+  insertIds(ladiesShoesSize, 1093, 1093);
 
   var mensShoesSize = new Array();
   insertIds(mensShoesSize, 382, 389);
+  insertIds(mensShoesSize, 1082, 1082);
+  insertIds(mensShoesSize, 1092, 1092);
 
   var childShoesSize = new Array();
   insertIds(childShoesSize, 535, 539);
+  insertIds(childShoesSize, 1084, 1084);
+  insertIds(childShoesSize, 1094, 1094);
 
   var snowboardBoardSize = new Array();
-  insertIds(snowboardBoardSize, 1000, 1001);
+  insertIds(snowboardBoardSize, 1080, 1080);
 
   var skiBoardSize = new Array();
-  insertIds(skiBoardSize, 1002, 1003);
+  insertIds(skiBoardSize, 1091, 1091);
 
   var tireSize = new Array();
-  insertIds(tireSize, 1004, 1005);
+  insertIds(tireSize, 1217, 1220);
 
   var motorcycleSize = new Array();
-  insertIds(motorcycleSize, 1006, 1007);
+  insertIds(motorcycleSize, 147, 147);
 
   var motorcycleHelmetSize = new Array();
-  insertIds(motorcycleHelmetSize, 1008, 1009);
+  insertIds(motorcycleHelmetSize, 1263, 1263);
+
+  var tvSize = new Array();
+  insertIds(tvSize, 982, 982);
   //ここまで
 
 
@@ -73,12 +87,12 @@ $(document).on('turbolinks:load', function () {
   $('.division1').on('change', function () {
     resetHTML(1);
     $('.size-container').css('display', 'none');
-    var category = $(this).val();
-    if (category === "") {
+    var selected = Number($(this).val());
+    if (selected === 0) {
       $('.division2-container').css('display', 'none');
       $('.division3-container').css('display', 'none');
     } else {
-      var middlecategory = $('.division2-container').eq(category - 1);
+      var middlecategory = $('.division2-container').eq(selected - 1);
       middlecategory.css('display', 'block');
       middlecategory.children('select').attr("value", "changed");
       $('.brand-container').css('display', 'block');
@@ -88,14 +102,21 @@ $(document).on('turbolinks:load', function () {
   $('.division2').on('change', function () {
     resetHTML(2);
     $('.size-container').css('display', 'none');
-    var category = $(this).val();
-    if (category === "") {
+    var selected = Number($(this).val());
+    if (selected === 0 || selected === 147 || selected === 158) {
       $('.division3-container').css('display', 'none');
     } else {
-      var bottomcategory = $('.division3-container').eq(category - 14);
+      var bottomcategory = $('.division3-container').eq(selected - 14);
       bottomcategory.css('display', 'block');
       bottomcategory.children('select').attr("value", "changed");
     }
+    resetHTML();
+    //オートバイ車体専用サイズ表示機能
+    if (motorcycleSize.includes(selected)) {
+      var size = $('.size-container').eq(9);
+    }
+    size.css('display', 'block');
+    size.children().children('select').attr("value", "changed");
   });
 
 
@@ -126,6 +147,8 @@ $(document).on('turbolinks:load', function () {
       var size = $('.size-container').eq(9);
     } else if (motorcycleHelmetSize.includes(selected)) {
       var size = $('.size-container').eq(10);
+    } else if (tvSize.includes(selected)) {
+      var size = $('.size-container').eq(11);
     }
     size.css('display', 'block');
     size.children().children('select').attr("value", "changed");

@@ -9,6 +9,13 @@ class ProductsController < ApplicationController
     @products_vuitton = products[20..23]
     @products_supreme = products[24..27]
     @products_nike = products[28..31]
+    @categories_parents = Category.where(parent_id: nil)
+    @categories_children = Category.where(parent_id: 14..32)
+    @categories_grandchildren_ladies1 = Category.where(parent_id: 14)
+    @categories_grandchildren_ladies2 = Category.where(parent_id: 15)
+    @categories_grandchildren_ladies3 = Category.where(parent_id: 16)
+
+
   end
 
   def show

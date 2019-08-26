@@ -1,0 +1,42 @@
+@import "./variables";
+
+  .usersMypage__contents__wrapper__right__notification {
+    &__tabs {
+      margin: 0 auto;
+      height: 90px;
+      line-height: 90px;
+      font-size: 18px;
+      font-weight: bold;
+      &__tab {
+        width: calc(100%/2);
+        text-align: center;
+        color: $main_black;
+        display: block;
+        background-color: $main_white;
+        float: left;
+        border-top: 2px $main_red solid;
+        & a {
+          display: block;
+          text-decoration: none;
+        }
+
+        &:hover {
+          opacity: 0.75;
+          cursor: pointer;
+        }
+        &--dark {
+          background-color: darken($body_background-color, 5%);
+          border: none;
+        }
+      }
+    }
+    &__contents {
+      width: 100%;
+      margin-bottom: 50px;
+      clear: both;
+      display: block;
+      background-color: $main_white;
+      border: none;
+    }
+  }
+
