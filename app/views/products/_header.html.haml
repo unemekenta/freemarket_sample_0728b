@@ -22,21 +22,24 @@
                   %li.header__menu-box--left__children__child
                     = link_to "トップス", root_path 
                     %ul.header__menu-box--left__grand-children
-                      - @categories_grandchildren_ladies1.each do |grandchild|
+                    -# マージ後にエラーとなったため、一旦コメントアウトにて対応。優先度低いため後に実装
+                      -# - @categories_grandchildren_ladies1.each do |grandchild| 
                         %li.header__menu-box--left__grand-children__grand-child
-                          = link_to "#{grandchild.category}", root_path
+                          -# = link_to "#{grandchild.category}", root_path
                   %li.header__menu-box--left__children__child
                     = link_to "ジャケット/アウター", root_path 
                     %ul.header__menu-box--left__grand-children
-                      - @categories_grandchildren_ladies2.each do |grandchild|
+                    -# マージ後にエラーとなったため、一旦コメントアウトにて対応。優先度低いため後に実装
+                      -# - @categories_grandchildren_ladies2.each do |grandchild|
                         %li.header__menu-box--left__grand-children__grand-child
-                          = link_to "#{grandchild.category}", root_path
+                          -# = link_to "#{grandchild.category}", root_path
                   %li.header__menu-box--left__children__child
                     = link_to "パンツ", root_path 
                     %ul.header__menu-box--left__grand-children
-                      - @categories_grandchildren_ladies3.each do |grandchild|
+                    -# マージ後にエラーとなったため、一旦コメントアウトにて対応。優先度低いため後に実装
+                      -# - @categories_grandchildren_ladies3.each do |grandchild|
                         %li.header__menu-box--left__grand-children__grand-child
-                          = link_to "#{grandchild.category}", root_path
+                          -# = link_to "#{grandchild.category}", root_path
                   %li.header__menu-box--left__children__child
                     = link_to "スカート", root_path 
                   %li.header__menu-box--left__children__child
