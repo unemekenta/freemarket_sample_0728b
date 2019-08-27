@@ -32,9 +32,24 @@ class ProductsController < ApplicationController
     @product = Product.new(product_params)
     if @product.save
       redirect_to root_path
+    else
+      # 仮置きで追加。後日きちんと実装予定
+      redirect_to new_product_path
     end
   end
 
+  def edit
+    @product = Product.find(params[:id])
+  end
+
+  def update
+    @product = Product.find(params[:id])
+    if @product.update(product_params)
+      redirect_to product_path(@product.id), notice: "商品情報を編集しました"
+    else
+      render :edit
+    end
+  end
 
   def destroy
     @product = Product.find(params[:id])
