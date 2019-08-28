@@ -13,10 +13,10 @@
 ActiveRecord::Schema.define(version: 2019_08_24_163226) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "post_number", null: false
-    t.string "prefecture", null: false
-    t.string "city", null: false
-    t.string "street", null: false
+    t.integer "post_number"
+    t.string "prefecture"
+    t.string "city"
+    t.string "street"
     t.string "building"
     t.bigint "user_id"
     t.datetime "created_at"
@@ -148,14 +148,14 @@ ActiveRecord::Schema.define(version: 2019_08_24_163226) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "nickname", null: false
-    t.date "birthday", null: false
+    t.string "nickname"
+    t.date "birthday"
     t.string "photo", default: "0"
     t.integer "phone_number", default: 0
-    t.string "family_name", null: false
-    t.string "first_name", null: false
-    t.string "family_name_pseudonym", null: false
-    t.string "first_name_pseudonym", null: false
+    t.string "family_name"
+    t.string "first_name"
+    t.string "family_name_pseudonym"
+    t.string "first_name_pseudonym"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
