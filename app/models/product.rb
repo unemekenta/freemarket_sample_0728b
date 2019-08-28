@@ -3,7 +3,6 @@ class Product < ApplicationRecord
   has_many :users, through: :messages
   has_many :users, through: :todoes
   has_many :users, through: :transactions
-  has_many :users, through: :purchases
   has_many :product_images, dependent: :destroy
   belongs_to :category
   belongs_to :brand, optional: true
