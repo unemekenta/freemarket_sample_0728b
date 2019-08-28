@@ -30,17 +30,26 @@
             %tr
               %th カテゴリー
               %td
+                - if @product.category.parent.parent.present?
+                  = link_to '', class: 'text-link' do
+                    = @product.category.parent.parent.category
+                - if @product.category.parent.present?
+                  = link_to '', class: 'text-link' do
+                    = @product.category.parent.category
                 = link_to '', class: 'text-link' do
-                  = @product.category.parent.parent.category
-                = link_to '', class: 'text-link' do 
-                  = @product.category.parent.category
-                = link_to '', class: 'text-link' do 
                   = @product.category.category
+          
             %tr
               %th ブランド
               %td
-                =link_to '', class: 'text-link' do 
-                  = @product.brand.brand
+                - if @product.brand.present?
+                  =link_to '', class: 'text-link' do 
+                    = @product.brand.brand
+            - if @product.size.present?
+              %tr
+                %th 商品のサイズ
+                %td 
+                  = @product.size.size
             %tr
               %th 商品の状態
               %td 
