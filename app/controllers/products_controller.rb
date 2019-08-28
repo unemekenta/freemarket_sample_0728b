@@ -1,4 +1,6 @@
 class ProductsController < ApplicationController
+  before_action :set_product, only: [:show, :edit, :update, :destroy]
+
   def index
     products = Product.order("id DESC").limit(32)
     @products_ladies = products[0..3]
@@ -19,7 +21,6 @@ class ProductsController < ApplicationController
   end
 
   def show
-    @product = Product.find(params[:id])
   end
   
   def new
@@ -32,12 +33,24 @@ class ProductsController < ApplicationController
     @product = Product.new(product_params)
     if @product.save
       redirect_to root_path
+    else
+      # 仮置きで追加。後日きちんと実装予定
+      redirect_to new_product_path
     end
   end
 
+  def edit
+  end
+
+  def update
+    if @product.update(product_params)
+      redirect_to product_path(@product.id), notice: "商品情報を編集しました"
+    else
+      render :edit
+    end
+  end
 
   def destroy
-    @product = Product.find(params[:id])
     if @product.destroy
       redirect_to root_path, notice: "商品が削除されました"
     else
@@ -61,6 +74,10 @@ class ProductsController < ApplicationController
 
 
   private
+
+  def set_product
+    @product = Product.find(params[:id])
+  end
 
   def product_params
     params.require(:product).permit(:name, :price, :detail, :status_id, :condition_id, :category_id, :brand_id, :size_id, delivery_attributes: [:id, :shipping_fee, :deliver_method_id, :estimated_date_id, :deliver_region_id], product_images_attributes: [:id, :image])

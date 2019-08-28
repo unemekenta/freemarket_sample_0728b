@@ -123,7 +123,8 @@ Hiroki_Katsuyama, Masatomo_Sugai, Yuichi_Motmomura, Kenta_Uneme
 |phone_number|integer|null: false|
 |address|references|null: false, foreign_key: true|
 |delivery_address|references|null: false, foreign_key: true|
-|credit_card|references|null: false, foreign_key: true|
+|credit_card|references|null: false, foreign_key: true| 
+|profile|text||
 
 ### Association
 - has_many :evaluations
