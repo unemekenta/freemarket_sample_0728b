@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
 
   def deliver_address
-
   end
 
   def show
