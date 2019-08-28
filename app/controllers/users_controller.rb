@@ -1,13 +1,13 @@
 class UsersController < ApplicationController
 
-  def deliveraddresses
+  def deliver_address
 
   end
 
   def show
   before_action :move_to_root
   end
-  
+
   def mypage
   end
 

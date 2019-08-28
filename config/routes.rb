@@ -3,7 +3,6 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'products#index'
   get 'telltest' => 'products#teltest' 
-  get 'deliveraddresses' => 'users#deliveraddresses'
   resources :products
   resources :users, only: [:show] do
     member do
