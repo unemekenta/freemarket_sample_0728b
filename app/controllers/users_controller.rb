@@ -6,7 +6,8 @@ class UsersController < ApplicationController
 
   def show
   before_action :move_to_root
-
+  end
+  
   def mypage
   end
 
