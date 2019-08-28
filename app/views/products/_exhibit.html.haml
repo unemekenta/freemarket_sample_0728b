@@ -1,0 +1,181 @@
+.single-container
+  %header.single-container__header
+    %h1
+      = link_to root_path do
+        = image_tag "//www-mercari-jp.akamaized.net/assets/img/common/common/logo.svg?615905397"
+
+  %main.single-main
+    %section.l-single-container
+      .sell-container
+        %h2.sell-container__header 商品の情報を入力
+      = form_with(model: @product, local: true) do |product|
+        .sell-form
+          = product.fields_for :product_images do |image|
+            .sell-form__upload-box
+              %h3.sell-form__upload-box__header
+                出品画像
+                %span.form-require
+                  必須
+              %p 最大10枚までアップロードできます
+              .sell-dropbox-container
+                .sell-upload-items-container
+                  .sell-upload-items.have-item-0
+                    %ul
+                = image.label :image, class: "sell-upload-drop-box have-item-0" do
+                  = image.file_field :image
+                  %pre
+                    ドラッグアンドドロップ
+                    またはクリックしてファイルをアップロード
+          .sell-content-first
+            = product.label :name do
+              商品名
+              %span.form-require 必須
+            %div
+              = product.text_field :name, class: "input-default", placeholder: "商品名  (必須 40文字まで)"
+            .sell-content-first__form-group
+              = product.label :detail do
+                商品の説明
+                %span.form-require 必須
+              = product.text_area :detail, class: "textarea-default", rows: "5", placeholder: "商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。"
+          .sell-content
+            %h3.sell-content__header 商品の詳細
+            .sell-content__form-box
+              .sell-content__form-box__form-group#default-category
+                = product.label :categpry_id do
+                  カテゴリー
+                  %span.form-require 必須
+                  .select-wrap.division1-container
+                    %i.icon-arrow-bottom
+                    - if @product.new_record?
+                      = product.collection_select :category_id, Category.where(parent_id: nil), :id, :category, { include_blank: "---" }, class: "select-default division1"
+                    - else
+                      - if @product.category_id.in?([147, 158])
+                        = product.collection_select :category_id, Category.where(parent_id: nil), :id, :category, { include_blank: "---" }, class: "select-default division1", value: @product.category.parent.id
+                      - else
+                        = product.collection_select :category_id, Category.where(parent_id: nil), :id, :category, { include_blank: "---" }, class: "select-default division1", value: @product.category.parent.parent.id
+                  - (1...14).each do |i|
+                    .select-wrap.division2-container{style: 'display:none;'}
+                      %i.icon-arrow-bottom
+                      - if @product.new_record?
+                        = product.collection_select :category_id, Category.where(parent_id: i), :id, :category, { include_blank: "---" }, class: "select-default division2"
+                      - else
+                        - if @product.category_id.in?([147, 158])
+                          = product.collection_select :category_id, Category.where(parent_id: i), :id, :category, { include_blank: "---" }, class: "select-default division2", value:  ((i == @product.category.parent.id) ? i : nil)
+                        - else
+                          = product.collection_select :category_id, Category.where(parent_id: i), :id, :category, { include_blank: "---" }, class: "select-default division2", value:  ((i == @product.category.parent.parent.id) ? i : nil)
+                  - (14...159).each do |i|
+                    .select-wrap.division3-container{style: 'display:none;'}
+                      %i.icon-arrow-bottom
+                      - if @product.new_record?
+                        = product.collection_select :category_id, Category.where(parent_id: i), :id, :category, { include_blank: "---" }, class: "select-default division3"
+                      - else
+                        - if @product.category_id.in?([147, 158])
+                          = product.collection_select :category_id, Category.where(parent_id: i), :id, :category, { include_blank: "---" }, class: "select-default division3"
+                        - else
+                          = product.collection_select :category_id, Category.where(parent_id: i), :id, :category, { include_blank: "---" }, class: "select-default division3", value:  ((i == @product.category.parent.id) ? i : nil)
+              - (1...13).each do |i|
+                .sell-content__form-box__form-group.size-container{style: 'display:none;'}
+                  = product.label :size_id do
+                    サイズ
+                    %span.form-require 必須
+                  .select-wrap
+                    %i.icon-arrow-bottom
+                    - if @product.new_record?
+                      = product.collection_select :size_id, Size.where(size_type: i), :id, :size, { include_blank: "---" }, class: "select-default size"
+                    - else
+                      - if @product.size_id.nil?
+                        = product.collection_select :size_id, Size.where(size_type: i), :id, :size, { include_blank: "---" }, class: "select-default size"
+                      - else
+                        = product.collection_select :size_id, Size.where(size_type: i), :id, :size, { include_blank: "---" }, class: "select-default size", value: ((i == @product.category.size_type.id) ? i :nil)
+              .sell-content__form-box__form-group.brand-container{style: 'display:none;'}
+                = product.label :brand_id do
+                  ブランド
+                  %span.form-arbitrary 任意
+                .select-wrap
+                  %i.icon-arrow-bottom
+                  - if @product.new_record?
+                    = product.collection_select :brand_id, Brand.all, :id, :brand, { include_blank: "---" }, class: "select-default brand"
+                  - else
+                    = product.collection_select :brand_id, Brand.all, :id, :brand, { include_blank: "---" }, class: "select-default brand", value: @product.brand_id
+              .sell-content__form-box__form-group
+                = product.label :condition_id do
+                  商品の状態
+                  %span.form-require 必須
+                .select-wrap
+                  %i.icon-arrow-bottom
+                  = product.collection_select :condition_id, Condition.all, :id, :condition, { include_blank:"---" }, class: "select-default"
+          .sell-content
+            %h3.sell-content__header 配送について
+            - link_to root_path
+            .sell-content__form-box
+              = product.fields_for :delivery do |delivery|
+                .sell-content__form-box__form-group
+                  = delivery.label :shipping_fee do
+                    配送料の負担
+                    %span.form-require 必須
+                  .select-wrap
+                    %i.icon-arrow-bottom
+                    = delivery.select :shipping_fee, ["送料込み(出品者負担)", "着払い(購入者負担)"], { include_blank:"---" }, class: "select-default"
+                .sell-content__form-box__form-group
+                  = delivery.label :deliver_method_id do
+                    配送の方法
+                    %span.form-require 必須
+                  .select-wrap
+                    %i.icon-arrow-bottom
+                    = delivery.collection_select :deliver_method_id, DeliverMethod.all, :id, :method, { include_blank:"---" }, class: "select-default"
+                .sell-content__form-box__form-group
+                  = delivery.label :deliver_region_id do
+                    発送元の地域
+                    %span.form-require 必須
+                  .select-wrap
+                    %i.icon-arrow-bottom
+                    = delivery.collection_select :deliver_region_id, DeliverRegion.all, :id, :region, { include_blank:"---" }, class: "select-default"
+                .sell-content__form-box__form-group
+                  = delivery.label :estimated_date_id do
+                    発送までの日数
+                    %span.form-require 必須
+                  .select-wrap
+                    %i.icon-arrow-bottom
+                    = delivery.collection_select :estimated_date_id, EstimatedDate.all, :id, :date, { include_blank:"---" }, class: "select-default"
+          .sell-content
+            %h3.sell-content__header 販売価格(300〜9,999,999)
+            - link_to root_path
+            .sell-content__form-box
+              %ul.sell-content__form-box__sell-price
+                %li.sell-content__form-box__sell-price__form-group-first
+                  %div
+                    = product.label :price, class: "l-left" do
+                      価格
+                      %span.form-require 必須
+                    .l-right
+                      ¥
+                      %div
+                        = product.text_field :price, placeholder: "例) 300", class: "input-default price"
+                %li.sell-content__form-box__sell-price__form-group
+                  .l-left
+                    販売手数料 (10%)
+                  .l-right.fee= @product.new_record? ? "-" : number_with_delimiter((@product.price * 0.1).round(0))
+                %li.sell-content__form-box__sell-price__form-group-last
+                  .l-left 販売利益
+                  .l-right.profit= @product.new_record? ? "-" : number_with_delimiter((@product.price * 0.9).round(0))
+          .sell-content-last
+            %div
+              %p
+                = link_to "禁止されている出品", root_path
+                、
+                = link_to "行為", root_path
+                を必ずご確認ください。
+              %p
+                またブランド品でシリアルナンバー等がある場合はご記載ください。
+                = link_to "偽ブランドの販売", root_path
+                は犯罪であり処罰される可能性があります。
+              %p
+                また、出品を持ちまして
+                = link_to "加盟店規約", root_path
+                に同意したことになります。
+            = product.submit @product.new_record? ? "出品する" : "変更する", class: "btn-default"
+            = link_to @product.new_record? ? "もどる" : "キャンセル", root_path, class: "btn-default btn-gray"
+  %footer
+    .default-container
+      .single
+        = render 'devise/shared/single-footer', layout: "user"
