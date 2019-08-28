@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users, controllers: { registrations: 'users/registrations' }
+  devise_for :users, controllers: { registrations: "users", sessions: 'users/sessions' }
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'products#index'
   get 'telltest' => 'products#teltest' 
@@ -8,7 +8,8 @@ Rails.application.routes.draw do
     resources :purchases, only: [:new, :create]
   end
 
-  resources :users, only: [:show] do
+
+  resources :users, only: [:show, :new, :create, :edit, :update ] do
     member do
       get 'mypage'
       get 'notification'
@@ -17,6 +18,7 @@ Rails.application.routes.draw do
       get 'sales'
       get 'point'
       get 'profile'
+      get 'update'
       get 'deliver_address'
       get 'card'
       get 'email_password'
@@ -27,13 +29,11 @@ Rails.application.routes.draw do
       get 'completed'
       get 'logout'
     end
-  end
-
-  resources :signup do
     collection do
       get 'step1'
       get 'step2'
     end
   end
+  
 end
 

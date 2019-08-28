@@ -30,17 +30,26 @@
             %tr
               %th カテゴリー
               %td
+                - if @product.category.parent.parent.present?
+                  = link_to '', class: 'text-link' do
+                    = @product.category.parent.parent.category
+                - if @product.category.parent.present?
+                  = link_to '', class: 'text-link' do
+                    = @product.category.parent.category
                 = link_to '', class: 'text-link' do
-                  = @product.category.parent.parent.category
-                = link_to '', class: 'text-link' do 
-                  = @product.category.parent.category
-                = link_to '', class: 'text-link' do 
                   = @product.category.category
+          
             %tr
               %th ブランド
               %td
-                =link_to '', class: 'text-link' do 
-                  = @product.brand.brand
+                - if @product.brand.present?
+                  =link_to '', class: 'text-link' do 
+                    = @product.brand.brand
+            - if @product.size.present?
+              %tr
+                %th 商品のサイズ
+                %td 
+                  = @product.size.size
             %tr
               %th 商品の状態
               %td 
@@ -78,9 +87,14 @@
           = link_to new_product_purchase_path(@product) , class: 'buy-btn' do
             購入画面に進む
 
-    .product__delete-btn
-      %a.delete-btn
-        = link_to '削除', product_path(@product.id), method: :delete, data: {confirm: "本当に削除しますか？"}
+    /購入画面は仮置きのpath
+    = link_to '購入画面に進む', root_path, class: "product__buy-btn"
+    /出品者 = ログインしているユーザの場合、以下を表示(未実装)
+    /- if @product.seller == current_user
+    = link_to '商品の編集', edit_product_path(@product.id), class: "product__edit-btn"
+    %p.product__edit__btn-text or
+    = link_to '出品を停止する', root_path, class: "product__status-btn"
+    = link_to 'この商品を削除する', product_path(@product.id), method: :delete, data: {confirm: "本当に削除しますか？"}, class: "product__delete-btn"
 
     .product__description
       %p.product__description__text
@@ -101,8 +115,8 @@
 
 
 
-  .product__message
-    .product__message__countainer
+  .product__message__container
+    .product__message
       %p.notes_text
         相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
       .product__message__form
