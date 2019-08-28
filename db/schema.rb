@@ -10,13 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_24_163226) do
+ActiveRecord::Schema.define(version: 2019_08_27_092104) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "post_number", null: false
-    t.string "prefecture", null: false
-    t.string "city", null: false
-    t.string "street", null: false
+    t.integer "post_number"
+    t.string "prefecture"
+    t.string "city"
+    t.string "street"
     t.string "building"
     t.bigint "user_id"
     t.datetime "created_at"
@@ -113,11 +113,24 @@ ActiveRecord::Schema.define(version: 2019_08_24_163226) do
     t.bigint "brand_id"
     t.bigint "category_id", null: false
     t.bigint "size_id"
+    t.bigint "seller_id"
     t.index ["brand_id"], name: "index_products_on_brand_id"
     t.index ["category_id"], name: "index_products_on_category_id"
     t.index ["condition_id"], name: "index_products_on_condition_id"
+    t.index ["seller_id"], name: "index_products_on_seller_id"
     t.index ["size_id"], name: "index_products_on_size_id"
     t.index ["status_id"], name: "index_products_on_status_id"
+  end
+
+  create_table "purchases", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "product_id", null: false
+    t.bigint "seller_id", null: false
+    t.bigint "buyer_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["buyer_id"], name: "index_purchases_on_buyer_id"
+    t.index ["product_id"], name: "index_purchases_on_product_id"
+    t.index ["seller_id"], name: "index_purchases_on_seller_id"
   end
 
   create_table "size_types", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -148,14 +161,14 @@ ActiveRecord::Schema.define(version: 2019_08_24_163226) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "nickname", null: false
-    t.date "birthday", null: false
+    t.string "nickname"
+    t.date "birthday"
     t.string "photo", default: "0"
     t.integer "phone_number", default: 0
-    t.string "family_name", null: false
-    t.string "first_name", null: false
-    t.string "family_name_pseudonym", null: false
-    t.string "first_name_pseudonym", null: false
+    t.string "family_name"
+    t.string "first_name"
+    t.string "family_name_pseudonym"
+    t.string "first_name_pseudonym"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -171,5 +184,9 @@ ActiveRecord::Schema.define(version: 2019_08_24_163226) do
   add_foreign_key "products", "conditions"
   add_foreign_key "products", "sizes"
   add_foreign_key "products", "statuses"
+  add_foreign_key "products", "users", column: "seller_id"
+  add_foreign_key "purchases", "products"
+  add_foreign_key "purchases", "users", column: "buyer_id"
+  add_foreign_key "purchases", "users", column: "seller_id"
   add_foreign_key "sizes", "size_types"
 end
