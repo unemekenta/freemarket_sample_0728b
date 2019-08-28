@@ -7,4 +7,7 @@ class User < ApplicationRecord
   has_one :address
   has_one :deliver_address
   accepts_nested_attributes_for :address, :deliver_address
+
+  has_many :products, through: :purchases
+  has_many :purchases  
 end

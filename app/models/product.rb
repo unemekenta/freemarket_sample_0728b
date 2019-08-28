@@ -12,4 +12,6 @@ class Product < ApplicationRecord
   belongs_to :condition
   has_one :delivery, dependent: :destroy
   accepts_nested_attributes_for :product_images, :delivery, allow_destroy: true
+  has_many :users, through: :purchases
+  has_many :purchases
 end
