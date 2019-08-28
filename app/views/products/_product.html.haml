@@ -1,7 +1,12 @@
 %li.item-box
   = link_to product_path(product) do
-    %figure.item-box__photo
-      =image_tag "#{product.product_images[0].image}"
+    - if product.status_id == 4
+      %p
+        sold out
+    -else
+      %figure.item-box__photo
+        =image_tag "#{product.product_images[0].image}"
+    
     .item-box__content
       %h3.item-box__content__name
         = product.name
