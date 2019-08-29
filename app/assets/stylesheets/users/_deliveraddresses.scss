@@ -22,7 +22,6 @@
 @mixin progressBar($bar-color) {
   position: absolute;
   bottom: 5px;
-  // z-index: -1;
   display: block;
   content: '';
   width: 100%;
@@ -32,7 +31,6 @@
 
 .default-containers {
   background-color: $body_background-color;
-  // height: 100%;
   width: 100%;
 
   .usersMypage__contents{

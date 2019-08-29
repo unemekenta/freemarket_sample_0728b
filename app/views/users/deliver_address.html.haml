@@ -8,7 +8,6 @@
         .singles__single-main
           %section.singles__single-main__l-single-container
             = form_with model: @user, url: users_path, method: :post, html: {class: 'forth-main-wrapper__box'} do |f|
-              -# = render "devise/shared/error_messages", resource: resource
               %h2.singles__single-main__l-single-container__l-single-head 発送元・お届け先住所変更
               %h2.singles__single-main__l-single-container__l-single-content
                 = f.fields_for :address do |address|
