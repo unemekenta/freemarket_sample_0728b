@@ -1,10 +1,11 @@
 class UsersController < ApplicationController
 
+  before_action :move_to_root, except: [:show]
+
   def deliver_address
   end
 
   def show
-  before_action :move_to_root
   end
 
   def mypage
