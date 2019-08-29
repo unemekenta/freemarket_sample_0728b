@@ -8,8 +8,10 @@ class AddColumn < ActiveRecord::Migration[5.2]
     change_column :users, :nickname, :string, null: false
     change_column :users, :birthday, :date, null: false
     change_column :users, :family_name, :string, null: false
+    change_column :users, :first_name, :string, null: false
     change_column :users, :family_name_pseudonym, :string, null: false
     change_column :users, :first_name_pseudonym, :string, null: false
+
   end
 
   def down
@@ -20,7 +22,9 @@ class AddColumn < ActiveRecord::Migration[5.2]
     change_column :users, :nickname, :string, null: true
     change_column :users, :birthday, :date, null: true
     change_column :users, :family_name, :string, null: true
+    change_column :users, :first_name, :string, null: true
     change_column :users, :family_name_pseudonym, :string, null: true
     change_column :users, :first_name_pseudonym, :string, null: true
   end
 end
+
