@@ -3,7 +3,12 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'products#index'
   get 'telltest' => 'products#teltest' 
-  resources :products
+  
+  resources :products do
+    resources :purchases, only: [:new, :create]
+  end
+
+
   resources :users, only: [:show, :new, :create, :edit, :update ] do
     member do
       get 'mypage'

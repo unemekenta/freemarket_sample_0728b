@@ -61,7 +61,6 @@ class ProductsController < ApplicationController
   # ビューを表示するためだけの仮のルーティング
   def teltest
   end
-  
 
 
   private
@@ -71,6 +70,7 @@ class ProductsController < ApplicationController
   end
 
   def product_params
-    params.require(:product).permit(:name, :price, :detail, :status_id, :condition_id, :category_id, :brand_id, :size_id, delivery_attributes: [:id, :shipping_fee, :deliver_method_id, :estimated_date_id, :deliver_region_id], product_images_attributes: [:id, :image])
+    params.require(:product).permit(:name, :price, :detail, :status_id, :condition_id, :category_id, :brand_id, :size_id, delivery_attributes: [:id, :shipping_fee, :deliver_method_id, :estimated_date_id, :deliver_region_id], product_images_attributes: [:id, :image]).merge(seller_id: current_user.id)
   end
+
 end
