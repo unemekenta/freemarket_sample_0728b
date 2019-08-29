@@ -1,6 +1,6 @@
 
 .default-container
-  -# = render 'header'
+  = render 'header'
   .product
     .product__container
       %h1.product__name
@@ -87,8 +87,6 @@
           = link_to new_product_purchase_path(@product) , class: 'buy-btn' do
             購入画面に進む
 
-    /購入画面は仮置きのpath
-    = link_to '購入画面に進む', root_path, class: "product__buy-btn"
     /出品者 = ログインしているユーザの場合、以下を表示(未実装)
     /- if @product.seller == current_user
     = link_to '商品の編集', edit_product_path(@product.id), class: "product__edit-btn"
