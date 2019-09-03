@@ -10,19 +10,19 @@
         %h2.sell-container__header 商品の情報を入力
       = form_with(model: @product, local: true) do |product|
         .sell-form
-          = product.fields_for :product_images do |image|
-            .sell-form__upload-box
-              %h3.sell-form__upload-box__header
-                出品画像
-                %span.form-require
-                  必須
-              %p 最大10枚までアップロードできます
-              .sell-dropbox-container
-                .sell-upload-items-container
-                  .sell-upload-items.have-item-0
-                    %ul
+          .sell-form__upload-box
+            %h3.sell-form__upload-box__header
+              出品画像
+              %span.form-require
+                必須
+            %p 最大10枚までアップロードできます
+            .sell-dropbox-container
+              .sell-upload-items-container
+                .sell-upload-items.have-item-0
+                  %ul
+              = product.fields_for :product_images do |image|
                 = image.label :image, class: "sell-upload-drop-box have-item-0" do
-                  = image.file_field :image
+                  = image.file_field :image, class: "sell-upload-drop-file"
                   %pre
                     ドラッグアンドドロップ
                     またはクリックしてファイルをアップロード
