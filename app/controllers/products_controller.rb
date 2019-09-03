@@ -2,22 +2,47 @@ class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
 
   def index
-    products = Product.order("id DESC").limit(32)
-    @products_ladies = products[0..3]
-    @products_mens = products[4..7]
-    @products_kids = products[8..11]
-    @products_cosme = products[12..15]
-    @products_chanel = products[16..19]
-    @products_vuitton = products[20..23]
-    @products_supreme = products[24..27]
-    @products_nike = products[28..31]
-    @categories_parents = Category.where(parent_id: nil)
-    @categories_children = Category.where(parent_id: 14..32)
-    @categories_grandchildren_ladies1 = Category.where(parent_id: 14)
-    @categories_grandchildren_ladies2 = Category.where(parent_id: 15)
-    @categories_grandchildren_ladies3 = Category.where(parent_id: 16)
+    # 親カテゴリID
+    parent_categoryids = [1, 2, 3, 7]
+    products = []
 
+    parent_categoryids.each_with_index do |id, j|
+      grandchildren = []
+      # 子カテゴリ(複数)
+      children = Category.find(id).children
+      # 子カテゴリの子のidを取得(grandchildren)
+      children.each do |child|
+        child.children.each do |grandchild|
+          grandchildren << grandchild.id
+        end
+      end
+      products[j] = Product.where(category_id: grandchildren).order("id DESC").limit(4)
+    end
 
+    @products_ladies = products[0]
+    @products_mens = products[1]
+    @products_kids = products[2]
+    @products_cosme = products[3]
+
+    parent_categoryids = [1, 3, 4, 2]
+    products = []
+
+    parent_categoryids.each_with_index do |id, j|
+      grandchildren = []
+      # 子カテゴリ(複数)
+      products[j] = Product.where(brand_id: id).order("id DESC").limit(4)
+    end
+
+    @products_chanel = products[0]
+    @products_vuitton = products[1]
+    @products_supreme = products[2]
+    @products_nike = products[3]
+
+    # @categories_parents = Category.where(parent_id: nil)
+    # @categories_children = Category.where(parent_id: 14..32)
+    # @categories_grandchildren_ladies1 = Category.where(parent_id: 14)
+    # @categories_grandchildren_ladies2 = Category.where(parent_id: 15)
+    # @categories_grandchildren_ladies3 = Category.where(parent_id: 16)
   end
 
   def show
