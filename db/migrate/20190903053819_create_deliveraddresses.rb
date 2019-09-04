@@ -10,7 +10,7 @@ class CreateDeliveraddresses < ActiveRecord::Migration[5.2]
       t.string        :city
       t.string        :street
       t.string        :building, null: true
-      t.integer       :phone_number, null: true
+      t.string       :phone_number, null: true
       t.references    :user, foreign_key: true, null: false
       t.timestamps
     end
