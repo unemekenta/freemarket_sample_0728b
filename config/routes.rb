@@ -3,13 +3,14 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'products#index'
   get 'telltest' => 'products#teltest' 
-  
+
   resources :products do
     resources :purchases, only: [:new, :create]
   end
 
 
   resources :users, only: [:show, :new, :create, :edit, :update ] do
+    resources :deliveraddresses, only: [:new, :create]
     member do
       get 'mypage'
       get 'notification'
@@ -19,7 +20,6 @@ Rails.application.routes.draw do
       get 'point'
       get 'profile'
       get 'update'
-      get 'deliver_address'
       get 'card'
       get 'email_password'
       get 'purchase'

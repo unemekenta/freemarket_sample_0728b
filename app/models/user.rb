@@ -6,8 +6,8 @@ class User < ApplicationRecord
          :omniauthable
 
   has_one :address
-  has_one :deliver_address
-  accepts_nested_attributes_for :address, :deliver_address
+  has_one :deliveraddress
+  accepts_nested_attributes_for :address
   has_many :products, through: :purchases
   has_many :purchases
 

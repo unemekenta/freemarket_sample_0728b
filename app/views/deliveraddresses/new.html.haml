@@ -7,60 +7,60 @@
       .singles
         .singles__single-main
           %section.singles__single-main__l-single-container
-            = form_with model: @user, url: users_path, method: :post, html: {class: 'forth-main-wrapper__box'} do |f|
+            = form_with model: @deliveraddress, url: user_deliveraddresses_path, method: :post, html: {class: 'forth-main-wrapper__box'} do |f|
               %h2.singles__single-main__l-single-container__l-single-head 発送元・お届け先住所変更
               %h2.singles__single-main__l-single-container__l-single-content
-                = f.fields_for :address do |address|
+                = f.fields_for :deliveraddress do |deliveraddress|
 
                   .singles__single-main__l-single-container__l-single-content__form-group
-                    = address.label "お名前"
+                    = deliveraddress.label "お名前"
                     %span.form_require 必須
                     %br/
-                    = address.text_field :family_name, autofocus: true, placeholder: "例) 山田", class: "input-default"
-                    = address.text_field :first_name, autofocus: true, placeholder: "例) 彩", class: "input-default"
+                    = f.text_field :family_name, autofocus: true, placeholder: "例) 山田", class: "input-default"
+                    = f.text_field :first_name, autofocus: true, placeholder: "例) 彩", class: "input-default"
       
                   .singles__single-main__l-single-container__l-single-content__form-group
-                    = address.label "お名前カナ"
+                    = deliveraddress.label "お名前カナ"
                     %span.form_require 必須
                     %br/
-                    = address.text_field :family_name_pseudonym, autofocus: true, placeholder: "例) ヤマダ", class: "input-default"
-                    = address.text_field :first_name_pseudonym, autofocus: true, placeholder: "例) アヤ", class: "input-default"
+                    = f.text_field :family_name_pseudonym, autofocus: true, placeholder: "例) ヤマダ", class: "input-default"
+                    = f.text_field :first_name_pseudonym, autofocus: true, placeholder: "例) アヤ", class: "input-default"
 
                   .singles__single-main__l-single-container__l-single-content__form-group
-                    = address.label "郵便番号"
+                    = deliveraddress.label "郵便番号"
                     %span.form_require 必須
                     %br/
-                    = address.text_field :post_number, autofocus: true, placeholder: "例) 123-4567", class: "input-default"
+                    = f.text_field :post_number, autofocus: true, placeholder: "例) 123-4567", class: "input-default"
 
                   .singles__single-main__l-single-container__l-single-content__form-group
-                    = address.label "都道府県"
+                    = deliveraddress.label "都道府県"
                     %span.form_require 必須
                     %br/
-                    = address.text_field :prefecture, autofocus: true, placeholder: "例) 北海道", class: "input-default"
+                    = f.text_field :prefecture, autofocus: true, placeholder: "例) 北海道", class: "input-default"
 
                   .singles__single-main__l-single-container__l-single-content__form-group
-                    = address.label "市区町村"
+                    = deliveraddress.label "市区町村"
                     %span.form_require 必須
                     %br/
-                    = address.text_field :city, autofocus: true, placeholder: "例) 横浜市緑区", class: "input-default"
+                    = f.text_field :city, autofocus: true, placeholder: "例) 横浜市緑区", class: "input-default"
 
                   .singles__single-main__l-single-container__l-single-content__form-group
-                    = address.label "番地"
+                    = deliveraddress.label "番地"
                     %span.form_require 必須
                     %br/
-                    = address.text_field :street, autofocus: true, placeholder: "例) 青山1-1-1", class: "input-default"
+                    = f.text_field :street, autofocus: true, placeholder: "例) 青山1-1-1", class: "input-default"
 
                   .singles__single-main__l-single-container__l-single-content__form-group
-                    = address.label "建物名"
+                    = deliveraddress.label "建物名"
                     %span.form_any 任意
                     %br/
-                    = address.text_field :building, autofocus: true, placeholder: "例) 柳ビル103", class: "input-default"
+                    = f.text_field :building, autofocus: true, placeholder: "例) 柳ビル103", class: "input-default"
 
                   .singles__single-main__l-single-container__l-single-content__form-group
-                    = address.label "電話"
+                    = deliveraddress.label "電話"
                     %span.form_any 任意
                     %br/
-                    = address.text_field :phone_number, autofocus: true, placeholder: "例) 09012345678", class: "input-default"
+                    = f.text_field :phone_number, autofocus: true, placeholder: "例) 09012345678", class: "input-default"
           
                     = f.submit "変更する", class: "btn-red"
   = render './products/aside'
