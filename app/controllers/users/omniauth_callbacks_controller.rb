@@ -52,7 +52,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
           uid: data['uid']
         }
       end
-      redirect_to step1_signup_index_path
+      redirect_to step1_users_path
     end
   end
 
