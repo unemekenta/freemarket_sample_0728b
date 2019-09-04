@@ -13,7 +13,7 @@
             = image_tag "#{@purchase.product.product_images[0].image}", class: 'product_image'
           %p.purchase-container__product__main__inner__buy-item-name
             = @purchase.product.name
-          = form_with(model: @purchase, url: "/products/#{@purchase.product_id}/purchases", remote: false, local: true, class: "purchase-container__product__main__inner__buy-form") do |form|
+          = form_with(model: @purchase, url: product_purchases_path(@purchase.product_id), remote: false, local: true, class: "purchase-container__product__main__inner__buy-form") do |form|
             %p.purchase-container__product__main__inner__buy-form__buy-price
               ="¥#{number_with_delimiter(@purchase.product.price)}"
               %span.purchase-container__product__main__inner__buy-form__buy-price__item-shipping-fee
