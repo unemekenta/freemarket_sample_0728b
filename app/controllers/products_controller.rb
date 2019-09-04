@@ -21,6 +21,7 @@ class ProductsController < ApplicationController
   end
 
   def show
+    @seller = User.find(@product.seller_id)
   end
   
   def new

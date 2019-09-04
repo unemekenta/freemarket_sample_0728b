@@ -1,37 +1,4 @@
-class UsersController < ApplicationController
-
-  before_action :move_to_root, except: [:step1, :step2, :create]
-
-  def deliver_address
-  end
-
-  def show
-  end
-
-  def mypage
-  end
-
-  def notification
-  end
-
-  def todo
-  end
-
-  def like
-  end
-
-  def forsell
-  end
-
-  def in_progress
-  end
-
-  def completed
-  end
-
-  def logout
-  end
-
+class SignupController < ApplicationController
   def create
     @user = User.new(
       nickname: session[:nickname],
@@ -43,15 +10,18 @@ class UsersController < ApplicationController
       first_name: session[:first_name],
       family_name_pseudonym: session[:family_name_pseudonym],
       first_name_pseudonym: session[:first_name_pseudonym],
+      provider: session["devise.omniauth_data"]['provider'],
+      uid: session["devise.omniauth_data"]['uid']
+
     )
     @user.build_address(user_params[:address_attributes])
     if @user.save
       session[:id] = @user.id
       sign_in User.find(session[:id]) unless user_signed_in?
+      session.delete('devise.omniauth_data')
       redirect_to root_path
     else
-      flash.now[:danger] = 'ユーザー情報の登録に失敗しました。'
-      redirect_to root_path
+      render '/signup/step1'
     end
   end
 
@@ -73,26 +43,10 @@ class UsersController < ApplicationController
     @user.build_address
   end
 
-  def profile
-    @user = User.find(params[:id])
-  end
-
-  def update
-    @user = User.find(current_user[:id])
-    if @user.update(user_params)
-      redirect_to mypage_user_path(@user)
-    else
-      render'profile'
-    end
-  end
-
   private
-  def move_to_root
-    redirect_to :root unless user_signed_in?
-  end
 
-  def user_params
-    params.require(:user).permit(:family_name, :first_name, :family_name_pseudonym, :first_name_pseudonym, :birthday, :nickname, :photo, :email, :password, :password_confirmation, :phone_number, :profile, deliver_address_attributes: [:id, :post_number, :prefecture, :city, :street, :building, :phone_number], address_attributes: [:id, :post_number, :prefecture, :city, :street, :building])
-  end
+    def user_params
+      params.require(:user).permit(:family_name, :first_name, :family_name_pseudonym, :first_name_pseudonym, :birthday, :nickname, :photo, :email, :password, :phone_number, deliver_address_attributes: [:id, :post_number, :prefecture, :city, :street, :building, :phone_number], address_attributes: [:id, :post_number, :prefecture, :city, :street, :building])
+    end
 
 end
