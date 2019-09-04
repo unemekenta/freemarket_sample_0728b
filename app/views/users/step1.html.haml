@@ -26,7 +26,7 @@
 
     .single__single-main
       %section.single__single-main__l-single-container
-        = form_with model: @user, url: step2_signup_index_path, local: true, method: :get, html: {class: 'first-main__box'} do |f|
+        = form_with model: @user, url:  step2_users_path, local: true, method: :get, html: {class: 'first-main__box'} do |f|
           -# = render "devise/shared/error_messages", resource: resource
           %h2.single__single-main__l-single-container__l-single-head 会員情報入力
     

@@ -1,0 +1,25 @@
+.default-container 
+  = form_with(model: @purchase, url: "/products/#{@purchase.product_id}/purchases", remote: false, local: true) do |form|
+    %p
+      購入内容の確認
+
+    %p
+      = image_tag "#{@purchase.product.product_images[0].image}", class: 'product_image'
+
+    %p
+      = @purchase.product.name
+
+    %p
+      ="¥#{number_with_delimiter(@purchase.product.price)}"
+
+    %p
+      = @purchase.product.delivery.shipping_fee.gsub!(/(\(.+\))/, '')
+    
+    %p
+      支払い金額
+      ="¥#{number_with_delimiter(@purchase.product.price)}"
+
+      = form.text_field :seller_id, value: "#{@purchase.product.seller_id}", type: "hidden"
+      = form.text_field :buyer_id, value: "#{current_user.id}" , type: "hidden"
+      = form.text_field :product_id, value: "#{@purchase.product.id}" , type: "hidden"
+      =form.submit

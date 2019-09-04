@@ -1,0 +1,238 @@
+@import './variables';
+
+@mixin inputDfault( ){
+  height: 48px;
+  padding: 10px 16px 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  background: #fff;
+  line-height: 1.5;
+  font-size: 16px;
+  margin: 8px 0 0;
+}
+
+@mixin progressDot($dot-color) {
+  border-radius: 50%;
+  background-color: $dot-color;
+  height: 12px;
+  width: 12px;
+  margin:0 auto;
+}
+
+@mixin progressBar($bar-color) {
+  position: absolute;
+  bottom: 5px;
+  display: block;
+  content: '';
+  width: 100%;
+  height: 2px;
+  background: $bar-color;
+}
+
+.default-containers {
+  background-color: $body_background-color;
+  width: 100%;
+
+  .usersMypage__contents{
+
+    &__wrapper.clearfix{
+
+      &__left{
+        float: left;
+      }
+      .singles{
+        float: right;
+
+        &__single-top{
+          height: 128px;
+          margin: 0 auto;
+
+          &__container {
+            display: flex;
+            width: 820px;
+            margin: 0 auto;
+
+            &__logo {
+              width: 185px;
+              height: 49px;
+              margin: 35px 0;
+              display: inline-block;
+
+            }
+            
+            &__progress-bar{
+              padding: 40px 0 0 44px;
+              display: inline-block;
+              font-size: 12px;
+              &__list {
+                text-align: center;
+                &__progress-status {
+                  display: inline-block;
+                  color: #ccc;
+                  margin: 0 40px 0 0;
+                  min-width: 60px;
+                  position: relative;
+                  .progress-status__dot {
+                    @include progressDot(#ccc);
+                    &::before {
+                      right: 50%;
+                      @include progressBar(#ccc);
+                    }
+                    &::after {
+                      @include progressBar(#ccc);
+                    }
+                  }
+                  &__active{
+                    display: inline-block;
+                    font-weight: 600;
+                    color: $main_red;
+                    margin: 0 20px;
+                    .progress-status__dot__active {
+                      @include progressDot($main_red);
+                    }
+        
+                  }
+                }
+              }
+
+            }
+          }
+        }
+        
+        &__single-main{
+          display: block;
+          background-color: #f5f5f5;
+          &__l-single-container{
+            width: 700px;
+            margin: 0 auto;
+            background-color: #fff;
+            &__l-single-head{
+              font-size: 22px;
+              font-weight: bold;
+              padding: 32px;
+              text-align: center;
+              border-bottom: 1px solid #f5f5f5;
+              &__signup-btn {
+                display: block;
+                margin: 8px 0 0;
+                border: 1px solid #0099e8;
+                background: #0099e8;
+                color: #fff;
+                line-height: 40px;
+
+              }
+            }
+            &__l-single-content{
+              padding: 10px 40px 20px;
+              width: 420px;
+              margin: auto;
+              font-size: 14px;
+              &__form-group{
+                margin: 24px 0 0;
+                label{
+                  font-weight: 600;
+                }
+                p{
+                  font-size: 14px;
+                }
+                .form_require {
+                  display: inline-block;
+                  border: 1px solid $main_red;
+                  border-radius: 2px;
+                  background-color: $main_red;
+                  height: 22px;
+                  color: white;
+                  font-size: 12px;
+                  margin-left: 8px;
+                  padding: 2px 4px;
+                  line-height: 1.5;
+                }
+
+                .form_any {
+                  display: inline-block;
+                  border: 1px solid #cccccc;
+                  border-radius: 2px;
+                  background-color: #cccccc;
+                  height: 22px;
+                  color: white;
+                  font-size: 12px;
+                  margin-left: 8px;
+                  padding: 2px 4px;
+                  line-height: 1.5;
+                }
+
+                .input-default{
+                  @include inputDfault();
+                  width: 100%;
+                }
+                .input-default-harf{
+                  @include inputDfault();
+                  display:inline-block;
+                  width: 48%;
+                }
+                .input-default-one-third{
+                  @include inputDfault();
+                  width: 31%;
+                }
+                
+                &__text-right{
+                  color: #0099e8;
+                  text-decoration: none;
+                  margin-bottom: 20px;
+                }
+
+              }
+              .form-info-text {
+                color: #ccc;
+              }
+              .btn-red{
+                background: #ea352d;
+                border: 1px solid #ea352d;
+                color: #fff;
+                display: block;
+                width: 100%;
+                line-height: 48px;
+                font-size: 14px;
+                margin-top: 32px;
+                border: 1px solid transparent;
+                -webkit-transition: all ease-out .3s;
+                transition: all ease-out .3s;
+                cursor: pointer;
+                text-align: center;
+              }
+            
+            }
+          }
+        }
+        &__single-footer {
+          background-color: $body_background-color;
+          &__container {
+            width: 456px;
+            height: 220px;
+            margin: 0 auto;
+            padding: 40px 0;
+            text-align: center;
+            &__nav-box {
+              li {
+                display: inline-block;
+                font-size: 12px;
+                margin-left: 16px;
+              }
+
+            }
+            &__logo {
+              height: 65px;
+              width: 80px;
+              margin: 40px auto 0;
+            }
+            p {
+              font-size: 12px;
+              margin-top: 8px;
+            
+            }
+          }
+        }
+      }
+    }
+  }
+}

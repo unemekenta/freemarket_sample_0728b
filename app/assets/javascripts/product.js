@@ -1,28 +1,120 @@
 $(document).on('turbolinks:load', function () {
 
-  //DOMリセット用
+  //--------------------------------------------------------------------
+  //画像投稿機能
+
+  //アップロードエリア初期化
+  function Resetdropbox() {
+    $('.sell-upload-drop-box').eq(0).attr({
+      for: `product_product_images_attributes_0_image`,
+      class: `sell-upload-drop-box have-item-0`
+    });
+    $('.sell-upload-drop-box').eq(0).children('input').attr({
+      name: `product[product_images_attributes][0][image]`,
+      id: `product_product_images_attributes_0_image`
+    });
+  }
+
+  //アップロードエリアのRenumbering function
+  function Renumbering() {
+    count = $('.sell-upload-drop-box').length;
+    //総数が9枚以下ならアップロードエリアを表示する
+    if (count <= 10) {
+      $('.sell-upload-drop-box:last-child').css('display', 'block');
+    }
+
+    if (count === 1) {
+      Resetdropbox();
+    }
+    //Renumbering 番号を採番しなおし、最後のアップロードエリア以外は非表示に変更する
+    for (var i = 0; i < `${count - 1}`; i++) {
+      Resetdropbox();
+      $('.sell-upload-drop-box').eq(`${i + 1}`).attr({
+        for: `product_product_images_attributes_${i + 1}_image`,
+        class: `sell-upload-drop-box have-item-${i + 1}`
+      });
+      $('.sell-upload-drop-box').eq(`${i + 1}`).children('input').attr({
+        name: `product[product_images_attributes][${i + 1}][image]`,
+        id: `product_product_images_attributes_${i + 1}_image`
+      });
+      $('.sell-upload-drop-box').eq(`${i}`).css('display', 'none');
+    }
+    //総数が10枚ならアップロードエリアを表示しない
+    if (count > 10) {
+      $('.sell-upload-drop-box:last-child').css('display', 'none');
+    }
+  }
+  //アップロードエリアを選択した際に発火
+  $fileField = $('.sell-upload-drop-file')
+  $($fileField).on('change', function (e) {
+    //画像プレビュー機能
+    file = e.target.files[0];
+    reader = new FileReader();
+    $preview = $('.sell-upload-items').children('ul')
+
+    reader.onload = function (e) {
+      $preview.append($('<li>').attr({
+        class: "sell-upload-item"
+      }).append($('<figure>').attr({
+        class: "sell-upload-figure portrait"
+      }).append($('<img>').attr({
+        src: e.target.result,
+        width: "100%"
+      }))).append($('<div>').attr({
+        class: "sell-upload-button"
+      }).append($('<a href>編集</a>').attr({
+        class: "sell-upload-edit"
+      })).append($('<a href>削除</a>').attr({
+        class: "sell-upload-delete",
+        id: `${$('.sell-upload-item').length}`
+      }))));
+    };
+    reader.readAsDataURL(file);
+
+    //画像複数投稿機能
+    var clone = $(this).parent().clone(true);
+    $(this).parent().parent().append(clone);
+    Renumbering();
+  });
+
+  //画像編集機能(未実装)(今の所実装予定なし)
+  $('.sell-upload-items').on('click', '.sell-upload-edit', function () {
+    return false;
+  });
+
+  //画像削除機能
+  $('.sell-upload-items').on('click', '.sell-upload-delete', function () {
+    var num = $(this).attr('id');
+    console.log(num);
+    $('.sell-upload-drop-box').eq(`${num}`).remove();
+    $(this).parent().parent().remove();
+    Renumbering();
+    return false;
+  });
+
+  //--------------------------------------------------------------------
+  //DOMリセット用function
   function resetHTML(num) {
     if (num === 1) {
       $('.brand').val("");
       $('.division2').val("");
-      $('.division2-container').children('select').attr("value", "default");
+      $('.division2-container').children('select').removeAttr("value");
       $('.division2-container').css('display', 'none');
       $('.division3-container').css('display', 'none');
     } else if (num === 2) {
       $('.division3').val("");
-      $('.division3-container').children('select').attr("value", "default");
+      $('.division3-container').children('select').removeAttr("value");
       $('.division3-container').css('display', 'none');
     } else {
       $('.size').val("");
-      $('.size').children().children('select').attr("value", "default");
+      $('.size').children().children('select').removeAttr("value");
       $('.size-container').css('display', 'none');
     }
   }
-
+  //--------------------------------------------------------------------
   //サイズタイプ初期設定
   //引っ張ってくるidは暫定で手打ち
   //今後はcontroller, view, JSの順で取得したい。(自動化)
-  //ここから
   function insertIds(array, first, last) {
     for (var i = first; i <= last; i++) {
       array.push(i);
@@ -80,9 +172,42 @@ $(document).on('turbolinks:load', function () {
 
   var tvSize = new Array();
   insertIds(tvSize, 982, 982);
-  //ここまで
+  //--------------------------------------------------------------------
+  //価格表示function
+  function setPrice(price) {
+    var fee = (price * 0.1).toLocaleString();
+    $('.fee').text(`¥${fee}`);
+    var profit = (price - price * 0.1).toLocaleString();
+    $('.profit').text(`¥${profit}`);
+  }
+  //--------------------------------------------------------------------
+  //edit用の機能(edit時は登録データがあれば初期表示)
+  //カテゴリ1
+  var div1Selected = $('.division1').attr('value');
+  $('.division1').find('[value = ' + div1Selected + ']').attr('selected', 'selected');
+  //カテゴリ2
+  $('.division2[value]').parent().css('display', 'block');
+  var div2Selected = $('.division3[value]').attr('value');
+  $('.division2[value]').find('[value = ' + div2Selected + ']').attr('selected', 'selected');
+  $('.division2[value]').attr("value", "changed");
+  //カテゴリ3
+  $('.division3[value]').parent().css('display', 'block');
+  $('.division3[value]').attr("value", "changed");
+  //サイズ
+  $('.size[value]').parent().parent().css('display', 'block');
+  $('.size[value]').attr("value", "changed");
+  //価格
+  if ($('.price').val()) {
+    var price = Number($('.price').val());
+    setPrice(price);
+  }
 
-
+  var editPath = location.href.split('/')[5];
+  if (editPath === "edit") {
+    //ブランド(edit時はデフォルト表示)
+    $('.brand-container').css('display', 'block');
+  }
+  //--------------------------------------------------------------------
   //カテゴリ表示機能 兼 ブランド表示機能
   $('.division1').on('change', function () {
     resetHTML(1);
@@ -114,12 +239,11 @@ $(document).on('turbolinks:load', function () {
     //オートバイ車体専用サイズ表示機能
     if (motorcycleSize.includes(selected)) {
       var size = $('.size-container').eq(9);
+      size.css('display', 'block');
+      size.children().children('select').attr("value", "changed");
     }
-    size.css('display', 'block');
-    size.children().children('select').attr("value", "changed");
   });
-
-
+  //--------------------------------------------------------------------
   //サイズ表示機能
   $('.division3').on('change', function () {
     resetHTML();
@@ -143,8 +267,6 @@ $(document).on('turbolinks:load', function () {
       var size = $('.size-container').eq(7);
     } else if (tireSize.includes(selected)) {
       var size = $('.size-container').eq(8);
-    } else if (motorcycleSize.includes(selected)) {
-      var size = $('.size-container').eq(9);
     } else if (motorcycleHelmetSize.includes(selected)) {
       var size = $('.size-container').eq(10);
     } else if (tvSize.includes(selected)) {
@@ -153,20 +275,18 @@ $(document).on('turbolinks:load', function () {
     size.css('display', 'block');
     size.children().children('select').attr("value", "changed");
   })
-
+  //--------------------------------------------------------------------
   //価格表示機能
   $('.price').on('change', function () {
     var price = Number($(this).val());
-    var fee = (price * 0.1).toLocaleString();
-    $('.fee').text(`¥${fee}`);
-    var profit = (price - price * 0.1).toLocaleString();
-    $('.profit').text(`¥${profit}`);
+    setPrice(price);
   })
-
+  //--------------------------------------------------------------------
   //フォームの送信
   $('form').on('submit', function () {
-    $('.division2[value="default"]').parent().remove();
-    $('.division3[value="default"]').parent().remove();
-    $('.size[value="default"]').parent().parent().remove();
+    $('.division2:not([value="changed"])').parent().remove();
+    $('.division3:not([value="changed"])').parent().remove();
+    $('.size:not([value="changed"])').parent().parent().remove();
+    $('.sell-upload-drop-box:last').remove();
   })
 });
