@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_29_073109) do
+ActiveRecord::Schema.define(version: 2019_09_03_053819) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "post_number", null: false
@@ -45,23 +45,6 @@ ActiveRecord::Schema.define(version: 2019_08_29_073109) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "deliver_addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "family_name"
-    t.string "first_name"
-    t.string "family_name_pseudonym"
-    t.string "first_name_pseudonym"
-    t.string "post_number"
-    t.string "prefecture"
-    t.string "city"
-    t.string "street"
-    t.string "building"
-    t.integer "phone_number"
-    t.bigint "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.index ["user_id"], name: "index_deliver_addresses_on_user_id"
-  end
-
   create_table "deliver_methods", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "method", null: false
     t.datetime "created_at", null: false
@@ -72,6 +55,23 @@ ActiveRecord::Schema.define(version: 2019_08_29_073109) do
     t.string "region", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "deliveraddresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "family_name", null: false
+    t.string "first_name", null: false
+    t.string "family_name_pseudonym", null: false
+    t.string "first_name_pseudonym", null: false
+    t.integer "post_number"
+    t.string "prefecture"
+    t.string "city"
+    t.string "street"
+    t.string "building"
+    t.string "phone_number"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_deliveraddresses_on_user_id"
   end
 
   create_table "deliveries", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -169,12 +169,15 @@ ActiveRecord::Schema.define(version: 2019_08_29_073109) do
     t.string "first_name", null: false
     t.string "family_name_pseudonym", null: false
     t.string "first_name_pseudonym", null: false
+    t.string "provider"
+    t.string "uid"
     t.text "profile"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "categories", "size_types"
+  add_foreign_key "deliveraddresses", "users"
   add_foreign_key "deliveries", "deliver_methods"
   add_foreign_key "deliveries", "deliver_regions"
   add_foreign_key "deliveries", "estimated_dates"
