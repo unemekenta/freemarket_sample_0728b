@@ -17,7 +17,7 @@ It is a free market app that allows you to easily buy, sell and trade.
 Ruby 2.5.1
 
 * Authors
-Hiroki_Katsuyama, Masatomo_Sugai, Yuichi_Motmomura, Kenta_Uneme
+Hiroki_Katsuyama, Masatomo_Sugai, Yuichi_Motmomura, Kenta_Uneme, Hirokuni_Takgai
 
 * System dependencies
 
