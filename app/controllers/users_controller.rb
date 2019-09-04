@@ -32,6 +32,9 @@ class UsersController < ApplicationController
   def logout
   end
 
+  def identification
+  end
+
   def create
     @user = User.new(
       nickname: session[:nickname],
