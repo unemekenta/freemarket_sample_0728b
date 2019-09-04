@@ -10,11 +10,15 @@ class SignupController < ApplicationController
       first_name: session[:first_name],
       family_name_pseudonym: session[:family_name_pseudonym],
       first_name_pseudonym: session[:first_name_pseudonym],
+      provider: session["devise.omniauth_data"]['provider'],
+      uid: session["devise.omniauth_data"]['uid']
+
     )
     @user.build_address(user_params[:address_attributes])
     if @user.save
       session[:id] = @user.id
       sign_in User.find(session[:id]) unless user_signed_in?
+      session.delete('devise.omniauth_data')
       redirect_to root_path
     else
       render '/signup/step1'
