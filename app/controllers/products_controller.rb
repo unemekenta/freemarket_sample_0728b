@@ -2,41 +2,36 @@ class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
 
   def index
-    # 親カテゴリID
-    parent_categoryids = [1, 2, 3, 7]
-    products = []
+    products =  []
 
-    parent_categoryids.each_with_index do |id, j|
-      grandchildren = []
-      # 子カテゴリ(複数)
-      children = Category.find(id).children
-      # 子カテゴリの子のidを取得(grandchildren)
-      children.each do |child|
-        child.children.each do |grandchild|
-          grandchildren << grandchild.id
-        end
-      end
-      products[j] = Product.where(category_id: grandchildren).order("id DESC").limit(4)
+    [1, 2, 3, 7].each do |n|
+      @category = Category.find(n)
+      @categories = [
+        @category,
+        @category.children,
+        @category.children.map { |category| category.children }
+      ].flatten.compact
+      products << Product.where(category_id: @categories).order("id DESC").limit(4)
     end
 
+    # レディース
     @products_ladies = products[0]
+
+    # メンズ
     @products_mens = products[1]
+
+    # キッズ
     @products_kids = products[2]
+
+    # コスメ
     @products_cosme = products[3]
 
-    parent_categoryids = [1, 3, 4, 2]
-    products = []
+    # ブランド別新着アイテム
+    @products_chanel = Product.where(brand_id: 1).order("id DESC").limit(4)
+    @products_vuitton = Product.where(brand_id: 3).order("id DESC").limit(4)
+    @products_supreme = Product.where(brand_id: 4).order("id DESC").limit(4)
+    @products_nike = Product.where(brand_id: 2).order("id DESC").limit(4)
 
-    parent_categoryids.each_with_index do |id, j|
-      grandchildren = []
-      # 子カテゴリ(複数)
-      products[j] = Product.where(brand_id: id).order("id DESC").limit(4)
-    end
-
-    @products_chanel = products[0]
-    @products_vuitton = products[1]
-    @products_supreme = products[2]
-    @products_nike = products[3]
 
     # @categories_parents = Category.where(parent_id: nil)
     # @categories_children = Category.where(parent_id: 14..32)
