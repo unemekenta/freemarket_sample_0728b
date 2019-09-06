@@ -14,22 +14,20 @@
       %li.usersMypage__breadCrumbs--current
         やることリスト
 
-  .usersMypage__contents
-    .usersMypage__contents__wrapper.clearfix
-      .usersMypage__contents__wrapper__left
-        = render "users/shared/sidebar"
-            
+  .usersMypage__contents__wrapper.clearfix
+    = render "users/shared/sidebar"
 
-      .usersMypage__contents__wrapper__right
-        .usersMypage__contents__wrapper__right__notification
-          .usersMypage__contents__wrapper__right__notification__tabs
-            = link_to "お知らせ", notification_user_path(current_user.id), class: "usersMypage__contents__wrapper__right__notification__tabs__tab usersMypage__contents__wrapper__right__notification__tabs__tab--dark"
-            = link_to "やることリスト", todo_user_path(current_user.id), class: "usersMypage__contents__wrapper__right__notification__tabs__tab"
+    .usersMypage__contents__wrapper__right
+      .usersMypage__contents__wrapper__right__notification
+        .usersMypage__contents__wrapper__right__notification__tabs
+          = link_to "お知らせ", notification_user_path(current_user.id), class: "usersMypage__contents__wrapper__right__notification__tabs__tab usersMypage__contents__wrapper__right__notification__tabs__tab--dark"
+          = link_to "やることリスト", todo_user_path(current_user.id), class: "usersMypage__contents__wrapper__right__notification__tabs__tab"
 
-          .usersMypage__contents__wrapper__right__notification__contents
-            %ul
-              - 20.times do
-                = render "info"
+        .usersMypage__contents__wrapper__right__notification__contents
+          %ul
+            - 20.times do
+              = render "info"
 
+  = render './products/button'
   = render './products/aside'
   = render './products/footer'

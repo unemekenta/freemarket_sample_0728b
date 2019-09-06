@@ -10,31 +10,30 @@
       %li.usersMypage__breadCrumbs--current
         マイページ
 
-  .usersMypage__contents
-    .usersMypage__contents__wrapper.clearfix
-      .usersMypage__contents__wrapper__left
-        = render "users/shared/sidebar"
+  .usersMypage__contents__wrapper.clearfix
+    = render "users/shared/sidebar"
 
-      .usersMypage__contents__wrapper__right
-      = form_with model: @user, url: users_path,　local: true, method: :put, html: {class: 'first-main__box'} do |f|
-        .usersMypage__contents__wrapper__right__profile
-          .usersMypage__contents__wrapper__right__profile__image
-            = image_tag "http://static.mercdn.net/thumb/members/717195406.jpg?1555687756"
-          .usersMypage__contents__wrapper__right__profile__name
-            = f.text_field :nickname, autofocus: true, placeholder: @user.nickname, class: "input-default"
-          %ul
-            %li
-              %span 評価
-              3
-            %li
-              %span 出品数
-              0
+    .usersMypage__contents__wrapper__right
+    = form_with model: @user, url: users_path,　local: true, method: :put, html: {class: 'first-main__box'} do |f|
+      .usersMypage__contents__wrapper__right__profile
+        .usersMypage__contents__wrapper__right__profile__image
+          = image_tag "http://static.mercdn.net/thumb/members/717195406.jpg?1555687756"
+        .usersMypage__contents__wrapper__right__profile__name
+          = f.text_field :nickname, autofocus: true, placeholder: @user.nickname, class: "input-default"
+        %ul
+          %li
+            %span 評価
+            3
+          %li
+            %span 出品数
+            0
 
-        .usersMypage__contents__wrapper__right__setting-profile-content
-          = f.text_area :profile, class: "text-area"
-          = f.submit "変更する", class: "btn-red"
+      .usersMypage__contents__wrapper__right__setting-profile-content
+        = f.text_area :profile, class: "text-area"
+        = f.submit "変更する", class: "btn-red"
 
-        .usersMypage__contents__wrapper__right__tabs
+      .usersMypage__contents__wrapper__right__tabs
 
+  = render './products/button'
   = render './products/aside'
   = render './products/footer'

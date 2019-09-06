@@ -14,31 +14,28 @@
       %li.usersMypage__breadCrumbs--current
         いいね！一覧
 
-  .usersMypage__contents
-    .usersMypage__contents__wrapper.clearfix
-      .usersMypage__contents__wrapper__left
-        = render "users/shared/sidebar"
-            
+  .usersMypage__contents__wrapper.clearfix
+    = render "users/shared/sidebar"
 
-      .usersMypage__contents__wrapper__right
-        .usersMypage__contents__wrapper__right__like
-          %p
-            いいね！一覧
-        .usersMypage__contents__wrapper__right__like__contents
-          %ul
-            - 50.times do
-              = render "info"
-        
-        %ul.usersMypage__contents__wrapper__right__like__btns
-          %li.usersMypage__contents__wrapper__right__like__btns__btn
-            = link_to "#" do
-              = fa_icon "angle-left"
-          %li.usersMypage__contents__wrapper__right__like__btns__btn.usersMypage__contents__wrapper__right__like__btns__btn--right
-            = link_to "#" do
-              = fa_icon "angle-right"
+    .usersMypage__contents__wrapper__right
+      .usersMypage__contents__wrapper__right__like
+        %p
+          いいね！一覧
+      .usersMypage__contents__wrapper__right__like__contents
+        %ul
+          - 50.times do
+            = render "info"
+      
+      %ul.usersMypage__contents__wrapper__right__like__btns
+        %li.usersMypage__contents__wrapper__right__like__btns__btn
+          = link_to "#" do
+            = fa_icon "angle-left"
+        %li.usersMypage__contents__wrapper__right__like__btns__btn.usersMypage__contents__wrapper__right__like__btns__btn--right
+          = link_to "#" do
+            = fa_icon "angle-right"
 
                 
 
-
+  = render './products/button'
   = render './products/aside'
   = render './products/footer'
