@@ -29,6 +29,9 @@ class UsersController < ApplicationController
   def completed
   end
 
+  def card
+  end
+
   def logout
   end
 
