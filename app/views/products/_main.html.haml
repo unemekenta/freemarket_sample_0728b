@@ -56,32 +56,31 @@
 
     %section.pickup-container
       %h3.pickup-container__headline
-        = link_to "シャネル 新着アイテム", "https://mercari.com/jp/brand/658/"
+        = link_to "シャネル 新着アイテム", brand_path(id: 1)
       %ul.item-box-container
         = render partial: "product", collection: @products_chanel
       .view-all
-        = link_to "すべての商品を見る", "https://mercari.com/jp/brand/658/"
+        = link_to "すべての商品を見る", brand_path(id: 1)
 
     %section.pickup-container
       %h3.pickup-container__headline
-        = link_to "ルイ ヴィトン 新着アイテム", "https://mercari.com/jp/brand/1326/"
+        = link_to "ルイ ヴィトン 新着アイテム", brand_path(id: 3)
       %ul.item-box-container
         = render partial: "product", collection: @products_vuitton
       .view-all
-        = link_to "すべての商品を見る", "https://mercari.com/jp/brand/1326/"
-    
+        = link_to "すべての商品を見る", brand_path(id: 3)
     %section.pickup-container
       %h3.pickup-container__headline
-        = link_to "シュプリーム 新着アイテム", "https://mercari.com/jp/brand/1620/"
+        = link_to "シュプリーム 新着アイテム", brand_path(id: 4)
       %ul.item-box-container
         = render partial: "product", collection: @products_supreme        
       .view-all
-        = link_to "すべての商品を見る", "https://mercari.com/jp/brand/1620/"
+        = link_to "すべての商品を見る", brand_path(id: 4)
 
     %section.pickup-container
       %h3.pickup-container__headline
-        = link_to "ナイキ 新着アイテム", "https://mercari.com/jp/brand/857/"
+        = link_to "ナイキ 新着アイテム", brand_path(id: 2)
       %ul.item-box-container        
         = render partial: "product", collection: @products_nike
       .view-all
-        = link_to "すべての商品を見る", "https://mercari.com/jp/brand/857/"
+        = link_to "すべての商品を見る", brand_path(id: 2)
