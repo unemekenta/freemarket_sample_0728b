@@ -35,6 +35,9 @@ class UsersController < ApplicationController
   def logout
   end
 
+  def identification
+  end
+
   def create
     @user = User.new(
       nickname: session[:nickname],
@@ -46,10 +49,13 @@ class UsersController < ApplicationController
       first_name: session[:first_name],
       family_name_pseudonym: session[:family_name_pseudonym],
       first_name_pseudonym: session[:first_name_pseudonym],
-      provider: session["devise.omniauth_data"]['provider'],
-      uid: session["devise.omniauth_data"]['uid']
-
     )
+
+    if session["devise.omniauth_data"].present?
+      @user[:provider] = session["devise.omniauth_data"]['provider']
+      @user[:uid] = session["devise.omniauth_data"]['uid']
+    end
+
     @user.build_address(user_params[:address_attributes])
     if @user.save
       session[:id] = @user.id

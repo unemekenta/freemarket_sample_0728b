@@ -28,12 +28,15 @@ Rails.application.routes.draw do
       get 'in_progress'
       get 'completed'
       get 'logout'
+      get 'identification'
     end
     collection do
       get 'step1'
       get 'step2'
     end
   end
-  
+ 
+  resources :category, only: [:show]
+  resources :brands, only: [:show]
 end
 
