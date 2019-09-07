@@ -35,10 +35,8 @@ Rails.application.routes.draw do
       get 'step2'
     end
   end
-  
-
-
-
+ 
+  resources :category, only: [:show]
   resources :brands, only: [:show]
 end
 
