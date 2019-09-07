@@ -12,7 +12,6 @@
     height: 52px;
     background-color: $main_white;
     border-bottom: $body_background-color 1.5px solid;
-    // transition: 0.5s;
     &:hover {
       background-color: darken($main_white,2%);
       .shared-sidebar--awsome {
