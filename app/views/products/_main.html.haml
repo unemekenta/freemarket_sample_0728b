@@ -21,35 +21,35 @@
 
     %section.pickup-container
       %h3.pickup-container__headline
-        = link_to "レディース 新着アイテム", "https://www.mercari.com/jp/category/1/"
+        = link_to "レディース 新着アイテム", category_path(id: 1)
       %ul.item-box-container      
         = render partial: "product", collection: @products_ladies
       .view-all
-        = link_to "すべての商品を見る", "https://mercari.com/jp/category/1/"
+        = link_to "すべての商品を見る", category_path(id: 1)
 
     %section.pickup-container
       %h3.pickup-container__headline
-        = link_to "メンズ 新着アイテム", "https://www.mercari.com/jp/category/2/"
+        = link_to "メンズ 新着アイテム", category_path(id: 2)
       %ul.item-box-container
         = render partial: "product", collection: @products_mens
       .view-all
-        = link_to "すべての商品を見る", "https://mercari.com/jp/category/2/"
+        = link_to "すべての商品を見る", category_path(id: 2)
 
     %section.pickup-container
       %h3.pickup-container__headline
-        = link_to "ベビー・キッズ 新着アイテム", "https://mercari.com/jp/category/3/"
+        = link_to "ベビー・キッズ 新着アイテム", category_path(id: 3)
       %ul.item-box-container
         = render partial: "product", collection: @products_kids
       .view-all
-        = link_to "すべての商品を見る", "https://mercari.com/jp/category/3/"
+        = link_to "すべての商品を見る", category_path(id: 3)
 
     %section.pickup-container
       %h3.pickup-container__headline
-        = link_to "コスメ・香水・美容 新着アイテム", "https://mercari.com/jp/category/6/"
+        = link_to "コスメ・香水・美容 新着アイテム", category_path(id: 6)
       %ul.item-box-container
         = render partial: "product", collection: @products_cosme
       .view-all
-        = link_to "すべての商品を見る", "https://mercari.com/jp/category/6/"
+        = link_to "すべての商品を見る", category_path(id: 6)
 
   %section.pickup-containers
     %h2.pickup-containers__headline ピックアップブランド
