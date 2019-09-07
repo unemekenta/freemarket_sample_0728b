@@ -7,6 +7,6 @@ class CategoryController < ApplicationController
       @category.children,
       @category.children.map { |category| category.children }
     ].flatten.compact
-    @products = Product.where(category_id: @categories).where.not(status_id: 4).order("id DESC").limit(50)
+    @products = Product.where(category_id: @categories).where(status_id: 1).order("id DESC").limit(50)
   end
 end
