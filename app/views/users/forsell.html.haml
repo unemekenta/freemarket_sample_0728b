@@ -8,7 +8,7 @@
       %li
         = fa_icon "angle-right", class: "usersMypage__breadCrumbs--awsome"
       %li
-        = link_to mypage_user_path(current_user.id) do
+        = link_to mypage_user_path(current_user) do
           マイページ
           = fa_icon "angle-right", class: "usersMypage__breadCrumbs--awsome"
       %li.usersMypage__breadCrumbs--current
@@ -23,11 +23,11 @@
         %h3 出品した商品
         %ul.usersMypage__contents__wrapper__right__forsell__tabs
           %li.usersMypage__contents__wrapper__right__forsell__tabs__tab
-            = link_to "出品中", forsell_user_path(current_user.id)
+            = link_to "出品中", forsell_user_path(current_user)
           %li.usersMypage__contents__wrapper__right__forsell__tabs__tab.usersMypage__contents__wrapper__right__forsell__tabs__tab--dark
-            = link_to "取引中", in_progress_user_path(current_user.id)
+            = link_to "取引中", in_progress_user_path(current_user)
           %li.usersMypage__contents__wrapper__right__forsell__tabs__tab.usersMypage__contents__wrapper__right__forsell__tabs__tab--dark
-            = link_to "売却済み", completed_user_path(current_user.id)
+            = link_to "売却済み", completed_user_path(current_user)
 
         .usersMypage__contents__wrapper__right__forsell__contents
           %ul

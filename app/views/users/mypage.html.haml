@@ -45,7 +45,7 @@
               - 5.times do
                 = render "info"
               %li.usersMypage__contents__wrapper__right__tabs__contents--last
-                = link_to "一覧を見る", notification_user_path(current_user.id)
+                = link_to "一覧を見る", notification_user_path(current_user)
 
           #user-todos-content.usersMypage__contents__wrapper__right__tabs__contents
             %ul
@@ -77,7 +77,7 @@
                 = render 'info'
             
               %li.usersMypage__contents__wrapper__right__tabs__contents--last
-                = link_to "一覧を見る", purchased_user_path(current_user.id)
+                = link_to "一覧を見る", purchased_user_path(current_user)
 
   = render './products/button'
   = render './products/aside'

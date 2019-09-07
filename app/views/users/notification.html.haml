@@ -8,7 +8,7 @@
       %li
         = fa_icon "angle-right", class: "usersMypage__breadCrumbs--awsome"
       %li
-        = link_to mypage_user_path(current_user.id) do
+        = link_to mypage_user_path(current_user) do
           マイページ
           = fa_icon "angle-right", class: "usersMypage__breadCrumbs--awsome"
       %li.usersMypage__breadCrumbs--current
@@ -21,9 +21,9 @@
       .usersMypage__contents__wrapper__right__notification
         %ul.usersMypage__contents__wrapper__right__notification__tabs
           %li.usersMypage__contents__wrapper__right__notification__tabs__tab
-            = link_to "お知らせ", notification_user_path(current_user.id)
+            = link_to "お知らせ", notification_user_path(current_user)
           %li.usersMypage__contents__wrapper__right__notification__tabs__tab.usersMypage__contents__wrapper__right__notification__tabs__tab--dark
-            = link_to "やることリスト", todo_user_path(current_user.id)
+            = link_to "やることリスト", todo_user_path(current_user)
 
         .usersMypage__contents__wrapper__right__notification__contents
           %ul
