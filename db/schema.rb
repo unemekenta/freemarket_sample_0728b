@@ -13,10 +13,10 @@
 ActiveRecord::Schema.define(version: 2019_09_08_053246) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "post_number"
-    t.string "prefecture"
-    t.string "city"
-    t.string "street"
+    t.integer "post_number", null: false
+    t.string "prefecture", null: false
+    t.string "city", null: false
+    t.string "street", null: false
     t.string "building"
     t.bigint "user_id"
     t.datetime "created_at"
@@ -41,6 +41,14 @@ ActiveRecord::Schema.define(version: 2019_09_08_053246) do
 
   create_table "conditions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "condition", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "credit_cards", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.string "customer_id", null: false
+    t.string "card_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -161,8 +169,8 @@ ActiveRecord::Schema.define(version: 2019_09_08_053246) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "nickname"
-    t.date "birthday"
+    t.string "nickname", null: false
+    t.date "birthday", null: false
     t.string "photo", default: "0"
     t.integer "phone_number", default: 0
     t.string "family_name", null: false
