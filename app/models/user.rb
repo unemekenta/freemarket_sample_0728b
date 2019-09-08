@@ -10,7 +10,6 @@ class User < ApplicationRecord
   accepts_nested_attributes_for :address
   has_many :products, through: :purchases
   has_many :purchases
-  has_many :credit_cards
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first
