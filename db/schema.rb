@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_27_151450) do
+ActiveRecord::Schema.define(version: 2019_09_04_122739) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "post_number"
@@ -41,6 +41,14 @@ ActiveRecord::Schema.define(version: 2019_08_27_151450) do
 
   create_table "conditions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "condition", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "credit_cards", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.string "customer_id", null: false
+    t.string "card_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -152,10 +160,10 @@ ActiveRecord::Schema.define(version: 2019_08_27_151450) do
     t.date "birthday"
     t.string "photo", default: "0"
     t.integer "phone_number", default: 0
-    t.string "family_name", null: false
-    t.string "first_name", null: false
-    t.string "family_name_pseudonym", null: false
-    t.string "first_name_pseudonym", null: false
+    t.string "family_name"
+    t.string "first_name"
+    t.string "family_name_pseudonym"
+    t.string "first_name_pseudonym"
     t.text "profile"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
