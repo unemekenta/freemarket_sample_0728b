@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_04_122739) do
+ActiveRecord::Schema.define(version: 2019_09_08_053246) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "post_number"
@@ -165,6 +165,8 @@ ActiveRecord::Schema.define(version: 2019_09_04_122739) do
     t.string "family_name_pseudonym"
     t.string "first_name_pseudonym"
     t.text "profile"
+    t.bigint "credit_card_id"
+    t.index ["credit_card_id"], name: "index_users_on_credit_card_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -181,4 +183,5 @@ ActiveRecord::Schema.define(version: 2019_09_04_122739) do
   add_foreign_key "products", "sizes"
   add_foreign_key "products", "statuses"
   add_foreign_key "sizes", "size_types"
+  add_foreign_key "users", "credit_cards"
 end
