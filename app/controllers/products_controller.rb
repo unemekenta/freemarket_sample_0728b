@@ -62,17 +62,12 @@ class ProductsController < ApplicationController
   def teltest
   end
 
-  def pay
-    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
-    Payjp::Charge.create(
-      :amount => params[:amount],
-      :card => params['payjp-token'],
-      :currency => 'jpy'
-    )
+  def purchase
+    Payjp.api_key = 'sk_test_89fbd1a1be9ad8267b4c7f63'
+    Payjp::Charge.create(currency: 'jpy', amount: 1000, card: params['payjp-token'])
+    redirect_to root_path, notice: "支払いが完了しました"
   end
   
-
-
   private
 
   def set_product
