@@ -31,19 +31,25 @@
           %h2.single__single-main__l-single-container__l-single-head 会員情報入力
     
           .single__single-main__l-single-container__l-single-content
-    
             .single__single-main__l-single-container__l-single-content__form-group
               = f.label "ニックネーム"
+
               %span.form_require 必須
               %br/
-              = f.text_field :nickname, autofocus: true, placeholder: "例) メルカリ太郎", class: "input-default"
-    
+              - if session["devise.omniauth_data"].present?
+                = f.text_field :nickname, autofocus: true, placeholder: "例) メルカリ太郎", class: "input-default", value: "#{session["devise.omniauth_data"]['nickname']}"
+              - else 
+                = f.text_field :nickname, autofocus: true, placeholder: "例) メルカリ太郎", class: "input-default"
+
             .single__single-main__l-single-container__l-single-content__form-group
               = f.label "メールアドレス"
               %span.form_require 必須
               %br/
-              = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "PC・携帯どちらでも可", class: "input-default"
-    
+              - if session["devise.omniauth_data"].present?
+                = f.text_field :email, autofocus: true, placeholder: "PC・携帯どちらでも可", class: "input-default", value: "#{session["devise.omniauth_data"]['email']}"
+              - else 
+                = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "PC・携帯どちらでも可", class: "input-default"
+
             .single__single-main__l-single-container__l-single-content__form-group
               = f.label "パスワード"
               %span.form_require 必須
@@ -63,7 +69,7 @@
               %h3.text-left.l-chapter-sub-head 本人確認
               %p.l-single-text
                 安心・安全にご利用いただくために、お客さまの本人情報の登録にご協力ください。他のお客さまに公開されることはありません。
-
+                
             .single__single-main__l-single-container__l-single-content__form-group
               = f.label "お名前(全角)"
               %span.form_require 必須
