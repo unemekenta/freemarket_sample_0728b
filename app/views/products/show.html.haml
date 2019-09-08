@@ -82,7 +82,9 @@
       .product__user-sales__balloon
         売上金¥#{number_with_delimiter @product.price}をお持ちです
 
-    /購入画面は仮置きのpath
+    = form_tag(action: :purchase, method: :post) do
+      %script.payjp-button{"data-key" => "pk_test_40610d603c94c62d0cf0a882", :src => "https://checkout.pay.jp", :type => "text/javascript"}
+
     = link_to '購入画面に進む', root_path, class: "product__buy-btn"
     /出品者 = ログインしているユーザの場合、以下を表示(未実装)
     /- if @product.seller == current_user
