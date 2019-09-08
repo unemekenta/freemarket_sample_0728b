@@ -1,13 +1,5 @@
 class UsersController < ApplicationController
 
-  before_action :move_to_root, except: [:step1, :step2, :create]
-
-  def deliver_address
-  end
-
-  def show
-  end
-
   def mypage
   end
 
@@ -29,13 +21,7 @@ class UsersController < ApplicationController
   def completed
   end
 
-  def card
-  end
-
   def logout
-  end
-
-  def identification
   end
 
   def create
@@ -50,12 +36,6 @@ class UsersController < ApplicationController
       family_name_pseudonym: session[:family_name_pseudonym],
       first_name_pseudonym: session[:first_name_pseudonym],
     )
-
-    if session["devise.omniauth_data"].present?
-      @user[:provider] = session["devise.omniauth_data"]['provider']
-      @user[:uid] = session["devise.omniauth_data"]['uid']
-    end
-
     @user.build_address(user_params[:address_attributes])
     if @user.save
       session[:id] = @user.id

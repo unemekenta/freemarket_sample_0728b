@@ -1,18 +1,20 @@
 Rails.application.routes.draw do
-
-  devise_for :users, controllers: { registrations: "users", sessions: 'users/sessions', omniauth_callbacks: 'users/omniauth_callbacks' }
+  get 'purchase/index'
+  get 'purchase/done'
+  get 'credit_card/new'
+  get 'credit_card/show'
+  get 'products/index'
+  get 'products/pay'
+  devise_for :users, controllers: { registrations: "users", sessions: 'users/sessions' }
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'products#index'
   get 'telltest' => 'products#teltest' 
-
   resources :products, only: [:index, :new, :update, :create, :show, :edit] do
     collection do
       post 'purchase'
     end
   end
-
   resources :users, only: [:show, :new, :create, :edit, :update ] do
-    resources :deliveraddresses, only: [:new, :create]
     member do
       get 'mypage'
       get 'notification'
@@ -22,6 +24,7 @@ Rails.application.routes.draw do
       get 'point'
       get 'profile'
       get 'update'
+      get 'deliver_address'
       get 'card'
       get 'email_password'
       get 'purchase'
@@ -30,7 +33,6 @@ Rails.application.routes.draw do
       get 'in_progress'
       get 'completed'
       get 'logout'
-      get 'identification'
     end
     collection do
       get 'step1'
@@ -53,9 +55,5 @@ Rails.application.routes.draw do
       get 'done', to: 'purchase#done'
     end
   end
- 
-  resources :category, only: [:show]
-  resources :brands, only: [:show]
-
 end
 

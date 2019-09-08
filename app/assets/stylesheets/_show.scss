@@ -15,8 +15,7 @@ body {
   margin: 0;
   padding: 0;
   font-size: 16px;
-  font-family: "Source Sans Pro", Helvetica, Arial, 游ゴシック体, YuGothic,
-    メイリオ, Meiryo, sans-serif;
+  font-family: "Source Sans Pro", Helvetica, Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
 }
 
 a {
@@ -53,6 +52,7 @@ a {
   font-weight: $font-weight;
 }
 
+
 .product {
   width: 700px;
   margin: 24px auto 0;
@@ -80,16 +80,6 @@ a {
         &-main {
           width: 100%;
           margin: 0 0;
-          position: relative;
-
-          &--soldout {
-            width: 120px;
-            height: 120px;
-            position: absolute;
-            z-index: 1;
-            top: -1px;
-            left: -1px;
-          }
 
           img {
             max-height: 100%;
@@ -150,6 +140,7 @@ a {
                     color: #6ab5d8;
                   }
                 }
+
               }
 
               .text-link {
@@ -184,6 +175,7 @@ a {
     &__shipping-fee {
       font-size: 16px;
     }
+
   }
 
   &__user-sales {
@@ -194,11 +186,12 @@ a {
       position: relative;
       line-height: 1.5;
       color: #fff;
-      background: #05b0b4;
+      background: #05B0B4;
       margin: 20px 0 0 0;
       padding: 8px;
       border-radius: 4px;
     }
+
   }
 
   &__buy-btn {
@@ -209,16 +202,10 @@ a {
     @include actionBtn(#ea352b, 14px, 400);
   }
 
-  &__soldout {
-    @include actionBtn(darken($main_gray, 15%), 24px, 600);
-    &:hover {
-      cursor: not-allowed;
-    }
-  }
-
   &__edit__btn-text {
     font-size: 16px;
     text-align: center;
+
   }
 
   &__status-btn {
@@ -234,6 +221,7 @@ a {
     font-size: 18px;
     line-height: 1.5;
     white-space: pre-wrap;
+
   }
 
   &__btn-container {

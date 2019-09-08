@@ -2,46 +2,25 @@ class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
 
   def index
-    products =  []
-
-    [1, 2, 3, 7].each do |n|
-      @category = Category.find(n)
-      @categories = [
-        @category,
-        @category.children,
-        @category.children.map { |category| category.children }
-      ].flatten.compact
-      products << Product.where(category_id: @categories).order("id DESC").limit(4)
-    end
-
-    # レディース
-    @products_ladies = products[0]
-
-    # メンズ
-    @products_mens = products[1]
-
-    # キッズ
-    @products_kids = products[2]
-
-    # コスメ
-    @products_cosme = products[3]
-
-    # ブランド別新着アイテム
-    @products_chanel = Product.where(brand_id: 1).order("id DESC").limit(4)
-    @products_vuitton = Product.where(brand_id: 3).order("id DESC").limit(4)
-    @products_supreme = Product.where(brand_id: 4).order("id DESC").limit(4)
-    @products_nike = Product.where(brand_id: 2).order("id DESC").limit(4)
+    products = Product.order("id DESC").limit(32)
+    @products_ladies = products[0..3]
+    @products_mens = products[4..7]
+    @products_kids = products[8..11]
+    @products_cosme = products[12..15]
+    @products_chanel = products[16..19]
+    @products_vuitton = products[20..23]
+    @products_supreme = products[24..27]
+    @products_nike = products[28..31]
+    @categories_parents = Category.where(parent_id: nil)
+    @categories_children = Category.where(parent_id: 14..32)
+    @categories_grandchildren_ladies1 = Category.where(parent_id: 14)
+    @categories_grandchildren_ladies2 = Category.where(parent_id: 15)
+    @categories_grandchildren_ladies3 = Category.where(parent_id: 16)
 
 
-    # @categories_parents = Category.where(parent_id: nil)
-    # @categories_children = Category.where(parent_id: 14..32)
-    # @categories_grandchildren_ladies1 = Category.where(parent_id: 14)
-    # @categories_grandchildren_ladies2 = Category.where(parent_id: 15)
-    # @categories_grandchildren_ladies3 = Category.where(parent_id: 16)
   end
 
   def show
-    @seller = User.find(@product.seller_id)
   end
   
   def new
@@ -96,7 +75,6 @@ class ProductsController < ApplicationController
   end
 
   def product_params
-    params.require(:product).permit(:name, :price, :detail, :status_id, :condition_id, :category_id, :brand_id, :size_id, delivery_attributes: [:id, :shipping_fee, :deliver_method_id, :estimated_date_id, :deliver_region_id], product_images_attributes: [:id, :image]).merge(seller_id: current_user.id)
+    params.require(:product).permit(:name, :price, :detail, :status_id, :condition_id, :category_id, :brand_id, :size_id, delivery_attributes: [:id, :shipping_fee, :deliver_method_id, :estimated_date_id, :deliver_region_id], product_images_attributes: [:id, :image])
   end
-
 end
