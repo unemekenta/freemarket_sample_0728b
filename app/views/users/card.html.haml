@@ -1,0 +1,53 @@
+.default-container
+  = render './products/header'
+
+  .usersMypage__breadCrumbs
+    %ul
+      %li
+        = link_to "メルカリ", root_path
+      %li
+        = fa_icon "angle-right", class: "usersMypage__breadCrumbs--awsome"
+      %li
+        = link_to "マイページ", mypage_user_path("#{params[:id]}")
+      %li
+        = fa_icon "angle-right", class: "usersMypage__breadCrumbs--awsome"
+      %li.usersMypage__breadCrumbs--current
+        支払い方法
+
+  .usersMypage__contents__wrapper.clearfix
+    = render "users/shared/sidebar"
+
+    .usersMypage__contents__wrapper__right
+      %p.usersMypage__contents__wrapper__right__howtopay
+        支払い方法
+      
+      .usersMypage__contents__wrapper__right__cards.clearfix
+        .usersMypage__contents__wrapper__right__cards__index
+          %p
+            クレジットカード一覧
+
+        .usersMypage__contents__wrapper__right__cards__card
+          -# カード未登録の場合(下記分岐はpayjp実装後、修正)
+          .usersMypage__contents__wrapper__right__cards__card__register
+            = link_to "#" do
+              %p
+                クレジットカードを追加する
+
+          -# 下記はクレジットカード登録機能実装後、使用予定
+          -# .usersMypage__contents__wrapper__right__cards__card__image
+          -#   = image_tag "http:////www-mercari-jp.akamaized.net/assets/img/card/visa.svg?944967624"
+          -#   %p
+          -#     *******************
+          -#   %p
+          -#     08/22
+          -# .usersMypage__contents__wrapper__right__cards__card__btn
+          -#   = link_to "削除する", "#"
+
+      .usersMypage__contents__wrapper__right__explain
+        = link_to "#" do
+          %span
+            支払い方法について
+  
+  = render './products/button'
+  = render './products/aside'
+  = render './products/footer'

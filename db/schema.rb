@@ -45,31 +45,6 @@ ActiveRecord::Schema.define(version: 2019_09_04_122739) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "credit_cards", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.string "customer_id", null: false
-    t.string "card_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "deliver_addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "family_name"
-    t.string "first_name"
-    t.string "family_name_pseudonym"
-    t.string "first_name_pseudonym"
-    t.string "post_number"
-    t.string "prefecture"
-    t.string "city"
-    t.string "street"
-    t.string "building"
-    t.integer "phone_number"
-    t.bigint "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.index ["user_id"], name: "index_deliver_addresses_on_user_id"
-  end
-
   create_table "deliver_methods", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "method", null: false
     t.datetime "created_at", null: false
@@ -80,6 +55,23 @@ ActiveRecord::Schema.define(version: 2019_09_04_122739) do
     t.string "region", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "deliveraddresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "family_name", null: false
+    t.string "first_name", null: false
+    t.string "family_name_pseudonym", null: false
+    t.string "first_name_pseudonym", null: false
+    t.integer "post_number"
+    t.string "prefecture"
+    t.string "city"
+    t.string "street"
+    t.string "building"
+    t.string "phone_number"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_deliveraddresses_on_user_id"
   end
 
   create_table "deliveries", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -121,11 +113,24 @@ ActiveRecord::Schema.define(version: 2019_09_04_122739) do
     t.bigint "brand_id"
     t.bigint "category_id", null: false
     t.bigint "size_id"
+    t.bigint "seller_id"
     t.index ["brand_id"], name: "index_products_on_brand_id"
     t.index ["category_id"], name: "index_products_on_category_id"
     t.index ["condition_id"], name: "index_products_on_condition_id"
+    t.index ["seller_id"], name: "index_products_on_seller_id"
     t.index ["size_id"], name: "index_products_on_size_id"
     t.index ["status_id"], name: "index_products_on_status_id"
+  end
+
+  create_table "purchases", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "product_id", null: false
+    t.bigint "seller_id", null: false
+    t.bigint "buyer_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["buyer_id"], name: "index_purchases_on_buyer_id"
+    t.index ["product_id"], name: "index_purchases_on_product_id"
+    t.index ["seller_id"], name: "index_purchases_on_seller_id"
   end
 
   create_table "size_types", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -160,16 +165,19 @@ ActiveRecord::Schema.define(version: 2019_09_04_122739) do
     t.date "birthday"
     t.string "photo", default: "0"
     t.integer "phone_number", default: 0
-    t.string "family_name"
-    t.string "first_name"
-    t.string "family_name_pseudonym"
-    t.string "first_name_pseudonym"
+    t.string "family_name", null: false
+    t.string "first_name", null: false
+    t.string "family_name_pseudonym", null: false
+    t.string "first_name_pseudonym", null: false
+    t.string "provider"
+    t.string "uid"
     t.text "profile"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "categories", "size_types"
+  add_foreign_key "deliveraddresses", "users"
   add_foreign_key "deliveries", "deliver_methods"
   add_foreign_key "deliveries", "deliver_regions"
   add_foreign_key "deliveries", "estimated_dates"
@@ -180,5 +188,9 @@ ActiveRecord::Schema.define(version: 2019_09_04_122739) do
   add_foreign_key "products", "conditions"
   add_foreign_key "products", "sizes"
   add_foreign_key "products", "statuses"
+  add_foreign_key "products", "users", column: "seller_id"
+  add_foreign_key "purchases", "products"
+  add_foreign_key "purchases", "users", column: "buyer_id"
+  add_foreign_key "purchases", "users", column: "seller_id"
   add_foreign_key "sizes", "size_types"
 end

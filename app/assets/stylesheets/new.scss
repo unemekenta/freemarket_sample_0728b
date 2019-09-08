@@ -86,10 +86,11 @@ sans-serif;
           border-top: 1px solid #eee;
 
           &__upload-box {
-            width: 620px;
-            height: 303px;
+            width: 100%;
             padding: 40px;
+            margin: 0;
             font-family: $font-family;
+            overflow: auto;
 
             &__header {
               font-size: 16px;
@@ -115,20 +116,73 @@ sans-serif;
               padding: 0;
 
               .sell-upload-items-container {
-                display: inline;
+                margin: 0;
+                padding: 0;
 
                 .sell-upload-items.have-item-0 {
-                  float: left;
-                  display: block;
 
                   ul {
                     width: 100%;
                     list-style: none;
+
+                    li:first-child {
+                      margin-left: 0;
+                      float: left;
+                    }
+
+                    li:nth-child(6) {
+                      margin-left: 0;
+                    }
+
+                    li {
+                      width: 116px;
+                      margin: 0 0 10px 10px;
+                      border: 1px solid #eee;
+                      float: left;
+
+                      figure {
+                        text-align: center;
+                        line-height: 116px;
+                        width: 100%;
+                        margin: 0;
+                        padding: 0;
+                        height: 116px;
+                        position: relative;
+                        overflow: hidden;
+                        background: #f5f5f5;
+
+                        img {
+                          position: static;
+                          top: 50%;
+                          left: 0;
+                          width: 100%;
+                          vertical-align: middle;
+                        }
+                      }
+
+                      .sell-upload-button {
+                        font-size: 14px;
+
+                        a {
+                          display: inline-block;
+                          width: 50%;
+                          background: #f5f5f5;
+                          line-height: 44px;
+                          text-align: center;
+                          color: #0099e8;
+                          text-decoration: none;
+                        }
+
+                        a:last-child {
+                          border-left: 1px solid #eee;
+                        }
+                      }
+                    }
                   }
                 }
               }
 
-              .sell-upload-drop-box.have-item-0 {
+              .sell-upload-drop-box {
                 width: 100%;
                 margin-left: 0;
                 float: right;
@@ -141,6 +195,7 @@ sans-serif;
                 text-align: center;
                 font-family: inherit;
                 transition: box-shadow ease-out .3s;
+                cursor: pointer;
 
                 input {
                   display: none;
@@ -165,6 +220,38 @@ sans-serif;
                   white-space: pre-wrap;
                   word-wrap: break-word;
                 }
+              }
+
+              .have-item-1 {
+                width: 491px;
+              }
+
+              .have-item-2 {
+                width: 363px;
+              }
+
+              .have-item-3 {
+                width: 234px;
+              }
+
+              .have-item-4 {
+                width: 106px;
+              }
+
+              .have-item-6 {
+                width: 491px;
+              }
+
+              .have-item-7 {
+                width: 363px;
+              }
+
+              .have-item-8 {
+                width: 234px;
+              }
+
+              .have-item-9 {
+                width: 106px;
               }
             }
           }

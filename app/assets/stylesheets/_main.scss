@@ -3,7 +3,11 @@
 main {
   width: 100%;
   background-color: rgb(245, 245, 245);
+<<<<<<< Updated upstream
   margin: 10px 0 0 0;
+=======
+  margin: 15px 0 0 0;
+>>>>>>> Stashed changes
   padding: 0;
 
   h2 {
@@ -35,7 +39,6 @@ main {
         transform: translate(0, -50%);
         height: 298px;
         width: 480px;
-
 
         h2 {
           margin: 0;
@@ -98,7 +101,6 @@ main {
       margin: 0;
     }
 
-
     .pickup-container {
       width: 940px;
       margin: 0 auto;
@@ -107,7 +109,10 @@ main {
       &__headline {
         text-align: center;
         margin: 26px 11px;
+<<<<<<< Updated upstream
+=======
 
+>>>>>>> Stashed changes
 
         a {
           text-decoration: none;
@@ -143,7 +148,7 @@ main {
             height: 220px;
             position: relative;
 
-            img {
+            &--product {
               top: 0;
               right: 0;
               bottom: 0;
@@ -152,6 +157,14 @@ main {
               height: 100%;
               width: 100%;
               object-fit: cover;
+            }
+            &--soldout {
+              width: 100px;
+              height: 100px;
+              position: absolute;
+              z-index: 1;
+              top: -2px;
+              left: -1px;
             }
           }
 
@@ -177,13 +190,17 @@ main {
 
             &__name:after {
               display: block;
-              content: '';
+              content: "";
               position: absolute;
               bottom: 0;
               right: 0;
               width: 50%;
               height: 1.5em;
-              background: linear-gradient(to right, rgba(255, 255, 255, 0), #fff 72%);
+              background: linear-gradient(
+                to right,
+                rgba(255, 255, 255, 0),
+                #fff 72%
+              );
             }
 
             &__num {
@@ -207,7 +224,7 @@ main {
 
                 i {
                   font-size: 17px;
-                  color: rgb(204, 204, 204)
+                  color: rgb(204, 204, 204);
                 }
               }
             }
