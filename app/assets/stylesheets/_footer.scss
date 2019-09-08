@@ -3,11 +3,11 @@
 .footer{
   font-weight: 100;
   color: $main_gray;
-  background-color: rgb(33, 33, 33);
-  padding: 0px 80px;
+  background-color: $footer_background-color;
+  padding: 0 20px 10px 20px;
   &__container{
     display: flex;
-    justify-content:space-evenly;
+    justify-content:center;
     &__cell{
       margin: 18px 20px 10px 20px;
       &__head{
@@ -54,6 +54,7 @@
   .footer__bottom{
     display: flex;
     padding: 50px 25px;
+    justify-content:center;
     &__logo{
 
     }
