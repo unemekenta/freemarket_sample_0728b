@@ -1,0 +1,75 @@
+.default-containers
+  = render './products/header'
+  .usersMypage__contents
+    .usersMypage__contents__wrapper.clearfix
+      .usersMypage__contents__wrapper__left
+        = render './users/shared/sidebar'
+      .singles
+        .singles__single-main
+          %section.singles__single-main__l-single-container
+            = form_with model: @user, url: identification_user_path, method: :post, html: {class: 'forth-main-wrapper__box'} do |f|
+              %h2.singles__single-main__l-single-container__l-single-head 本人情報の登録
+              %h2.singles__single-main__l-single-container__l-single-contents
+                = f.fields_for :identification do |identification|
+
+                  .informations
+                    %p 
+                      お客さまの本人情報をご登録ください。
+                      %br/
+                      登録されたお名前・生年月日を変更する場合、本人確認書類の提出が必要になります。
+                    .text-right
+                      = link_to "本人確認書類のアップロードについて＞", "https://www.mercari.com/jp/help_center/article/495/"
+                  .user-identification
+                    .top
+                      お名前
+                    .bottom
+                      山田太郎
+                  .user-identification
+                    .top
+                      お名前カナ
+                    .bottom
+                      ヤマダタロウ
+                  .user-identification
+                    .top
+                      生年月日
+                    .bottom
+                      2019/10/12
+
+                  .singles__single-main__l-single-container__l-single-contents__form-group
+                    = identification.label "郵便番号"
+                    %span.form_any 任意
+                    %br/
+                    = f.text_field :post_number, autofocus: true, placeholder: "例) 123-4567", class: "input-default"
+      
+                  .singles__single-main__l-single-container__l-single-contents__form-group
+                    = identification.label "都道府県"
+                    %span.form_any 任意
+                    %br/
+                    = f.text_field :prefecture, autofocus: true, placeholder: "例) 北海道", class: "input-default"
+        
+                  .singles__single-main__l-single-container__l-single-contents__form-group
+                    = identification.label "市区町村"
+                    %span.form_any 任意
+                    %br/
+                    = f.text_field :city, autofocus: true, placeholder: "例) 横浜市緑区", class: "input-default"
+        
+                  .singles__single-main__l-single-container__l-single-contents__form-group
+                    = identification.label "番地"
+                    %span.form_any 任意
+                    %br/
+                    = f.text_field :street, autofocus: true, placeholder: "例) 青山1-1-1", class: "input-default"
+        
+                  .singles__single-main__l-single-container__l-single-contents__form-group
+                    = identification.label "建物名"
+                    %span.form_any 任意
+                    %br/
+                    = f.text_field :building, autofocus: true, placeholder: "例) 柳ビル103", class: "input-default"
+          
+                  = f.submit "登録する", class: "btn-red"
+
+                  .singles__single-main__l-single-container__l-single-contents__form-group
+                    .identification-information
+                      = link_to "本人情報の登録について＞", "https://www.mercari.com/jp/help_center/article/423/"
+  
+  = render './products/aside'
+  = render './products/footer'
