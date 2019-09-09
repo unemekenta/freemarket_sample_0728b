@@ -2,7 +2,14 @@ $(document).on('turbolinks:load', function () {
 
   //--------------------------------------------------------------------
   //画像投稿機能
-
+  var url = location.href.split('/')[5];
+  var array = [];
+  var count = $('.sell-upload-drop-box').length;
+  for (var i = 0; i < `${count}`; i++) {
+    array.push(i)
+  }
+  var default_array_length = array.length;
+  //--------------------------------------------------------------------
   //アップロードエリア初期化
   function Resetdropbox() {
     $('.sell-upload-drop-box').eq(0).attr({
@@ -10,42 +17,56 @@ $(document).on('turbolinks:load', function () {
       class: `sell-upload-drop-box have-item-0`
     });
     $('.sell-upload-drop-box').eq(0).children('input').attr({
-      name: `product[product_images_attributes][0][image]`,
-      id: `product_product_images_attributes_0_image`
+      name: `product[product_images_attributes][${array[0]}][image]`,
+      id: `product_product_images_attributes_${array[0]}_image`
     });
   }
-
+  //--------------------------------------------------------------------
   //アップロードエリアのRenumbering function
   function Renumbering() {
     count = $('.sell-upload-drop-box').length;
-    //総数が9枚以下ならアップロードエリアを表示する
-    if (count <= 10) {
-      $('.sell-upload-drop-box:last-child').css('display', 'block');
-    }
 
     if (count === 1) {
       Resetdropbox();
     }
     //Renumbering 番号を採番しなおし、最後のアップロードエリア以外は非表示に変更する
-    for (var i = 0; i < `${count - 1}`; i++) {
+    for (var i = 0; i < `${count}`; i++) {
       Resetdropbox();
       $('.sell-upload-drop-box').eq(`${i + 1}`).attr({
         for: `product_product_images_attributes_${i + 1}_image`,
         class: `sell-upload-drop-box have-item-${i + 1}`
       });
       $('.sell-upload-drop-box').eq(`${i + 1}`).children('input').attr({
-        name: `product[product_images_attributes][${i + 1}][image]`,
-        id: `product_product_images_attributes_${i + 1}_image`
+        name: `product[product_images_attributes][${array[i + 1]}][image]`,
+        id: `product_product_images_attributes_${array[i + 1]}_image`
       });
       $('.sell-upload-drop-box').eq(`${i}`).css('display', 'none');
+
+      $('.sell-upload-delete').eq(`${i}`).attr({
+        value: `${i}`
+      });
     }
+    //総数が9枚以下ならアップロードエリアを表示する
+    if (count <= 10) {
+      $('.sell-upload-drop-box:last-child').css('display', 'block');
+    }
+
     //総数が10枚ならアップロードエリアを表示しない
     if (count > 10) {
       $('.sell-upload-drop-box:last-child').css('display', 'none');
     }
   }
-  //アップロードエリアを選択した際に発火
+  //--------------------------------------------------------------------
+  //イベントバブリング防止
   $fileField = $('.sell-upload-drop-file')
+  $($fileField).click(function (e) {
+    e.stopPropagation();
+  });
+  //親要素アップロードエリアを洗濯した際に子要素inputを発火させる処理
+  $('.sell-upload-drop-box').on('click', function () {
+    $(this).children('input').click();
+  });
+  //--------------------------------------------------------------------
   $($fileField).on('change', function (e) {
     //画像プレビュー機能
     file = e.target.files[0];
@@ -66,32 +87,62 @@ $(document).on('turbolinks:load', function () {
         class: "sell-upload-edit"
       })).append($('<a href>削除</a>').attr({
         class: "sell-upload-delete",
-        id: `${$('.sell-upload-item').length}`
+        id: `${array[array_length] + 1}`,
+        value: `${$('.sell-upload-item').length}`,
       }))));
     };
     reader.readAsDataURL(file);
-
+  //--------------------------------------------------------------------
     //画像複数投稿機能
     var clone = $(this).parent().clone(true);
     $(this).parent().parent().append(clone);
+    var array_length = array.length - 1;
+    if (url === "edit") {
+      array.push(default_array_length);
+      default_array_length++;
+    } else {
+      array.push(array[array_length] + 1);
+    }
     Renumbering();
   });
-
+  //--------------------------------------------------------------------
   //画像編集機能(未実装)(今の所実装予定なし)
   $('.sell-upload-items').on('click', '.sell-upload-edit', function () {
     return false;
   });
-
+  //--------------------------------------------------------------------
   //画像削除機能
   $('.sell-upload-items').on('click', '.sell-upload-delete', function () {
     var num = $(this).attr('id');
-    console.log(num);
-    $('.sell-upload-drop-box').eq(`${num}`).remove();
+    var length = $(this).attr('value');
+    array.splice(length, 1);
+    if (url === "edit") {
+      $('.sell-dropbox-container').children('input[type="checkbox"]').eq(`${num}`).prop('checked', true);
+    }
+    $('.sell-upload-drop-box').eq(`${length}`).remove();
     $(this).parent().parent().remove();
     Renumbering();
     return false;
   });
 
+  //--------------------------------------------------------------------
+  //Edit時画像投稿機能
+
+  var url = location.href.split('/')[5];
+
+  if (url === "edit") {
+    var clone = $('.sell-upload-drop-box:last').clone(true);
+    $('.sell-upload-drop-box').children('input').remove();
+    //いつか時間があれば実装(DOMの見た目を綺麗にするだけ)
+    //count = $('.sell-upload-drop-box').length;
+    //for (var i = 0; i < `${count}`; i++) {
+    //  var inputclone = $('.sell-dropbox-container').children('input').eq(`${i}`).clone(true);
+    //  $('.sell-dropbox-container').children('.sell-upload-drop-box').eq(`${i}`).append(inputclone)
+    //}
+    //$('.sell-dropbox-container').children('input').remove();
+    $('.sell-upload-drop-box').parent().append(clone);
+    Renumbering();
+  }
   //--------------------------------------------------------------------
   //DOMリセット用function
   function resetHTML(num) {
