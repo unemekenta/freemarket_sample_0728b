@@ -102,13 +102,8 @@ a {
       color: $main_black;
       &__logo {
         display: block;
-<<<<<<< Updated upstream
-        width: 155px;
-        height: 45px;
-=======
         width: 170px;
         height: 50px;
->>>>>>> Stashed changes
       }
 
       &__form {
@@ -145,11 +140,7 @@ a {
     justify-content: space-between;
 
     &--left {
-<<<<<<< Updated upstream
-      display: flex;
-      justify-content: space-between;
-=======
-      float: left;
+      // float: left;
       display: inline-block;
       &__text {
         font-weight: bold;
@@ -157,7 +148,6 @@ a {
         padding: 10px;
         }
       
->>>>>>> Stashed changes
       &__icon {
         color: $main_red;
         font-size: 12px;
@@ -313,11 +303,6 @@ a {
           }
         }
       }
-  
-
-
-
-
     }
     &--right {
       float: right;
@@ -325,7 +310,7 @@ a {
       height: 44px;
       font-size: 14px;
       &__list {
-        float:left;
+        // float:left;
         display: inline-block;
         padding: 0 14px;
         line-height: 42px;
@@ -339,10 +324,6 @@ a {
         &__photo {
           float:left;
           border-radius: 50%;
-<<<<<<< Updated upstream
-          float: left;
-=======
->>>>>>> Stashed changes
           margin-right: 10px;
           width: 32px;
           height: 32px;
