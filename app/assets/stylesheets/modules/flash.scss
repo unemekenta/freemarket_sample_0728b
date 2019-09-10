@@ -1,0 +1,15 @@
+@import "variables";
+
+#notification {
+  .notice {
+    text-align: center;
+    background-color: $main_blue;
+    color: $main_white;
+  }
+
+  .alert {
+    text-align: center;
+    background-color: $main_red;
+    color: $main_white;
+  }
+}
