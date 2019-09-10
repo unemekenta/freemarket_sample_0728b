@@ -102,8 +102,8 @@ a {
       color: $main_black;
       &__logo {
         display: block;
-        width: 170px;
-        height: 50px;
+        width: 155px;
+        height: 45px;
       }
 
       &__form {
@@ -140,14 +140,8 @@ a {
     justify-content: space-between;
 
     &--left {
-      // float: left;
-      display: inline-block;
-      &__text {
-        font-weight: bold;
-        font-size:14px;
-        padding: 10px;
-        }
-      
+      display: flex;
+      justify-content: space-between;
       &__icon {
         color: $main_red;
         font-size: 12px;
@@ -324,6 +318,7 @@ a {
         &__photo {
           float:left;
           border-radius: 50%;
+          float: left;
           margin-right: 10px;
           width: 32px;
           height: 32px;
