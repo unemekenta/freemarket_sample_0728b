@@ -4,14 +4,22 @@ class PurchasesController < ApplicationController
 
   def new
     @purchase = @product.purchases.build
+    @address = current_user.deliveraddress
   end
 
   def create
     @purchase = Purchase.new(purchase_params)
-    if @purchase.save
-      @product.status_id = 4
-      @product.save
-      redirect_to root_path
+    if @product.status_id == 1
+      if @purchase.save
+        @product.update(status_id: 4)
+        redirect_to root_path, notice: "商品を購入しました"
+      else
+        # エラー発生時
+        redirect_to root_path, alert: 'エラーが発生しました'
+      end
+    else
+      # 売り切れ時
+      redirect_to root_path, alert: 'この商品は売り切れました'
     end
   end
 

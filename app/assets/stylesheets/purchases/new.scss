@@ -22,7 +22,6 @@
     }
 
     &__product__main {
-
       padding: 24px 12.5% 0;
       border-top: 1px solid #f5f5f5;
 
@@ -33,7 +32,6 @@
         margin: 0 auto;
 
         &__buy-item-image {
-
           img {
             width: 64px;
             opacity: 1;
@@ -47,12 +45,10 @@
           font-size: 16px;
           line-height: 1.5;
           font-weight: 600;
-
         }
 
         &__buy-form {
           width: 100%;
-
 
           &__buy-price {
             text-align: center;
@@ -66,7 +62,6 @@
               font-size: 14px;
               font-weight: 400;
               display: inline-block;
-
             }
           }
 
@@ -79,9 +74,7 @@
               padding: 14px;
               border: 1px solid #ccc;
               text-align: center;
-
             }
-
           }
 
           &__price {
@@ -107,6 +100,10 @@
                 padding: 16px;
                 font-size: 28px;
               }
+              &__prohibitted {
+                color: $main_red;
+                font-size: 14px;
+              }
             }
           }
 
@@ -121,7 +118,18 @@
             cursor: pointer;
             text-align: center;
             font-weight: 600;
-
+            &--prohibitted {
+              background: darken($main_gray, 20%);
+              margin: 8px 0 0;
+              border: 1px solid $main_gray;
+              color: #fff;
+              width: 100%;
+              line-height: 48px;
+              font-size: 14px;
+              cursor: not-allowed;
+              text-align: center;
+              font-weight: 600;
+            }
           }
         }
       }
@@ -147,7 +155,6 @@
           font-size: 14px;
           line-height: 1.4;
           font-style: normal;
-
         }
 
         &__change-button {
@@ -184,7 +191,6 @@
           margin: 8px 0 0;
           font-size: 14px;
           line-height: 1.4;
-
         }
 
         &__logo {
