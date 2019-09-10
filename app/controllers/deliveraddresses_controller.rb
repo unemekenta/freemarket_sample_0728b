@@ -1,12 +1,29 @@
 class DeliveraddressesController < ApplicationController
 
   def new
-    @deliveraddress = Deliveraddress.new
+    if current_user.deliveraddress
+      @deliveraddress = current_user.deliveraddress
+      render :edit, group: @deliveraddress
+    else
+      @deliveraddress = Deliveraddress.new
+    end
+  end
+
+  def edit
   end
 
   def create
     @deliveraddress = Deliveraddress.new(deliveraddress_params)
     if @deliveraddress.save
+      redirect_to root_path
+    else
+      redirect_to new_user_deliveraddress_path
+    end
+  end
+
+  def update
+    @deliveraddress = Deliveraddress.find(params[:id])
+    if @deliveraddress.update(deliveraddress_params)
       redirect_to root_path
     else
       redirect_to new_user_deliveraddress_path

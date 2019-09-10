@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
 
   resources :users, only: [:show, :new, :create, :edit, :update ] do
-    resources :deliveraddresses, only: [:new, :create]
+    resources :deliveraddresses, only: [:new, :create, :edit, :update]
     member do
       get 'mypage'
       get 'notification'
