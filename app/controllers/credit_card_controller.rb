@@ -3,7 +3,7 @@ class CreditCardController < ApplicationController
   require "payjp"
 
   def new
-    card = CreditCard.find_by(user_id: current_user.id)
+    card = CreditCard.find(current_user.credit_card)
     redirect_to action: "show" if card.present?
   end
 
@@ -29,12 +29,13 @@ class CreditCardController < ApplicationController
 
   def delete #PayjpとCardデータベースを削除します
     card = CreditCard.find_by(user_id: current_user.id)
-    if card.blank?
-    else
+    if card.present?
       Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
       customer = Payjp::Customer.retrieve(card.customer_id)
       customer.delete
       card.delete
+    else
+    
     end
       redirect_to action: "new"
   end
