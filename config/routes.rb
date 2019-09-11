@@ -6,12 +6,25 @@ Rails.application.routes.draw do
   get 'telltest' => 'products#teltest' 
 
   resources :products, only: [:index, :new, :update, :create, :show, :edit] do
+    resources :purchases, only: [:new] do
+      collection do
+        post 'pay', to: 'purchases#pay'
+        get 'done', to: 'purchases#done'
+      end
+    end
     collection do
       post 'purchase'
     end
   end
 
   resources :users, only: [:show, :new, :create, :edit, :update ] do
+    resources :credit_card, only: [:new, :show] do
+      collection do
+        post 'show', to: 'credit_card#show'
+        post 'pay', to: 'credit_card#pay'
+        post 'delete', to: 'credit_card#delete'
+      end
+    end
     resources :deliveraddresses, only: [:new, :create]
     member do
       get 'mypage'
@@ -24,7 +37,6 @@ Rails.application.routes.draw do
       get 'update'
       get 'card'
       get 'email_password'
-      get 'purchase'
       get 'purchased'
       get 'forsell'
       get 'in_progress'
@@ -35,22 +47,6 @@ Rails.application.routes.draw do
     collection do
       get 'step1'
       get 'step2'
-    end
-  end
-
-  resources :credit_card, only: [:new, :show] do
-    collection do
-      post 'show', to: 'credit_card#show'
-      post 'pay', to: 'credit_card#pay'
-      post 'delete', to: 'credit_card#delete'
-    end
-  end
-
-  resources :purchase, only: [:index] do
-    collection do
-      get 'index', to: 'purchase#index'
-      post 'pay', to: 'purchase#pay'
-      get 'done', to: 'purchase#done'
     end
   end
  
