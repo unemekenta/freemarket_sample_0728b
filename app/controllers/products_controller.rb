@@ -82,6 +82,7 @@ class ProductsController < ApplicationController
   def teltest
   end
 
+
   private
 
   def set_product

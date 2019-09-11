@@ -81,6 +81,7 @@
         = number_with_delimiter @product.price
       %span.product__price__tax (税込)
       %span.product__price__shipping-fee 送料込み
+   
 
     - if @product.status_id == 1
       - if user_signed_in? && current_user.id != @product.seller_id
@@ -98,7 +99,6 @@
     - else
       .product__soldout
         売り切れました
-
 
     .product__description
       %p.product__description__text
