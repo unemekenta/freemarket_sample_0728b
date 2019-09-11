@@ -60,7 +60,7 @@
             %li.shared-sidebar--awsome
               %span
       %li
-        = link_to purchase_user_path(current_user) do
+        -# = link_to purchase_user_path(current_user) do
           %ul
             %li.shared-sidebar--text
               購入した商品-取引中
@@ -140,7 +140,7 @@
             %li.shared-sidebar--awsome
               %span
       %li
-        = link_to card_user_path(current_user) do
+        = link_to user_credit_card_path(current_user) do
           %ul
             %li.shared-sidebar--text
               支払い方法
