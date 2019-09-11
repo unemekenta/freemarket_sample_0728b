@@ -45,7 +45,7 @@
             %br
             = "#{@address.prefecture}#{@address.city}#{@address.street}#{@address.building}"
             %br
-            = "#{current_user.family_name} #{current_user.first_name}"
+            = "#{@address.family_name} #{@address.first_name}"
         = link_to new_user_deliveraddress_path(current_user), class: "purchase-container__deliver__inner__change-button" do
           %span 変更する
           /iconは仮置き
