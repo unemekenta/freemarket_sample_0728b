@@ -3,7 +3,7 @@ class DeliveraddressesController < ApplicationController
   def new
     if current_user.deliveraddress
       @deliveraddress = current_user.deliveraddress
-      render :edit, group: @deliveraddress
+      render :edit
     else
       @deliveraddress = Deliveraddress.new
     end
