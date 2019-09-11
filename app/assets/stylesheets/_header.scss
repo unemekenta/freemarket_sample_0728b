@@ -304,6 +304,7 @@ a {
       height: 44px;
       font-size: 14px;
       &__list {
+        float: left;
         display: inline-block;
         padding: 0 14px;
         line-height: 42px;
