@@ -50,6 +50,7 @@ group :development, :test do
   gem 'pry-rails'
   gem 'factory_bot_rails'
   gem 'rails-controller-testing'
+  gem 'shoulda-callback-matchers'
 end
 
 group :development do
@@ -86,6 +87,8 @@ gem 'wicked'
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'jquery-rails'
+gem 'payjp'
+gem 'dotenv-rails'
 gem 'dotenv-rails'
 gem 'omniauth-rails_csrf_protection'
 gem 'omniauth-facebook'
