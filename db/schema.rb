@@ -180,8 +180,6 @@ ActiveRecord::Schema.define(version: 2019_09_08_053246) do
     t.string "provider"
     t.string "uid"
     t.text "profile"
-    t.bigint "credit_card_id"
-    t.index ["credit_card_id"], name: "index_users_on_credit_card_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -203,5 +201,4 @@ ActiveRecord::Schema.define(version: 2019_09_08_053246) do
   add_foreign_key "purchases", "users", column: "buyer_id"
   add_foreign_key "purchases", "users", column: "seller_id"
   add_foreign_key "sizes", "size_types"
-  add_foreign_key "users", "credit_cards"
 end
