@@ -13,7 +13,7 @@
             = image_tag "#{@purchase.product.product_images[0].image}", class: 'product_image'
           %p.purchase-container__product__main__inner__buy-item-name
             = @purchase.product.name
-          = form_with(model: @purchase, url: product_purchases_path(@purchase.product_id), remote: false, local: true, class: "purchase-container__product__main__inner__buy-form") do |form|
+          = form_with(model: @purchase, url: pay_product_purchases_path(@product), remote: false, local: true, class: "purchase-container__product__main__inner__buy-form") do |form|
             %p.purchase-container__product__main__inner__buy-form__buy-price
               ="¥#{number_with_delimiter(@purchase.product.price)}"
               %span.purchase-container__product__main__inner__buy-form__buy-price__item-shipping-fee
@@ -29,17 +29,24 @@
             = form.text_field :seller_id, value: "#{@purchase.product.seller_id}", type: "hidden"
             = form.text_field :buyer_id, value: "#{current_user.id}" , type: "hidden"
             = form.text_field :product_id, value: "#{@purchase.product.id}" , type: "hidden"
-            = form.submit "購入する", class: "purchase-container__product__main__inner__buy-form__submitbutton"
+            - if @address
+              = form.submit "購入する", class: "purchase-container__product__main__inner__buy-form__submitbutton"
+            - else
+              %span.purchase-container__product__main__inner__buy-form__price__detail__prohibitted
+                配達先と支払い方法の入力を完了してください。
+              = form.submit "購入する", class: "purchase-container__product__main__inner__buy-form__submitbutton--prohibitted", disabled: true
     %section.purchase-container__deliver
       .purchase-container__deliver__inner
         .purchase-container__deliver__inner__head 配送先
         .purchase-container__deliver__inner__address
-          〒123-4567
-          %br
-          神奈川県横浜市青葉区適当町1-1-1
-          %br
-          メルカリ 太郎
-        = link_to root_path, class: "purchase-container__deliver__inner__change-button" do
+          - if @address
+            - post_number = @address.post_number.to_s
+            = "〒 #{post_number[0, 3]}-#{post_number[3, 4]}"
+            %br
+            = "#{@address.prefecture}#{@address.city}#{@address.street}#{@address.building}"
+            %br
+            = "#{@address.family_name} #{@address.first_name}"
+        = link_to new_user_deliveraddress_path(current_user), class: "purchase-container__deliver__inner__change-button" do
           %span 変更する
           /iconは仮置き
           %i.icon >
@@ -47,9 +54,14 @@
       .purchase-container__payment__inner
         .purchase-container__payment__inner__head 支払い方法
         .purchase-container__payment__inner__info
-          ************1234
-          %br
-          07/29
+          - if @default_card_information.blank?
+            %br /
+          - else
+            -#以下カード情報を表示
+            = "**** **** **** " + @default_card_information.last4
+            - exp_month = @default_card_information.exp_month.to_s
+            - exp_year = @default_card_information.exp_year.to_s.slice(2,3)
+            = exp_month + " / " + exp_year
           %br
         %figure.purchase-container__payment__inner__logo
           = image_tag "//www-mercari-jp.akamaized.net/assets/img/card/visa.svg?944967624", width: "49", height: "15"

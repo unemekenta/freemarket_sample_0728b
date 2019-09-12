@@ -49,7 +49,9 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'factory_bot_rails'
   gem 'pry-rails'
-  
+  gem 'factory_bot_rails'
+  gem 'rails-controller-testing'
+  gem 'shoulda-callback-matchers'
 end
 
 group :development do
@@ -67,6 +69,7 @@ group :test do
   gem 'selenium-webdriver'
   # Easy installation and use of chromedriver to run system tests with Chrome
   gem 'chromedriver-helper'
+  gem 'faker'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
@@ -85,6 +88,8 @@ gem 'wicked'
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'jquery-rails'
+gem 'payjp'
+gem 'dotenv-rails'
 gem 'dotenv-rails'
 gem 'omniauth-rails_csrf_protection'
 gem 'omniauth-facebook'

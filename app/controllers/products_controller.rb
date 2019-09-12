@@ -55,8 +55,7 @@ class ProductsController < ApplicationController
     if @product.save
       redirect_to root_path
     else
-      # 仮置きで追加。後日きちんと実装予定
-      redirect_to new_product_path
+      redirect_to new_product_path, alert: "入力項目が不足しています。再度出品してください"
     end
   end
 
@@ -67,7 +66,7 @@ class ProductsController < ApplicationController
     if @product.update(product_params)
       redirect_to product_path(@product.id), notice: "商品情報を編集しました"
     else
-      render :edit
+      redirect_to edit_product_path, alert: "入力項目が不足しています。再度必須項目をお確かめください"
     end
   end
 
@@ -75,14 +74,13 @@ class ProductsController < ApplicationController
     if @product.destroy
       redirect_to root_path, notice: "商品が削除されました"
     else
-      redirect_to product_path(@product.id), notice: "削除に失敗しました"
+      redirect_to product_path(@product.id), alert: "削除に失敗しました"
     end
   end
 
   # ビューを表示するためだけの仮のルーティング
   def teltest
   end
-
 
   private
 

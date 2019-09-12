@@ -1,5 +1,21 @@
 # require 'rails_helper'
 
-# RSpec.describe Brand, type: :model do
-#   pending "add some examples to (or delete) #{__FILE__}"
-# 
+describe Brand do
+  describe '#show' do
+    it "Brandテーブルにデータを保存できる" do
+      brand = build(:brand)
+      expect(brand).to be_valid
+    end
+
+    it "Brandテーブルに保存されたブランド名を呼び出せる" do
+      brand = build(:brand)
+      expect(brand.brand).to eq "テストブランド"
+    end
+
+    
+  end
+  
+end
+
+
+

@@ -13,4 +13,16 @@ class Product < ApplicationRecord
   accepts_nested_attributes_for :product_images, :delivery, allow_destroy: true
   has_many :users, through: :purchases
   has_many :purchases
+
+  validate :product_product_images_number
+  validate :product_product_images_number_edit, on: [:edit, :update]
+
+  def product_product_images_number
+    errors.add(:product_images, "を1枚以上投稿してください") if product_images.size < 1
+    errors.add(:product_images, "は10枚までしか投稿できません") if product_images.size > 10
+  end
+
+  def product_product_images_number_edit
+    errors.add(:product_images, "を１枚以上投稿してください") if product_images[1].nil?
+  end
 end
