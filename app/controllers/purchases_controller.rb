@@ -14,13 +14,12 @@ class PurchasesController < ApplicationController
       customer = Payjp::Customer.retrieve(card.customer_id)
       #保管したカードIDでpayjpから情報取得、カード情報表示のためインスタンス変数に代入
       @default_card_information = customer.cards.retrieve(card.card_id)
-
+      @address = current_user.deliveraddress
       @purchase = @product.purchases.build
     end
   end
 
   def pay
-
     card = CreditCard.find_by(user_id: current_user.id)
     Payjp.api_key = ENV['PAYJP_SECRET_KEY']
     Payjp::Charge.create(
@@ -29,12 +28,19 @@ class PurchasesController < ApplicationController
     currency: 'jpy', #日本円
     )
     @purchase = Purchase.new(purchase_params)
+    if @product.status_id == 1
       if @purchase.save
-        @product.status_id = 4
-        @product.save
+        @product.update(status_id: 4)
+        redirect_to action: 'done', notice: "商品を購入しました"
+      else
+        # エラー発生時
+        redirect_to root_path, alert: 'エラーが発生しました'
       end
-    redirect_to action: 'done' #完了画面に移動
+    else
+      # 売り切れ時
+      redirect_to root_path, alert: 'この商品は売り切れました'
     end
+  end
 
   def done
     

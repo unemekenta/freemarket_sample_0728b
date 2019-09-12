@@ -29,17 +29,24 @@
             = form.text_field :seller_id, value: "#{@purchase.product.seller_id}", type: "hidden"
             = form.text_field :buyer_id, value: "#{current_user.id}" , type: "hidden"
             = form.text_field :product_id, value: "#{@purchase.product.id}" , type: "hidden"
-            = form.submit "購入する", class: "purchase-container__product__main__inner__buy-form__submitbutton"
+            - if @address
+              = form.submit "購入する", class: "purchase-container__product__main__inner__buy-form__submitbutton"
+            - else
+              %span.purchase-container__product__main__inner__buy-form__price__detail__prohibitted
+                配達先と支払い方法の入力を完了してください。
+              = form.submit "購入する", class: "purchase-container__product__main__inner__buy-form__submitbutton--prohibitted", disabled: true
     %section.purchase-container__deliver
       .purchase-container__deliver__inner
         .purchase-container__deliver__inner__head 配送先
         .purchase-container__deliver__inner__address
-          〒123-4567
-          %br
-          神奈川県横浜市青葉区適当町1-1-1
-          %br
-          メルカリ 太郎
-        = link_to root_path, class: "purchase-container__deliver__inner__change-button" do
+          - if @address
+            - post_number = @address.post_number.to_s
+            = "〒 #{post_number[0, 3]}-#{post_number[3, 4]}"
+            %br
+            = "#{@address.prefecture}#{@address.city}#{@address.street}#{@address.building}"
+            %br
+            = "#{@address.family_name} #{@address.first_name}"
+        = link_to new_user_deliveraddress_path(current_user), class: "purchase-container__deliver__inner__change-button" do
           %span 変更する
           /iconは仮置き
           %i.icon >

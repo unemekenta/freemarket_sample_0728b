@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   end
 
   resources :users, only: [:show, :new, :create, :edit, :update ] do
+    resources :deliveraddresses, only: [:new, :create, :edit, :update]
     resources :credit_card, only: [:new, :show] do
       collection do
         post 'show', to: 'credit_card#show'
