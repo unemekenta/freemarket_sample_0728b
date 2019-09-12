@@ -1,10 +1,10 @@
 FactoryBot.define do
   
   factory :deliveraddress do
-    family_name                 {"山田"}
-    first_name                  {"太郎"}
-    family_name_pseudonym       {"ヤマダ"}
-    first_name_pseudonym        {"タロウ"}
+    family_name                 {Faker::Name.last_name}
+    first_name                  {Faker::Name.first_name}
+    family_name_pseudonym       {Faker::Japanese::Name.last_name.yomi}
+    first_name_pseudonym        {Faker::Japanese::Name.first_name.yomi}
     post_number                 {"123-4567"}
     prefecture                  {"北海道"}
     city                        {"横浜市緑区"}
