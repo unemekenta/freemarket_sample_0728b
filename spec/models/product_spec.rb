@@ -3,3 +3,4 @@ describe Product do
   describe '#index' do
   
   end
+end

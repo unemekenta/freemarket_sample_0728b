@@ -1,4 +1,4 @@
-require 'rails_helper'
+# require 'rails_helper'
 
 describe Brand do
   describe '#show' do

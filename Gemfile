@@ -47,6 +47,7 @@ group :development, :test do
   gem 'capistrano-rails'
   gem 'capistrano3-unicorn'
   gem 'rspec-rails'
+  gem 'factory_bot_rails'
   gem 'pry-rails'
   gem 'factory_bot_rails'
   gem 'rails-controller-testing'
@@ -69,6 +70,7 @@ group :test do
   # Easy installation and use of chromedriver to run system tests with Chrome
   gem 'chromedriver-helper'
   gem 'faker'
+  gem 'faker-japanese'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
