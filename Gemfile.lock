@@ -126,6 +126,7 @@ GEM
       railties (>= 4.2.0)
     faker (2.2.2)
       i18n (~> 1.6.0)
+    faker-japanese (0.0.1)
     faraday (0.15.4)
       multipart-post (>= 1.2, < 3)
     ffi (1.11.1)
@@ -397,6 +398,7 @@ DEPENDENCIES
   dotenv-rails
   factory_bot_rails
   faker
+  faker-japanese
   fog-aws
   font-awesome-rails
   haml-rails
