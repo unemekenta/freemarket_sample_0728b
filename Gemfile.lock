@@ -126,6 +126,7 @@ GEM
       railties (>= 4.2.0)
     faker (2.2.2)
       i18n (~> 1.6.0)
+    faker-japanese (0.0.1)
     faraday (0.15.4)
       multipart-post (>= 1.2, < 3)
     ffi (1.11.1)
@@ -148,8 +149,6 @@ GEM
     font-awesome-rails (4.7.0.5)
       railties (>= 3.2, < 6.1)
     formatador (0.2.5)
-    gimei (0.3.0)
-      romaji
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     haml (5.1.2)
@@ -293,8 +292,6 @@ GEM
       http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 4.0)
       netrc (~> 0.8)
-    romaji (0.2.4)
-      rake (>= 0.8.0)
     rspec-core (3.8.2)
       rspec-support (~> 3.8.0)
     rspec-expectations (3.8.4)
@@ -401,9 +398,9 @@ DEPENDENCIES
   dotenv-rails
   factory_bot_rails
   faker
+  faker-japanese
   fog-aws
   font-awesome-rails
-  gimei
   haml-rails
   jbuilder (~> 2.5)
   jquery-rails
