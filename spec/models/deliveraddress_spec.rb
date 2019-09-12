@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe Deliveraddress do
-  describe '#create' do
+  describe '#new, #edit' do
     before do
       @user = FactoryBot.create(:user)
     end
