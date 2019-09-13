@@ -43,11 +43,9 @@ class CreditCardController < ApplicationController
   def show #Cardのデータpayjpに送り情報を取り出します
     if params[:id].to_i != 0
       card = CreditCard.where(user_id: current_user.id).first
-      # unless card.blank?
       Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
       customer = Payjp::Customer.retrieve(card.customer_id)
       @default_card_information = customer.cards.retrieve(card.card_id)
-      # end
     end
   end
 end
