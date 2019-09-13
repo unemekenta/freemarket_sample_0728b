@@ -63,10 +63,14 @@ class ProductsController < ApplicationController
   end
 
   def update
-    if @product.update(product_params)
-      redirect_to product_path(@product.id), notice: "商品情報を編集しました"
-    else
+    if (product_params[:product_images_attributes]["0"][:remove_image] == "1") && (product_params[:product_images_attributes]["1"].nil?)
       redirect_to edit_product_path, alert: "入力項目が不足しています。再度必須項目をお確かめください"
+    else
+      if @product.update(product_params)
+        redirect_to product_path(@product.id), notice: "商品情報を編集しました"
+      else
+        redirect_to edit_product_path, alert: "入力項目が不足しています。再度必須項目をお確かめください"
+      end
     end
   end
 
