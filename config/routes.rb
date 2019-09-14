@@ -36,7 +36,6 @@ Rails.application.routes.draw do
       get 'point'
       get 'profile'
       get 'update'
-      get 'card'
       get 'email_password'
       get 'purchased'
       get 'forsell'

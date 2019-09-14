@@ -7,6 +7,7 @@ class User < ApplicationRecord
 
   has_one :address
   has_one :deliveraddress
+  has_one :credit_card
   accepts_nested_attributes_for :address
   has_many :products, through: :purchases
   has_many :purchases
