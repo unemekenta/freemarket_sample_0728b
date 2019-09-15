@@ -4,6 +4,6 @@ FactoryBot.define do
     image {"test.jpg"}
 
     association :product
-    product {product.product_image}
+    product {product_image.product}
   end
 end

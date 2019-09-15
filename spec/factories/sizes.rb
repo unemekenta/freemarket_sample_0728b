@@ -3,7 +3,7 @@ FactoryBot.define do
     # id    {"1"}
     size  {"XXS以下"}
 
-    # association :size_type
-    # size_type {size_type.size}
+    association :size_type
+    size_type {size.size_type}
   end
 end
