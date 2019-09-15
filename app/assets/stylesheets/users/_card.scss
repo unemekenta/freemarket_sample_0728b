@@ -62,11 +62,14 @@
     }
     &__card {
       width: 100%;
+      display: flex;
+      flex-flow: row;
       
       &__register {
         color: $main_white;
         text-align: center;
         margin-bottom: 20px;
+        width: 100%;
         & p {
           font-size: 16px;
           font-weight: 300;
@@ -88,7 +91,8 @@
 
       &__image {
         width: 70%;
-        float: left;
+        display: flex;
+        flex-flow: column nowrap;
         & img {
           width: 50px;
           height: 15px;
@@ -102,15 +106,14 @@
       &__btn {
         width: 30%;
         padding: 5%;
-        float: left;
-        
-        & a {
+        float: left;       
+        & button {
           display: block;
-          border: $main_red 1px solid;
+          border: 1px solid $main_red;
+          border-radius: 3px;
           color: $main_red;
-          font-size: 14px;
-          text-align: center;
-          border-radius: 4px;
+          font-size: 12px;
+          cursor: pointer;
         }
       }
     }

@@ -108,14 +108,14 @@
     %p メルペイ
     %ul
       %li
-        = link_to sales_user_path(current_user) do
+        = link_to "#" do
           %ul
             %li.shared-sidebar--text
               売上・振込申請
             %li.shared-sidebar--awsome
               %span
       %li
-        = link_to point_user_path(current_user) do
+        = link_to "#" do
           %ul
             %li.shared-sidebar--text
               ポイント
@@ -139,13 +139,17 @@
               発送元・お届け先住所変更
             %li.shared-sidebar--awsome
               %span
+
       %li
-        = link_to user_credit_card_path(current_user) do
+        - card = current_user.credit_card.nil? ? 0 : current_user.credit_card
+        = link_to user_credit_card_path(current_user, card) do
           %ul
             %li.shared-sidebar--text
               支払い方法
             %li.shared-sidebar--awsome
               %span
+      
+
       %li
         = link_to email_password_user_path(current_user) do
           %ul
