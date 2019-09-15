@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   root 'products#index'
   get 'telltest' => 'products#teltest' 
 
-  resources :products, only: [:index, :new, :update, :create, :show, :edit] do
+  resources :products do
     resources :purchases, only: [:new] do
       collection do
         post 'pay', to: 'purchases#pay'
