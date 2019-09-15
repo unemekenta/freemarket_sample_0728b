@@ -3,7 +3,7 @@ describe Product do
   describe '#new, #edit' do
     before do
       @product = build(:product)
-      @seller = FactoryBot.create(:user) # 他対他はまだ課題あり
+      @seller = FactoryBot.create(:user) # 多対多はまだ課題あり
       @status = FactoryBot.create(:status)
       @condition = FactoryBot.create(:condition)
       @category = FactoryBot.create(:category)
@@ -44,7 +44,7 @@ describe Product do
       expect(@product.brand.brand).to eq("テストブランド")
     end
 
-    # 他対他はまだ課題あり
+    # 多対多はまだ課題あり
     it "generates associated seller data from a factory" do
       seller = @seller
       expect(seller.family_name).to eq("山田")
