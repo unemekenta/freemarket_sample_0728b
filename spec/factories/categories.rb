@@ -1,8 +1,6 @@
 FactoryBot.define do
-
   factory :category do
-    id    {"1"}
-    category {"テストカテゴリー"}
+    category {"テストカテゴリー1"}
     parent_id {"1"}
     association :size_type
   end
