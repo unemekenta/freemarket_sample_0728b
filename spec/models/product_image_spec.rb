@@ -10,6 +10,6 @@ RSpec.describe ProductImage, type: :model do
   end
 
   context 'callbacks' do
-    it { is_expected.to callback(:delete_records).after(:update).if :image_changed? }
+    it { is_expected.to callback(:delete_records).after(:update) }
   end
 end

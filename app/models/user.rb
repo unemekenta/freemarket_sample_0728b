@@ -7,9 +7,20 @@ class User < ApplicationRecord
 
   has_one :address
   has_one :deliveraddress
+  has_one :credit_card
   accepts_nested_attributes_for :address
   has_many :products, through: :purchases
   has_many :purchases
+
+  validates :nickname, presence: true
+  validates :email, presence: true
+  validates :password, presence: true, length: { minimum: 6 }
+  validates :password_confirmation, presence: true, length: { minimum: 6 }
+  validates :birthday, presence: true
+  validates :family_name, presence: true
+  validates :first_name, presence: true
+  validates :family_name_pseudonym, presence: true
+  validates :first_name_pseudonym, presence: true
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first
