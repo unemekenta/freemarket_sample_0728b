@@ -4,18 +4,21 @@ RSpec.describe Size, type: :model do
   describe 'sizesモデルはproductsとsize_typesと適切なアソシエーションを組めているか' do
     before do
       category = FactoryBot.create(:category)
+      condition = FactoryBot.create(:condition)
+      seller = FactoryBot.create(:user)
+      status = FactoryBot.create(:status)
       @size_type = FactoryBot.create(:size_type)
       @size = FactoryBot.create(:size)
 
-      @product1 = FactoryBot.build(:product, category_id: category.id, size_id: @size.id) do |product|
+      @product1 = FactoryBot.build(:product, category_id: category.id, status_id: status.id, size_id: @size.id, condition_id: condition.id, seller_id: seller.id) do |product|
         product.product_images.build(FactoryBot.attributes_for(:product_image))
       end
-      @product1.save
+      @product1.save!
 
-      @product2 = FactoryBot.build(:product, category_id: category.id, size_id: @size.id) do |product|
+      @product2 = FactoryBot.build(:product, category_id: category.id, status_id: status.id, size_id: @size.id, condition_id: condition.id, seller_id: seller.id) do |product|
         product.product_images.build(FactoryBot.attributes_for(:product_image))
       end
-      @product2.save
+      @product2.save!
     end
 
     it 'sizesとproductsは1対多のアソシエーションである1' do
