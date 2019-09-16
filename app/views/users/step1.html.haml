@@ -57,13 +57,13 @@
                 %em
                   (#{@minimum_password_length} characters minimum)
               %br/
-              = f.password_field :password, autocomplete: "new-password", placeholder: "7文字以上", class: "input-default"
+              = f.password_field :password, autocomplete: "new-password", placeholder: "6文字以上", class: "input-default"
     
             .single__single-main__l-single-container__l-single-content__form-group
               = f.label "パスワード (確認)"
               %span.form_require 必須
               %br/
-              = f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "7文字以上", class: "input-default"
+              = f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "6文字以上", class: "input-default"
   
             .single__single-main__l-single-container__l-single-content__form-group
               %h3.text-left.l-chapter-sub-head 本人確認

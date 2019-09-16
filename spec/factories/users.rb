@@ -8,5 +8,6 @@ FactoryBot.define do
     first_name_pseudonym        {"タロウ"}
     email                       {"test@user"}
     password                    {"000000"}
+    password_confirmation       {"000000"}
   end
 end
