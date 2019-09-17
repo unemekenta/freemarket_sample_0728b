@@ -43,7 +43,7 @@ describe Product do
 
       it "generates associated category data from a factory" do
         category = @category
-        expect(@product.category.category).to eq("テストカテゴリー1")
+        expect(@product.category.category).to eq("テストカテゴリー")
       end
 
       it "generates associated size data from a factory" do
