@@ -9,5 +9,7 @@ FactoryBot.define do
     email                       {"test@user"}
     password                    {"000000"}
     password_confirmation       {"000000"}
+    provider                    {"facebook"}
+    uid                         {"00000000"}
   end
 end
