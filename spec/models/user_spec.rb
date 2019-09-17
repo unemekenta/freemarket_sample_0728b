@@ -3,7 +3,7 @@ require 'rails_helper'
 describe User do
   describe '#create' do
 
-    it "is valid with a nickname, email, password, password_confirmation, birthday, family_name, first_name, family_name_pseudonym, first_name_pseudonym" do
+    it "is valid with a nickname, email, password, password_confirmation, birthday, family_name, first_name, family_name_pseudonym, first_name_pseudonym, provider, uid" do
       user = build(:user)
       expect(user).to be_valid
     end
@@ -86,5 +86,11 @@ describe User do
       expect(user.errors[:password][0]).to include("is too short")
     end
     
+    it "is valid without provider and uid" do
+      user = build(:user, provider: "", uid: "")
+      expect(user).to be_valid
+    end
   end
+
+  
 end
