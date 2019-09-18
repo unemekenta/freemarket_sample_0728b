@@ -1,6 +1,5 @@
 FactoryBot.define do
   factory :user do
-    id                          {"1"}
     nickname                    {"K"}
     birthday                    {"1998-04-01"}
     family_name                 {"山田"}
