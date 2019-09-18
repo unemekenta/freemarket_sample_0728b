@@ -2,13 +2,11 @@ class UsersController < ApplicationController
 
   before_action :move_to_root, except: [:step1, :step2, :create]
 
-  def deliver_address
-  end
-
   def show
   end
 
   def mypage
+
   end
 
   def notification
