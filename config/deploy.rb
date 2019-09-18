@@ -1,5 +1,5 @@
 # config valid for current version and patch releases of Capistrano
-lock "3.11.0"
+lock "3.11.1"
 
 set :application, "freemarket_sample_0728b"
 set :repo_url, "git@github.com:kamayatsu/freemarket_sample_0728b.git"
@@ -64,7 +64,13 @@ set :default_env, {
   rbenv_root: "/usr/local/rbenv",
   path: "/usr/local/rbenv/shims:/usr/local/rbenv/bin:$PATH",
   AWS_ACCESS_KEY_ID: ENV["AWS_ACCESS_KEY_ID"],
-  AWS_SECRET_ACCESS_KEY: ENV["AWS_SECRET_ACCESS_KEY"]
+  AWS_SECRET_ACCESS_KEY: ENV["AWS_SECRET_ACCESS_KEY"],
+  PAYJP_PUBLIC_KEY: ENV["PAYJP_PUBLIC_KEY"],
+  PAYJP_SECRET_KEY: ENV["PAYJP_SECRET_KEY"],
+  FACEBOOK_KEY: ["FACEBOOK_KEY"],
+  FACEBOOK_SECRET: ["FACEBOOK_SECRET"],
+  GOOGLE_CLIENT_ID: ["GOOGLE_CLIENT_ID"],
+  GOOGLE_CLIENT_SECRET: ["GOOGLE_CLIENT_SECRET"],
   }
 
 # Default value for local_user is ENV['USER']
