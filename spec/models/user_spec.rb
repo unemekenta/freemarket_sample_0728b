@@ -3,7 +3,7 @@ require 'rails_helper'
 describe User do
   describe '#create' do
 
-    it "is valid with a nickname, email, password, password_confirmation, birthday, family_name, first_name, family_name_pseudonym, first_name_pseudonym, provider, uid" do
+    it "is valid with a nickname, email, password, password_confirmation, birthday, family_name, first_name, family_name_pseudonym, first_name_pseudonym" do
       user = build(:user)
       expect(user).to be_valid
     end
@@ -90,7 +90,15 @@ describe User do
       user = build(:user, provider: "", uid: "")
       expect(user).to be_valid
     end
+
+    it "is valid omniauth" do
+      user = build(:user)
+      user[:provider] = facebook_mock['provider']
+      user[:uid] = facebook_mock['uid']
+      expect(user).to be_valid
+    end
+
   end
 
-  
 end
+
