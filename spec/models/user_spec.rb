@@ -86,5 +86,19 @@ describe User do
       expect(user.errors[:password][0]).to include("is too short")
     end
     
+    it "is valid without provider and uid" do
+      user = build(:user, provider: "", uid: "")
+      expect(user).to be_valid
+    end
+
+    it "is valid omniauth" do
+      user = build(:user)
+      user[:provider] = facebook_mock['provider']
+      user[:uid] = facebook_mock['uid']
+      expect(user).to be_valid
+    end
+
   end
+
 end
+
