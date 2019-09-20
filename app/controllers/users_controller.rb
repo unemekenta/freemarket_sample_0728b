@@ -57,10 +57,11 @@ class UsersController < ApplicationController
     if @user.save
       session[:id] = @user.id
       sign_in User.find(session[:id]) unless user_signed_in?
+      flash[:notice] = 'ユーザー情報を登録しました。'
       redirect_to root_path
     else
-      flash.now[:danger] = 'ユーザー情報の登録に失敗しました。'
-      redirect_to root_path
+      flash[:alert] = 'ユーザー情報の登録に失敗しました。'
+      render'step1'
     end
   end
 
@@ -87,12 +88,19 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user = User.find(current_user[:id])
-    if @user.update(user_params)
-      redirect_to mypage_user_path(@user)
+    @user = User.find(params[:id])    
+    if current_user == @user
+      if @user.update(user_params)
+        flash[:notice] = 'ユーザー情報を変更しました。'
+        redirect_to mypage_user_path(@user)
+      else
+        flash.now[:alert] = 'ユーザー情報の変更に失敗しました。'
+        render'profile'
+      end
     else
-      render'profile'
+      redirect_to root_path
     end
+
   end
 
   private
