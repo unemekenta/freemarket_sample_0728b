@@ -58,6 +58,7 @@ class UsersController < ApplicationController
       session[:id] = @user.id
       sign_in User.find(session[:id]) unless user_signed_in?
       redirect_to root_path
+      flash[:notice] = 'ユーザー情報を登録しました。'
     else
       flash.now[:danger] = 'ユーザー情報の登録に失敗しました。'
       redirect_to root_path
@@ -90,8 +91,10 @@ class UsersController < ApplicationController
     @user = User.find(current_user[:id])
     if @user.update(user_params)
       redirect_to mypage_user_path(@user)
+      flash[:notice] = 'ユーザー情報を編集しました。'
     else
       render'profile'
+      flash[:danger] = 'ユーザー情報の編集に失敗しました。'
     end
   end
 
