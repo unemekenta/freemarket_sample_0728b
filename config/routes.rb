@@ -5,8 +5,6 @@ Rails.application.routes.draw do
   root 'products#index'
   get 'telltest' => 'products#teltest' 
 
-  put 'users/:id/update' => 'users#update'
-
   resources :products do
     resources :purchases, only: [:new] do
       collection do
@@ -19,7 +17,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :users, only: [:show, :new, :create, :edit, :update] do
+  resources :users, only: [:show, :new, :create, :edit, :update ] do
     resources :deliveraddresses, only: [:new, :create, :edit, :update]
     resources :credit_card, only: [:new, :show] do
       collection do
