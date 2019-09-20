@@ -20,11 +20,9 @@ class CreditCardController < ApplicationController
       ) #念の為metadataにuser_idを入れましたがなくてもOK
       @card = CreditCard.new(user_id: current_user.id, customer_id: customer.id, card_id: customer.default_card)
       if @card.save
-        redirect_to user_credit_card_path(current_user, @card)
-        flash[:notice] = 'クレジットカードを登録しました。'
+        redirect_to user_credit_card_path(current_user, @card), notice: 'クレジットカードを登録しました。'
       else
-        redirect_to pay_user_credit_card_index_path(current_user)
-        flash[:danger] = 'クレジットカードの登録に失敗しました。'
+        redirect_to pay_user_credit_card_index_path(current_user), danger: 'クレジットカードの登録に失敗しました。'
       end
     end
   end
@@ -38,8 +36,7 @@ class CreditCardController < ApplicationController
       customer.delete
       card.delete
     end
-      redirect_to user_credit_card_path(current_user, 0)
-      flash[:notice] = 'クレジットカードを削除しました。'
+      redirect_to user_credit_card_path(current_user, 0), notice: 'クレジットカードを削除しました。'
   end
 
   def show #Cardのデータpayjpに送り情報を取り出します
