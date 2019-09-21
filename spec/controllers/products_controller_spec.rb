@@ -1,6 +1,10 @@
 require 'rails_helper'
 
 describe ProductsController do
+  # 画像投稿テスト時に必要
+  # include CarrierWave::Test::Matchers
+  # include ActionDispatch::TestProcess
+
   let(:user) {create(:user)}
   let(:condition){ FactoryBot.create(:condition) }
   let(:status){ FactoryBot.create(:status) }
@@ -73,6 +77,57 @@ describe ProductsController do
 
     it "renders the :new template" do
       expect(response).to render_template :new
+    end
+  end
+
+  describe 'POST #create' do
+    # 余裕があれば画像投稿も含めてテスト
+    # let(:image) { fixture_file_upload('lake.jpg', 'image/jpeg') }
+    # let(:image2) { fixture_file_upload('mountain.jpg', 'image/jpeg') }
+
+    let(:params) do {
+      params: {
+        product: {
+          id: "1",
+          name: "test",
+          price: "2000",
+          detail: "testtest",
+          status_id: "1",
+          condition_id: "1",
+          category_id: "1",
+          brand_id: "1",
+          size_id: "1",
+          delivery_attributes: {
+            shipping_fee: "1",
+            deliver_method_id: "1",
+            estimated_date_id: "1",
+            deliver_region_id: "1"
+          },
+          product_images_attributes: {
+            "0": {
+              image: product.product_images
+            },
+            "1": {
+              image: product.product_images
+            }
+          },
+          seller_id: "1"
+        }
+      }
+    }
+    end
+
+    it "saves the new product in the database" do
+      login user
+      expect do
+        post :create, params
+      end.to change(Product, :count).by(1)
+    end
+
+    it "redirects to products#new" do
+      login user
+      post :create, params
+      expect(response).to redirect_to new_product_path
     end
   end
 
