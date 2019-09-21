@@ -17,7 +17,7 @@ class DeliveraddressesController < ApplicationController
     if @deliveraddress.save
       redirect_to root_path, notice: "新規作成完了"
     else
-      redirect_to new_user_deliveraddress_path, alert: "入力に誤りがあります。再度入力して下さい。"
+      redirect_to new_user_deliveraddress_path, alert: "入力に誤りがあります。"
     end
   end
 
@@ -26,7 +26,7 @@ class DeliveraddressesController < ApplicationController
     if @deliveraddress.update(deliveraddress_params)
       redirect_to root_path, notice: "編集が完了しました"
     else
-      redirect_to new_user_deliveraddress_path, alert: "未入力の項目がございました、もう一度入力して下さい。"
+      redirect_to new_user_deliveraddress_path, alert: "未入力の項目があります。"
     end
   end
 
