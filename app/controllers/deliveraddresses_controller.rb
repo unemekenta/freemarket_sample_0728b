@@ -1,11 +1,14 @@
 class DeliveraddressesController < ApplicationController
 
   def new
+    @path = Rails.application.routes.recognize_path(request.referer)
     if current_user.deliveraddress
       @deliveraddress = current_user.deliveraddress
+      @submit_btn = "変更する"
       render :edit
     else
       @deliveraddress = Deliveraddress.new
+      @submit_btn = "登録する"
     end
   end
 
@@ -15,7 +18,12 @@ class DeliveraddressesController < ApplicationController
   def create
     @deliveraddress = Deliveraddress.new(deliveraddress_params)
     if @deliveraddress.save
-      redirect_to root_path
+      if params[:deliveraddress][:before_controller] == "purchases"
+        product = params[:deliveraddress][:before_product]
+        redirect_to new_product_purchase_path(product), notice: "発送元・お届け先住所変更が完了しました"
+      else
+        redirect_to mypage_user_path(current_user), notice: "発送元・お届け先住所変更が完了しました"
+      end
     else
       redirect_to new_user_deliveraddress_path
     end
@@ -24,7 +32,12 @@ class DeliveraddressesController < ApplicationController
   def update
     @deliveraddress = Deliveraddress.find(params[:id])
     if @deliveraddress.update(deliveraddress_params)
-      redirect_to root_path
+      if params[:deliveraddress][:before_controller] == "purchases"
+        product = params[:deliveraddress][:before_product]
+        redirect_to new_product_purchase_path(product), notice: "発送元・お届け先住所変更が完了しました"
+      else
+        redirect_to mypage_user_path(current_user), notice: "発送元・お届け先住所変更が完了しました"
+      end
     else
       redirect_to new_user_deliveraddress_path
     end
