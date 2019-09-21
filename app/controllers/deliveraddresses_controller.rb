@@ -25,7 +25,7 @@ class DeliveraddressesController < ApplicationController
         redirect_to mypage_user_path(current_user), notice: "発送元・お届け先住所変更が完了しました"
       end
     else
-      redirect_to new_user_deliveraddress_path
+      redirect_to new_user_deliveraddress_path, alert: "入力に誤りがあります。"
     end
   end
 
@@ -39,7 +39,7 @@ class DeliveraddressesController < ApplicationController
         redirect_to mypage_user_path(current_user), notice: "発送元・お届け先住所変更が完了しました"
       end
     else
-      redirect_to new_user_deliveraddress_path
+      redirect_to new_user_deliveraddress_path, alert: "未入力の項目があります。"
     end
   end
 
