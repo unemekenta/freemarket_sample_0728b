@@ -226,9 +226,9 @@ $(document).on('turbolinks:load', function () {
   //--------------------------------------------------------------------
   //価格表示function
   function setPrice(price) {
-    var fee = (price * 0.1).toLocaleString();
+    var fee = Math.round(price * 0.1).toLocaleString();
     $('.fee').text(`¥${fee}`);
-    var profit = (price - price * 0.1).toLocaleString();
+    var profit = Math.round(price - price * 0.1).toLocaleString();
     $('.profit').text(`¥${profit}`);
   }
   //--------------------------------------------------------------------
@@ -248,10 +248,8 @@ $(document).on('turbolinks:load', function () {
   $('.size[value]').parent().parent().css('display', 'block');
   $('.size[value]').attr("value", "changed");
   //価格
-  if ($('.price').val()) {
-    var price = Number($('.price').val());
-    setPrice(price);
-  }
+  var editprice = $('.price').val();
+  setPrice(editprice);
 
   var editPath = location.href.split('/')[5];
   if (editPath === "edit") {
@@ -329,7 +327,8 @@ $(document).on('turbolinks:load', function () {
   //--------------------------------------------------------------------
   //価格表示機能
   $('.price').on('change', function () {
-    var price = Number($(this).val());
+    var priceval = $('.price').val();
+    var price = Number(priceval) || 0;
     setPrice(price);
   })
   //--------------------------------------------------------------------
