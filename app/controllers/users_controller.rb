@@ -57,10 +57,10 @@ class UsersController < ApplicationController
     if @user.save
       session[:id] = @user.id
       sign_in User.find(session[:id]) unless user_signed_in?
-      redirect_to root_path
+      redirect_to root_path, notice: 'ユーザー情報を登録しました。'
     else
+      render'step1'
       flash.now[:danger] = 'ユーザー情報の登録に失敗しました。'
-      redirect_to root_path
     end
   end
 
@@ -89,9 +89,10 @@ class UsersController < ApplicationController
   def update
     @user = User.find(current_user[:id])
     if @user.update(user_params)
-      redirect_to mypage_user_path(@user)
+      redirect_to mypage_user_path(@user), notice: 'ユーザー情報を編集しました。'
     else
       render'profile'
+      flash.now[:danger] = 'ユーザー情報の編集に失敗しました。'
     end
   end
 
