@@ -15,7 +15,7 @@ class Product < ApplicationRecord
   has_many :purchases
 
   validates :name, presence: true, length: { maximum: 40 }
-  validates :price, presence: true
+  validates :price, presence: true, numericality: { only_integer: true, greater_than: 299, less_than: 9999999 }
   validates :detail, presence: true, length: { maximum: 1000 }
   validates :status_id, presence: true
   validates :condition_id, presence: true
