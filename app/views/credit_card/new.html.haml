@@ -21,5 +21,7 @@
         = f.label :セキュリティコード, class: 'label'
         %span 必須
         = f.text_field :cvc, type: 'text', class: 'input-number', placeholder: 'カード背面4桁もしくは3桁の番号', maxlength: "4"
+        = f.hidden_field  :before_controller, value: "#{@path[:controller]}", type: "hidden"
+        = f.hidden_field  :before_product, value: "#{@path[:product_id]}", type: "hidden"
       .content-bottom#card_token
         = f.submit '追加する', class: 'content-bottom--add-btn', id: 'token_submit'
