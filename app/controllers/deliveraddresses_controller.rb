@@ -15,18 +15,18 @@ class DeliveraddressesController < ApplicationController
   def create
     @deliveraddress = Deliveraddress.new(deliveraddress_params)
     if @deliveraddress.save
-      redirect_to root_path
+      redirect_to root_path, notice: "新規作成完了"
     else
-      redirect_to new_user_deliveraddress_path
+      redirect_to new_user_deliveraddress_path, alert: "入力に誤りがあります。"
     end
   end
 
   def update
     @deliveraddress = Deliveraddress.find(params[:id])
     if @deliveraddress.update(deliveraddress_params)
-      redirect_to root_path
+      redirect_to root_path, notice: "編集が完了しました"
     else
-      redirect_to new_user_deliveraddress_path
+      redirect_to new_user_deliveraddress_path, alert: "未入力の項目があります。"
     end
   end
 
