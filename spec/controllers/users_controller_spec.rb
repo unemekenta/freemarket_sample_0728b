@@ -17,7 +17,7 @@ RSpec.describe UsersController, type: :controller do
     end
   end
 
-  describe '#mypage' do
+  describe 'GET #mypage' do
   #ログインできている時、マイページボタンを押すとマイページにとべる
     context 'log in' do
       before do
@@ -31,7 +31,7 @@ RSpec.describe UsersController, type: :controller do
     end
   end
 
-  describe '#notification' do
+  describe 'GET #notification' do
     context 'log in' do
       before do
         login user
@@ -43,7 +43,7 @@ RSpec.describe UsersController, type: :controller do
       end
     end
   end
-  describe '#todo' do
+  describe 'GET #todo' do
     context 'log in' do
       before do
         login user
@@ -56,7 +56,7 @@ RSpec.describe UsersController, type: :controller do
     end
   end
 
-  describe '#like' do
+  describe 'GET #like' do
     context 'log in' do
       before do
         login user
@@ -69,7 +69,7 @@ RSpec.describe UsersController, type: :controller do
     end
   end
 
-  describe '#forsell' do
+  describe 'GET #forsell' do
     context 'log in' do
       before do
         login user
@@ -82,7 +82,7 @@ RSpec.describe UsersController, type: :controller do
     end
   end
 
-  describe '#in_progress' do
+  describe 'GET #in_progress' do
     context 'log in' do
       before do
         login user
@@ -95,7 +95,7 @@ RSpec.describe UsersController, type: :controller do
     end
   end
 
-  describe '#in_progress' do
+  describe 'GET #in_progress' do
     context 'log in' do
       before do
         login user
@@ -108,7 +108,7 @@ RSpec.describe UsersController, type: :controller do
     end
   end
 
-  describe '#completed' do
+  describe 'GET #completed' do
     context 'log in' do
       before do
         login user
@@ -121,7 +121,7 @@ RSpec.describe UsersController, type: :controller do
     end
   end
 
-  describe '#logout' do
+  describe 'GET #logout' do
     context 'log in' do
       before do
         login user
@@ -134,7 +134,7 @@ RSpec.describe UsersController, type: :controller do
     end
   end
 
-  describe '#identification' do
+  describe 'GET #identification' do
     context 'log in' do
       before do
         login user
@@ -147,7 +147,7 @@ RSpec.describe UsersController, type: :controller do
     end
   end
 
-  describe '#profile' do
+  describe 'GET #profile' do
     context 'log in' do
       before do
         login user
