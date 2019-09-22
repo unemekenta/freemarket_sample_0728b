@@ -61,7 +61,7 @@
             = "#{@address.family_name} #{@address.first_name}"
         = link_to new_user_deliveraddress_path(current_user), class: "purchase-container__deliver__inner__change-button" do
           %span
-            = @deliver_btn
+            = @address ? "変更する" : "登録する"
           /iconは仮置き
           %i.icon >
     %section.purchase-container__payment

@@ -8,7 +8,6 @@ class PurchasesController < ApplicationController
     if card.blank?
       @card_btn = "登録する"
       @address = current_user.deliveraddress
-      @deliver_btn = @address ? "変更する" : "登録する"
       @purchase = @product.purchases.build
     else
       Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
@@ -18,7 +17,6 @@ class PurchasesController < ApplicationController
       @default_card_information = customer.cards.retrieve(card.card_id)
       @card_btn = "変更する"
       @address = current_user.deliveraddress
-      @deliver_btn = @address ? "変更する" : "登録する"
       @purchase = @product.purchases.build
     end
   end

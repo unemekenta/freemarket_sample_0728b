@@ -65,7 +65,8 @@
 
                     = f.hidden_field  :before_controller, value: "#{@path[:controller]}", type: "hidden"
                     = f.hidden_field  :before_product, value: "#{@path[:product_id]}", type: "hidden"
-                    = f.submit "#{@submit_btn}", class: "btn-red"
+                    - btn =  current_user.deliveraddress ? "変更する" : "登録する"
+                    = f.submit "#{btn}", class: "btn-red"
   = render './products/button'
   = render './products/aside'
   = render './products/footer'

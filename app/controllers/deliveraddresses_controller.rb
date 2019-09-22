@@ -4,11 +4,9 @@ class DeliveraddressesController < ApplicationController
     @path = Rails.application.routes.recognize_path(request.referer)
     if current_user.deliveraddress
       @deliveraddress = current_user.deliveraddress
-      @submit_btn = "変更する"
       render :edit
     else
       @deliveraddress = Deliveraddress.new
-      @submit_btn = "登録する"
     end
   end
 
