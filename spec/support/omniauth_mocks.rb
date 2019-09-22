@@ -15,6 +15,8 @@ module OmniauthMocks
           raw_info: {
             name: 'hoge User',
             id: '1234567',
+            email: 'sample@test.com',
+            name: 'mockuser'
           }
         }
       }
