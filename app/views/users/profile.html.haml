@@ -14,7 +14,7 @@
     = render "users/shared/sidebar"
 
     .usersMypage__contents__wrapper__right
-    = form_with model: @user, url: users_path,　local: true, method: :put, html: {class: 'first-main__box'} do |f|
+    = form_with model: @user, url: users_path, local: true, method: :put, html: {class: 'first-main__box'} do |f|
       .usersMypage__contents__wrapper__right__profile
         .usersMypage__contents__wrapper__right__profile__image
           = image_tag "http://static.mercdn.net/thumb/members/717195406.jpg?1555687756"
