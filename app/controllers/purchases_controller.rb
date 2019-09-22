@@ -6,8 +6,8 @@ class PurchasesController < ApplicationController
     card = CreditCard.find_by(user_id: current_user.id)
     #Cardテーブルは前回記事で作成、テーブルからpayjpの顧客IDを検索
     if card.blank?
-      #登録された情報がない場合にカード登録画面に移動
-      redirect_to new_user_credit_card_path(current_user) 
+      @address = current_user.deliveraddress
+      @purchase = @product.purchases.build
     else
       Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
       #保管した顧客IDでpayjpから情報取得
@@ -31,7 +31,7 @@ class PurchasesController < ApplicationController
     if @product.status_id == 1
       if @purchase.save
         @product.update(status_id: 4)
-        redirect_to action: 'done', notice: "商品を購入しました"
+        redirect_to action: 'done'
       else
         # エラー発生時
         redirect_to root_path, alert: 'エラーが発生しました'

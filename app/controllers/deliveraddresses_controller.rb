@@ -1,6 +1,7 @@
 class DeliveraddressesController < ApplicationController
 
   def new
+    @path = Rails.application.routes.recognize_path(request.referer)
     if current_user.deliveraddress
       @deliveraddress = current_user.deliveraddress
       render :edit
@@ -15,7 +16,12 @@ class DeliveraddressesController < ApplicationController
   def create
     @deliveraddress = Deliveraddress.new(deliveraddress_params)
     if @deliveraddress.save
-      redirect_to root_path, notice: "新規作成完了"
+      if params[:deliveraddress][:before_controller] == "purchases"
+        product = params[:deliveraddress][:before_product]
+        redirect_to new_product_purchase_path(product), notice: "発送元・お届け先住所変更が完了しました"
+      else
+        redirect_to mypage_user_path(current_user), notice: "発送元・お届け先住所変更が完了しました"
+      end
     else
       redirect_to new_user_deliveraddress_path, alert: "入力に誤りがあります。"
     end
@@ -24,7 +30,12 @@ class DeliveraddressesController < ApplicationController
   def update
     @deliveraddress = Deliveraddress.find(params[:id])
     if @deliveraddress.update(deliveraddress_params)
-      redirect_to root_path, notice: "編集が完了しました"
+      if params[:deliveraddress][:before_controller] == "purchases"
+        product = params[:deliveraddress][:before_product]
+        redirect_to new_product_purchase_path(product), notice: "発送元・お届け先住所変更が完了しました"
+      else
+        redirect_to mypage_user_path(current_user), notice: "発送元・お届け先住所変更が完了しました"
+      end
     else
       redirect_to new_user_deliveraddress_path, alert: "未入力の項目があります。"
     end
