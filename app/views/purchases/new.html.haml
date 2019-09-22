@@ -81,14 +81,14 @@
             = image_tag "//www-mercari-jp.akamaized.net/assets/img/card/visa.svg?944967624", width: "49", height: "15"
           = link_to user_credit_card_path(current_user, current_user.credit_card), class: "purchase-container__payment__inner__change-button" do
             %span
-              = @card_btn
+              登録する
             /iconは仮置き
             %i.icon >
         - else
           %figure.purchase-container__payment__inner__logo
           = link_to new_user_credit_card_path(current_user), class: "purchase-container__payment__inner__change-button" do
             %span
-              = @card_btn
+              登録する
             -# /iconは仮置き
             %i.icon >
         

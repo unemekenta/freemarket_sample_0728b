@@ -6,7 +6,6 @@ class PurchasesController < ApplicationController
     card = CreditCard.find_by(user_id: current_user.id)
     #Cardテーブルは前回記事で作成、テーブルからpayjpの顧客IDを検索
     if card.blank?
-      @card_btn = "登録する"
       @address = current_user.deliveraddress
       @purchase = @product.purchases.build
     else
@@ -15,7 +14,6 @@ class PurchasesController < ApplicationController
       customer = Payjp::Customer.retrieve(card.customer_id)
       #保管したカードIDでpayjpから情報取得、カード情報表示のためインスタンス変数に代入
       @default_card_information = customer.cards.retrieve(card.card_id)
-      @card_btn = "変更する"
       @address = current_user.deliveraddress
       @purchase = @product.purchases.build
     end
