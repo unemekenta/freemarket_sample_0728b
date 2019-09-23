@@ -14,6 +14,7 @@
     = render "users/shared/sidebar"
 
     .usersMypage__contents__wrapper__right
+
     = form_with model: @user, local: true, method: :put, html: {class: 'first-main__box'} do |f|
       .usersMypage__contents__wrapper__right__profile
         .usersMypage__contents__wrapper__right__profile__image
