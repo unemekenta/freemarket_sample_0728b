@@ -1,9 +1,9 @@
 document.addEventListener('turbolinks:load', function(){
   $(function(){
-    $('#purchase_btn').click(function(){
+    $('.purchase_btn_for_popup').click(function(){
       setTimeout(function(){
         $('#done_overlay').fadeIn();
-        $('#purchase_btn').css('background-color', '#ccc').css('border', 'none').css('cursor', 'not-allowed').css('background-color', '$main_gray');
+        $('.purchase_btn_for_popup').css('background-color', '#ccc').css('border', 'none').css('cursor', 'not-allowed').css('background-color', '$main_gray');
       },1000);
     });
     $('#done_overlay_ok').click(function(){
