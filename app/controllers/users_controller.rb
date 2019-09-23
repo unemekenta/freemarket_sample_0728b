@@ -3,6 +3,7 @@ class UsersController < ApplicationController
   before_action :move_to_root, except: [:step1, :step2, :create]
 
   def show
+
   end
 
   def mypage
@@ -84,13 +85,16 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def edit
+  end
+
   def update
     @user = User.find(current_user[:id])
-    if @user.update(user_params)
+    if @user.update_columns(user_params.to_hash)
       redirect_to mypage_user_path(@user), notice: 'ユーザー情報を編集しました。'
     else
       render'profile'
-      flash.now[:danger] = 'ユーザー情報の編集に失敗しました。'
+      flash[:danger] = 'ユーザー情報の編集に失敗しました。'
     end
   end
 

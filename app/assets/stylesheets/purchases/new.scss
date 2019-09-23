@@ -66,14 +66,39 @@
           }
 
           &__pointbutton {
-            background: #ccc;
             margin: 16px 0 0;
             list-style: none;
 
             &__box {
+              background: #ccc;
               padding: 14px;
               border: 1px solid #ccc;
               text-align: center;
+            }
+
+            &__box--point {
+              background: #ea352d;
+              border: 1px solid #ea352d;
+              color: #fff;
+              width: 100%;
+              line-height: 48px;
+              font-size: 14px;
+              cursor: pointer;
+              text-align: center;
+              font-weight: 600;
+
+              &--prohibitted {
+                background: darken($main_gray, 20%);
+                margin: 8px 0 0;
+                border: 1px solid $main_gray;
+                color: #fff;
+                width: 100%;
+                line-height: 48px;
+                font-size: 14px;
+                cursor: not-allowed;
+                text-align: center;
+                font-weight: 600;
+              }
             }
           }
 
@@ -100,6 +125,7 @@
                 padding: 16px;
                 font-size: 28px;
               }
+
               &__prohibitted {
                 color: $main_red;
                 font-size: 14px;
@@ -118,6 +144,7 @@
             cursor: pointer;
             text-align: center;
             font-weight: 600;
+
             &--prohibitted {
               background: darken($main_gray, 20%);
               margin: 8px 0 0;
@@ -258,5 +285,4 @@
       }
     }
   }
-  
 }
