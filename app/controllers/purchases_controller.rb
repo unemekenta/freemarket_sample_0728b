@@ -33,7 +33,6 @@ class PurchasesController < ApplicationController
     currency: 'jpy', #日本円
     )
     @purchase = Purchase.new(purchase_params)
-    binding.pry
     if @product.status_id == 1
       if @purchase.save
         if params[:buy_button]
