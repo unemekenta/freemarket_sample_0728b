@@ -9,7 +9,6 @@ Rails.application.routes.draw do
     resources :purchases, only: [:new] do
       collection do
         post 'pay', to: 'purchases#pay'
-        get 'done', to: 'purchases#done'
       end
     end
     collection do
