@@ -1,8 +1,9 @@
-%h2 購入が完了しました！
-%p 
-= @product.name
-%p 
-= ("#{@product.price} 円")
+#done_overlay
+  %h2 購入が完了しました！
+  %p 
+    -# = @product.name
+  %p 
+    -# = "#{@product.price} 円"
 
-= link_to  root_path do
-  トップページに戻る
+  = link_to root_path, id: "done_overlay_ok" do
+    トップページに戻る

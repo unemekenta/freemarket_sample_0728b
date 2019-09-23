@@ -31,7 +31,7 @@
             = form.text_field :buyer_id, value: "#{current_user.id}" , type: "hidden"
             = form.text_field :product_id, value: "#{@purchase.product.id}" , type: "hidden"
             - if @address && @default_card_information
-              = form.submit "購入する", class: "purchase-container__product__main__inner__buy-form__submitbutton"
+              = form.submit "購入する", class: "purchase-container__product__main__inner__buy-form__submitbutton", id: "purchase_btn"
             - elsif @address == nil && @default_card_information == nil
               %span.purchase-container__product__main__inner__buy-form__price__detail__prohibitted
                 配達先と支払い方法の入力を完了してください。
@@ -91,6 +91,16 @@
               登録する
             -# /iconは仮置き
             %i.icon >
+
+    #done_overlay
+      %h2 購入が完了しました！
+      %p 
+        = @product.name
+      %p 
+        = "#{@product.price} 円"
+
+      = link_to root_path, id: "done_overlay_ok" do
+        トップページに戻る
         
 
   %footer

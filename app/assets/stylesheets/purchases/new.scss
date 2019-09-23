@@ -213,4 +213,8 @@
       }
     }
   }
+  #done_overlay {
+    display: none;
+    z-index: 1;
+  }
 }

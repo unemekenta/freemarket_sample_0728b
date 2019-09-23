@@ -31,7 +31,8 @@ class PurchasesController < ApplicationController
     if @product.status_id == 1
       if @purchase.save
         @product.update(status_id: 4)
-        redirect_to action: 'done'
+        redirect_to root_path
+        # redirect_to action: 'done'
       else
         # エラー発生時
         redirect_to root_path, alert: 'エラーが発生しました'
