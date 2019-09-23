@@ -92,15 +92,21 @@
             -# /iconは仮置き
             %i.icon >
 
-    #done_overlay
-      %h2 購入が完了しました！
-      %p 
-        = @product.name
-      %p 
-        = "#{@product.price} 円"
+      #done_overlay
+        .done_overlay__wrapper
+          - if @product.status.id == 1
+            %h2 購入が完了しました！
+            .done_overlay__wrapper__product
+              .done_overlay__wrapper__product__info
+                %p 
+                  = @product.name
+                %p 
+                  = "#{number_with_delimiter(@product.price)} 円"
+              .done_overlay__wrapper__product__image
+                = image_tag "#{@product.product_images[0].image}"
 
-      = link_to root_path, id: "done_overlay_ok" do
-        トップページに戻る
+            = link_to root_path, id: "done_overlay_ok", class: "done_overlay__wrapper__btn" do
+              トップページに戻る
         
 
   %footer
