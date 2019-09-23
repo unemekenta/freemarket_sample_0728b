@@ -26,7 +26,6 @@ Rails.application.routes.draw do
         post 'delete', to: 'credit_card#delete'
       end
     end
-    resources :deliveraddresses, only: [:new, :create]
     member do
       get 'mypage'
       get 'notification'
