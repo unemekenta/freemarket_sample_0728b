@@ -42,6 +42,11 @@ class ProductsController < ApplicationController
 
   def show
     @seller = User.find(@product.seller_id)
+    points = Point.where(user_id: current_user.id)
+    @point = 0
+    points.each do |po|
+      @point += po.point
+    end
   end
   
   def new

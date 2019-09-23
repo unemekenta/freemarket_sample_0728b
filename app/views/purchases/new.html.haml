@@ -20,7 +20,18 @@
               %span.purchase-container__product__main__inner__buy-form__buy-price__item-shipping-fee
                 = @purchase.product.delivery.shipping_fee.gsub!(/(\(.+\))/, '')
             %ul.purchase-container__product__main__inner__buy-form__pointbutton
-              %li.purchase-container__product__main__inner__buy-form__pointbutton__box ポイントはありません
+              - if @point
+                - if @point < @purchase.product.price
+                  %li.purchase-container__product__main__inner__buy-form__pointbutton__box ポイントが不足しています
+                - else
+                  - if @address == nil
+                    %span.purchase-container__product__main__inner__buy-form__price__detail__prohibitted
+                      配達先の入力を完了してください。
+                    = form.submit "ポイントを使用して購入する", class: "purchase-container__product__main__inner__buy-form__pointbutton__box--point--prohibitted", disabled: true
+                  - else
+                    = form.submit "ポイントを使用して購入する", type: 'submit', class: "purchase-container__product__main__inner__buy-form__pointbutton__box--point", name: "point_button"
+              - else
+                %li.purchase-container__product__main__inner__buy-form__pointbutton__box ポイントはありません
             %ul.purchase-container__product__main__inner__buy-form__price
               %li.purchase-container__product__main__inner__buy-form__price__detail
                 .purchase-container__product__main__inner__buy-form__price__detail__head
@@ -31,7 +42,7 @@
             = form.text_field :buyer_id, value: "#{current_user.id}" , type: "hidden"
             = form.text_field :product_id, value: "#{@purchase.product.id}" , type: "hidden"
             - if @address && @default_card_information
-              = form.submit "購入する", class: "purchase-container__product__main__inner__buy-form__submitbutton"
+              = form.submit "購入する", class: "purchase-container__product__main__inner__buy-form__submitbutton", name: "buy_button"
             - elsif @address == nil && @default_card_information == nil
               %span.purchase-container__product__main__inner__buy-form__price__detail__prohibitted
                 配達先と支払い方法の入力を完了してください。
