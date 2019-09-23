@@ -3,8 +3,9 @@ class CreditCardController < ApplicationController
   require "payjp"
 
   def new
+    @path = Rails.application.routes.recognize_path(request.referer)
     card = CreditCard.where(user_id: current_user.id)
-    redirect_to user_credit_card_path(current_user, card) if card.exists?
+    redirect_to user_credit_card_path(current_user, card.id) if card.exists?
   end
 
   def pay #payjpとCardのデータベース作成を実施します。
@@ -20,7 +21,13 @@ class CreditCardController < ApplicationController
       ) #念の為metadataにuser_idを入れましたがなくてもOK
       @card = CreditCard.new(user_id: current_user.id, customer_id: customer.id, card_id: customer.default_card)
       if @card.save
-        redirect_to user_credit_card_path(current_user, @card), notice: 'クレジットカードを登録しました。'
+        if params[:before_controller] == "purchases"
+          product = params[:before_product]
+          redirect_to new_product_purchase_path(product), notice: 'クレジットカードを登録しました。'
+        else
+          redirect_to user_credit_card_path(current_user, @card), notice: 'クレジットカードを登録しました。'
+        end
+
       else
         redirect_to pay_user_credit_card_index_path(current_user), danger: 'クレジットカードの登録に失敗しました。'
       end
