@@ -17,7 +17,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :users, only: [:show, :new, :create, :edit, :update ] do
+  resources :users do
     resources :deliveraddresses, only: [:new, :create, :edit, :update]
     resources :credit_card, only: [:new, :show] do
       collection do
@@ -35,7 +35,6 @@ Rails.application.routes.draw do
       get 'sales'
       get 'point'
       get 'profile'
-      get 'update'
       get 'email_password'
       get 'purchased'
       get 'forsell'
