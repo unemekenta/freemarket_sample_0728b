@@ -17,6 +17,11 @@ class PurchasesController < ApplicationController
       @address = current_user.deliveraddress
       @purchase = @product.purchases.build
     end
+    points = Point.where(user_id: current_user.id)
+    @point = 0
+    points.each do |po|
+      @point += po.point
+    end
   end
 
   def pay
@@ -28,9 +33,18 @@ class PurchasesController < ApplicationController
     currency: 'jpy', #日本円
     )
     @purchase = Purchase.new(purchase_params)
+    binding.pry
     if @product.status_id == 1
       if @purchase.save
-        @product.update(status_id: 4)
+        if params[:buy_button]
+          @product.update(status_id: 4)
+          user = User.find(@product.seller_id)
+          profit = (@product.price * 0.9).round(0)
+          Point.create!(user_id: user.id, point: profit)
+        else
+          @product.update(status_id: 4)
+          Point.create!(user_id: current_user.id, point: -(@product.price))
+        end
         redirect_to action: 'done'
       else
         # エラー発生時
