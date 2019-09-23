@@ -63,7 +63,29 @@ class ProductsController < ApplicationController
   end
 
   def update
-    if (product_params[:product_images_attributes]["0"][:remove_image] == "1") && (product_params[:product_images_attributes]["1"].nil?)
+    case @product.product_images.size
+    when 1 then
+      test = (product_params[:product_images_attributes]["0"][:remove_image] == "1") && (product_params[:product_images_attributes]["1"].nil?)
+    when 2 then
+      test = (product_params[:product_images_attributes]["0"][:remove_image] == "1") && (product_params[:product_images_attributes]["1"][:remove_image] == "1") && (product_params[:product_images_attributes]["2"].nil?)
+    when 3 then
+      test = (product_params[:product_images_attributes]["0"][:remove_image] == "1") && (product_params[:product_images_attributes]["1"][:remove_image] == "1") && (product_params[:product_images_attributes]["2"][:remove_image] == "1") && (product_params[:product_images_attributes]["3"].nil?)
+    when 4 then
+      test = (product_params[:product_images_attributes]["0"][:remove_image] == "1") && (product_params[:product_images_attributes]["1"][:remove_image] == "1") && (product_params[:product_images_attributes]["2"][:remove_image] == "1") && (product_params[:product_images_attributes]["3"][:remove_image] == "1") && (product_params[:product_images_attributes]["4"].nil?)
+    when 5 then
+      test = (product_params[:product_images_attributes]["0"][:remove_image] == "1") && (product_params[:product_images_attributes]["1"][:remove_image] == "1") && (product_params[:product_images_attributes]["2"][:remove_image] == "1") && (product_params[:product_images_attributes]["3"][:remove_image] == "1") && (product_params[:product_images_attributes]["4"][:remove_image] == "1") && (product_params[:product_images_attributes]["5"].nil?)
+    when 6 then
+      test = (product_params[:product_images_attributes]["0"][:remove_image] == "1") && (product_params[:product_images_attributes]["1"][:remove_image] == "1") && (product_params[:product_images_attributes]["2"][:remove_image] == "1") && (product_params[:product_images_attributes]["3"][:remove_image] == "1") && (product_params[:product_images_attributes]["4"][:remove_image] == "1") && (product_params[:product_images_attributes]["5"][:remove_image] == "1") && (product_params[:product_images_attributes]["6"].nil?)
+    when 7 then
+      test = (product_params[:product_images_attributes]["0"][:remove_image] == "1") && (product_params[:product_images_attributes]["1"][:remove_image] == "1") && (product_params[:product_images_attributes]["2"][:remove_image] == "1") && (product_params[:product_images_attributes]["3"][:remove_image] == "1") && (product_params[:product_images_attributes]["4"][:remove_image] == "1") && (product_params[:product_images_attributes]["5"][:remove_image] == "1") && (product_params[:product_images_attributes]["6"][:remove_image] == "1") && (product_params[:product_images_attributes]["7"].nil?)
+    when 8 then
+      test = (product_params[:product_images_attributes]["0"][:remove_image] == "1") && (product_params[:product_images_attributes]["1"][:remove_image] == "1") && (product_params[:product_images_attributes]["2"][:remove_image] == "1") && (product_params[:product_images_attributes]["3"][:remove_image] == "1") && (product_params[:product_images_attributes]["4"][:remove_image] == "1") && (product_params[:product_images_attributes]["5"][:remove_image] == "1") && (product_params[:product_images_attributes]["6"][:remove_image] == "1") && (product_params[:product_images_attributes]["7"][:remove_image] == "1") && (product_params[:product_images_attributes]["8"].nil?)
+    when 9 then
+      test = (product_params[:product_images_attributes]["0"][:remove_image] == "1") && (product_params[:product_images_attributes]["1"][:remove_image] == "1") && (product_params[:product_images_attributes]["2"][:remove_image] == "1") && (product_params[:product_images_attributes]["3"][:remove_image] == "1") && (product_params[:product_images_attributes]["4"][:remove_image] == "1") && (product_params[:product_images_attributes]["5"][:remove_image] == "1") && (product_params[:product_images_attributes]["6"][:remove_image] == "1") && (product_params[:product_images_attributes]["7"][:remove_image] == "1") && (product_params[:product_images_attributes]["8"][:remove_image] == "1") && (product_params[:product_images_attributes]["9"].nil?)
+    when 10 then
+      test = (product_params[:product_images_attributes]["0"][:remove_image] == "1") && (product_params[:product_images_attributes]["1"][:remove_image] == "1") && (product_params[:product_images_attributes]["2"][:remove_image] == "1") && (product_params[:product_images_attributes]["3"][:remove_image] == "1") && (product_params[:product_images_attributes]["4"][:remove_image] == "1") && (product_params[:product_images_attributes]["5"][:remove_image] == "1") && (product_params[:product_images_attributes]["6"][:remove_image] == "1") && (product_params[:product_images_attributes]["7"][:remove_image] == "1") && (product_params[:product_images_attributes]["8"][:remove_image] == "1") && (product_params[:product_images_attributes]["9"][:remove_image] == "1") && (product_params[:product_images_attributes]["10"].nil?)
+    end
+    if test
       redirect_to edit_product_path, alert: "入力項目が不足しています。再度必須項目をお確かめください"
     else
       if @product.update(product_params)

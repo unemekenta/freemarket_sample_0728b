@@ -1,5 +1,5 @@
 document.addEventListener(
-    "DOMContentLoaded", e => {
+    "turbolinks:load", e => {
       if (document.getElementById("token_submit") != null) { 
         Payjp.setPublicKey("pk_test_4430f168d99e42958a284391"); //公開鍵
         let btn = document.getElementById("token_submit"); //IDがtoken_submitの場合に取得

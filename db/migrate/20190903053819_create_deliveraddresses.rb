@@ -5,7 +5,7 @@ class CreateDeliveraddresses < ActiveRecord::Migration[5.2]
       t.string        :first_name, null: false
       t.string        :family_name_pseudonym, null: false
       t.string        :first_name_pseudonym, null: false
-      t.integer       :post_number
+      t.string        :post_number
       t.string        :prefecture
       t.string        :city
       t.string        :street

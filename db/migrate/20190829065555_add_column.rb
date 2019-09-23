@@ -1,7 +1,7 @@
 class AddColumn < ActiveRecord::Migration[5.2]
   def up
     # add_reference :products, :seller, foreign_key: {to_table: :users}
-    change_column :addresses, :post_number, :integer, null: false
+    change_column :addresses, :post_number, :string, null: false
     change_column :addresses, :prefecture, :string, null: false
     change_column :addresses, :city, :string, null: false
     change_column :addresses, :street, :string, null: false
