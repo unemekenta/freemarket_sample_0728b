@@ -29,7 +29,7 @@
                       配達先の入力を完了してください。
                     = form.submit "ポイントを使用して購入する", class: "purchase-container__product__main__inner__buy-form__pointbutton__box--point--prohibitted", disabled: true
                   - else
-                    = form.submit "ポイントを使用して購入する", type: 'submit', class: "purchase-container__product__main__inner__buy-form__pointbutton__box--point", name: "point_button"
+                    = form.submit "ポイントを使用して購入する", type: 'submit', class: "purchase-container__product__main__inner__buy-form__pointbutton__box--point purchase_btn_for_popup", name: "point_button"
               - else
                 %li.purchase-container__product__main__inner__buy-form__pointbutton__box ポイントはありません
             %ul.purchase-container__product__main__inner__buy-form__price
@@ -42,7 +42,7 @@
             = form.text_field :buyer_id, value: "#{current_user.id}" , type: "hidden"
             = form.text_field :product_id, value: "#{@purchase.product.id}" , type: "hidden"
             - if @address && @default_card_information
-              = form.submit "購入する", class: "purchase-container__product__main__inner__buy-form__submitbutton", name: "buy_button"
+              = form.submit "購入する", class: "purchase-container__product__main__inner__buy-form__submitbutton purchase_btn_for_popup", name: "buy_button"
             - elsif @address == nil && @default_card_information == nil
               %span.purchase-container__product__main__inner__buy-form__price__detail__prohibitted
                 配達先と支払い方法の入力を完了してください。
@@ -102,6 +102,22 @@
               登録する
             -# /iconは仮置き
             %i.icon >
+
+      #done_overlay
+        .done_overlay__wrapper
+          - if @product.status.id == 1
+            %h2 購入が完了しました！
+            .done_overlay__wrapper__product
+              .done_overlay__wrapper__product__info
+                %p 
+                  = @product.name
+                %p 
+                  = "#{number_with_delimiter(@product.price)} 円"
+              .done_overlay__wrapper__product__image
+                = image_tag "#{@product.product_images[0].image}"
+
+            = link_to root_path, id: "done_overlay_ok", class: "done_overlay__wrapper__btn" do
+              トップページに戻る
         
 
   %footer

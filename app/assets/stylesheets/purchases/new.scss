@@ -238,6 +238,51 @@
           }
         }
       }
+      #done_overlay {
+        display: none;
+        z-index: 1;
+        width: 500px;
+        position: fixed;
+        top: 130px;
+        left: 0;
+        background-color: $main_white;
+        border: 1.5px solid $main_red;
+        border-radius: 8px;
+        .done_overlay__wrapper {
+          padding: 30px 70px 30px 70px;
+          & h2 {
+            margin-bottom: 30px;
+            font-size: 20px;
+          }
+          &__product {
+            margin-bottom: 30px;
+            display: flex;
+            flex-direction: row;
+            &__info {
+              width: 60%;
+              & p {
+                margin-bottom: 10px;
+              }
+            }
+            &__image {
+              width: 40%;
+              & img {
+                width: 100px;
+              }
+            }
+          }
+          &__btn {
+            color: $main_blue;
+            display: inline-block;
+            &:after {
+              content: "\f105";
+              font-family: FontAwesome;
+              font-size: 18px;
+              margin-left: 5px;
+            }
+          }
+        }
+      }
     }
   }
 }
