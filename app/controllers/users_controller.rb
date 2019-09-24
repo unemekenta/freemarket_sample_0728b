@@ -98,6 +98,11 @@ class UsersController < ApplicationController
     end
   end
 
+  def introduction
+    @user = User.find(params[:id])
+  end
+
+
   private
   def move_to_root
     redirect_to :root unless user_signed_in?

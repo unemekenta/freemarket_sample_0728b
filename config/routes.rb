@@ -41,6 +41,7 @@ Rails.application.routes.draw do
       get 'completed'
       get 'logout'
       get 'identification'
+      get 'introduction'
     end
     collection do
       get 'step1'
