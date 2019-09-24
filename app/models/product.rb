@@ -13,6 +13,8 @@ class Product < ApplicationRecord
   accepts_nested_attributes_for :product_images, :delivery, allow_destroy: true
   has_many :users, through: :purchases
   has_many :purchases
+  has_many :likes, dependent: :destroy
+  has_many :liking_users, through: :likes, source: :user
 
   validates :name, presence: true, length: { maximum: 40 }
   validates :price, presence: true, numericality: { only_integer: true, greater_than: 299, less_than: 9999999 }

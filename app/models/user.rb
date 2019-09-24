@@ -12,6 +12,8 @@ class User < ApplicationRecord
   accepts_nested_attributes_for :address
   has_many :products, through: :purchases
   has_many :purchases
+  has_many :likes, dependent: :destroy
+  has_many :like_products, through: :likes, source: :product
 
   validates :nickname, presence: true
   validates :email, presence: true
