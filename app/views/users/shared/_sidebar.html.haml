@@ -52,22 +52,24 @@
               出品した商品-取引中
             %li.shared-sidebar--awsome
               %span
+
       %li
         = link_to completed_user_path(current_user) do
           %ul
             %li.shared-sidebar--text
-              出品した商品-過去の取引
+              出品した商品-売却済み
             %li.shared-sidebar--awsome
               %span
+      
       %li
-        -# = link_to purchase_user_path(current_user) do
+        = link_to "#" do
           %ul
             %li.shared-sidebar--text
               購入した商品-取引中
             %li.shared-sidebar--awsome
               %span
       %li
-        = link_to purchased_user_path(current_user) do
+        = link_to "#" do
           %ul
             %li.shared-sidebar--text
               購入した商品-過去の取引
