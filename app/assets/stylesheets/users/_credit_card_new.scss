@@ -1,11 +1,5 @@
-@import "./variables";
-
-.usersMypage__contents__wrapper {
+.usersMypage__contents__wrapper__right__credit-card-new {
   width: 100%;
-}
-
-.credit-card-new {
-  width: calc(100% - 306px);
   background-color: $main_white;
   float: right;
   display: flex;
