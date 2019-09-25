@@ -1,18 +1,7 @@
 .default-container
   = render './products/header'
-
-  .usersMypage__breadCrumbs
-    %ul
-      %li
-        = link_to "メルカリ", root_path
-      %li
-        = fa_icon "angle-right", class: "usersMypage__breadCrumbs--awsome"
-      %li
-        = link_to mypage_user_path(current_user) do
-          マイページ
-          = fa_icon "angle-right", class: "usersMypage__breadCrumbs--awsome"
-      %li.usersMypage__breadCrumbs--current
-        出品した商品-取引中
+  - breadcrumb :in_progress
+  = render 'layouts/breadcrumbs'
 
   .usersMypage__contents__wrapper.clearfix
     = render "users/shared/sidebar"
