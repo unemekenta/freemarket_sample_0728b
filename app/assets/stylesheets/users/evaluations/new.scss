@@ -1,0 +1,50 @@
+.evaluation {
+  width: 700px;
+  margin: 24px auto 30px;
+  padding: 0 0 20px 0;
+  background-color: white;
+  &__container {
+    &__top {
+      &__seller {
+
+      }
+    }
+    &__evaluate-box {
+      &__good {
+    
+        font-size: 30px;
+        &:checked + label {
+          border: 1px solid red;
+        }
+      }
+      &__normal {
+        display: inline-block;
+
+      }
+      &__bad {
+        display: inline-block;
+
+      }
+
+    }
+    &__comment-box {
+
+    }
+    &__submit-btn {
+
+    }
+  }
+}
+
+#evaluation__good {
+  display: none;
+
+}
+
+.evaluation__good {
+  width: 40px;
+  height: 70px;
+  border: 1px solid blue;
+  border-radius: 4px;
+  font-size: 30px;
+}
