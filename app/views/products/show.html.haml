@@ -122,20 +122,49 @@
 
 
   .product__message__container
+    .product__messages
+      %ul.product_messages__items
+        - @comments.each do |co|
+          %li.product_messages__items__item
+            = link_to profile_user_path(co.user), class:"product_messages__items__item__messege-user" do
+              %figure.product_messages__items__item__messege-user__figure
+                %div.product_messages__items__item__messege-user__figure__div
+                  = image_tag "https://cdn.pixabay.com/photo/2016/05/17/22/16/baby-1399332_1280.jpg"
+                %figcaption.product_messages__items__item__messege-user__figure__figcaption
+                  = co.user.nickname
+                - if @product.seller_id == co.user.id
+                  .message-is-seller 出品者
+            .message-body
+              .message-body__text
+                = simple_format(co.comment)
+              .message-body__icons
+                %time.message-icon-left
+                  = fa_icon "clock-o"
+                  -# CDN版
+                  -# %i.far.fa-clock
+                  %span 1時間前
+                -# 以下の部分は本来通報フォームのようだが、今回は実装しないのでiconのみ
+                .message-icon-right
+                  = fa_icon "flag-o"
+                  -# CDN版
+                  -# %i.far.fa-flag
+              %i.icon-balloon
+
     .product__message
       %p.notes_text
         相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
-      .product__message__form
-      .product__message__submit-btn
-        %p コメントする
-      
-      -# コメント機能未実装のため見た目だけ表示中
-      -# = form_with [@product] do |f|
-      -#   = f.text_field :content, class: 'product-detail__message__text'
-        -# = f.submit 'Send' class: 'comment-btn'
-
-  -# products_controllerからコメントを追加する機能を追加する
-
+      = form_with(url: product_comments_path(@product.id), method: :post, model: @comment, local: true) do |form|
+        - if @product.status_id == 1
+          = form.hidden_field :product_id, value: "#{@product.id}"
+          - if user_signed_in?
+            = form.text_area :comment, class: "product__message__form"
+            = form.submit "コメントする", class: "product__message__submit-btn"
+          - else
+            = form.text_area :comment, class: "product__message__form prohibitted"
+            = form.submit "コメントするにはサインイン/ログインが必要です", class: "product__message__submit-btn disabled", disabled: true
+        - else
+          = form.text_area :comment, class: "product__message__form prohibitted"
+          = form.submit "売り切れのためコメントできません", class: "product__message__submit-btn disabled", disabled: true
 
   %ul.product__links
     %li.product__links--prev
