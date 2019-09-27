@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     collection do
       post 'purchase'
     end
+    resources :comments, only: [:create, :update, :destroy]
   end
 
   resources :users do

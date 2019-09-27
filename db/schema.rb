@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_22_100328) do
+ActiveRecord::Schema.define(version: 2019_09_23_124547) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "post_number", null: false
@@ -37,6 +37,16 @@ ActiveRecord::Schema.define(version: 2019_09_22_100328) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["size_type_id"], name: "index_categories_on_size_type_id"
+  end
+
+  create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "product_id", null: false
+    t.text "comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_comments_on_product_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "conditions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -192,6 +202,8 @@ ActiveRecord::Schema.define(version: 2019_09_22_100328) do
   end
 
   add_foreign_key "categories", "size_types"
+  add_foreign_key "comments", "products"
+  add_foreign_key "comments", "users"
   add_foreign_key "deliveraddresses", "users"
   add_foreign_key "deliveries", "deliver_methods"
   add_foreign_key "deliveries", "deliver_regions"

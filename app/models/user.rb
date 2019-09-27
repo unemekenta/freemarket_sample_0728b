@@ -11,6 +11,7 @@ class User < ApplicationRecord
   has_one :point
   accepts_nested_attributes_for :address
   has_many :products, through: :purchases
+  has_many :products, through: :comments
   has_many :purchases
 
   validates :nickname, presence: true
