@@ -30,7 +30,7 @@ Rails.application.routes.draw do
       get 'mypage'
       get 'notification'
       get 'todo'
-      get 'like'
+      get 'like_show'
       get 'sales'
       get 'point'
       get 'profile'
