@@ -2,6 +2,9 @@ class UsersController < ApplicationController
 
   before_action :move_to_root, except: [:step1, :step2, :create]
 
+
+
+
   def show
 
   end
@@ -16,7 +19,8 @@ class UsersController < ApplicationController
   def todo
   end
 
-  def like
+  def like_show
+    @likes = Like.where(user_id: current_user.id)
   end
 
   def forsell

@@ -14,6 +14,8 @@ class Product < ApplicationRecord
   has_many :users, through: :purchases
   has_many :users, through: :comments
   has_many :purchases
+  has_many :likes, dependent: :destroy
+  has_many :liking_users, through: :likes, source: :user
 
   validates :name, presence: true, length: { maximum: 40 }
   validates :price, presence: true, numericality: { only_integer: true, greater_than: 299, less_than: 9999999 }

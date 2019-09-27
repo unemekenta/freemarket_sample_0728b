@@ -22,9 +22,21 @@
         %p
           いいね！一覧
       .usersMypage__contents__wrapper__right__like__contents
-        %ul
-          - 50.times do
-            = render "info"
+        - @likes.each do |like|
+          %ul
+            %li.usersInfo
+              - product = Product.find_by(id: like.product_id)
+              = link_to product_path(product) do
+                %ul
+                  %li.usersInfo--image
+                    = image_tag "#{product.product_images[0].image}"
+                  %li.usersInfo--text
+                    = product.name
+                    %br
+                    = "¥" + "#{product.price}"
+                  %li.usersInfo--awsome
+                    = fa_icon "chevron-right"
+
       
       %ul.usersMypage__contents__wrapper__right__like__btns
         %li.usersMypage__contents__wrapper__right__like__btns__btn

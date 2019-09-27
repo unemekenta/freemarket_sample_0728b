@@ -13,5 +13,5 @@
           = "¥ #{number_with_delimiter product.price}"
         - if true
           .item-box__content__num__likes
-            = fa_icon "heart-o"
-            %span 1
+            %span 
+              = render 'likes/like_links', product: product

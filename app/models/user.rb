@@ -13,6 +13,8 @@ class User < ApplicationRecord
   has_many :products, through: :purchases
   has_many :products, through: :comments
   has_many :purchases
+  has_many :likes, dependent: :destroy
+  has_many :like_products, through: :likes, source: :product
 
   validates :nickname, presence: true
   validates :email, presence: true

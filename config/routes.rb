@@ -31,7 +31,7 @@ Rails.application.routes.draw do
       get 'mypage'
       get 'notification'
       get 'todo'
-      get 'like'
+      get 'like_show'
       get 'sales'
       get 'point'
       get 'profile'
@@ -52,6 +52,9 @@ Rails.application.routes.draw do
  
   resources :category, only: [:show]
   resources :brands, only: [:show]
+
+  post   '/like/:product_id' => 'likes#like',   as: 'like'
+  delete '/like/:product_id' => 'likes#unlike', as: 'unlike'
 
 end
 
