@@ -136,7 +136,7 @@
         .header__menu-box--right
           %ul
             %li.header__menu-box--right__list
-              = link_to like_user_path(current_user) do
+              = link_to like_show_user_path(current_user) do
                 = fa_icon "heart-o", class: 'header__menu-box--right__list__icon'
                 いいね！一覧
             
