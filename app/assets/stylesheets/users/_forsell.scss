@@ -1,6 +1,7 @@
 @import "./variables";
 
   .usersMypage__contents__wrapper__right__forsell {
+    background-color: $body_background-color;
     & h3 {
       width: 100%;
       padding: 22px;
@@ -41,10 +42,13 @@
       margin-bottom: 50px;
       clear: both;
       display: block;
-      background-color: $main_white;
+      background-color: $body_background-color;
       border: none;
     }
     &__btns {
+      background-color: $body_background-color;
+      width: 100%;
+      height: 100px;
       &__btn {
         list-style: none;
         float: left;
@@ -52,6 +56,7 @@
         font-size: 28px;
         line-height: 42px;
         text-align: center;
+        
         & a {
           display: block;
           width: 42px;

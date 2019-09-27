@@ -16,7 +16,7 @@
 
   .usersMypage__contents__wrapper.clearfix
     = render "users/shared/sidebar"
-            
+
     .usersMypage__contents__wrapper__right
       .usersMypage__contents__wrapper__right__forsell
         %h3 出品した商品
@@ -33,14 +33,14 @@
             - 30.times do
               = render "info"
 
-        %ul.usersMypage__contents__wrapper__right__forsell__btns
-          %li.usersMypage__contents__wrapper__right__forsell__btns__btn
-            = link_to "#" do
-              = fa_icon "angle-left"
-          %li.usersMypage__contents__wrapper__right__forsell__btns__btn.usersMypage__contents__wrapper__right__forsell__btns__btn--right
-            = link_to "#" do
-              = fa_icon "angle-right"
-                
+        .usersMypage__contents__wrapper__right__forsell__btns
+          %ul
+            %li.usersMypage__contents__wrapper__right__forsell__btns__btn
+              = link_to "#" do
+                = fa_icon "angle-left"
+            %li.usersMypage__contents__wrapper__right__forsell__btns__btn.usersMypage__contents__wrapper__right__forsell__btns__btn--right
+              = link_to "#" do
+                = fa_icon "angle-right"
 
 = render './products/button'
 = render './products/aside'
