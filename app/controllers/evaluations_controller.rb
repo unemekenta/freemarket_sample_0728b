@@ -1,6 +1,6 @@
 class EvaluationsController < ApplicationController
 
-  before_action :set_user
+  before_action :set_user, only: [:new, :create]
 
   def new
     @evaluation_all = Evaluation.group(:seller_id).size[@user.id]
@@ -15,7 +15,6 @@ class EvaluationsController < ApplicationController
     else
       redirect_to introduction_user_path, notice: "評価が正常に送信できませんでした。もう一度行ってください。"
     end
-
   end
 
   private
