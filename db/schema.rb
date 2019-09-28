@@ -10,6 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 2019_09_24_122514) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -112,11 +113,23 @@ ActiveRecord::Schema.define(version: 2019_09_24_122514) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "evaluations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "rating", null: false
+    t.text "comment"
+    t.bigint "seller_id"
+    t.bigint "buyer_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["buyer_id"], name: "index_evaluations_on_buyer_id"
+    t.index ["seller_id"], name: "index_evaluations_on_seller_id"
+  end
+  
   create_table "likes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "product_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+
   end
 
   create_table "points", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -217,6 +230,8 @@ ActiveRecord::Schema.define(version: 2019_09_24_122514) do
   add_foreign_key "deliveries", "deliver_regions"
   add_foreign_key "deliveries", "estimated_dates"
   add_foreign_key "deliveries", "products"
+  add_foreign_key "evaluations", "users", column: "buyer_id"
+  add_foreign_key "evaluations", "users", column: "seller_id"
   add_foreign_key "product_images", "products"
   add_foreign_key "products", "brands"
   add_foreign_key "products", "categories"

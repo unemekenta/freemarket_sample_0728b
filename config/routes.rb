@@ -48,13 +48,12 @@ Rails.application.routes.draw do
       get 'step1'
       get 'step2'
     end
+    resources :evaluations, only: [:new, :create] do
+    end
   end
- 
   resources :category, only: [:show]
   resources :brands, only: [:show]
-
   post   '/like/:product_id' => 'likes#like',   as: 'like'
   delete '/like/:product_id' => 'likes#unlike', as: 'unlike'
-
 end
 

@@ -1,0 +1,36 @@
+.default-container
+  = render 'layouts/notifications'
+  = render 'products/header'
+
+  .evaluation
+    .evaluation__container
+      .evaluation__container__top
+        受け取り評価をしてください
+        .evaluation__container__top__seller
+          出品者
+          = image_tag "https://cdn.pixabay.com/photo/2016/05/17/22/16/baby-1399332_1280.jpg", class:'evaluation-container__top__seller__photo', width:25, height: 25
+          = @user.nickname
+      = form_with(model: @evaluation, url: user_evaluations_path, local: true) do |f|
+        .evaluation__container__evaluate-box
+          
+          = f.radio_button :rating, "1", id:"evaluation__good", class: "evaluation__container__evaluate-box__good" 
+          
+          = f.label "良い", for:"evaluation__good" do
+            = fa_icon "smile-o", class: "evaluation__good"
+          .evaluation__container__evaluate-box__normal
+            = f.radio_button :rating, "2"
+            = f.label "普通"
+          .evaluation__container__evaluate-box__bad
+            = f.radio_button :rating, "3"
+            = f.label "悪い"
+        .evaluation__container__comment-box
+          = f.label "メッセージ"
+          = f.text_area :comment, rows: "3",　placeholder: "出品者へのメッセージを書きましょう。"
+        .evaluation__container__submit-btn
+          = f.submit "評価する"
+
+
+
+
+  = render 'products/aside'
+  = render 'products/footer'
