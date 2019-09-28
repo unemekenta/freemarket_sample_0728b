@@ -33,7 +33,7 @@
                   %li.usersInfo--text
                     = product.name
                     %br
-                    = "¥" + "#{product.price}"
+                      = "¥ #{number_with_delimiter product.price}"
                   %li.usersInfo--awsome
                     = fa_icon "chevron-right"
 
