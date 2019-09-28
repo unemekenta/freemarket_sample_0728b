@@ -1,0 +1,18 @@
+%li.search__main__item-box
+  = link_to product_path(search_result) do
+    %figure.search__main__item-box__photo
+      =image_tag "#{search_result.product_images[0].image}", class: "search__main__item-box__photo__product"
+      .search__main__item-box__photo__price
+        = "¥ #{number_with_delimiter search_result.price}"
+      - if search_result.status_id == 4
+        = image_tag "soldout_tag.png", class: "search__main__item-box__photo--sold"
+        
+    
+    .search__main__item-box__content
+      %p.search__main__item-box__content__name
+        = search_result.name
+      .search__main__item-box__content__num
+        - if true
+          .search__main__item-box__content__num__likes
+            = fa_icon "heart-o"
+            %span 1
