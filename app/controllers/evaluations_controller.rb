@@ -1,19 +1,14 @@
 class EvaluationsController < ApplicationController
 
-  def set_user
-    @user = User.find(params[:user_id])
-  end
-
+  before_action :set_user
 
   def new
-    set_user
     @evaluation_all = Evaluation.group(:seller_id).size[@user.id]
     @evaluation = Evaluation.new
   end
 
 
   def create
-    set_user
     @evaluation = Evaluation.new(evaluation_params)
     if @evaluation.save
       redirect_to introduction_user_path(@user.id), notice: "評価が送信されました"
@@ -24,6 +19,11 @@ class EvaluationsController < ApplicationController
   end
 
   private
+
+  def set_user
+    @user = User.find(params[:user_id])
+  end
+
   def user_params
     params.require(:user)
   end
