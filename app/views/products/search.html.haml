@@ -1,0 +1,38 @@
+.default-container
+  = render 'layouts/notifications'
+  = render 'header'
+  
+  .search
+    .search__left
+      = form_with local: true do |f|
+        = f.select :sort_type, ["価格の安い順", "出品の古い順", "出品の新しい順", "いいね!の多い順"], prompt: "並び替え"
+        
+        %p
+          詳細検索
+        %p
+          +キーワードを追加する
+        = f.text_field :key_words, placeholder: "例) 値下げ"
+        %p
+          カテゴリーを選択する
+        = f.select :category, ["レディース", "メンズ", "ベビー・キッズ", "インテリア・住まい・小物", "本・音楽・ゲーム", "おもちゃ・ホビー・グッズ", "コスメ・香水・美容", "家電・スマホ・カメラ", "スポーツ・レジャー", "ハンドメイド", "チケット", "自動車・オートバイ", "その他"], prompt: "すべて"
+        %p
+          ブランド名から探す
+        = f.text_field :brand, placeholder: "例) シャネル"  
+        %p
+          サイズを指定する
+        = f.select :size, ["洋服のサイズ", "メンズ靴のサイズ", "レディース靴のサイズ", "スカートのサイズ", "キッズ服のサイズ", "ベビー・キッズ靴のサイズ", "ベビー服のサイズ", "テレビのサイズ", "カメラレンズのサイズ", "オートバイのサイズ", "ヘルメットのサイズ", "タイヤのサイズ", "スキーのサイズ", "スノーボードのサイズ"], prompt: "すべて"
+
+    .search__main
+      %h3.search__main__headline
+        = "#{@search_words}の検索結果"
+      - if @search_results.present?
+        %ul.search__main__item-box-container
+          = render partial: "search_result", collection: @search_results
+      - else
+        %h4
+          該当する商品が見つかりません。検索条件を変えて、再度お試しください。
+
+  = render 'aside'
+  = render 'footer'
+  = render 'button'
+  

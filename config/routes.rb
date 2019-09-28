@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     end
     collection do
       post 'purchase'
+      get 'search'
     end
     resources :comments, only: [:create, :update, :destroy]
   end

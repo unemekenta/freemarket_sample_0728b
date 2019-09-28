@@ -115,6 +115,17 @@ class ProductsController < ApplicationController
   def teltest
   end
 
+  def search
+    @search_words = params[:search_words]
+    
+    if @search_words.present?
+      splited_search_words = @search_words.split(/[ 　]+/)
+      @search_results = Product.ransack(name_cont_all: splited_search_words).result
+    else
+      redirect_to root_path, notice: "検索ワードを入力して下さい"
+    end
+  end
+
   private
 
   def set_product
