@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     collection do
       post 'purchase'
     end
+    resources :comments, only: [:create, :update, :destroy]
   end
 
   resources :users do
@@ -30,7 +31,7 @@ Rails.application.routes.draw do
       get 'mypage'
       get 'notification'
       get 'todo'
-      get 'like'
+      get 'like_show'
       get 'sales'
       get 'point'
       get 'profile'
@@ -52,5 +53,7 @@ Rails.application.routes.draw do
   end
   resources :category, only: [:show]
   resources :brands, only: [:show]
+  post   '/like/:product_id' => 'likes#like',   as: 'like'
+  delete '/like/:product_id' => 'likes#unlike', as: 'unlike'
 end
 

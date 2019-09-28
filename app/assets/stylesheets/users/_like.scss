@@ -14,12 +14,15 @@
 
     &__contents {
       width: 100%;
-      margin-bottom: 50px;
       display: block;
-      background-color: $main_white;
+      background-color: $body_background-color;
       border: none;
     }
     &__btns {
+      background-color: $body_background-color;
+      padding-top: 50px;
+      height: 100px;
+      width: 100%;
       &__btn {
         list-style: none;
         float: left;

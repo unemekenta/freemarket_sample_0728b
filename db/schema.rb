@@ -10,7 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_24_044234) do
+
+ActiveRecord::Schema.define(version: 2019_09_24_122514) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "post_number", null: false
@@ -37,6 +38,16 @@ ActiveRecord::Schema.define(version: 2019_09_24_044234) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["size_type_id"], name: "index_categories_on_size_type_id"
+  end
+
+  create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "product_id", null: false
+    t.text "comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_comments_on_product_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "conditions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -112,6 +123,14 @@ ActiveRecord::Schema.define(version: 2019_09_24_044234) do
     t.index ["buyer_id"], name: "index_evaluations_on_buyer_id"
     t.index ["seller_id"], name: "index_evaluations_on_seller_id"
   end
+  
+  create_table "likes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "product_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+
+  end
 
   create_table "points", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -140,6 +159,7 @@ ActiveRecord::Schema.define(version: 2019_09_24_044234) do
     t.bigint "category_id", null: false
     t.bigint "size_id"
     t.bigint "seller_id"
+    t.integer "likes_count"
     t.index ["brand_id"], name: "index_products_on_brand_id"
     t.index ["category_id"], name: "index_products_on_category_id"
     t.index ["condition_id"], name: "index_products_on_condition_id"
@@ -203,6 +223,8 @@ ActiveRecord::Schema.define(version: 2019_09_24_044234) do
   end
 
   add_foreign_key "categories", "size_types"
+  add_foreign_key "comments", "products"
+  add_foreign_key "comments", "users"
   add_foreign_key "deliveraddresses", "users"
   add_foreign_key "deliveries", "deliver_methods"
   add_foreign_key "deliveries", "deliver_regions"
