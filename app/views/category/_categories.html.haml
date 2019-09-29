@@ -1,0 +1,20 @@
+%main
+  %section.pickup-containers
+    %h2.pickup-containers__headline
+
+      %section.pickup-container
+        
+        %h3.pickup-container__headline
+          #{@category.category}の商品一覧
+        - if @products.present?
+          %ul.item-box-container      
+            = render partial: "./products/product", collection: @products
+        - else
+          %h4
+            商品がありません。出品しますか？
+            = link_to "出品はこちら", new_product_path
+= render './products/aside'
+= render './products/footer'
+= render './products/button'
+
+
