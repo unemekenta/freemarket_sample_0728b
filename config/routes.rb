@@ -15,6 +15,14 @@ Rails.application.routes.draw do
       post 'purchase'
     end
     resources :comments, only: [:create, :update, :destroy]
+
+    # namespace :api do
+    #   resources :comments, only: :index, defaults: { format: 'json'}
+    # end
+  end
+
+  namespace :api do
+    resources :products, only: :show, defaults: { format: 'json'}
   end
 
   resources :users do
