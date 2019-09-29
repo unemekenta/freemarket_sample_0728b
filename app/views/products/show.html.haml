@@ -153,7 +153,7 @@
     .product__message
       %p.notes_text
         相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
-      = form_for [@product, @comment] do |form|
+      = form_for [@product, @comment], class: "new_comment" do |form|
         - if @product.status_id == 1
           -# = form.hidden_field :product_id, value: "#{@product.id}"
           - if user_signed_in?

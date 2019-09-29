@@ -45,12 +45,14 @@ $(document).on('turbolinks:load', function () {
 
   function reloadMessages() {
     if (location.pathname.match(/\/products\/\d+/)) {
+      var product_id = location.pathname.split('/')[2];
+      var url = `/api/products/${product_id}`
       var last_message_id = $('.product_messages__items__item:last').data('id');
       $.ajax({
-          url: '/api/products/4',
+          url: url,
           type: 'GET',
           data: {
-            product_id: 4,
+            product_id: product_id,
             comment_id: last_message_id
           },
           dataType: 'json',
@@ -68,7 +70,7 @@ $(document).on('turbolinks:load', function () {
     }
   }
 
-  $('form').on('submit', function (e) {
+  $('.new_comment').on('submit', function (e) {
     e.preventDefault();
     var message = new FormData(this);
     var url = $(this).attr('action');
