@@ -26,7 +26,7 @@ crumb :todo do
 end
 
 crumb :like do
-  link "いいね！一覧", like_user_path(current_user)
+  link "いいね！一覧", like_show_user_path(current_user)
   parent :mypage
 end
 
