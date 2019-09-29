@@ -1,5 +1,7 @@
 .default-container
   = render './products/header'
+  - breadcrumb :brand, @brands
+  = render 'layouts/breadcrumbs'  
   %main
     %section.pickup-containers
       %h2.pickup-containers__headline
