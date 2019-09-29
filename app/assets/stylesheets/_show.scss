@@ -297,8 +297,14 @@ a {
     background: #fff;
     margin: 0;
 
+    &__items::-webkit-scrollbar {
+      display: none;
+    }
+
     &__items {
       padding: 0;
+      max-height: 700px;
+      overflow-y: scroll;
 
       &__item:first-child {
         margin: 1.5em 0 0;
@@ -380,6 +386,8 @@ a {
             margin: 8px 0 0;
             padding: 0;
             color: rgb(170, 170, 170);
+            font-size: 14px;
+            font-weight: 400;
             display: flex;
             justify-content: space-between;
           }

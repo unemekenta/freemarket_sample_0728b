@@ -101,7 +101,6 @@
       .product__soldout
         売り切れました
 
-
     .product__description
       %p.product__description__text
         = @product.detail
@@ -123,8 +122,8 @@
     .product__messages
       %ul.product_messages__items
         - @comments.each do |co|
-          %li.product_messages__items__item
-            = link_to profile_user_path(co.user), class:"product_messages__items__item__messege-user" do
+          %li.product_messages__items__item{data: {id: co.id }}
+            = link_to introduction_user_path(co.user), class:"product_messages__items__item__messege-user" do
               %figure.product_messages__items__item__messege-user__figure
                 %div.product_messages__items__item__messege-user__figure__div
                   = image_tag "https://cdn.pixabay.com/photo/2016/05/17/22/16/baby-1399332_1280.jpg"
@@ -143,6 +142,9 @@
                   %span 1時間前
                 -# 以下の部分は本来通報フォームのようだが、今回は実装しないのでiconのみ
                 .message-icon-right
+                  - if user_signed_in? && co.user == current_user
+                    = link_to "編集", root_path, class: "test"
+                    = link_to "削除", product_comment_path(@product.id, co.id), method: :delete
                   = fa_icon "flag-o"
                   -# CDN版
                   -# %i.far.fa-flag
@@ -151,9 +153,9 @@
     .product__message
       %p.notes_text
         相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
-      = form_with(url: product_comments_path(@product.id), method: :post, model: @comment, local: true) do |form|
+      = form_for [@product, @comment], class: "new_comment" do |form|
         - if @product.status_id == 1
-          = form.hidden_field :product_id, value: "#{@product.id}"
+          -# = form.hidden_field :product_id, value: "#{@product.id}"
           - if user_signed_in?
             = form.text_area :comment, class: "product__message__form"
             = form.submit "コメントする", class: "product__message__submit-btn"
@@ -187,10 +189,6 @@
       -# = render ''
     .products-related
       -# = render ''
-
-
-
-
 
   .bread-crumbs__bottom
     %ul

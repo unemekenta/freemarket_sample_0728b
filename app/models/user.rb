@@ -11,7 +11,7 @@ class User < ApplicationRecord
   has_one :point
   accepts_nested_attributes_for :address
   has_many :products, through: :purchases
-  has_many :products, through: :comments
+  has_many :comments
   has_many :purchases
   has_many :evaluations
   has_many :likes, dependent: :destroy

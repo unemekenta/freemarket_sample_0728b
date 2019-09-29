@@ -18,6 +18,10 @@ Rails.application.routes.draw do
     resources :comments, only: [:create, :update, :destroy]
   end
 
+  namespace :api do
+    resources :products, only: :show, defaults: { format: 'json'}
+  end
+
   resources :users do
     resources :deliveraddresses, only: [:new, :create, :edit, :update]
     resources :credit_card, only: [:new, :show] do
