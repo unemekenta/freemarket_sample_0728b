@@ -1,0 +1,45 @@
+.default-container
+  = render 'layouts/notifications'
+  = render 'products/header'
+
+  .evaluation
+    .evaluation__container
+      .evaluation__container__top
+        ユーザーを評価をしてください
+        .evaluation__container__top__seller
+          出品者 : 
+          = image_tag "https://cdn.pixabay.com/photo/2016/05/17/22/16/baby-1399332_1280.jpg", class:'evaluation-container__top__seller__photo', width:25, height: 25
+          = @user.nickname
+      = form_with(model: @evaluation, url: user_evaluations_path, local: true) do |f|
+        .evaluation__container__evaluate-box
+          
+          = f.radio_button :rating, "1", id:"evaluation__good", class: "evaluation__container__evaluate-box__radio-btn" 
+          .evaluation__container__evaluate-box__good
+            = f.label "良い", for:"evaluation__good" do
+              .evaluation__container__evaluate-box__good__btn
+                = fa_icon "smile-o"
+            
+          = f.radio_button :rating, "2", id:"evaluation__normal", class: "evaluation__container__evaluate-box__radio-btn" 
+          .evaluation__container__evaluate-box__normal
+            = f.label "普通", for:"evaluation__normal" do
+              .evaluation__container__evaluate-box__normal__btn
+                = fa_icon "meh-o"
+          
+          = f.radio_button :rating, "3", id:"evaluation__bad", class: "evaluation__container__evaluate-box__radio-btn" 
+          .evaluation__container__evaluate-box__bad
+            = f.label "悪い", for:"evaluation__bad" do
+              .evaluation__container__evaluate-box__bad__btn
+                = fa_icon "frown-o"
+          
+        .evaluation__container__comment-box
+          = f.label "評価のコメントを記入しましょう" 
+          %br/
+          = f.text_area :comment, rows: "5", autofocus: true, placeholder: "コメントはなくても構いませんが、お礼のメッセージなどを書くと喜ばれます。", class:"evaluation__container__comment-box__text-area"
+        .evaluation__container__submit
+          = f.submit "評価を投稿する", class:"evaluation__container__submit-btn"
+
+
+
+
+  = render 'products/aside'
+  = render 'products/footer'

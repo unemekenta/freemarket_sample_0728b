@@ -1,0 +1,12 @@
+%div.like-link{id: "like-link-#{product.id}"}
+  - if user_signed_in? 
+    - if current_user.likes.find_by(product_id: product.id)
+      = link_to unlike_path(product.id), method: :delete, remote: true do
+        .btn.btn-default.glyphicon.glyphicon-heart{id: "heart-#{product.id}"}
+          = product.likes.count.to_s
+          = fa_icon "heart"
+    - else
+      = link_to like_path(product.id), method: :post, remote: true do
+        .btn.btn-default.glyphicon.glyphicon-heart-empty{id: "heart-#{product.id}"}
+          = product.likes.count.to_s
+          = fa_icon "heart-o"

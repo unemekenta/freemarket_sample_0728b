@@ -17,6 +17,11 @@ class PurchasesController < ApplicationController
       @address = current_user.deliveraddress
       @purchase = @product.purchases.build
     end
+    points = Point.where(user_id: current_user.id)
+    @point = 0
+    points.each do |po|
+      @point += po.point
+    end
   end
 
   def pay
@@ -31,7 +36,12 @@ class PurchasesController < ApplicationController
     if @product.status_id == 1
       if @purchase.save
         @product.update(status_id: 4)
-        redirect_to action: 'done'
+        user = User.find(@product.seller_id)
+        profit = (@product.price * 0.9).round(0)
+        Point.create!(user_id: user.id, point: profit)
+        if params[:point_button]
+          Point.create!(user_id: current_user.id, point: -(@product.price))
+        end
       else
         # エラー発生時
         redirect_to root_path, alert: 'エラーが発生しました'
@@ -41,11 +51,6 @@ class PurchasesController < ApplicationController
       redirect_to root_path, alert: 'この商品は売り切れました'
     end
   end
-
-  def done
-    
-  end
-
 
   private
 

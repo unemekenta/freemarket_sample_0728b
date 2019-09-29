@@ -1,0 +1,36 @@
+.default-container
+  = render 'layouts/notifications'
+  = render 'products/header'
+
+  .introduction
+    .introduction-container
+      .introduction-container__top
+        .introduction-container__top__user-photo
+          = image_tag "https://cdn.pixabay.com/photo/2016/05/17/22/16/baby-1399332_1280.jpg", class:'introduction-container__top__user-photo__adjuster'
+        .introduction-container__top__user-nickname
+          = @user.nickname
+        .introduction-container__top__user-score
+          .introduction-container__top__user-score__left
+            評価 #{Evaluation.group(:seller_id).size[@user.id].to_i}
+          .introduction-container__top__user-score__right
+            出品数 #{Product.group(:seller_id).size[@user.id].to_i}
+      .introduction-container__user-ratings
+        .introduction-container__user-ratings__good
+          = fa_icon "smile-o", class: 'product-user-ratings__face__icon-smile'
+          %span #{ Evaluation.where(seller_id: @user.id).group(:rating).size[1].to_i}
+        .introduction-container__user-ratings__normal
+          = fa_icon "meh-o", class: 'product-user-ratings__face__icon-meh'
+          %span #{ Evaluation.where(seller_id: @user.id).group(:rating).size[2].to_i}
+        .introduction-container__user-ratings__bad
+          = fa_icon "frown-o", class: 'product-user-ratings__face__icon-frown'
+          %span #{ Evaluation.where(seller_id: @user.id).group(:rating).size[3].to_i}
+
+      .introduction-container__user-profile
+        = @user.profile
+
+      - if current_user.id != @user.id
+        = link_to 'このユーザーを評価する', new_user_evaluation_path(@user.id), class: "introduction-container__evaluation-btn"
+
+
+  = render 'products/aside'
+  = render 'products/footer'

@@ -1,0 +1,129 @@
+.evaluation {
+  width: 700px;
+  margin: 24px auto 30px;
+  padding: 40px 20px 20px 20px;
+  background-color: white;
+  &__container {
+    &__top {
+      height: 100px;
+      text-align: center;
+      background-color: #fff6de;
+      font-size: 25px;
+      font-weight: bold;
+      color: #ea352b;
+      &__seller {
+        margin-top: 20px;
+        font-size: 16px;
+        font-weight: normal;
+        color: black;
+
+      }
+    }
+    &__evaluate-box {
+      margin:40px auto;
+      width: 500px;
+      display: flex;
+      justify-content: space-around;
+      &__radio-btn {
+        &:checked + .evaluation__container__evaluate-box__good {
+          border: 2px solid #ea352b;
+        }
+        &:checked + .evaluation__container__evaluate-box__normal {
+          border: 2px solid #fba933;
+        }
+        &:checked + .evaluation__container__evaluate-box__bad {
+          border: 2px solid #6ab5d8;
+        }
+      }
+      &__good {
+        display: inline-block;
+        height: 100px;
+        width: 80px;
+        border: 2px solid gray;
+        border-radius: 4px;
+        &__btn{
+          font-size: 57px;
+          text-align: center;
+          color: #ea352b;
+          i {
+            &::after {
+              display: block;
+              content: '良い';
+              font-size: 20px;
+              color: black;
+            }
+          }
+        }
+      }
+      &__normal {
+        display: inline-block;
+        height: 100px;
+        width: 80px;
+        border: 2px solid gray;
+        border-radius: 4px;
+        &__btn{
+          font-size: 57px;
+          text-align: center;
+          color: #fba933;
+          i {
+            &::after {
+              display: block;
+              content: '普通';
+              font-size: 20px;
+              color: black;
+            }
+          }
+        }
+      }
+      &__bad {
+        display: inline-block;
+        height: 100px;
+        width: 80px;
+        border: 2px solid gray;
+        border-radius: 4px;
+        &__btn{
+          font-size: 57px;
+          text-align: center;
+          color: #6ab5d8;
+          i {
+            &::after {
+              display: block;
+              content: '悪い';
+              font-size: 20px;
+              color: black;
+            }
+          }
+        }
+      }
+    }
+    &__comment-box {
+      text-align: center;
+      font-size: 16px;
+      &__text-area {
+        width: 400px;
+      }
+    }
+    &__submit {
+      margin-top: 30px;
+      text-align: center;
+      &-btn {
+        width: 400px;
+        height: 60px;
+        background-color: #ea352b;
+        color: white;
+      }
+    }
+  }
+}
+
+#evaluation__good {
+  display: none;
+}
+
+#evaluation__normal {
+  display: none;
+}
+
+#evaluation__bad {
+  display: none;
+}

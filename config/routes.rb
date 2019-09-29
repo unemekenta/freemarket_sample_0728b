@@ -9,15 +9,16 @@ Rails.application.routes.draw do
     resources :purchases, only: [:new] do
       collection do
         post 'pay', to: 'purchases#pay'
-        get 'done', to: 'purchases#done'
       end
     end
     collection do
       post 'purchase'
+      get 'search'
     end
+    resources :comments, only: [:create, :update, :destroy]
   end
 
-  resources :users, only: [:show, :new, :create, :edit, :update ] do
+  resources :users do
     resources :deliveraddresses, only: [:new, :create, :edit, :update]
     resources :credit_card, only: [:new, :show] do
       collection do
@@ -30,11 +31,10 @@ Rails.application.routes.draw do
       get 'mypage'
       get 'notification'
       get 'todo'
-      get 'like'
+      get 'like_show'
       get 'sales'
       get 'point'
       get 'profile'
-      get 'update'
       get 'email_password'
       get 'purchased'
       get 'forsell'
@@ -42,15 +42,18 @@ Rails.application.routes.draw do
       get 'completed'
       get 'logout'
       get 'identification'
+      get 'introduction'
     end
     collection do
       get 'step1'
       get 'step2'
     end
+    resources :evaluations, only: [:new, :create] do
+    end
   end
- 
   resources :category, only: [:show]
   resources :brands, only: [:show]
-
+  post   '/like/:product_id' => 'likes#like',   as: 'like'
+  delete '/like/:product_id' => 'likes#unlike', as: 'unlike'
 end
 
