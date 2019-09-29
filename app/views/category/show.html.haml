@@ -1,11 +1,5 @@
 .default-container
   = render './products/header'
-  -# - if (@category.id > 0 && @category.id < 14)
-  -#   - breadcrumb :top_category, @category
-  -# - elsif (@category.id > 13 && @category.id < 159)
-  -#   - breadcrumb :middle_category, @category.parent
-  -# - else (@category.id > 158 && @category.id < 1001)
-    -# - breadcrumb :bottom_category, @category.parent.parent
   - breadcrumb :category, @category_breadcrumb
   = render 'layouts/breadcrumbs'
   = render 'categories'
