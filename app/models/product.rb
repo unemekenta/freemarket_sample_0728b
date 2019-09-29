@@ -12,7 +12,7 @@ class Product < ApplicationRecord
   has_one :delivery, dependent: :destroy
   accepts_nested_attributes_for :product_images, :delivery, allow_destroy: true
   has_many :users, through: :purchases
-  has_many :users, through: :comments
+  has_many :comments
   has_many :purchases
   has_many :likes, dependent: :destroy
   has_many :liking_users, through: :likes, source: :user
