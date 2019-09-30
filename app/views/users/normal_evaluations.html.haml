@@ -1,0 +1,43 @@
+.default-container
+  = render './products/header'
+
+  .usersMypage__breadCrumbs
+    %ul
+      %li
+        = link_to "メルカリ", root_path
+      %li
+        = fa_icon "angle-right", class: "usersMypage__breadCrumbs--awsome"
+      %li
+        = link_to mypage_user_path(current_user) do
+          マイページ
+          = fa_icon "angle-right", class: "usersMypage__breadCrumbs--awsome"
+      %li.usersMypage__breadCrumbs--current
+        評価一覧
+
+  .usersMypage__contents__wrapper.clearfix
+    = render "users/shared/sidebar"
+
+    .usersMypage__contents__wrapper__right
+      .usersMypage__contents__wrapper__right__evaluation
+        .usersMypage__contents__wrapper__right__evaluation__title
+          評価一覧
+        .usersMypage__contents__wrapper__right__evaluation__tabs
+          = link_to "全て", all_evaluations_user_path(current_user), class: "usersMypage__contents__wrapper__right__evaluation__tabs__tab usersMypage__contents__wrapper__right__evaluation__tabs__tab--dark"
+          = link_to "良い", good_evaluations_user_path(current_user), class: "usersMypage__contents__wrapper__right__evaluation__tabs__tab usersMypage__contents__wrapper__right__evaluation__tabs__tab--dark"
+          = link_to "普通", normal_evaluations_user_path(current_user), class: "usersMypage__contents__wrapper__right__evaluation__tabs__tab"
+          = link_to "悪い", bad_evaluations_user_path(current_user), class: "usersMypage__contents__wrapper__right__evaluation__tabs__tab usersMypage__contents__wrapper__right__evaluation__tabs__tab--dark"
+        .usersMypage__contents__wrapper__right__evaluation__contents
+          %ul
+            - @normal_evaluations.each do |evaluation|
+              = render partial: "evaluations", locals: {evaluation: evaluation}
+
+
+
+
+
+
+
+
+  = render './products/button'
+  = render './products/aside'
+  = render './products/footer'
