@@ -32,6 +32,25 @@ class UsersController < ApplicationController
   def completed
   end
 
+  def all_evaluations
+    @all_evaluations = Evaluation.where(seller_id: current_user.id).order("id DESC").limit(30)
+  end
+
+  def good_evaluations
+    @good_evaluations = Evaluation.where(seller_id: current_user.id).where(rating: 1).order("id DESC").limit(30)
+
+  end
+
+  def normal_evaluations
+    @normal_evaluations = Evaluation.where(seller_id: current_user.id).where(rating: 2).order("id DESC").limit(30)
+  end
+
+  def bad_evaluations
+    @bad_evaluations = Evaluation.where(seller_id: current_user.id).where(rating: 3).order("id DESC").limit(30)
+  end
+
+
+
   def logout
   end
 
