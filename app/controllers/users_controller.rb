@@ -94,7 +94,7 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(current_user[:id])
-    if @user.update_columns(user_params.to_hash)
+    if @user.update!(user_params)
       redirect_to mypage_user_path(@user), notice: 'ユーザー情報を編集しました。'
     else
       render'profile'
@@ -114,6 +114,12 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:family_name, :first_name, :family_name_pseudonym, :first_name_pseudonym, :birthday, :nickname, :photo, :email, :password, :password_confirmation, :phone_number, :profile, deliver_address_attributes: [:id, :post_number, :prefecture, :city, :street, :building, :phone_number], address_attributes: [:id, :post_number, :prefecture, :city, :street, :building])
+  end
+
+  protected
+  # 追記する
+  def update_resource(resource, params)
+    resource.update_without_password(params)
   end
 
 end

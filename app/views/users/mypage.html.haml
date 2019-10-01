@@ -10,7 +10,10 @@
     .usersMypage__contents__wrapper__right
       .usersMypage__contents__wrapper__right__profile
         .usersMypage__contents__wrapper__right__profile__image
-          = image_tag "http://static.mercdn.net/thumb/members/717195406.jpg?1555687756"
+          - if current_user.photo?
+            = image_tag current_user.photo.url
+          - else
+            = image_tag("//static.mercdn.net/images/member_photo_noimage.png")
         .usersMypage__contents__wrapper__right__profile__name
           =current_user.nickname
         %ul
