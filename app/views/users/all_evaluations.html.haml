@@ -28,8 +28,14 @@
           = link_to "悪い", bad_evaluations_user_path(current_user), class: "usersMypage__contents__wrapper__right__evaluation__tabs__tab usersMypage__contents__wrapper__right__evaluation__tabs__tab--dark"
         .usersMypage__contents__wrapper__right__evaluation__contents
           %ul
-            - @all_evaluations.each do |evaluation|
-              = render partial: "evaluations", locals: {evaluation: evaluation}
+            - if @all_evaluations.empty?
+              %li.usersEvaluations
+                .usersEvaluations--none
+                  = image_tag "https://www.mercari.com/jp/assets/img/common/common/logo-gray-icon.svg?66407541"
+                  %p 投稿された評価がありません
+            - else
+              - @all_evaluations.each do |evaluation|
+                = render partial: "evaluations", locals: {evaluation: evaluation}
 
   = render './products/button'
   = render './products/aside'
