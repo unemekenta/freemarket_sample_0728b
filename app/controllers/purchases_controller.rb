@@ -1,5 +1,6 @@
 class PurchasesController < ApplicationController
   require 'payjp'
+  require 'line/bot'
   before_action :set_product
 
   def new
@@ -35,10 +36,25 @@ class PurchasesController < ApplicationController
     @purchase = Purchase.new(purchase_params)
     if @product.status_id == 1
       if @purchase.save
+        # 商品ステータス変更処理
         @product.update(status_id: 4)
+        # ポイント加算処理
         user = User.find(@product.seller_id)
         profit = (@product.price * 0.9).round(0)
         Point.create!(user_id: user.id, point: profit)
+        # line-bot-api処理
+        message = {
+          type: 'text',
+          text: "出品中の#{@product.name}が購入されました!"
+        }
+        client = Line::Bot::Client.new { |config|
+          config.channel_secret = ENV['LINE_CHANNEL_SECRET']
+          config.channel_token = ENV['LINE_CHANNEL_TOKEN']
+        }
+        user_id = current_user.line_token
+        response = client.push_message(user_id, message)
+        p response
+        # ポイント減算処理
         if params[:point_button]
           Point.create!(user_id: current_user.id, point: -(@product.price))
         end
