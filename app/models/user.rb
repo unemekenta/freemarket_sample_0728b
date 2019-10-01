@@ -5,10 +5,13 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, 
          :omniauthable
 
+  mount_uploader :photo, ImageUploader
+
   has_one :address
   has_one :deliveraddress
   has_one :credit_card
   has_one :point
+  
   accepts_nested_attributes_for :address
   has_many :products, through: :purchases
   has_many :comments
@@ -19,8 +22,10 @@ class User < ApplicationRecord
 
   validates :nickname, presence: true
   validates :email, presence: true
-  validates :password, presence: true, length: { minimum: 6 }
-  validates :password_confirmation, presence: true, length: { minimum: 6 }
+  validates :password, length: {minimum: 6}, on: :create
+  validates :password, length: {minimum: 6}, on: :update, allow_blank: true
+  validates :password_confirmation, length: { minimum: 6 }, on: :create
+  validates :password_confirmation, length: { minimum: 6 }, on: :update, allow_blank: true
   validates :birthday, presence: true
   validates :family_name, presence: true
   validates :first_name, presence: true
