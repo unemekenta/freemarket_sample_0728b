@@ -94,9 +94,6 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(current_user[:id])
-    
-    # binding.pry
-    
     if @user.update!(user_params)
       redirect_to mypage_user_path(@user), notice: 'ユーザー情報を編集しました。'
     else
