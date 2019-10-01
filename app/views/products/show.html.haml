@@ -24,13 +24,14 @@
                 .product-user-ratings
                   .product-user-ratings__face
                     = fa_icon "smile-o", class: 'product-user-ratings__face__icon-smile'
-                    %span 0
+                    %span #{ Evaluation.where(seller_id: @product.seller_id).group(:rating).size[1].to_i}
+
                   .product-user-ratings__face
                     = fa_icon "meh-o", class: 'product-user-ratings__face__icon-meh'
-                    %span 0
+                    %span #{ Evaluation.where(seller_id: @product.seller_id).group(:rating).size[2].to_i}
                   .product-user-ratings__face
                     = fa_icon "frown-o", class: 'product-user-ratings__face__icon-frown'
-                    %span 0
+                    %span #{ Evaluation.where(seller_id: @product.seller_id).group(:rating).size[3].to_i}
             %tr
               %th カテゴリー
               %td
