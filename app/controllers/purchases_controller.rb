@@ -51,7 +51,7 @@ class PurchasesController < ApplicationController
           config.channel_secret = ENV['LINE_CHANNEL_SECRET']
           config.channel_token = ENV['LINE_CHANNEL_TOKEN']
         }
-        user_id = current_user.line_token
+        user_id = user.line_token
         response = client.push_message(user_id, message)
         p response
         # ポイント減算処理
