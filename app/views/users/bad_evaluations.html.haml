@@ -35,7 +35,7 @@
                   %p 投稿された評価がありません
             - else
               - @bad_evaluations.each do |evaluation|
-                = render partial: "evaluations", locals: {evaluation: evaluation}
+                = render partial: "evaluations", collection: @bad_evaluations, as: "evaluation"
 
   = render './products/button'
   = render './products/aside'
