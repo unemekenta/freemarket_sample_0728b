@@ -43,7 +43,6 @@ class ProductsController < ApplicationController
 
   def show
     @seller = User.find(@product.seller_id)
-    @q = Product.ransack(params[:q])
     points = Point.where(user_id: user_signed_in? ? current_user.id : 0 )
     @point = 0
     points.each do |po|
