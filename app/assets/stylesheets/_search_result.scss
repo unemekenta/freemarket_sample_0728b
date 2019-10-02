@@ -1,14 +1,232 @@
 @import "variables";
 
+@mixin select_box($color) {
+  height: 48px;
+  width: 100%;
+  color: $color;
+  border: solid 1px $main_gray;
+  border-radius: 5px;
+  background-color: $main_white;
+  padding: 10px;
+  font-size: 16px;
+
+}
+
 .search {
   width: 1020px;
   margin: 0 auto;
   display: flex;
   flex-direction: row;
-  &__left {
-    width: 30%;
-    margin: 40px 0 0 0;
+  &__form {
+    width: 25%;
+    padding-right: 10px;
+    margin: 40px 0 40px 0;
+    
+    &__sort {
+      margin-bottom: 40px;
+      & select {
+        width: 100%;
+        height: 48px;
+        background-color: $main_white;
+        border: solid 1px $main_gray;
+        &:hover {
+          cursor: pointer;
+        }
+      }
+    }
+    &__head {
+      background-color: $main_white;
+      padding: 12px;
+      font-size: 12px;
+      font-weight: 500;
+      & p {
+        font-size: 14px;
+        line-height: 16px;
+        font-weight: 600;
+        margin-bottom: 4px;
+      }
 
+      &--bold {
+        font-weight: bold;
+        font-size: 16px;
+        margin-bottom: 16px;
+      }
+      &__keyword {
+        margin-bottom: 28px;
+        & input {
+          @include select_box($main_black);
+        }
+        & p:before {
+          content: "\f067";
+          font-family: "fontawesome";
+          color: gray;
+          font-size: 16px;
+        }
+      }
+      &__brand {
+        margin-bottom: 28px;
+        & select {
+          @include select_box($main_black);
+          &:hover {
+            cursor: pointer;
+          }
+        }
+        & p:before {
+          content: "\f02c";
+          font-family: "fontawesome";
+          color: gray;
+          font-size: 16px;
+        }
+      }
+      &__price {
+        margin-bottom: 28px;
+        & input {
+          width: 45%;
+          height: 48px;
+          border: solid 1px $main_gray;
+          border-radius: 5px;
+          padding: 10px;
+          font-size: 14px;
+        }
+        & p:before {
+          content: "\f157";
+          font-family: "fontawesome";
+          color: gray;
+          font-size: 16px;
+          font-weight: 900;
+        }
+      }
+      &__condition {
+        margin-bottom: 28px;
+        & input:hover, label:hover {
+          cursor: pointer;
+        }
+
+        & input[type="checkbox"] {
+          width: 10%;
+          height: 48px;
+        }
+        & label {
+          font-size: 14px;
+          width: 40%;
+          height: 48px;
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+        }
+        &--boxes {
+          display: flex;
+          flex-direction: row;
+          flex-wrap: wrap;
+        }
+        & p:before {
+          content: "\f005";
+          font-family: "fontawesome";
+          color: gray;
+          font-size: 16px;
+          font-weight: 900;
+        }
+      }
+      &__delivery {
+        margin-bottom: 28px;
+
+        & input:hover, label:hover {
+          cursor: pointer;
+        }
+        & input[type="checkbox"] {
+          width: 10%;
+          height: 48px;
+        }
+        & label {
+          font-size: 14px;
+          width: 40%;
+          height: 48px;
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+        }
+        &--boxes {
+          display: flex;
+          flex-direction: row;
+          flex-wrap: wrap;
+        }
+        & p:before {
+          content: "\f0d1";
+          font-family: "fontawesome";
+          color: gray;
+          font-size: 16px;
+          font-weight: 900;
+        }
+      }
+      &__status {
+        margin-bottom: 30px;
+
+        & input:hover, label:hover {
+          cursor: pointer;
+        }
+        & input[type="checkbox"] {
+          width: 10%;
+          height: 24px;
+        }
+        & label {
+          font-size: 14px;
+          width: 40%;
+          height: 24px;
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+        }
+        &--boxes {
+          display: flex;
+          flex-direction: row;
+          flex-wrap: wrap;
+        }
+        & p:before {
+          content: "\f07a";
+          font-family: "fontawesome";
+          color: gray;
+          font-size: 16px;
+          font-weight: 900;
+        }
+      }
+      &__btns {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+      
+        &__reset {
+          width: 50%;
+          & button {
+            display: inline-block;
+            width: 90%;
+            height: 48px;
+            background-color: darken($main_gray, 10%);
+            color: $main_white;
+            font-size: 14px;
+            &:hover {
+              cursor: pointer;
+            }
+          }
+        }
+
+        &__complete {
+          width: 50%;
+          
+          & input {
+            display: inline-block;
+            border-style: none;
+            width: 90%;
+            height: 48px;
+            background-color: $main_red;
+            color: $main_white;
+            font-size: 14px;
+            &:hover {
+              cursor: pointer;
+            }
+          }
+        }
+      }
+    }
   }
 
 
@@ -16,7 +234,7 @@
     width: 75%;
     background-color: rgb(245, 245, 245);
     margin: 40px 0 40px 0;
-    padding: 0;
+    padding-left: 10px;
 
     h2 {
       font-size: 28px;
@@ -52,7 +270,7 @@
       height: 100%;
       width: 160px;
       background-color: white;
-      margin: 0 0 20px 20px;
+      margin: 0 0 25px 25px;
       box-sizing: border-box;
 
       a {

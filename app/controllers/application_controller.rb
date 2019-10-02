@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   before_action :basic_auth, if: :production?
   before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :create_q
   before_action :configure_account_update_params, if: :devise_controller?
 
   def configure_permitted_parameters
@@ -27,4 +28,9 @@ class ApplicationController < ActionController::Base
       username == ENV["BASIC_AUTH_USER"] && password == ENV["BASIC_AUTH_PASSWORD"]
     end
   end
+
+  def create_q
+    @q = Product.ransack(params[:q])
+  end
+
 end
