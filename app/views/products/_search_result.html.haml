@@ -14,5 +14,5 @@
       .search__main__item-box__content__num
         - if true
           .search__main__item-box__content__num__likes
-            = fa_icon "heart-o"
-            %span 1
+            %span 
+              = render 'likes/like_links', product: search_result

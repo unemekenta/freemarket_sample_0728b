@@ -3,28 +3,79 @@
   = render 'header'
   
   .search
-    .search__left
-      = form_with local: true do |f|
-        = f.select :sort_type, ["価格の安い順", "出品の古い順", "出品の新しい順", "いいね!の多い順"], prompt: "並び替え"
-        
-        %p
-          詳細検索
-        %p
-          +キーワードを追加する
-        = f.text_field :key_words, placeholder: "例) 値下げ"
-        %p
-          カテゴリーを選択する
-        = f.select :category, ["レディース", "メンズ", "ベビー・キッズ", "インテリア・住まい・小物", "本・音楽・ゲーム", "おもちゃ・ホビー・グッズ", "コスメ・香水・美容", "家電・スマホ・カメラ", "スポーツ・レジャー", "ハンドメイド", "チケット", "自動車・オートバイ", "その他"], prompt: "すべて"
-        %p
-          ブランド名から探す
-        = f.text_field :brand, placeholder: "例) シャネル"  
-        %p
-          サイズを指定する
-        = f.select :size, ["洋服のサイズ", "メンズ靴のサイズ", "レディース靴のサイズ", "スカートのサイズ", "キッズ服のサイズ", "ベビー・キッズ靴のサイズ", "ベビー服のサイズ", "テレビのサイズ", "カメラレンズのサイズ", "オートバイのサイズ", "ヘルメットのサイズ", "タイヤのサイズ", "スキーのサイズ", "スノーボードのサイズ"], prompt: "すべて"
+    .search__form
+      = search_form_for(@q, url: search_products_path, local: true) do |f|
+        .search__form__sort
+          = f.select(:s, {'並び替え': 'id DESC', '価格の安い順': 'price ASC', '価格の高い順': 'price DESC', '出品の古い順': 'created_at ASC', '出品の新しい順': 'created_at DESC', 'いいね!の多い順': 'likes_count DESC'}, {selected: params[:q][:s]})
+
+        .search__form__head
+          .search__form__head--bold
+            詳細検索
+
+          .search__form__head__keyword
+            %p
+              キーワードを追加する
+            = f.search_field :name_has_every_term, id: "search_form", value: "#{@search_words}", placeholder: "例) 値下げ"
+          
+          .search__form__head__category
+            %p
+              -# カテゴリーを選択する
+              -# = f.select :category, ["レディース", "メンズ", "ベビー・キッズ", "インテリア・住まい・小物", "本・音楽・ゲーム", "おもちゃ・ホビー・グッズ", "コスメ・香水・美容", "家電・スマホ・カメラ", "スポーツ・レジャー", "ハンドメイド", "チケット", "自動車・オートバイ", "その他"], prompt: "すべて"
+
+          .search__form__head__brand
+            %p
+              ブランド名から探す
+            = f.collection_select :brand_id_eq, @brands, :id, :brand, include_blank: "指定なし"
+          
+          .search__form__head__size
+            %p
+            -# = f.label :size_id_eq, "サイズを指定する"
+            -# = f.collection_select :size_id_eq, ["洋服のサイズ", "メンズ靴のサイズ", "レディース靴のサイズ", "スカートのサイズ", "キッズ服のサイズ", "ベビー・キッズ靴のサイズ", "ベビー服のサイズ", "テレビのサイズ", "カメラレンズのサイズ", "オートバイのサイズ", "ヘルメットのサイズ", "タイヤのサイズ", "スキーのサイズ", "スノーボードのサイズ"], prompt: "すべて"
+          
+          .search__form__head__price
+            %p
+              価格
+            = f.number_field :price_gteq, placeholder: "¥ Min"
+            = f.label :q_price_lteq, "~"
+            = f.number_field :price_lteq, placeholder: "¥ Max"
+          
+          .search__form__head__condition
+            %p
+              商品の状態
+            .search__form__head__condition--boxes
+              = f.collection_check_boxes :condition_id_in, @conditions, :id, :condition
+            
+          .search__form__head__delivery
+            %p
+              配送料の負担
+            .search__form__head__delivery--boxes
+              = f.check_box :delivery_shipping_fee_eq_any, { multiple: true }, "着払い(購入者負担)", nil
+              = f.label :delivery_shipping_fee_eq_any_着払い購入者負担, "着払い(購入者負担)"
+              = f.check_box :delivery_shipping_fee_eq_any, { multiple: true }, "送料込み(出品者負担)", nil
+              = f.label :delivery_shipping_fee_eq_any_送料込み出品者負担, "送料込み(出品者負担)"
+
+          .search__form__head__status
+            %p
+              販売状況
+            .search__form__head__status--boxes
+              = f.check_box :status_id_eq_any, { multiple: true }, 1, nil
+              = f.label :status_id_eq_any_1, "販売中"
+              = f.check_box :status_id_eq_any, { multiple: true }, 4, nil
+              = f.label :status_id_eq_any_4, "売り切れ"
+            
+          .search__form__head__btns
+            .search__form__head__btns__reset
+              = f.button "クリア", type: :reset, id: "search_reset"
+              
+            .search__form__head__btns__complete
+              = f.submit "完了"
 
     .search__main
       %h3.search__main__headline
-        = "#{@search_words}の検索結果"
+        - if @search_words.blank?
+          新着商品
+        - else
+          = "#{@search_words}の検索結果"
       - if @search_results.present?
         %ul.search__main__item-box-container
           = render partial: "search_result", collection: @search_results
@@ -35,4 +86,3 @@
   = render 'aside'
   = render 'footer'
   = render 'button'
-  
