@@ -8,18 +8,13 @@
           
         .single__single-top__container__progress-bar
           %ul.single__single-top__container__progress-bar__list
-            %li.single__single-top__container__progress-bar__list__user-info
+            %li.single__single-top__container__progress-bar__list__user-info-step2
               会員情報
               .progress-status__dot
-            %li.single__single-top__container__progress-bar__list__tel-certification
-              電話番号認証
-              .progress-status__dot
-            %li.single__single-top__container__progress-bar__list__user-address
+            %li.single__single-top__container__progress-bar__list__user-address-step2
               お届け先住所入力
               .progress-status__dot
-            %li.single__single-top__container__progress-bar__list__credit-info
-              支払い方法
-              .progress-status__dot
+
             %li.single__single-top__container__progress-bar__list__complete
               完了
               .progress-status__dot
@@ -28,8 +23,8 @@
       %section.single__single-main__l-single-container
         = form_with model: @user, url: users_path, method: :post, html: {class: 'forth-main-wrapper__box'} do |f|
           -# = render "devise/shared/error_messages", resource: resource
-          %h2.single__single-main__l-single-container__l-single-head 会員情報入力
-   
+          %h2.single__single-main__l-single-container__l-single-head お届け先住所入力
+
           %h2.single__single-main__l-single-container__l-single-content
             = f.fields_for :address do |address|
               .single__single-main__l-single-container__l-single-content__form-group
@@ -66,3 +61,6 @@
 
     .single__single-footer
       .single__single-footer__container
+
+        -# = form_with model: @user, url: signup_complete_users_path, method: :post, html: {class: 'forth-main-wrapper__box'} do |f|
+        

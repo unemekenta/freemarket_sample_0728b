@@ -1,0 +1,81 @@
+@mixin progressTitle($text-color) {
+  display: inline-block;
+  color: $text-color;
+  margin: 0 40px 0 0;
+  min-width: 60px;
+  position: relative;
+
+}
+
+@mixin progressDot($dot-color) {
+  border-radius: 50%;
+  background-color: $dot-color;
+  height: 12px;
+  width: 12px;
+  margin:0 auto;
+  z-index: 100;
+}
+
+@mixin progressBar($bar-color) {
+  position: absolute;
+  bottom: 5px;
+  z-index: 99;
+  display: block;
+  content: '';
+  width: 100%;
+  height: 2px;
+  background: $bar-color;
+}
+
+$main_red: #ea352d;
+
+.single__single-top__container__progress-bar{
+  padding: 40px 0 0 44px;
+  display: inline-block;
+  font-size: 12px;
+  &__list {
+    text-align: center;
+    &__user-info-step2 {
+      @include progressTitle(#ccc);
+
+      .progress-status__dot {
+        @include progressDot($main_red);
+        &::after {
+          @include progressBar($main_red);
+        }
+      }
+    }
+    
+    &__user-address-step2 {
+      display: inline-block;
+      color: $main_red;
+      margin: 0 40px 0 0;
+      min-width: 60px;
+      position: relative;
+      .progress-status__dot {
+        @include progressDot($main_red);
+        &::before {
+          right: 50%;
+          @include progressBar($main_red);
+        }
+        &::after {
+          @include progressBar($main_red);
+        }
+      }
+    }
+    &__complete {
+      display: inline-block;
+      color: #ccc;
+      margin: 0 40px 0 0;
+      min-width: 60px;
+      position: relative;
+      .progress-status__dot {
+        @include progressDot(#ccc);
+        &::before {
+          right: 50%;
+          @include progressBar(#ccc);
+        }
+      }
+    }
+  }
+}
