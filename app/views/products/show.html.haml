@@ -127,7 +127,10 @@
             = link_to introduction_user_path(co.user), class:"product_messages__items__item__messege-user" do
               %figure.product_messages__items__item__messege-user__figure
                 %div.product_messages__items__item__messege-user__figure__div
-                  = image_tag "https://cdn.pixabay.com/photo/2016/05/17/22/16/baby-1399332_1280.jpg"
+                  - if co.user.photo?
+                    = image_tag co.user.photo.url
+                  - else
+                    = image_tag "//static.mercdn.net/images/member_photo_noimage.png"
                 %figcaption.product_messages__items__item__messege-user__figure__figcaption
                   = co.user.nickname
                 - if @product.seller_id == co.user.id
