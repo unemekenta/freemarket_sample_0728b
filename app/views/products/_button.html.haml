@@ -1,4 +1,11 @@
 - if user_signed_in?
+  - if current_user.line_token.blank?
+    = link_to profile_user_path(current_user) do
+      .line-btn
+        .line-btn__text
+          LINE連携
+        .line-btn__icon
+          = fa_icon 'line'
   = link_to new_product_path do
     .sell-btn
       .sell-btn__text

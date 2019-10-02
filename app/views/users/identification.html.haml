@@ -1,5 +1,8 @@
 .default-containers
   = render './products/header'
+  - breadcrumb :identification
+  = render 'layouts/breadcrumbs'
+
   .usersMypage__contents
     .usersMypage__contents__wrapper.clearfix
       .usersMypage__contents__wrapper__left

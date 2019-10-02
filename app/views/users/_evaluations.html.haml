@@ -1,0 +1,27 @@
+%li.usersEvaluations
+  = link_to introduction_user_path(evaluation.buyer.id) do
+    %ul
+      %li.usersEvaluations--image
+        - if evaluation.buyer.photo == "0"
+          = image_tag "https://static.mercdn.net/images/member_photo_noimage_thumb.png"
+        - else
+          = evaluation.buyer.photo
+      %li.usersEvaluations--text
+        - if evaluation.rating == 1
+          = fa_icon "smile-o", id: "userEvaluations--text__good"
+        - elsif evaluation.rating == 2
+          = fa_icon "meh-o", class: "userEvaluations--text__normal"
+        - else evaluation.rating == 3
+          = fa_icon "frown-o", class: "userEvaluations--text__bad"
+        購入者
+        %br
+        = evaluation.buyer.nickname
+        %br
+        - if evaluation.comment.present?
+          = evaluation.comment 
+          %br
+        = fa_icon "clock-o"
+        = evaluation.created_at.strftime("%Y年%-m月%-d日 %-H時%-M分")
+      %li.usersEvaluations--awesome
+        = fa_icon "chevron-right"
+

@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
 
-  devise_for :users, controllers: { registrations: "users", sessions: 'users/sessions', omniauth_callbacks: 'users/omniauth_callbacks' }
+  devise_for :users, controllers: { registrations: "users", omniauth_callbacks: 'users/omniauth_callbacks' }
+  devise_scope :user do
+    get 'user' => 'users#profile'
+    put 'user' => 'users#update'
+  end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'products#index'
   get 'telltest' => 'products#teltest' 
@@ -18,6 +22,10 @@ Rails.application.routes.draw do
     resources :comments, only: [:create, :update, :destroy]
   end
 
+  namespace :api do
+    resources :products, only: :show, defaults: { format: 'json'}
+  end
+
   resources :users do
     resources :deliveraddresses, only: [:new, :create, :edit, :update]
     resources :credit_card, only: [:new, :show] do
@@ -27,7 +35,6 @@ Rails.application.routes.draw do
         post 'delete', to: 'credit_card#delete'
       end
     end
-    resources :deliveraddresses, only: [:new, :create]
     member do
       get 'mypage'
       get 'notification'
@@ -41,6 +48,10 @@ Rails.application.routes.draw do
       get 'forsell'
       get 'in_progress'
       get 'completed'
+      get 'all_evaluations'
+      get 'good_evaluations'
+      get 'normal_evaluations'
+      get 'bad_evaluations'
       get 'logout'
       get 'identification'
       get 'introduction'
