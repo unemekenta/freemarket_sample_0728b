@@ -32,6 +32,24 @@ class UsersController < ApplicationController
   def completed
   end
 
+  def all_evaluations
+    @all_evaluations = Evaluation.latest30(current_user)
+  end
+
+  def good_evaluations
+    @good_evaluations = Evaluation.latest30(current_user).where(rating: 1)
+  end
+
+  def normal_evaluations
+    @normal_evaluations = Evaluation.latest30(current_user).where(rating: 2)
+  end
+
+  def bad_evaluations
+    @bad_evaluations = Evaluation.latest30(current_user).where(rating: 3)
+  end
+
+
+
   def logout
   end
 
