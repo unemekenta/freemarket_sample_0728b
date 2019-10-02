@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   before_action :basic_auth, if: :production?
   before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :create_q
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:nickname, :family_name, :first_name, :family_name_pseudonym, :first_name_pseudonym, :birthday, :photo, :phone_number])
@@ -19,4 +20,9 @@ class ApplicationController < ActionController::Base
       username == ENV["BASIC_AUTH_USER"] && password == ENV["BASIC_AUTH_PASSWORD"]
     end
   end
+
+  def create_q
+    @q = Product.ransack(params[:q])
+  end
+  
 end
