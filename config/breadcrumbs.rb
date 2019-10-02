@@ -45,6 +45,11 @@ crumb :completed do
   parent :mypage
 end
 
+crumb :all_evaluations do
+  link "評価一覧", all_evaluations_user_path(current_user)
+  parent :mypage
+end
+
 crumb :profile do
   link "プロフィール", profile_user_path(current_user)
   parent :mypage
