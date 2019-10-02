@@ -339,4 +339,20 @@ $(document).on('turbolinks:load', function () {
     $('.size:not([value="changed"])').parent().parent().remove();
     $('.sell-upload-drop-box:last').remove();
   })
+  //--------------------------------------------------------------------
+  //検索フォームリセット
+  $('#search_reset').on('click', function() {
+    $('#search_form').attr('value', '');
+    $('.search__form__head__price input').attr('value', '');
+    $('#q_brand_id_eq option').attr('selected', false);
+    $('#q_s option').attr('selected', false);
+    $('.search__form__head__condition--boxes input').removeAttr('checked');
+    $('.search__form__head__status--boxes input').removeAttr('checked');
+  })
+  //--------------------------------------------------------------------
+  //詳細検索ページ・並び替えのセレクトボックスが変わったら自動的にソート
+  $('#q_s').on('change', function() {
+    var $form = $(this).parents('form');
+    $form.submit();
+  })
 });
