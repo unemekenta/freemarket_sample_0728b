@@ -42,21 +42,12 @@
 
       &__children {
 
-        a.childrencategory {
+        p {
           display: block;
           padding-top: 15px;
           padding-bottom: 5px;
           font-size: 14px;
           font-weight: bold;
-          -webkit-transition: all 0.3s ease;
-          -moz-transition: all 0.3s ease;
-          -o-transition: all 0.3s ease;
-          transition: all  0.3s ease;
-          border-radius: 10px;
-        }
-
-        a.childrencategory:hover {
-          background-color: $main_red;
         }
 
         a.grandchildcategory {

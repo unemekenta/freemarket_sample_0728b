@@ -11,7 +11,8 @@
         = link_to "すべて", category_path(id: 1), class: "allcategory"
         .category__all__parent__children
           - @category_children1.each do |category|
-            = link_to "#{category.category}", category_path(id: category), class: "childrencategory"
+            %p #{category.category}
+            = link_to "すべて", category_path(id: category), class: "grandchildcategory"
             - category.children.each do|children|
               = link_to "#{children.category}", category_path(id: children), class: "grandchildcategory"
     .category__all
@@ -21,7 +22,7 @@
         = link_to "すべて", category_path(id: 2), class: "allcategory"
         .category__all__parent__children
           - @category_children2.each do |category|
-            = link_to "#{category.category}", category_path(id: category), class: "childrencategory"
+            %p #{category.category}
             - category.children.each do|children|
               = link_to "#{children.category}", category_path(id: children), class: "grandchildcategory"
     .category__all
@@ -31,7 +32,7 @@
         = link_to "すべて", category_path(id: 3), class: "allcategory"
         .category__all__parent__children
           - @category_children3.each do |category|
-            = link_to "#{category.category}", category_path(id: category), class: "childrencategory"
+            %p #{category.category}
             - category.children.each do|children|
               = link_to "#{children.category}", category_path(id: children), class: "grandchildcategory"
     .category__all
@@ -41,7 +42,7 @@
         = link_to "すべて", category_path(id: 4), class: "allcategory"
         .category__all__parent__children
           - @category_children4.each do |category|
-            = link_to "#{category.category}", category_path(id: category), class: "childrencategory"
+            %p #{category.category}
             - category.children.each do|children|
               = link_to "#{children.category}", category_path(id: children), class: "grandchildcategory"
     .category__all
@@ -51,7 +52,7 @@
         = link_to "すべて", category_path(id: 5), class: "allcategory"
         .category__all__parent__children
           - @category_children5.each do |category|
-            = link_to "#{category.category}", category_path(id: category), class: "childrencategory"
+            %p #{category.category}
             - category.children.each do|children|
               = link_to "#{children.category}", category_path(id: children), class: "grandchildcategory"
     .category__all
@@ -61,7 +62,7 @@
         = link_to "すべて", category_path(id: 6), class: "allcategory"
         .category__all__parent__children
           - @category_children6.each do |category|
-            = link_to "#{category.category}", category_path(id: category), class: "childrencategory"
+            %p #{category.category}
             - category.children.each do|children|
               = link_to "#{children.category}", category_path(id: children), class: "grandchildcategory"
     .category__all
@@ -71,7 +72,7 @@
         = link_to "すべて", category_path(id: 7), class: "allcategory"
         .category__all__parent__children
           - @category_children7.each do |category|
-            = link_to "#{category.category}", category_path(id: category), class: "childrencategory"
+            %p #{category.category}
             - category.children.each do|children|
               = link_to "#{children.category}", category_path(id: children), class: "grandchildcategory"
     .category__all
@@ -81,7 +82,7 @@
         = link_to "すべて", category_path(id: 8), class: "allcategory"
         .category__all__parent__children
           - @category_children8.each do |category|
-            = link_to "#{category.category}", category_path(id: category), class: "childrencategory"
+            %p #{category.category}
             - category.children.each do|children|
               = link_to "#{children.category}", category_path(id: children), class: "grandchildcategory"
     .category__all
@@ -91,7 +92,7 @@
         = link_to "すべて", category_path(id: 9), class: "allcategory"
         .category__all__parent__children
           - @category_children9.each do |category|
-            = link_to "#{category.category}", category_path(id: category), class: "childrencategory"
+            %p #{category.category}
             - category.children.each do|children|
               = link_to "#{children.category}", category_path(id: children), class: "grandchildcategory"
     .category__all
@@ -101,7 +102,7 @@
         = link_to "すべて", category_path(id: 10), class: "allcategory"
         .category__all__parent__children
           - @category_children10.each do |category|
-            = link_to "#{category.category}", category_path(id: category), class: "childrencategory"
+            %p #{category.category}
             - category.children.each do|children|
               = link_to "#{children.category}", category_path(id: children), class: "grandchildcategory"
     .category__all
@@ -111,7 +112,7 @@
         = link_to "すべて", category_path(id: 11), class: "allcategory"
         .category__all__parent__children
           - @category_children11.each do |category|
-            = link_to "#{category.category}", category_path(id: category), class: "childrencategory"
+            %p #{category.category}
             - category.children.each do|children|
               = link_to "#{children.category}", category_path(id: children), class: "grandchildcategory"
     .category__all
@@ -121,7 +122,7 @@
         = link_to "すべて", category_path(id: 12), class: "allcategory"
         .category__all__parent__children
           - @category_children12.each do |category|
-            = link_to "#{category.category}", category_path(id: category), class: "childrencategory"
+            %p #{category.category}
             - category.children.each do|children|
               = link_to "#{children.category}", category_path(id: children), class: "grandchildcategory"
     .category__all
@@ -131,7 +132,7 @@
         = link_to "すべて", category_path(id: 13), class: "allcategory"
         .category__all__parent__children
           - @category_children13.each do |category|
-            = link_to "#{category.category}", category_path(id: category), class: "childrencategory"
+            %p #{category.category}
             - category.children.each do|children|
               = link_to "#{children.category}", category_path(id: children), class: "grandchildcategory"
 
