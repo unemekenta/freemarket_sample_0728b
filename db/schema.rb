@@ -10,10 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_24_122514) do
+ActiveRecord::Schema.define(version: 2019_09_29_125755) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "post_number", null: false
+    t.integer "post_number", null: false
     t.string "prefecture", null: false
     t.string "city", null: false
     t.string "street", null: false
@@ -80,7 +80,7 @@ ActiveRecord::Schema.define(version: 2019_09_24_122514) do
     t.string "first_name", null: false
     t.string "family_name_pseudonym", null: false
     t.string "first_name_pseudonym", null: false
-    t.string "post_number"
+    t.integer "post_number"
     t.string "prefecture"
     t.string "city"
     t.string "street"
@@ -216,6 +216,7 @@ ActiveRecord::Schema.define(version: 2019_09_24_122514) do
     t.string "provider"
     t.string "uid"
     t.text "profile"
+    t.string "line_token"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

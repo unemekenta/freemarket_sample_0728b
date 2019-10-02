@@ -11,7 +11,13 @@
     = form_with model: @user, local: true, method: :put, html: {class: 'first-main__box'} do |f|
       .usersMypage__contents__wrapper__right__profile
         .usersMypage__contents__wrapper__right__profile__image
-          = image_tag "http://static.mercdn.net/thumb/members/717195406.jpg?1555687756"
+          - if current_user.photo?
+            = image_tag current_user.photo.url
+          - else
+            = image_tag("//static.mercdn.net/images/member_photo_noimage.png")
+        = f.file_field :photo
+        %br
+        %br
         .usersMypage__contents__wrapper__right__profile__name
           = f.text_field :nickname, autofocus: true, placeholder: @user.nickname, class: "input-default"
         %ul
@@ -24,6 +30,13 @@
 
       .usersMypage__contents__wrapper__right__setting-profile-content
         = f.text_area :profile, class: "text-area"
+        .line_field
+          LINE認証は以下のQRコードから
+          .line_field--qrcode
+            = image_tag 'qrcode.png'
+          %div
+            取得したコードはこちらに入力してください
+          = f.text_field :line_token, class: "line_field--textarea"
         = f.submit "変更する", class: "btn-red"
 
       .usersMypage__contents__wrapper__right__tabs

@@ -38,6 +38,7 @@ class ProductsController < ApplicationController
     # @categories_grandchildren_ladies1 = Category.where(parent_id: 14)
     # @categories_grandchildren_ladies2 = Category.where(parent_id: 15)
     # @categories_grandchildren_ladies3 = Category.where(parent_id: 16)
+
   end
 
   def show
@@ -116,14 +117,14 @@ class ProductsController < ApplicationController
   end
 
   def search
-    @search_words = params[:search_words]
-    
-    if @search_words.present?
-      splited_search_words = @search_words.split(/[ 　]+/)
-      @search_results = Product.ransack(name_cont_all: splited_search_words).result
-    else
-      redirect_to root_path, notice: "検索ワードを入力して下さい"
-    end
+    @search_words = search_params[:name_has_every_term]
+    @brands = Brand.all
+    @statuses = Status.all
+    @conditions = Condition.all
+
+    @q = Product.search(search_params)
+    @q.build_sort if @q.sorts.empty?
+    @search_results = @q.result
   end
 
   private
@@ -136,4 +137,7 @@ class ProductsController < ApplicationController
     params.require(:product).permit(:name, :price, :detail, :status_id, :condition_id, :category_id, :brand_id, :size_id, delivery_attributes: [:id, :shipping_fee, :deliver_method_id, :estimated_date_id, :deliver_region_id], product_images_attributes: [:id, :image, :remove_image]).merge(seller_id: current_user.id)
   end
 
+  def search_params
+    params.require(:q).permit(:name_has_every_term, :brand_id_eq, {status_id_in: []}, {delivery_shipping_fee_eq_any: []}, {status_id_eq_any: []}, {condition_id_in: []}, :price_gteq, :price_lteq, :s)
+  end
 end

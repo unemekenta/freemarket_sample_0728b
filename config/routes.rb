@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
 
-  devise_for :users, controllers: { registrations: "users", sessions: 'users/sessions', omniauth_callbacks: 'users/omniauth_callbacks' }
+  devise_for :users, controllers: { registrations: "users", omniauth_callbacks: 'users/omniauth_callbacks' }
+  devise_scope :user do
+    get 'user' => 'users#profile'
+    put 'user' => 'users#update'
+  end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'products#index'
   get 'telltest' => 'products#teltest' 
@@ -44,6 +48,10 @@ Rails.application.routes.draw do
       get 'forsell'
       get 'in_progress'
       get 'completed'
+      get 'all_evaluations'
+      get 'good_evaluations'
+      get 'normal_evaluations'
+      get 'bad_evaluations'
       get 'logout'
       get 'identification'
       get 'introduction'
