@@ -30,6 +30,13 @@
 
       .usersMypage__contents__wrapper__right__setting-profile-content
         = f.text_area :profile, class: "text-area"
+        .line_field
+          LINE認証は以下のQRコードから
+          .line_field--qrcode
+            = image_tag 'qrcode.png'
+          %div
+            取得したコードはこちらに入力してください
+          = f.text_field :line_token, class: "line_field--textarea"
         = f.submit "変更する", class: "btn-red"
 
       .usersMypage__contents__wrapper__right__tabs
