@@ -34,8 +34,7 @@
                   = image_tag "https://www.mercari.com/jp/assets/img/common/common/logo-gray-icon.svg?66407541"
                   %p 投稿された評価がありません
             - else
-              - @all_evaluations.each do |evaluation|
-                = render partial: "evaluations", collection: @all_evaluations, as: "evaluation"
+              = render partial: "evaluations", collection: @all_evaluations, as: "evaluation"
   
   = render './products/button'
   = render './products/aside'

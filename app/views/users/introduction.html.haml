@@ -6,7 +6,11 @@
     .introduction-container
       .introduction-container__top
         .introduction-container__top__user-photo
-          = image_tag "https://cdn.pixabay.com/photo/2016/05/17/22/16/baby-1399332_1280.jpg", class:'introduction-container__top__user-photo__adjuster'
+          - if @user.photo?
+            = image_tag @user.photo.url, class: 'introduction-container__top__user-photo__adjuster'
+          - else
+            = image_tag "//static.mercdn.net/images/member_photo_noimage.png", class: 'introduction-container__top__user-photo__adjuster'
+        
         .introduction-container__top__user-nickname
           = @user.nickname
         .introduction-container__top__user-score
