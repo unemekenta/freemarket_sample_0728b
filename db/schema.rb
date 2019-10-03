@@ -13,7 +13,7 @@
 ActiveRecord::Schema.define(version: 2019_09_29_125755) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "post_number", null: false
+    t.string "post_number", null: false
     t.string "prefecture", null: false
     t.string "city", null: false
     t.string "street", null: false
@@ -80,7 +80,7 @@ ActiveRecord::Schema.define(version: 2019_09_29_125755) do
     t.string "first_name", null: false
     t.string "family_name_pseudonym", null: false
     t.string "first_name_pseudonym", null: false
-    t.integer "post_number"
+    t.string "post_number"
     t.string "prefecture"
     t.string "city"
     t.string "street"

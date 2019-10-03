@@ -63,7 +63,7 @@ Rails.application.routes.draw do
     resources :evaluations, only: [:new, :create] do
     end
   end
-  resources :category, only: [:show]
+  resources :category, only: [:show, :index]
   resources :brands, only: [:show]
   post   '/like/:product_id' => 'likes#like',   as: 'like'
   delete '/like/:product_id' => 'likes#unlike', as: 'unlike'

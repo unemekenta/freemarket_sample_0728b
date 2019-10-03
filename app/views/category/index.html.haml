@@ -1,0 +1,153 @@
+.default-container
+  = render './products/header'
+  - breadcrumb :categories
+  = render 'layouts/breadcrumbs'
+  .category
+    .category__title カテゴリー一覧
+    .category__all
+      .category__all__name
+        レディース
+      .category__all__parent
+        = link_to "すべて", category_path(id: 1), class: "allcategory"
+        .category__all__parent__children
+          - @category_children1.each do |category|
+            %p #{category.category}
+            = link_to "すべて", category_path(id: category), class: "grandchildcategory"
+            - category.children.each do|children|
+              = link_to "#{children.category}", category_path(id: children), class: "grandchildcategory"
+    .category__all
+      .category__all__name
+        メンズ
+      .category__all__parent
+        = link_to "すべて", category_path(id: 2), class: "allcategory"
+        .category__all__parent__children
+          - @category_children2.each do |category|
+            %p #{category.category}
+            = link_to "すべて", category_path(id: category), class: "grandchildcategory"
+            - category.children.each do|children|
+              = link_to "#{children.category}", category_path(id: children), class: "grandchildcategory"
+    .category__all
+      .category__all__name
+        ベビー・キッズ
+      .category__all__parent
+        = link_to "すべて", category_path(id: 3), class: "allcategory"
+        .category__all__parent__children
+          - @category_children3.each do |category|
+            %p #{category.category}
+            = link_to "すべて", category_path(id: category), class: "grandchildcategory"
+            - category.children.each do|children|
+              = link_to "#{children.category}", category_path(id: children), class: "grandchildcategory"
+    .category__all
+      .category__all__name
+        インテリア・住まい・小物
+      .category__all__parent
+        = link_to "すべて", category_path(id: 4), class: "allcategory"
+        .category__all__parent__children
+          - @category_children4.each do |category|
+            %p #{category.category}
+            = link_to "すべて", category_path(id: category), class: "grandchildcategory"
+            - category.children.each do|children|
+              = link_to "#{children.category}", category_path(id: children), class: "grandchildcategory"
+    .category__all
+      .category__all__name
+        本・音楽・ゲーム
+      .category__all__parent
+        = link_to "すべて", category_path(id: 5), class: "allcategory"
+        .category__all__parent__children
+          - @category_children5.each do |category|
+            %p #{category.category}
+            = link_to "すべて", category_path(id: category), class: "grandchildcategory"
+            - category.children.each do|children|
+              = link_to "#{children.category}", category_path(id: children), class: "grandchildcategory"
+    .category__all
+      .category__all__name
+        おもちゃ・ホビー・グッズ
+      .category__all__parent
+        = link_to "すべて", category_path(id: 6), class: "allcategory"
+        .category__all__parent__children
+          - @category_children6.each do |category|
+            %p #{category.category}
+            = link_to "すべて", category_path(id: category), class: "grandchildcategory"
+            - category.children.each do|children|
+              = link_to "#{children.category}", category_path(id: children), class: "grandchildcategory"
+    .category__all
+      .category__all__name
+        コスメ・香水・美容
+      .category__all__parent
+        = link_to "すべて", category_path(id: 7), class: "allcategory"
+        .category__all__parent__children
+          - @category_children7.each do |category|
+            %p #{category.category}
+            = link_to "すべて", category_path(id: category), class: "grandchildcategory"
+            - category.children.each do|children|
+              = link_to "#{children.category}", category_path(id: children), class: "grandchildcategory"
+    .category__all
+      .category__all__name
+        家電・スマホ・カメラ
+      .category__all__parent
+        = link_to "すべて", category_path(id: 8), class: "allcategory"
+        .category__all__parent__children
+          - @category_children8.each do |category|
+            %p #{category.category}
+            = link_to "すべて", category_path(id: category), class: "grandchildcategory"
+            - category.children.each do|children|
+              = link_to "#{children.category}", category_path(id: children), class: "grandchildcategory"
+    .category__all
+      .category__all__name
+        スポーツ・レジャー
+      .category__all__parent
+        = link_to "すべて", category_path(id: 9), class: "allcategory"
+        .category__all__parent__children
+          - @category_children9.each do |category|
+            %p #{category.category}
+            = link_to "すべて", category_path(id: category), class: "grandchildcategory"
+            - category.children.each do|children|
+              = link_to "#{children.category}", category_path(id: children), class: "grandchildcategory"
+    .category__all
+      .category__all__name
+        ハンドメイド
+      .category__all__parent
+        = link_to "すべて", category_path(id: 10), class: "allcategory"
+        .category__all__parent__children
+          - @category_children10.each do |category|
+            %p #{category.category}
+            = link_to "すべて", category_path(id: category), class: "grandchildcategory"
+            - category.children.each do|children|
+              = link_to "#{children.category}", category_path(id: children), class: "grandchildcategory"
+    .category__all
+      .category__all__name
+        チケット
+      .category__all__parent
+        = link_to "すべて", category_path(id: 11), class: "allcategory"
+        .category__all__parent__children
+          - @category_children11.each do |category|
+            %p #{category.category}
+            = link_to "すべて", category_path(id: category), class: "grandchildcategory"
+            - category.children.each do|children|
+              = link_to "#{children.category}", category_path(id: children), class: "grandchildcategory"
+    .category__all
+      .category__all__name
+        自動車・オートバイ
+      .category__all__parent
+        = link_to "すべて", category_path(id: 12), class: "allcategory"
+        .category__all__parent__children
+          - @category_children12.each do |category|
+            %p #{category.category}
+            = link_to "すべて", category_path(id: category), class: "grandchildcategory"
+            - category.children.each do|children|
+              = link_to "#{children.category}", category_path(id: children), class: "grandchildcategory"
+    .category__all
+      .category__all__name
+        その他
+      .category__all__parent
+        = link_to "すべて", category_path(id: 13), class: "allcategory"
+        .category__all__parent__children
+          - @category_children13.each do |category|
+            %p #{category.category}
+            = link_to "すべて", category_path(id: category), class: "grandchildcategory"
+            - category.children.each do|children|
+              = link_to "#{children.category}", category_path(id: children), class: "grandchildcategory"
+
+  = render './products/aside'
+  = render './products/footer'
+  = render './products/button'
