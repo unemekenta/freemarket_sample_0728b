@@ -32,6 +32,7 @@ class ProductsController < ApplicationController
     @products_supreme = Product.where(brand_id: 4).order("id DESC").limit(4)
     @products_nike = Product.where(brand_id: 2).order("id DESC").limit(4)
 
+    @all_ranks = Product.find(Like.group(:product_id).order('count(product_id) desc').limit(4).pluck(:product_id))
 
     # @categories_parents = Category.where(parent_id: nil)
     # @categories_children = Category.where(parent_id: 14..32)
