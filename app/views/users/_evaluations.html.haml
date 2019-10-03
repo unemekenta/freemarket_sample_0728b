@@ -2,10 +2,11 @@
   = link_to introduction_user_path(evaluation.buyer.id) do
     %ul
       %li.usersEvaluations--image
-        - if evaluation.buyer.photo == "0"
-          = image_tag "https://static.mercdn.net/images/member_photo_noimage_thumb.png"
+        - if evaluation.seller.photo?
+          = image_tag evaluation.seller.photo.url, class: 'introduction-container__top__user-photo__adjuster'
         - else
-          = evaluation.buyer.photo
+          = image_tag "//static.mercdn.net/images/member_photo_noimage.png", class: 'introduction-container__top__user-photo__adjuster'
+        
       %li.usersEvaluations--text
         - if evaluation.rating == 1
           = fa_icon "smile-o", id: "userEvaluations--text__good"
@@ -24,4 +25,3 @@
         = evaluation.created_at.strftime("%Y年%-m月%-d日 %-H時%-M分")
       %li.usersEvaluations--awesome
         = fa_icon "chevron-right"
-
