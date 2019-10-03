@@ -15,7 +15,6 @@ class CategoryController < ApplicationController
     @category_children11 = Category.where(parent_id: 11)
     @category_children12 = Category.where(parent_id: 12)
     @category_children13 = Category.where(parent_id: 13)
-
   end
 
   def show
