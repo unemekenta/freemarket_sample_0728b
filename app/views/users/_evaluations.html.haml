@@ -2,8 +2,8 @@
   = link_to introduction_user_path(evaluation.buyer.id) do
     %ul
       %li.usersEvaluations--image
-        - if evaluation.seller.photo?
-          = image_tag evaluation.seller.photo.url, class: 'introduction-container__top__user-photo__adjuster'
+        - if evaluation.buyer.photo?
+          = image_tag evaluation.buyer.photo.url, class: 'introduction-container__top__user-photo__adjuster'
         - else
           = image_tag "//static.mercdn.net/images/member_photo_noimage.png", class: 'introduction-container__top__user-photo__adjuster'
         
