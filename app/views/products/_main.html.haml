@@ -24,7 +24,6 @@
 
     %section.pickup-container
       %h3.pickup-container__headline
-        -# = link_to "レディース 新着アイテム", category_path(id: 1)
       %ul.item-box-container
         - @all_ranks.each.with_index(1) do |product, i|
 
@@ -47,8 +46,7 @@
                         第
                         = i
                         位
-                        -# = render 'likes/like_links', product: product
-
+                     
   %section.pickup-containers
     %h2.pickup-containers__headline ピックアップカテゴリー
 
