@@ -15,75 +15,8 @@ main {
     font-weight: bold;
   }
 
-  .top-main-visual {
-    background: url("https://www.mercari.com/jp/assets/img/common/jp/top/main_bg_pc.jpg");
-    background-size: cover;
+  .carousel {
     height: 390px;
-    display: block;
-
-    div {
-      max-width: 860px;
-      position: relative;
-      height: 100%;
-      margin: 0 auto;
-
-      .top-main-visual-content {
-        position: absolute;
-        top: 50%;
-        left: 0;
-        transform: translate(0, -50%);
-        height: 298px;
-        width: 480px;
-
-        h2 {
-          margin: 0;
-          padding: 0;
-          font-size: 60px;
-          line-height: 1.2;
-        }
-
-        p {
-          margin: 16px 0 0;
-          font-size: 18px;
-          line-height: 1.77778;
-        }
-
-        .top-main-visual-store {
-          margin: 24px 0 0;
-          line-height: 0;
-          padding: 0;
-          height: 50px;
-          display: flex;
-
-          a {
-            margin: 0;
-            width: 170px;
-            height: 50px;
-            display: inline-block;
-
-            img {
-              width: 100%;
-              vertical-align: bottom;
-            }
-          }
-
-          .pull-left {
-            margin: 0 0 0 8px;
-          }
-        }
-      }
-
-      .background-image {
-        position: absolute;
-        top: 0;
-        right: 0;
-        height: 390px;
-        width: 440px;
-        vertical-align: bottom;
-        margin: 0;
-        padding: 0;
-      }
-    }
   }
 
   .pickup-containers {
