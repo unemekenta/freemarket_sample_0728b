@@ -1,0 +1,15 @@
+%li.item-box
+  = link_to product_path(product) do    
+    %figure.item-box__photo
+      =image_tag "#{product.product_images[0].image}", class: "item-box__photo--product"
+      - if product.status_id == 4
+        = image_tag "soldout_tag.png", class: "item-box__photo--soldout"
+    
+    .item-box__content
+      %h3.item-box__content__name
+        = product.name
+      .item-box__content__num
+        .item-box__content__num__price
+          = "¥ #{number_with_delimiter product.price}"
+        - if true
+          .item-box__content__num__likes

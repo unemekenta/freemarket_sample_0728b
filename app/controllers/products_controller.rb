@@ -32,6 +32,7 @@ class ProductsController < ApplicationController
     @products_supreme = Product.where(brand_id: 4).order("id DESC").limit(4)
     @products_nike = Product.where(brand_id: 2).order("id DESC").limit(4)
 
+    @all_ranks = Product.find(Like.group(:product_id).order('count(product_id) desc').limit(4).pluck(:product_id))
 
     # @categories_parents = Category.where(parent_id: nil)
     # @categories_children = Category.where(parent_id: 14..32)
@@ -50,6 +51,9 @@ class ProductsController < ApplicationController
     end
     @comment = Comment.new
     @comments = Comment.where(product_id: @product.id)
+
+    @relate_id = @product.category.id
+    @relate_items = Product.where(category_id: @relate_id).order("RAND()").limit(4)
   end
   
   def new

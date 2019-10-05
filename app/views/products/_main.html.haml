@@ -3,6 +3,37 @@
     = render './carousel/carousel'
   
   %section.pickup-containers
+    %h2.pickup-containers__headline
+      = fa_icon "trophy"
+      いいねランキング
+      = fa_icon "trophy"
+
+    %section.pickup-container
+      %h3.pickup-container__headline
+      %ul.item-box-container
+        - @all_ranks.each.with_index(1) do |product, i|
+
+          %li.item-box
+            = link_to product_path(product) do    
+              %figure.item-box__photo
+                =image_tag "#{product.product_images[0].image}", class: "item-box__photo--product"
+                - if product.status_id == 4
+                  = image_tag "soldout_tag.png", class: "item-box__photo--soldout"
+              
+              .item-box__content
+                %h3.item-box__content__name
+                  = product.name
+                .item-box__content__num
+                  .item-box__content__num__price
+                    = "¥ #{number_with_delimiter product.price}"
+                  - if true
+                    .item-box__content__num__likes
+                      %span
+                        第
+                        = i
+                        位
+                     
+  %section.pickup-containers
     %h2.pickup-containers__headline ピックアップカテゴリー
 
     %section.pickup-container
