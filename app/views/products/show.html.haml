@@ -196,6 +196,32 @@
       -# = render ''
     .products-related
       -# = render ''
+      %section.pickup-containers
+      %h2.pickup-containers__headline
+        = link_to "関連商品", category_path(id: @relate_id)
+
+      %section.pickup-container
+        %h3.pickup-container__headline
+        %ul.item-box-container
+          - @relate_items.each do |r|
+            %li.item-box
+              = link_to product_path(r) do    
+                %figure.item-box__photo
+                  =image_tag "#{r.product_images[0].image}", class: "item-box__photo--product"
+                  - if r.status_id == 4
+                    = image_tag "soldout_tag.png", class: "item-box__photo--soldout"
+                
+                .item-box__content
+                  %h3.item-box__content__name
+                    = r.name
+                  .item-box__content__num
+                    .item-box__content__num__price
+                      = "¥ #{number_with_delimiter r.price}"
+                    - if true
+                      .item-box__content__num__likes
+
+      .view-all
+        = link_to "すべての商品を見る", category_path(id: @relate_id)
 
   .bread-crumbs__bottom
     %ul
