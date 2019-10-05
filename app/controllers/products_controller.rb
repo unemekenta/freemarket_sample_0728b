@@ -51,6 +51,9 @@ class ProductsController < ApplicationController
     end
     @comment = Comment.new
     @comments = Comment.where(product_id: @product.id)
+
+    @relate_id = @product.category.id
+    @relate_items = Product.where(category_id: @relate_id).order("RAND()").limit(4)
   end
   
   def new
