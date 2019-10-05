@@ -103,5 +103,5 @@ end
 
 crumb :brand do |brand|
   link "#{brand.brand}", brand_path(brand)
-  parent :categorys
+  parent :categories
 end
