@@ -11,8 +11,11 @@
           .product__main-contents__photo-main
             = image_tag "#{@product.product_images[0].image}"
             - unless @product.status_id == 1
-              = image_tag "soldout_tag.png", class: "product__main-contents__photo-main--soldout"
-          .product__main-contents__photo-others 
+              .product__main-contents__photo-main--soldout
+                = image_tag "soldout_tag.png", class: "product__main-contents__photo-main--soldout-image"
+          .product__main-contents__photo-others
+            - @product.product_images.each_with_index do |image, i|
+              = image_tag "#{image.image}", id: "showimage#{i + 1}"
         %table.product__main-contents__details
           %tbody
             %tr
