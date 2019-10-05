@@ -219,10 +219,8 @@
                       = "¥ #{number_with_delimiter r.price}"
                     - if true
                       .item-box__content__num__likes
-
-      .view-all
-        = link_to "すべての商品を見る", category_path(id: @relate_id)
-
+                        %span 
+                          = render 'likes/like_links', product: r
   .bread-crumbs__bottom
     %ul
       %li
