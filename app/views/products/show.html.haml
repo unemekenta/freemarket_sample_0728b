@@ -133,7 +133,7 @@
                   - if co.user.photo?
                     = image_tag co.user.photo.url
                   - else
-                    = image_tag "https://static.mercdn.net/images/member_photo_noimage.png"
+                    = image_tag "mercari_user.png"
                 %figcaption.product_messages__items__item__messege-user__figure__figcaption
                   = co.user.nickname
                 - if @product.seller_id == co.user.id
