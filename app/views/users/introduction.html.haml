@@ -9,7 +9,7 @@
           - if @user.photo?
             = image_tag @user.photo.url, class: 'introduction-container__top__user-photo__adjuster'
           - else
-            = image_tag "https://static.mercdn.net/images/member_photo_noimage.png", class: 'introduction-container__top__user-photo__adjuster'
+            = image_tag "mercari_user.png", class: 'introduction-container__top__user-photo__adjuster'
         
         .introduction-container__top__user-nickname
           = @user.nickname
