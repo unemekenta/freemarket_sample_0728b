@@ -21,7 +21,7 @@
             .purchase-container__product__main__inner__buy-form__price__detail
               %span.product__price__roulette
                 = form.text_field :discount, type: "hidden"
-                = form.submit "ルーレットを回して購入する(参加費110円)", class:'product__price__roulette-btn'
+                = form.submit "ルーレットを回して購入(参加費110円)", class:'product__price__roulette-btn'
           = form_with(model: @purchase, url: pay_product_purchases_path(@product), remote: false, local: true, class: "purchase-container__product__main__inner__buy-form") do |form|
             %p.purchase-container__product__main__inner__buy-form__buy-price
               ="¥#{number_with_delimiter(@purchase.product.price)}"
