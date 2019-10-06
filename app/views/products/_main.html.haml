@@ -3,10 +3,11 @@
     = render './carousel/carousel'
   
   %section.pickup-containers
-    %h2.pickup-containers__headline
-      = fa_icon "trophy"
-      いいねランキング
-      = fa_icon "trophy"
+    .pickup-containers__head
+      %h2.pickup-containers__head__headline
+        = fa_icon "trophy"
+        いいねランキング
+        = fa_icon "trophy"
 
     %section.pickup-container
       %h3.pickup-container__headline
@@ -17,87 +18,131 @@
             = link_to product_path(product) do    
               %figure.item-box__photo
                 =image_tag "#{product.product_images[0].image}", class: "item-box__photo--product"
+                .item-box__photo__price
+                  = "¥ #{number_with_delimiter product.price}"
                 - if product.status_id == 4
                   = image_tag "soldout_tag.png", class: "item-box__photo--soldout"
               
               .item-box__content
                 %h3.item-box__content__name
                   = product.name
-                .item-box__content__num
-                  .item-box__content__num__price
-                    = "¥ #{number_with_delimiter product.price}"
-                  - if true
-                    .item-box__content__num__likes
-                      %span
-                        第
-                        = i
-                        位
+                - if true
+                  .item-box__content__num__likes
+                    %span
+                      - if i == 1
+                        = fa_icon "star", id: "star1"
+                      - elsif i == 2
+                        = fa_icon "star", id: "star2"
+                      - elsif i == 3
+                        = fa_icon "star", id: "star3"
+                      第
+                      = i
+                      位
                      
   %section.pickup-containers
-    %h2.pickup-containers__headline ピックアップカテゴリー
+    .pickup-containers__head
+      %h2.pickup-containers__head__headline 人気のカテゴリー
+      .pickup-containers__head__buttonarea
+        %ul.pickup-containers__head__buttonarea__buttons
+          %li.pickup-containers__head__buttonarea__buttons__button
+            = link_to "レディース", category_path(1)
+          %li.pickup-containers__head__buttonarea__buttons__button
+            = link_to "メンズ", category_path(2)
+          %li.pickup-containers__head__buttonarea__buttons__button
+            = link_to "家電・スマホ・カメラ", category_path(8)
+          %li.pickup-containers__head__buttonarea__buttons__button
+            = link_to "おもちゃ・ホビー・グッズ", category_path(6)
 
     %section.pickup-container
       %h3.pickup-container__headline
-        = link_to "レディース 新着アイテム", category_path(id: 1)
+        レディース新着アイテム
+        %span
+          = link_to category_path(1) do
+            もっと見る
+            = fa_icon "chevron-right"
       %ul.item-box-container      
         = render partial: "product", collection: @products_ladies
-      .view-all
-        = link_to "すべての商品を見る", category_path(id: 1)
 
     %section.pickup-container
       %h3.pickup-container__headline
-        = link_to "メンズ 新着アイテム", category_path(id: 2)
+        メンズ新着アイテム
+        %span
+          = link_to category_path(2) do
+            もっと見る
+            = fa_icon "chevron-right"
       %ul.item-box-container
         = render partial: "product", collection: @products_mens
-      .view-all
-        = link_to "すべての商品を見る", category_path(id: 2)
 
     %section.pickup-container
       %h3.pickup-container__headline
-        = link_to "ベビー・キッズ 新着アイテム", category_path(id: 3)
+        家電・スマホ・カメラ新着アイテム
+        %span
+          = link_to category_path(8) do
+            もっと見る
+            = fa_icon "chevron-right"
       %ul.item-box-container
-        = render partial: "product", collection: @products_kids
-      .view-all
-        = link_to "すべての商品を見る", category_path(id: 3)
+        = render partial: "product", collection: @products_electronics
 
     %section.pickup-container
       %h3.pickup-container__headline
-        = link_to "コスメ・香水・美容 新着アイテム", category_path(id: 6)
+        おもちゃ・ホビー・グッズ
+        %span
+          = link_to category_path(6) do
+            もっと見る
+            = fa_icon "chevron-right"
       %ul.item-box-container
-        = render partial: "product", collection: @products_cosme
-      .view-all
-        = link_to "すべての商品を見る", category_path(id: 6)
+        = render partial: "product", collection: @products_toys
 
   %section.pickup-containers
-    %h2.pickup-containers__headline ピックアップブランド
+    .pickup-containers__head
+      %h2.pickup-containers__head__headline ピックアップブランド
+      .pickup-containers__head__buttonarea
+        %ul.pickup-containers__head__buttonarea__buttons
+          %li.pickup-containers__head__buttonarea__buttons__button
+            = link_to "シャネル", brand_path(1)
+          %li.pickup-containers__head__buttonarea__buttons__button
+            = link_to "ルイ ヴィトン", brand_path(3)
+          %li.pickup-containers__head__buttonarea__buttons__button
+            = link_to "シュプリーム", brand_path(4)
+          %li.pickup-containers__head__buttonarea__buttons__button
+            = link_to "ナイキ", brand_path(2)
+
 
     %section.pickup-container
       %h3.pickup-container__headline
-        = link_to "シャネル 新着アイテム", brand_path(id: 1)
+        シャネル新着アイテム
+        %span
+          = link_to brand_path(1) do
+            もっと見る
+            = fa_icon "chevron-right"
       %ul.item-box-container
         = render partial: "product", collection: @products_chanel
-      .view-all
-        = link_to "すべての商品を見る", brand_path(id: 1)
 
     %section.pickup-container
       %h3.pickup-container__headline
-        = link_to "ルイ ヴィトン 新着アイテム", brand_path(id: 3)
+        ルイ ヴィトン新着アイテム
+        %span
+          = link_to brand_path(3) do
+            もっと見る
+            = fa_icon "chevron-right"
       %ul.item-box-container
         = render partial: "product", collection: @products_vuitton
-      .view-all
-        = link_to "すべての商品を見る", brand_path(id: 3)
     %section.pickup-container
       %h3.pickup-container__headline
-        = link_to "シュプリーム 新着アイテム", brand_path(id: 4)
+        シュプリーム新着アイテム
+        %span
+          = link_to brand_path(4) do
+            もっと見る
+            = fa_icon "chevron-right"
       %ul.item-box-container
         = render partial: "product", collection: @products_supreme        
-      .view-all
-        = link_to "すべての商品を見る", brand_path(id: 4)
 
     %section.pickup-container
       %h3.pickup-container__headline
-        = link_to "ナイキ 新着アイテム", brand_path(id: 2)
+        ナイキ新着アイテム
+        %span
+          = link_to brand_path(2) do
+            もっと見る
+            = fa_icon "chevron-right"
       %ul.item-box-container        
         = render partial: "product", collection: @products_nike
-      .view-all
-        = link_to "すべての商品を見る", brand_path(id: 2)

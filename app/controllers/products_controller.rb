@@ -4,14 +4,14 @@ class ProductsController < ApplicationController
   def index
     products =  []
 
-    [1, 2, 3, 7].each do |n|
+    [1, 2, 8, 6].each do |n|
       @category = Category.find(n)
       @categories = [
         @category,
         @category.children,
         @category.children.map { |category| category.children }
       ].flatten.compact
-      products << Product.where(category_id: @categories).order("id DESC").limit(4)
+      products << Product.where(category_id: @categories).order("id DESC").limit(10)
     end
 
     # レディース
@@ -20,19 +20,19 @@ class ProductsController < ApplicationController
     # メンズ
     @products_mens = products[1]
 
-    # キッズ
-    @products_kids = products[2]
+    # 家電・スマホ・カメラ
+    @products_electronics = products[2]
 
-    # コスメ
-    @products_cosme = products[3]
+    # おもちゃ・ホビー・グッズ
+    @products_toys = products[3]
 
     # ブランド別新着アイテム
-    @products_chanel = Product.where(brand_id: 1).order("id DESC").limit(4)
-    @products_vuitton = Product.where(brand_id: 3).order("id DESC").limit(4)
-    @products_supreme = Product.where(brand_id: 4).order("id DESC").limit(4)
-    @products_nike = Product.where(brand_id: 2).order("id DESC").limit(4)
+    @products_chanel = Product.where(brand_id: 1).order("id DESC").limit(10)
+    @products_vuitton = Product.where(brand_id: 3).order("id DESC").limit(10)
+    @products_supreme = Product.where(brand_id: 4).order("id DESC").limit(10)
+    @products_nike = Product.where(brand_id: 2).order("id DESC").limit(10)
 
-    @all_ranks = Product.find(Like.group(:product_id).order('count(product_id) desc').limit(4).pluck(:product_id))
+    @all_ranks = Product.find(Like.group(:product_id).order('count(product_id) desc').limit(5).pluck(:product_id))
 
     # @categories_parents = Category.where(parent_id: nil)
     # @categories_children = Category.where(parent_id: 14..32)
@@ -53,7 +53,7 @@ class ProductsController < ApplicationController
     @comments = Comment.where(product_id: @product.id)
 
     @relate_id = @product.category.id
-    @relate_items = Product.where(category_id: @relate_id).order("RAND()").limit(4)
+    @relate_items = Product.where(category_id: @relate_id).order("RAND()").limit(3)
   end
   
   def new

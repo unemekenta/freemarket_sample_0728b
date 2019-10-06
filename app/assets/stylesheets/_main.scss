@@ -22,43 +22,91 @@ main {
   .pickup-containers {
     height: 100%;
     width: 100%;
-    padding: 40px 0;
+    padding: 0 0 80px 0;
 
-    &__headline {
-      text-align: center;
-      margin: 0;
-    }
-
-    .pickup-container {
-      width: 940px;
-      margin: 0 auto;
-      height: 442px;
+    &__head {
+      height: 171px;
+      padding: 56px 0px 30px;
+      background: #fff;
 
       &__headline {
         text-align: center;
-        margin: 26px 11px;
+        margin: 0;
 
-        a {
-          text-decoration: none;
-          color: rgb(0, 153, 232);
+        i {
+          color: gold;
         }
+      }
 
-        a:hover {
-          text-decoration: underline;
-          opacity: 0.7;
+      &__buttonarea {
+        background: #fff;
+
+        &__buttons {
+          display: flex;
+          justify-content: center;
+
+          &__button {
+            margin: 10px 0 0 10px;
+
+            a {
+              background: rgb(245, 245, 245);
+              cursor: pointer;
+              font-size: 14px;
+              font-weight: 600;
+              border-radius: 15px;
+              padding: 8px 16px;
+
+              text-decoration: none;
+            }
+          }
+        }
+      }
+    }
+
+    .pickup-container {
+      width: 1020px;
+      margin: 60px auto 0 auto;
+
+      &__headline {
+        text-align: left;
+        margin-bottom: 16px;
+
+        span {
+          line-height: 48px;
+          font-size: 14px;
+          float: right;
+
+          a {
+            padding: 5px 16px 5px 5px;
+            text-decoration: none;
+            color: rgb(0, 153, 232);
+          }
         }
       }
 
       .item-box-container {
         display: flex;
+        flex-wrap: wrap;
         width: 100%;
-        height: 330px;
+
+        .item-box:first-child {
+          margin: 0 0 20px 0;
+        }
+
+        .item-box:nth-child(6) {
+          margin: 0;
+        }
+
+        .item-box:nth-child(n+7) {
+          margin: 0 0 0 20px;
+        }
 
         .item-box {
-          height: 100%;
-          width: 213px;
+          height: 260px;
+          min-width: 188px;
+          max-width: 188px;
           background-color: white;
-          margin: 0 0 0 20px;
+          margin: 0 0 20px 20px;
           box-sizing: border-box;
 
           a {
@@ -69,7 +117,7 @@ main {
           &__photo {
             margin: 0 0;
             width: 100%;
-            height: 220px;
+            height: 188px;
             position: relative;
 
             &--product {
@@ -82,6 +130,23 @@ main {
               width: 100%;
               object-fit: cover;
             }
+
+            &__price {
+              position: absolute;
+              z-index: 1;
+              color: $main_white;
+              align-items: center;
+              font-size: 17px;
+              font-weight: 400;
+              letter-spacing: .02em;
+              height: 28px;
+              bottom: 5px;
+              background-color: $main_black;
+              padding: 0 12px;
+              opacity: 0.8;
+              border-radius: 0 14px 14px 0;
+            }
+
             &--soldout {
               width: 100px;
               height: 100px;
@@ -93,9 +158,10 @@ main {
           }
 
           &__content {
-            height: 110px;
+            height: 64px;
             padding: 16px;
             box-sizing: border-box;
+            text-align: left;
 
             &__name {
               position: relative;
@@ -104,7 +170,7 @@ main {
               line-height: 24px;
               color: #333;
               overflow: hidden;
-              height: 3em;
+              height: 1.4em;
               line-height: 1.5;
               word-break: normal;
               white-space: normal;
@@ -120,36 +186,34 @@ main {
               right: 0;
               width: 50%;
               height: 1.5em;
-              background: linear-gradient(
-                to right,
-                rgba(255, 255, 255, 0),
-                #fff 72%
-              );
+              background: linear-gradient(to right,
+                  rgba(255, 255, 255, 0),
+                  #fff 72%);
             }
 
-            &__num {
-              margin-top: 8px;
-              font-size: 14px;
-              line-height: 14px;
-              display: flex;
-              justify-content: space-between;
+            &__num__likes {
+              width: 100px;
+              margin: 8px 0 0 auto;
+              font-size: 16px;
+              font-weight: 400;
+              line-height: 16px;
+              text-align: right;
 
-              &__price {
-                font-size: 17px;
-                font-weight: 600;
-                line-height: 17px;
-                color: #333;
+              #star1 {
+                color: gold;
               }
 
-              &__likes {
-                font-size: 16px;
-                font-weight: 400;
-                line-height: 16px;
+              #star2 {
+                color: silver;
+              }
 
-                i {
-                  font-size: 17px;
-                  color: rgb(204, 204, 204);
-                }
+              #star3 {
+                color: #815a2b;
+              }
+
+              i {
+                font-size: 17px;
+                color: rgb(204, 204, 204);
               }
             }
           }
