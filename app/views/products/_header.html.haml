@@ -157,7 +157,7 @@
                 - if current_user.photo?
                   = image_tag current_user.photo.url, class: 'header__menu-box--right__list__photo'
                 - else
-                  = image_tag "//static.mercdn.net/images/member_photo_noimage.png", class: 'header__menu-box--right__list__photo'
+                  = image_tag "https://static.mercdn.net/images/member_photo_noimage.png", class: 'header__menu-box--right__list__photo'
                 マイページ
       - else
         .header__menu-box--right
