@@ -1,0 +1,29 @@
+.default-container
+  = render './products/header'
+
+  .roulette 
+    .roulette__title
+      購入結果
+    .roulette__text
+
+    .roulette__btn
+      ¥
+      = (@product.price * (1 + @purchase.discount * 0.01)+110).round(0)
+      %br
+      - if @purchase.discount < 0
+        おめでとうございます！！
+        = "#{@purchase.discount}%変動し, 差額は"
+        = (@product.price - @product.price * (1 + @purchase.discount * 0.01)+110).round(0)
+        円でした。
+      - else
+        残念。。。
+        = "#{@purchase.discount}%変動し, 差額は"
+        = (110-(@product.price - @product.price * (1 + @purchase.discount * 0.01))).round(0)
+        円でした。
+      %br
+      ありがとうございました。
+      = link_to root_path 'トップページへ戻る'
+
+  = render './products/button'
+  = render './products/aside'
+  = render './products/footer'
