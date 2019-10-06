@@ -1,6 +1,8 @@
 @mixin slide-banner-owl-item-background($background-image) {
-  background-image:url($background-image);
+  background: image-url($background-image);
   background-position: center;
+  background-size: auto 100%;
+  background-repeat: no-repeat;
 }
 
 @mixin slide-banner-owl-nav-btn {
@@ -24,18 +26,15 @@
     display: block;
     &--natsukashi {
       @include slide-banner-owl-item-background("mercari_top.png");
-      background-size: auto 100%;
-      background-repeat: no-repeat;
     }
 
     &--new-life {
       @include slide-banner-owl-item-background("index_keyvisual.png");
-      background-size: auto 100%;
-      background-repeat: no-repeat;
     }
 
     &--bokurano-heisei {
-      @include slide-banner-owl-item-background("https://storage.googleapis.com/prd-about-asset/2019/10/4741ed2b-ogp.png");
+      background-image:url("https://storage.googleapis.com/prd-about-asset/2019/10/4741ed2b-ogp.png");
+      background-position: center;
       width: 100%;
       height: auto;
     }
