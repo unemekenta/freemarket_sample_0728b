@@ -13,6 +13,9 @@ Rails.application.routes.draw do
     resources :purchases, only: [:new] do
       collection do
         post 'pay', to: 'purchases#pay'
+        post 'pay_with_discount', to: 'purchases#pay_with_discount'
+        get 'confirm', to: 'purchases#confirm'
+
       end
     end
     collection do
@@ -67,5 +70,7 @@ Rails.application.routes.draw do
   resources :brands, only: [:show]
   post   '/like/:product_id' => 'likes#like',   as: 'like'
   delete '/like/:product_id' => 'likes#unlike', as: 'unlike'
+  get 'confirm' => 'roulette#confirm'
+  post 'roulette' => 'roulette#roulette'
 end
 

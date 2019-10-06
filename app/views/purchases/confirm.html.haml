@@ -1,0 +1,48 @@
+.default-container
+  = render './products/header'
+
+  .roulette 
+    .roulette__title
+      ルーレット結果
+    .roulette__text
+      .roulette__text__total
+        購入金額：¥
+        = number_with_delimiter((@product.price * (1 + @purchase.discount * 0.01)+110).round(0))
+      %br
+      - if @purchase.discount == 0
+        うーん。。。ルーレットの結果は0%でした。
+      - elsif @purchase.discount < 0
+        おめでとうございます！！
+        = "#{@purchase.discount}%安くなり, "
+        = -(@product.price * @purchase.discount*0.01 +110).round(0)
+        円オトクに買えました。
+      - else
+        残念。。。
+        = "#{@purchase.discount}%高くなり, "
+        = (@product.price * @purchase.discount*0.01 +110).round(0)
+        円高くなっちゃいました。
+      %br
+      %br
+      .roulette__text__detail
+        購入明細 
+        %br
+        商品代金：#{number_with_delimiter(@product.price)}円
+        %br
+        変動額：
+        - if @purchase.discount < 0
+          = (@product.price - @product.price * (1 + @purchase.discount * 0.01)).round(0)
+        - else
+          = -(@product.price - @product.price * (1 + @purchase.discount * 0.01)).round(0)
+          
+        円
+        %br
+        参加費：110円
+        %br
+      .roulette__text__thanks
+        ありがとうございました。
+      .roulette__text__link
+        = link_to 'トップページへ戻る',root_path
+
+  = render './products/button'
+  = render './products/aside'
+  = render './products/footer'
