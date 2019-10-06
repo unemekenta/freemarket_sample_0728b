@@ -1,8 +1,6 @@
 @mixin slide-banner-owl-item-background($background-image) {
   background-image:url($background-image);
   background-position: center;
-  width: 100%;
-  height: auto;
 }
 
 @mixin slide-banner-owl-nav-btn {
@@ -12,7 +10,7 @@
   -webkit-transform: translateY(-23px);
   transform: translateY(-23px);
   i {
-    color: white;
+    color: #ccc;
   }
 }
 
@@ -25,22 +23,27 @@
   &__link {
     display: block;
     &--natsukashi {
-      @include slide-banner-owl-item-background("https://chariloto-prd-public.s3.amazonaws.com/uploads/upload_files/d1abb833-0dff-498b-9693-0e0bc314e9d1.jpg");
+      @include slide-banner-owl-item-background("mercari_top.png");
+      background-size: auto 100%;
+      background-repeat: no-repeat;
     }
 
     &--new-life {
-      @include slide-banner-owl-item-background("https://mercarinews.files.wordpress.com/2019/10/sns-1.jpg");
+      @include slide-banner-owl-item-background("index_keyvisual.png");
+      background-size: auto 100%;
+      background-repeat: no-repeat;
     }
 
     &--bokurano-heisei {
       @include slide-banner-owl-item-background("https://storage.googleapis.com/prd-about-asset/2019/10/4741ed2b-ogp.png");
+      width: 100%;
+      height: auto;
     }
   }
 
   & .owl-prev {
     @include slide-banner-owl-nav-btn;
     left: 60px;
-    // background-color: white;
   }
 
   & .owl-next {
