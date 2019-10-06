@@ -184,6 +184,19 @@ a {
     &__shipping-fee {
       font-size: 16px;
     }
+    &__roulette {
+      
+      &-btn {
+        display:inline-block;
+        background-color: gold;
+        height: 50px;
+        line-height: 50px;
+        text-align: center;
+        width: 320px;
+        font-weight: normal;
+        
+      }
+    }
   }
 
   &__user-sales {
