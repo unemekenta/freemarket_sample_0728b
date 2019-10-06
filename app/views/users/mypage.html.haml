@@ -13,7 +13,7 @@
           - if current_user.photo?
             = image_tag current_user.photo.url
           - else
-            = image_tag("//static.mercdn.net/images/member_photo_noimage.png")
+            = image_tag("https://static.mercdn.net/images/member_photo_noimage.png")
         .usersMypage__contents__wrapper__right__profile__name
           =current_user.nickname
         %ul
