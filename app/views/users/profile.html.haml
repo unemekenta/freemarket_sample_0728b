@@ -23,10 +23,11 @@
         %ul
           %li
             %span 評価
-            3
+            #{Evaluation.group(:seller_id).size[current_user.id].to_i}
           %li
             %span 出品数
-            0
+            #{Product.group(:seller_id).size[current_user.id].to_i}
+            
 
       .usersMypage__contents__wrapper__right__setting-profile-content
         = f.text_area :profile, class: "text-area"
