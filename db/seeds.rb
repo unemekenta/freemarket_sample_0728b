@@ -8,6 +8,7 @@ require "csv"
 #   Character.create(name: 'Luke', movie: movies.first)
 
 date = "2019-08-14"
+i = 1
 
 CSV.foreach('db/condition.csv') do |info|
   Condition.create!(condition: info[0], created_at: date, updated_at: date)
@@ -43,4 +44,17 @@ end
 
 CSV.foreach('db/category.csv') do |info|
   Category.create!(category: info[0], parent_id: info[1], size_type_id: info[2], created_at: date, updated_at: date)
+end
+
+CSV.foreach('db/user.csv') do |info|
+  User.create!(email: info[0], password: info[1], password_confirmation: info[2], family_name: info[3], first_name: info[4], family_name_pseudonym: info[5], first_name_pseudonym: info[6], birthday: info[7], nickname: info[8], photo: open("#{Rails.root}/app/assets/images/illustrain01-#{i}.png"), created_at: date, updated_at: date)
+  i += 1
+end
+
+CSV.foreach('db/address.csv') do |info|
+  Address.create!(post_number: info[0], prefecture: info[1], city: info[2], street: info[3], user_id: info[4], created_at: date, updated_at: date)
+end
+
+CSV.foreach('db/address.csv') do |info|
+  Deliveraddress.create!(family_name: info[5], first_name: info[6], family_name_pseudonym: info[7], first_name_pseudonym: info[8], post_number: info[0], prefecture: info[1], city: info[2], street: info[3], user_id: info[4], created_at: date, updated_at: date)
 end

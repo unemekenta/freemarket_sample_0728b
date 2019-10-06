@@ -2,12 +2,15 @@ $(document).on('turbolinks:load', function () {
   function buildHTML(message) {
     var comment = message.comment ? `${message.comment}` : "";
     var nickname = message.nickname ? `${message.nickname}` : "";
+    var photo = message.photo ? `${message.photo}` : "//static.mercdn.net/images/member_photo_noimage.png";
+    var user_id = message.user_id ? `${message.user_id}` : "";
+    var product_id = message.product_id ? `${message.product_id}` : "";
     var id = message.id ? `${message.id}` : "";
     var html = `<li class="product_messages__items__item" data-id="${id}">
-                  <a class="product_messages__items__item__messege-user" href="/users/2/introduction">
+                  <a class="product_messages__items__item__messege-user" href="/users/${user_id}/introduction">
                     <figure class="product_messages__items__item__messege-user__figure">
                       <div class="product_messages__items__item__messege-user__figure__div">
-                        <img src="https://cdn.pixabay.com/photo/2016/05/17/22/16/baby-1399332_1280.jpg">
+                        <img src="${photo}">
                       </div>
                       <figcaption class="product_messages__items__item__messege-user__figure__figcaption">
                         ${nickname}
@@ -25,7 +28,7 @@ $(document).on('turbolinks:load', function () {
                       </time>
                       <div class="message-icon-right">
                         <a class="test" href="/">編集</a>
-                        <a rel="nofollow" data-method="delete" href="/products/4/comments/26">削除</a>
+                        <a rel="nofollow" data-method="delete" href="/products/${product_id}/comments/${id}">削除</a>
                         <i class="fa fa-flag-o"></i>
                       </div>
                     </div>
