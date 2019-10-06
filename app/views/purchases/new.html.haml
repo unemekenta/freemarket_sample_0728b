@@ -14,7 +14,7 @@
             = image_tag "#{@purchase.product.product_images[0].image}", class: 'product_image'
           %p.purchase-container__product__main__inner__buy-item-name
             = @purchase.product.name
-          = form_with(model: @purchase, url: pay_product_purchases_path(@product), remote: false, local: true, class: "purchase-container__product__main__inner__buy-form") do |form|
+          = form_with(model: @purchase, url: pay_with_discount_product_purchases_path(@product), remote: false, local: true, class: "purchase-container__product__main__inner__buy-form") do |form|
             = form.text_field :seller_id, value: "#{@purchase.product.seller_id}", type: "hidden"
             = form.text_field :buyer_id, value: "#{current_user.id}" , type: "hidden"
             = form.text_field :product_id, value: "#{@purchase.product.id}" , type: "hidden"
