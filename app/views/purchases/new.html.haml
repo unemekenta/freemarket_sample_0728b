@@ -15,6 +15,14 @@
           %p.purchase-container__product__main__inner__buy-item-name
             = @purchase.product.name
           = form_with(model: @purchase, url: pay_product_purchases_path(@product), remote: false, local: true, class: "purchase-container__product__main__inner__buy-form") do |form|
+            = form.text_field :seller_id, value: "#{@purchase.product.seller_id}", type: "hidden"
+            = form.text_field :buyer_id, value: "#{current_user.id}" , type: "hidden"
+            = form.text_field :product_id, value: "#{@purchase.product.id}" , type: "hidden"
+            .purchase-container__product__main__inner__buy-form__price__detail
+              %span.product__price__roulette
+                = form.text_field :discount, type: "hidden"
+                = form.submit "ルーレットを回して購入する(参加費110円)", class:'product__price__roulette-btn'
+          = form_with(model: @purchase, url: pay_product_purchases_path(@product), remote: false, local: true, class: "purchase-container__product__main__inner__buy-form") do |form|
             %p.purchase-container__product__main__inner__buy-form__buy-price
               ="¥#{number_with_delimiter(@purchase.product.price)}"
               %span.purchase-container__product__main__inner__buy-form__buy-price__item-shipping-fee
@@ -37,10 +45,11 @@
                 .purchase-container__product__main__inner__buy-form__price__detail__head
                   支払い金額
                 .purchase-container__product__main__inner__buy-form__price__detail__yen
-                  ="¥#{number_with_delimiter(@purchase.product.price)}"
+                  = "¥#{number_with_delimiter(@purchase.product.price)}"
             = form.text_field :seller_id, value: "#{@purchase.product.seller_id}", type: "hidden"
             = form.text_field :buyer_id, value: "#{current_user.id}" , type: "hidden"
             = form.text_field :product_id, value: "#{@purchase.product.id}" , type: "hidden"
+            .purchase-container__product__main__inner__buy-form__price__detail
             - if @address && @default_card_information
               = form.submit "購入する", class: "purchase-container__product__main__inner__buy-form__submitbutton purchase_btn_for_popup", name: "buy_button"
             - elsif @address == nil && @default_card_information == nil
