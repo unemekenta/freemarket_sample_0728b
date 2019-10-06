@@ -6,11 +6,11 @@
     .introduction-container
       .introduction-container__top
         .introduction-container__top__user-photo
-          - if @user.photo?
-            = image_tag @user.photo.url, class: 'introduction-container__top__user-photo__adjuster'
-          - else
+          - if @user.photo.to_s == "/uploads/user/photo/#{@user.id}/0"
             = image_tag "mercari_user.png", class: 'introduction-container__top__user-photo__adjuster'
-        
+          - else
+            = image_tag @user.photo.url, class: 'introduction-container__top__user-photo__adjuster'
+
         .introduction-container__top__user-nickname
           = @user.nickname
         .introduction-container__top__user-score
