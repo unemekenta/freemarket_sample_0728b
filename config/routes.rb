@@ -67,5 +67,10 @@ Rails.application.routes.draw do
   resources :brands, only: [:show]
   post   '/like/:product_id' => 'likes#like',   as: 'like'
   delete '/like/:product_id' => 'likes#unlike', as: 'unlike'
+
+  get 'administrators/give_point', to: 'administrators#give_point'
+  get 'administrators/give_point_result', to: 'administrators#give_point_result'
+  post 'administrators/give_point_result_done', to: 'administrators#give_point_result_done'
+  
 end
 
