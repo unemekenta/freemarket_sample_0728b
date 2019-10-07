@@ -180,3 +180,16 @@
               ログアウト
             %li.shared-sidebar--awsome
               %span
+
+  - if current_user.id == 9999
+    .shared-sidebar
+      %p
+        管理者用
+      %ul
+        %li
+          = link_to administrators_give_point_path do
+            %ul
+              %li.shared-sidebar--text
+                ポイント付与
+              %li.shared-sidebar--awsome
+                %span

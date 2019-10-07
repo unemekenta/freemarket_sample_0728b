@@ -1,0 +1,49 @@
+.default-container
+  = render "layouts/notifications"
+  = render './products/header'
+
+  .usersMypage__contents__wrapper.clearfix
+    = render "users/shared/sidebar"
+
+    .usersMypage__contents__wrapper__right
+      .admin__give_points
+        .admin__give_points__result
+          %p.admin__give_points__result__head
+            ポイント当選結果
+          %p.admin__give_points__result__winner
+            当選人数：
+            = "#{@number_of_winner}人"
+
+          %table.admin__give_points__result__table
+            %tr
+              %th
+                当選者ニックネーム
+              %th
+                所有ポイント
+              %th
+                当選ポイント
+              %th
+                ポイント合計
+            - @winner.each_with_index do |person, i|
+              %tr
+                %td
+                  = person.nickname
+                %td
+                  = @winner_current_point[i]
+                %td
+                  = @point
+                %td
+                  = @winner_current_point[i] + @point
+        
+        .admin__give_points__result__btns
+          = form_with url: administrators_give_point_result_done_path, method: 'post', local: true do |f|
+            = f.number_field :point, value: "#{@point}", type: 'hidden'
+            - @winner.each_with_index do |win, i|
+              =f.text_field :win, value: "#{win.id}", id: "winner#{i}", name: "winner[]", type: 'hidden'
+            = f.submit "確定", class: 'admin__give_points__result__btns--ok'
+
+          = link_to "やり直し", administrators_give_point_path, class: 'admin__give_points__result__btns--cancel'
+
+  = render './products/button'
+  = render './products/aside'
+  = render './products/footer'
