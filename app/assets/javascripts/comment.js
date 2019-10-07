@@ -2,8 +2,8 @@ $(document).on('turbolinks:load', function () {
   function buildHTML(message) {
     var comment = message.comment ? `${message.comment}` : "";
     var nickname = message.nickname ? `${message.nickname}` : "";
-    var photo = message.photo ? `${message.photo}` : "https://static.mercdn.net/images/member_photo_noimage.png";
     var user_id = message.user_id ? `${message.user_id}` : "";
+    var photo = (message.photo === `/uploads/user/photo/${user_id}/0`) ? "/assets/mercari_user.png" : `${message.photo}`;
     var product_id = message.product_id ? `${message.product_id}` : "";
     var id = message.id ? `${message.id}` : "";
     var html = `<li class="product_messages__items__item" data-id="${id}">

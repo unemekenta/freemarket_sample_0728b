@@ -1,0 +1,46 @@
+@import "variables";
+
+.default-container {
+  .roulette {
+    width: 700px;
+    margin: 24px auto 0;
+    padding: 24px 40px 40px;
+    background-color: $main_white;
+    &__title {
+      height: 100px;
+      text-align: center;
+      // background-color: #fff6de;
+      font-size: 25px;
+      font-weight: bold;
+      line-height: 100px;
+
+
+    }
+    &__text {
+      width: 400px;
+      margin:0 auto;
+      &__total {
+        font-size: 25px;
+        font-weight: bold;
+      }
+      &__detail {
+
+      }
+      &__thanks {
+        margin-top: 20px;
+        font-size: 25px;
+        font-weight: bold;
+        text-align: center;
+
+      }
+      &__link {
+        margin-top: 20px;
+        text-align: center;
+        color: $main_blue;
+      }
+
+    }
+
+
+  }
+}

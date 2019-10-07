@@ -130,10 +130,11 @@
             = link_to introduction_user_path(co.user), class:"product_messages__items__item__messege-user" do
               %figure.product_messages__items__item__messege-user__figure
                 %div.product_messages__items__item__messege-user__figure__div
-                  - if co.user.photo?
-                    = image_tag co.user.photo.url
+                  - if co.user.photo.to_s == "/uploads/user/photo/#{co.user.id}/0"
+                    = image_tag "mercari_user.png"
                   - else
-                    = image_tag "https://static.mercdn.net/images/member_photo_noimage.png"
+                    = image_tag co.user.photo.url
+
                 %figcaption.product_messages__items__item__messege-user__figure__figcaption
                   = co.user.nickname
                 - if @product.seller_id == co.user.id
