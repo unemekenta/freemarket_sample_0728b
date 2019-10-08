@@ -130,7 +130,7 @@
             = link_to introduction_user_path(co.user), class:"product_messages__items__item__messege-user" do
               %figure.product_messages__items__item__messege-user__figure
                 %div.product_messages__items__item__messege-user__figure__div
-                  - if co.user.attributes["photo"].to_i == 0
+                  - if co.user.attributes["photo"] == "0"
                     = image_tag "mercari_user.png"
                   - else
                     = image_tag co.user.photo.url

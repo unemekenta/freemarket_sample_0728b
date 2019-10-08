@@ -11,7 +11,7 @@
     = form_with model: @user, local: true, method: :put, html: {class: 'first-main__box'} do |f|
       .usersMypage__contents__wrapper__right__profile
         .usersMypage__contents__wrapper__right__profile__image
-          - if current_user.attributes["photo"].to_i == 0
+          - if current_user.attributes["photo"] == "0"
             = image_tag "mercari_user.png"
           - else
             = image_tag current_user.photo.url
