@@ -2,7 +2,7 @@ class AdministratorsController < ApplicationController
   require 'line/bot'
 
   def give_point
-    @all_members = User.all
+    @all_members = User.where.not("email LIKE ?","%admin%")
   end
 
   def give_point_result
@@ -23,7 +23,7 @@ class AdministratorsController < ApplicationController
     end
 
     # 管理ユーザー以外のメンバー
-    all_members = User.where.not(id: 9999)
+    all_members = User.where.not("email LIKE ?","%admin%")
 
     # ユーザーをシャッフル
     shuffled_members = all_members.shuffle

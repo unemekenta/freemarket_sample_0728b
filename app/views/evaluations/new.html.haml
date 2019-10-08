@@ -7,7 +7,7 @@
       .evaluation__container__top
         ユーザーを評価をしてください
         .evaluation__container__top__seller
-          - if @user.photo.to_s == "/uploads/user/photo/#{@user.id}/0"
+          - if @user.attributes["photo"] == "0"
             = image_tag "mercari_user.png", class:'evaluation__container__top__seller__photo'
           - else
             = image_tag @user.photo.url, class:'evaluation__container__top__seller__photo'

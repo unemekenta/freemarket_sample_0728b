@@ -11,7 +11,7 @@
           %p.admin__give_points__settings__head
             ポイント付与
           %p.admin__give_points__settings__user
-            = "現在のユーザー数：#{@all_members.count - 1}人"
+            = "現在のユーザー数：#{@all_members.count}人"
           
           = form_with url: administrators_give_point_result_path, class: "admin__give_points__settings__form", method: 'get', local: true do |f|
             %ul
