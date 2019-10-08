@@ -1,0 +1,110 @@
+@import './variables';
+
+.admin__give_points {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__settings {
+    width: 70%;
+    padding: 15px 0 30px 0;
+    &__head {
+      font-size: 25px;
+      padding: 10px 5px;
+    }
+    &__user {
+      padding: 10px 5px;
+    }
+    &__form {
+      padding: 5px;
+      & ul {
+        margin-bottom: 20px;
+      }
+      & span {
+        display: inline-block;
+      }
+      &__front {
+        width: 40%;
+      }
+      
+      & input {
+        width: 30%;
+        margin-right: 15px;
+      }
+      &__btn {
+        margin-top: 40px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        & input[type="submit"] {
+          display: inline-block;
+          width: 60%;
+          height: 50px;
+          color: $main_white;
+          background-color: $main_red;
+          &:hover {
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
+  &__result {
+    width: 80%;
+    padding: 15px 0 30px 0;
+    &__head {
+      font-size: 25px;
+      padding: 10px 5px;
+    }
+    &__winner {
+      padding: 10px 5px;
+    }
+    &__table {
+      width: 100%;
+      border: 1px solid $main_black;
+      margin-top: 10px;
+      & th {
+        text-align: center;
+        border: 1px solid $main_black;
+      }
+      & tr {
+        height: 40px;
+        text-align: center;
+        border: 1px solid $main_black;
+        & td {
+          border: 1px solid $main_black;
+        }
+      }
+    }
+    &__btns {
+      width: 70%;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      margin-top: 30px;
+      margin-bottom: 40px;
+      &--ok {
+        margin-right: 5px;
+        width: 200px;
+        height: 50px;
+        background-color: $main_red;
+        color: $main_white;
+        &:hover {
+          cursor: pointer;
+        }
+
+      }
+      &--cancel {
+        margin-left: 5px;
+        width: 200px;
+        height: 50px;
+        background-color: $main_gray;
+        line-height: 50px;
+        text-align: center;
+        color: $main_white;
+
+      }
+    }
+  }
+}

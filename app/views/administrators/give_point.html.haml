@@ -1,0 +1,33 @@
+.default-container
+  = render "layouts/notifications"
+  = render './products/header'
+  
+  .usersMypage__contents__wrapper.clearfix
+    = render "users/shared/sidebar"
+
+    .usersMypage__contents__wrapper__right
+      .admin__give_points
+        .admin__give_points__settings
+          %p.admin__give_points__settings__head
+            ポイント付与
+          %p.admin__give_points__settings__user
+            = "現在のユーザー数：#{@all_members.count - 1}人"
+          
+          = form_with url: administrators_give_point_result_path, class: "admin__give_points__settings__form", method: 'get', local: true do |f|
+            %ul
+              %li
+                %span.admin__give_points__settings__form__front 当選者数:
+                = f.number_field :number_of_winner, value: ''
+                %span.admin__give_points__settings__form__back 人
+              %li
+                %span.admin__give_points__settings__form__front 付与ポイント:
+                = f.number_field :point, value: ''
+                %span.admin__give_points__settings__form__back ポイント
+
+            .admin__give_points__settings__form__btn    
+              = f.submit '確定'
+
+  = render './products/button'
+  = render './products/aside'
+  = render './products/footer'
+
