@@ -20,98 +20,60 @@
               カテゴリーから探す
             %ul.header__menu-box--left__parents
               %li.header__menu-box--left__parents__parent
-                = link_to "レディース", root_path 
+                = link_to "レディース", category_path(id: 1)
                 %ul.header__menu-box--left__children
-                  %li.header__menu-box--left__children__child
-                    = link_to "トップス", root_path 
-                    %ul.header__menu-box--left__grand-children
-                    -# マージ後にエラーとなったため、一旦コメントアウトにて対応。優先度低いため後に実装
-                      -# - @categories_grandchildren_ladies1.each do |grandchild| 
-                        %li.header__menu-box--left__grand-children__grand-child
-                          -# = link_to "#{grandchild.category}", root_path
-                  %li.header__menu-box--left__children__child
-                    = link_to "ジャケット/アウター", root_path 
-                    %ul.header__menu-box--left__grand-children
-                    -# マージ後にエラーとなったため、一旦コメントアウトにて対応。優先度低いため後に実装
-                      -# - @categories_grandchildren_ladies2.each do |grandchild|
-                        %li.header__menu-box--left__grand-children__grand-child
-                          -# = link_to "#{grandchild.category}", root_path
-                  %li.header__menu-box--left__children__child
-                    = link_to "パンツ", root_path 
-                    %ul.header__menu-box--left__grand-children
-                    -# マージ後にエラーとなったため、一旦コメントアウトにて対応。優先度低いため後に実装
-                      -# - @categories_grandchildren_ladies3.each do |grandchild|
-                        %li.header__menu-box--left__grand-children__grand-child
-                          -# = link_to "#{grandchild.category}", root_path
-                  %li.header__menu-box--left__children__child
-                    = link_to "スカート", root_path 
-                  %li.header__menu-box--left__children__child
-                    = link_to "ワンピース", root_path 
-                  %li.header__menu-box--left__children__child
-                    = link_to "靴", root_path 
-                  %li.header__menu-box--left__children__child
-                    = link_to "ルームウェア/パジャマ", root_path 
-                  %li.header__menu-box--left__children__child
-                    = link_to "レッグウェア", root_path 
-                  %li.header__menu-box--left__children__child
-                    = link_to "帽子", root_path 
-                  %li.header__menu-box--left__children__child
-                    = link_to "バッグ", root_path 
-                  %li.header__menu-box--left__children__child
-                    = link_to "アクセサリー", root_path 
-                  %li.header__menu-box--left__children__child
-                    = link_to "ヘアアクセサリー", root_path 
-                  %li.header__menu-box--left__children__child
-                    = link_to "小物", root_path 
-                  %li.header__menu-box--left__children__child
-                    = link_to "時計", root_path 
-                  %li.header__menu-box--left__children__child
-                    = link_to "ウィッグ/エクステ", root_path 
-                  %li.header__menu-box--left__children__child
-                    = link_to "スーツ/フォーマル/ドレス", root_path 
-                  %li.header__menu-box--left__children__child
-                    = link_to "マタニティ", root_path 
-                  %li.header__menu-box--left__children__child
-                    = link_to "その他", root_path 
+                  = render partial: "products/header_child", collection: @category_children1, as: "category"
               %li.header__menu-box--left__parents__parent
-                = link_to "メンズ", root_path 
+                = link_to "メンズ", category_path(id: 2)
                 %ul.header__menu-box--left__children
-                  %li.header__menu-box--left__children__child
-                    = link_to "トップス", root_path 
-                    %ul.header__menu-box--left__grand-children
-                      %li.header__menu-box--left__grand-children__grand-child
-                        = link_to "Tシャツ/カットソー（半袖/袖なし)", root_path 
-                      %li.header__menu-box--left__grand-children__grand-child
-                        = link_to "Tシャツ/カットソー（七分/長袖)", root_path 
-                  %li.header__menu-box--left__children__child
-                    = link_to "ジャケット/アウター", root_path 
-                    %ul.header__menu-box--left__grand-children
-                      %li.header__menu-box--left__grand-children__grand-child
-                        = link_to "テーラードジャケット", root_path 
-                      %li.header__menu-box--left__grand-children__grand-child
-                        = link_to "ノーカラージャケット", root_path 
+                  = render partial: "products/header_child", collection: @category_children2, as: "category"
               %li.header__menu-box--left__parents__parent
-                = link_to "ベビー・キッズ", root_path 
+                = link_to "ベビー・キッズ", category_path(id: 3)
+                %ul.header__menu-box--left__children
+                  = render partial: "products/header_child", collection: @category_children3, as: "category"
               %li.header__menu-box--left__parents__parent
-                = link_to "本・音楽・ゲーム", root_path 
+                = link_to "インテリア・住まい・小物", category_path(id: 4)
+                %ul.header__menu-box--left__children
+                  = render partial: "products/header_child", collection: @category_children4, as: "category"
               %li.header__menu-box--left__parents__parent
-                = link_to "おもちゃ・ホビー・グッズ", root_path 
+                = link_to "本・音楽・ゲーム", category_path(id: 5)
+                %ul.header__menu-box--left__children
+                  = render partial: "products/header_child", collection: @category_children5, as: "category"
               %li.header__menu-box--left__parents__parent
-                = link_to "コスメ・香水・美容", root_path 
+                = link_to "おもちゃ・ホビー・グッズ", category_path(id: 6)
+                %ul.header__menu-box--left__children
+                  = render partial: "products/header_child", collection: @category_children6, as: "category"
               %li.header__menu-box--left__parents__parent
-                = link_to "家電・スマホ・カメラ", root_path 
+                = link_to "コスメ・香水・美容", category_path(id: 7)
+                %ul.header__menu-box--left__children
+                  = render partial: "products/header_child", collection: @category_children7, as: "category"
               %li.header__menu-box--left__parents__parent
-                = link_to "スポーツ・レジャー", root_path 
+                = link_to "家電・スマホ・カメラ", category_path(id: 8)
+                %ul.header__menu-box--left__children
+                  = render partial: "products/header_child", collection: @category_children8, as: "category"
               %li.header__menu-box--left__parents__parent
-                = link_to "ハンドメイド", root_path 
+                = link_to "スポーツ・レジャー", category_path(id: 9)
+                %ul.header__menu-box--left__children
+                  = render partial: "products/header_child", collection: @category_children9, as: "category"
               %li.header__menu-box--left__parents__parent
-                = link_to "チケット", root_path 
+                = link_to "ハンドメイド", category_path(id: 10)
+                %ul.header__menu-box--left__children
+                  = render partial: "products/header_child", collection: @category_children10, as: "category"
               %li.header__menu-box--left__parents__parent
-                = link_to "自転車・オートバイ", root_path 
+                = link_to "チケット", category_path(id: 11)
+                %ul.header__menu-box--left__children
+                  = render partial: "products/header_child", collection: @category_children11, as: "category"
               %li.header__menu-box--left__parents__parent
-                = link_to "その他", root_path 
+                = link_to "自転車・オートバイ", category_path(id: 12)
+                %ul.header__menu-box--left__children
+                  = render partial: "products/header_child", collection: @category_children12, as: "category"
               %li.header__menu-box--left__parents__parent
-                = link_to "カテゴリ一覧", root_path 
+                = link_to "その他", category_path(id: 13)
+                %ul.header__menu-box--left__children
+                  = render partial: "products/header_child", collection: @category_children13, as: "category"
+              %li.header__menu-box--left__parents__parent
+                = link_to "カテゴリ一覧", category_index_path
+                
                 
             
           %li.header__menu-box--left__brand
@@ -120,15 +82,15 @@
               ブランドから探す
             %ul.header__menu-box--left__brand__list
               %li
-                = link_to "シャネル", root_path
+                = link_to "シャネル", brand_path(id: 1)
               %li
-                = link_to "ナイキ", root_path
+                = link_to "ナイキ", brand_path(id: 2)
               %li
-                = link_to "ルイ ヴィトン", root_path 
+                = link_to "ルイ ヴィトン", brand_path(id: 3) 
               %li
-                = link_to "シュプリーム", root_path
+                = link_to "シュプリーム", brand_path(id: 4)
               %li
-                = link_to "アディダス", root_path 
+                = link_to "アディダス", brand_path(id: 5)
               %li
                 = link_to "ブランド一覧", root_path 
 
