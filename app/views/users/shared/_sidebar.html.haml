@@ -181,7 +181,7 @@
             %li.shared-sidebar--awsome
               %span
 
-  - if current_user.id == 9999
+  - if /admin/.match("#{current_user.email}")
     .shared-sidebar
       %p
         管理者用
