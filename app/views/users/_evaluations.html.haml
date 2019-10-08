@@ -2,7 +2,7 @@
   = link_to introduction_user_path(evaluation.buyer.id) do
     %ul
       %li.usersEvaluations--image
-        - if evaluation.buyer.photo.to_s == "/uploads/user/photo/#{evaluation.buyer.id}/0"
+        - if evaluation.buyer.attributes["photo"].to_i == 0
           = image_tag "mercari_user.png", class: 'introduction-container__top__user-photo__adjuster'
         - else
           = image_tag evaluation.buyer.photo.url, class: 'introduction-container__top__user-photo__adjuster'

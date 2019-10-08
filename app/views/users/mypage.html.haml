@@ -10,7 +10,7 @@
     .usersMypage__contents__wrapper__right
       .usersMypage__contents__wrapper__right__profile
         .usersMypage__contents__wrapper__right__profile__image
-          - if current_user.photo.to_s == "/uploads/user/photo/#{current_user.id}/0"
+          - if current_user.attributes["photo"].to_i == 0
             = image_tag "mercari_user.png"
           - else
             = image_tag current_user.photo.url
