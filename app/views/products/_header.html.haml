@@ -154,7 +154,8 @@
           
             %li.header__menu-box--right__list
               = link_to mypage_user_path(current_user.id) do
-                - if current_user.photo.to_s == "/uploads/user/photo/#{current_user.id}/0"
+
+                - if current_user.attributes["photo"].to_i == 0
                   = image_tag "/images/mercari_user.png", class: 'header__menu-box--right__list__photo'
                 - else
                   = image_tag current_user.photo.url, class: 'header__menu-box--right__list__photo'
