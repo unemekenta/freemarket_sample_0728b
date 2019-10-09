@@ -1,5 +1,8 @@
 class ProductsController < ApplicationController
+
+  include CommonActions
   before_action :set_product, only: [:show, :edit, :update, :destroy]
+  before_action :set_categories, only: [:index, :show, :search]
 
   def index
     products =  []
@@ -33,12 +36,6 @@ class ProductsController < ApplicationController
     @products_nike = Product.where(brand_id: 2).order("id DESC").limit(10)
 
     @all_ranks = Product.find(Like.group(:product_id).order('count(product_id) desc').limit(5).pluck(:product_id))
-
-    # @categories_parents = Category.where(parent_id: nil)
-    # @categories_children = Category.where(parent_id: 14..32)
-    # @categories_grandchildren_ladies1 = Category.where(parent_id: 14)
-    # @categories_grandchildren_ladies2 = Category.where(parent_id: 15)
-    # @categories_grandchildren_ladies3 = Category.where(parent_id: 16)
 
   end
 
@@ -144,4 +141,5 @@ class ProductsController < ApplicationController
   def search_params
     params.require(:q).permit(:name_has_every_term, :brand_id_eq, {status_id_in: []}, {delivery_shipping_fee_eq_any: []}, {status_id_eq_any: []}, {condition_id_in: []}, :price_gteq, :price_lteq, :s)
   end
+
 end

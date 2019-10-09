@@ -180,7 +180,7 @@ a {
           }
           ul {
             position: absolute;
-            top: 40px;
+            top: 44px;
             z-index: 1000;
             font-weight: normal;
             li {
@@ -222,7 +222,7 @@ a {
                     .header__menu-box--left__grand-children {
                       &__grand-child {
                         display: block;
-                        height: 20px;
+                        height: 30px;
                       }
                     }
                   }
@@ -249,7 +249,7 @@ a {
                       background-color: white;
                       a {
                         @include dropMenu_aTag(30px);
-                        font-size: 13px;
+                        font-size: 14px;
                         &:hover {
                           background-color: #f3f3f3;
                         }
@@ -285,7 +285,7 @@ a {
 
         ul.header__menu-box--left__brand__list {
           position: absolute;
-          top: 40px;
+          top: 31px;
           z-index: 1000;
           li {
             width: 220px;
