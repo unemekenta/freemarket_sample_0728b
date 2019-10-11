@@ -6,7 +6,7 @@ application up and running.
 Things you may want to cover:
 
 * Name
-メルカリクローン
+メルカリクローン TECH::EXPERT最終課題_0728b
 
 * Overview
 フリマサイト「メルカリ」のクローン。
@@ -35,7 +35,10 @@ Hiroki_Katsuyama, Masatomo_Sugai, Yuichi_Motmomura, Kenta_Uneme, Hirokuni_Takgai
 
 * ...
 
-## deliver_addressesテーブル
+* ER
+  https://cacoo.com/diagrams/bWLWHZyk5HVNBOGA/B8EB9
+
+## deliveraddressesテーブル
 |Column|Type|Options|
 |------|----|-------|
 |family_name|string|null: false|
@@ -47,16 +50,16 @@ Hiroki_Katsuyama, Masatomo_Sugai, Yuichi_Motmomura, Kenta_Uneme, Hirokuni_Takgai
 |city|string|null: false|
 |street|string|null: false|
 |building|string||
-|phone_number|integer|null: false|
+|phone_number|integer||
 |user|references|null: false, foreign_key: true|
 
 ### Association
-- belongs_to :user
+- belongs_to :user, optional: true
 
 ## addressesテーブル
 |Column|Type|Options|
 |------|----|-------|
-|post_number|integer|null: false|
+|post_number|integer||
 |prefecture|string|null: false|
 |city|string|null: false|
 |street|string|null: false|
@@ -64,7 +67,7 @@ Hiroki_Katsuyama, Masatomo_Sugai, Yuichi_Motmomura, Kenta_Uneme, Hirokuni_Takgai
 |user|references|null: false, foreign_key: true|
 
 ### Association
-- belongs_to :user
+- belongs_to :user, optional: true
 
 ## evaluationsテーブル
 |Column|Type|Options|
@@ -72,10 +75,11 @@ Hiroki_Katsuyama, Masatomo_Sugai, Yuichi_Motmomura, Kenta_Uneme, Hirokuni_Takgai
 |comment|string|null: false|
 |evaluation|integer|null: false|
 |seller|references|null: false, foreign_key: true|
-|buyer|string|null: false, foreign_key: true|
+|buyer|references|null: false, foreign_key: true|
 
 ### Association
-- belongs_to :user
+- belongs_to  :buyer, class_name: 'User', foreign_key: 'buyer_id'
+- belongs_to  :seller, class_name: 'User', foreign_key: 'seller_id'
 
 ## pointsテーブル
 |Column|Type|Options|
@@ -89,24 +93,24 @@ Hiroki_Katsuyama, Masatomo_Sugai, Yuichi_Motmomura, Kenta_Uneme, Hirokuni_Takgai
 ## credit_cardsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|card_number|integer|null: false|
-|expiration_month|integer|null: false|
-|expiration_year|integer|null: false|
-|secutiry_code|integer|null: false|
+|customer_id|integer|null: false|
+|card_id|integer|null: false|
 |user|references|null: false, foreign_key: true|
 
 ### Association
-- belongs_to :user
+- belongs_to :user, optional: true
 
-## proceedsテーブル
+## purchasesテーブル
 |Column|Type|Options|
 |------|----|-------|
-|proceed|integer|null: false|
-|user|references|null: false, foreign_key: true|
-|purchase|references|null: false, foreign_key: true|
+|seller|references|null: false, foreign_key: true|
+|buyer|references|null: false, foreign_key: true|
+|product|references|null: false, foreign_key: true|
 
 ### Association
-- belongs_to :user
+- belongs_to  :product
+- belongs_to  :buyer, class_name: 'User', foreign_key: 'buyer_id'
+- belongs_to  :seller, class_name: 'User', foreign_key: 'seller_id'
 
 ## usersテーブル
 |Column|Type|Options|
@@ -121,23 +125,23 @@ Hiroki_Katsuyama, Masatomo_Sugai, Yuichi_Motmomura, Kenta_Uneme, Hirokuni_Takgai
 |email|string|null: false, unique: true|
 |password|string|null: false|
 |phone_number|integer|null: false|
-|address|references|null: false, foreign_key: true|
-|delivery_address|references|null: false, foreign_key: true|
-|credit_card|references|null: false, foreign_key: true| 
+|provider|string||
+|uid|string||
 |profile|text||
+|line_token|string||
 
 ### Association
 - has_many :evaluations
 - has_one :deliver_address
 - has_one :address
+- has_one :point
 - has_many :points
 - has_one :credit_card
-- has_many :proceeds
 - has_many :products, through: :purchases
-- has_many :products, through: :likes
-- has_many :products, through: :messages
-- has_many :products, through: :transactions
-- has_many :products, through: :todoes
+- has_many :comments
+- has_many :purchases
+- has_many :likes, dependent: :destroy
+- has_many :like_products, through: :likes, source: :product
 
 ## purchasesテーブル
 |Column|Type|Options|
@@ -149,9 +153,10 @@ Hiroki_Katsuyama, Masatomo_Sugai, Yuichi_Motmomura, Kenta_Uneme, Hirokuni_Takgai
 |status|string|null: false|
 
 ### Association
-- belongs_to :user
-- belongs_to :product
-- has_many :transactions
+- belongs_to  :product
+- belongs_to  :buyer, class_name: 'User', foreign_key: 'buyer_id'
+- belongs_to  :seller, class_name: 'User', foreign_key: 'seller_id'
+
 
 ## likesテーブル
 |Column|Type|Options|
@@ -161,61 +166,59 @@ Hiroki_Katsuyama, Masatomo_Sugai, Yuichi_Motmomura, Kenta_Uneme, Hirokuni_Takgai
 
 ### Association
 - belongs_to :user
-- belongs_to :product
+- belongs_to :product, counter_cache: :likes_count
 
-## messagesテーブル
+## commentsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|message|string|null: false|
+|comment|string|null: false|
 |user|references|null: false, foreign_key: true|
 |product|references|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :user
 - belongs_to :product
-
-## transactionsテーブル
-|Column|Type|Options|
-|------|----|-------|
-|transaction_message|string|null: false|
-|user|references|null: false, foreign_key: true|
-|product|references|null: false, foreign_key: true|
-
-### Association
-- belongs_to :user
-- belongs_to :product
-- belongs_to :purchase
 
 ## categoriesテーブル
 |Column|Type|Options|
 |------|----|-------|
 |category|string|null: false|
 |parent_id|integer||
-|brand|references|foreign_key: true|
-|size|references|foreign_key: true|
+|size_type|references|foreign_key: true|
 
 ### Association
-- belongs_to :product
-- has_one :brand
-- has_one :size
+- belongs_to :size_type, optional: true
+- belongs_to :parent, class_name: :Category, optional: true
+- has_many :children, class_name: :Category, foreign_key: :parent_id
+- has_many :products
 
 ## brandsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|name|string|null: false|
 |brand|string|null: false|
 
 ### Association
-- belongs_to :category
+- has_one :product
+
+## size_typesテーブル
+|Column|Type|Options|
+|------|----|-------|
+|size_type|string|null: false|
+
+### Association
+- has_many :categories
+- has_many :sizes
 
 ## sizesテーブル
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false|
 |size|string|null: false|
+|size_type_id|reference|null: false, foreign_key: true|
 
 ### Association
-- belongs_to :category
+- belongs_to :size_type
+- has_many :products
 
 ## productsテーブル
 |Column|Type|Options|
@@ -226,19 +229,24 @@ Hiroki_Katsuyama, Masatomo_Sugai, Yuichi_Motmomura, Kenta_Uneme, Hirokuni_Takgai
 |category|references|null: false, foreign_key: true|
 |status|references|null: false, foreign_key: true|
 |condition|references|null: false, foreign_key: true|
-|delivery|references|null: false, foreign_key: true|
+|brand|references|null: false, foreign_key: true|
+|seller|references|null: false, foreign_key: true|
+|likes_count|integer|null: false|
 
 ### Association
 - has_many :users, through: :likes
-- has_many :users, through: :messages
-- has_many :users, through: :todoes
-- has_many :users, through: :transactions
+- has_many :product_images, dependent: :destroy
+- belongs_to :category
+- belongs_to :brand, optional: true
+- belongs_to :size, optional: true
+- belongs_to :status
+- belongs_to :condition
+- has_one :delivery, dependent: :destroy
 - has_many :users, through: :purchases
-- has_many :product_image
-- has_one :category
-- has_one :status
-- has_one :condition
-- has_one :delivery
+- has_many :comments
+- has_many :purchases
+- has_many :likes, dependent: :destroy
+- has_many :liking_users, through: :likes, source: :user
 
 ## product_imagesテーブル
 |Column|Type|Options|
@@ -255,7 +263,7 @@ Hiroki_Katsuyama, Masatomo_Sugai, Yuichi_Motmomura, Kenta_Uneme, Hirokuni_Takgai
 |status|string|null: false|
 
 ### Association
-- belongs_to :product
+- has_one :product
 
 ## conditionsテーブル
 |Column|Type|Options|
@@ -263,21 +271,22 @@ Hiroki_Katsuyama, Masatomo_Sugai, Yuichi_Motmomura, Kenta_Uneme, Hirokuni_Takgai
 |condition|string|null: false|
 
 ### Association
-- belongs_to :product
+- has_one :product
 
 ## deliveriesテーブル
 |Column|Type|Options|
 |------|----|-------|
 |product|integer|null: false, foreign_key: true|
+|deliver_region|references|null: false, foreign_key: true|
 |deliver_method|references|null: false, foreign_key: true|
 |estimated_date|references|null: false, foreign_key: true|
-|shipping_fee|references|null: false, foreign_key: true|
+|shipping_fee|string|null: false|
 
 ### Association
 - belongs_to :product
-- has_one :deliver_method
-- belongs_to_active_hash :deliver_region
-- has_one :estimated_date
+- belongs_to :deliver_method
+- belongs_to :deliver_region
+- belongs_to :estimated_date
 
 ## deliver_methodsテーブル
 |Column|Type|Options|
@@ -285,7 +294,7 @@ Hiroki_Katsuyama, Masatomo_Sugai, Yuichi_Motmomura, Kenta_Uneme, Hirokuni_Takgai
 |method|string|null: false|
 
 ### Association
-- belongs_to :delivery
+- has_one :delivery
 
 ## deliver_regionsテーブル
 |Column|Type|Options|
@@ -293,6 +302,7 @@ Hiroki_Katsuyama, Masatomo_Sugai, Yuichi_Motmomura, Kenta_Uneme, Hirokuni_Takgai
 |region|string|null: false|
 
 ### Association
+- has_one :delivery
 
 ## estimated_datesテーブル
 |Column|Type|Options|
@@ -300,4 +310,4 @@ Hiroki_Katsuyama, Masatomo_Sugai, Yuichi_Motmomura, Kenta_Uneme, Hirokuni_Takgai
 |date|integer|null: false|
 
 ### Association
-- belongs_to :delivery
+- has_one :delivery
