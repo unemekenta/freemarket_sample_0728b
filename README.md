@@ -311,5 +311,3 @@ Hiroki_Katsuyama, Masatomo_Sugai, Yuichi_Motmomura, Kenta_Uneme, Hirokuni_Takgai
 
 ### Association
 - has_one :delivery
-
-uneme_kenta
